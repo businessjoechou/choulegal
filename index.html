@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周全法律科技 ChouLegal｜台灣法律計算平台</title>
+<meta name="description" content="周全法律科技 — 台灣法律科技平台。旗下 InheritancePro、LaborPro 等專業法律計算工具，為勞工、雇主、律師、會計師打造。">
+<meta name="keywords" content="法律科技,法律計算,遺產繼承,勞基法,資遣費,加班費,台灣法律,LegalTech">
+<meta name="robots" content="index, follow">
+<meta name="author" content="周全法律科技 ChouLegal">
+<meta property="og:title" content="周全法律科技 ChouLegal｜台灣法律計算平台">
+<meta property="og:description" content="法律很複雜，我們讓它變簡單。旗下 InheritancePro、LaborPro 等專業工具。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="周全法律科技 ChouLegal">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #141418;
+    --ink-2: #1a1a20;
+    --paper: #f0ede8;
+    --gold: #c4932a;
+    --muted: #6a6a72;
+    --border: #2a2a30;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* ─── Layout ─── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    padding: 80px 0 64px;
+    text-align: center;
+  }
+
+  .logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+    margin-bottom: 64px;
+    display: block;
+  }
+
+  .logo-en {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-left: 10px;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(32px, 7vw, 48px);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.85;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ─── Products ─── */
+  .section {
+    padding: 48px 0;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-card {
+    display: block;
+    text-decoration: none;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .product-card:hover::before { opacity: 1; }
+
+  .product-card.inheritance {
+    border-color: rgba(196, 147, 42, 0.3);
+  }
+  .product-card.inheritance::before {
+    background: linear-gradient(135deg, rgba(196, 147, 42, 0.06) 0%, transparent 60%);
+  }
+  .product-card.inheritance:hover {
+    border-color: var(--gold);
+  }
+
+  .product-card.labor {
+    border-color: rgba(42, 110, 62, 0.3);
+  }
+  .product-card.labor::before {
+    background: linear-gradient(135deg, rgba(42, 110, 62, 0.06) 0%, transparent 60%);
+  }
+  .product-card.labor:hover {
+    border-color: #2a6e3e;
+  }
+
+  .product-card.coming-soon {
+    border-color: rgba(106, 106, 114, 0.2);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .product-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .product-brand {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.3;
+  }
+
+  .product-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .product-card.inheritance .product-tag {
+    color: var(--gold);
+    border: 1px solid rgba(196, 147, 42, 0.4);
+  }
+
+  .product-card.labor .product-tag {
+    color: #6acd8a;
+    border: 1px solid rgba(42, 110, 62, 0.4);
+  }
+
+  .product-card.coming-soon .product-tag {
+    color: var(--muted);
+    border: 1px solid rgba(106, 106, 114, 0.3);
+  }
+
+  .product-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    line-height: 1.7;
+  }
+
+  .product-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .product-feature {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+  }
+
+  .product-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  .product-cta-arrow {
+    font-size: 16px;
+    transition: transform 0.2s;
+  }
+
+  .product-card:hover .product-cta-arrow {
+    transform: translateX(4px);
+    color: var(--gold);
+  }
+
+  .product-card:hover .product-cta {
+    color: var(--paper);
+  }
+
+  /* ─── Values ─── */
+  .values {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .value-item {
+    display: flex;
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .value-item:last-child { border-bottom: none; }
+
+  .value-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .value-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 6px;
+  }
+
+  .value-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* ─── Business ─── */
+  .business {
+    text-align: center;
+    padding: 48px 0;
+  }
+
+  .business-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 10px;
+  }
+
+  .business-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .business-email {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--gold);
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+
+  .business-email:hover { background: #b5820e; }
+
+  /* ─── Footer ─── */
+  .footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 0 48px;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(240,237,232,0.25);
+    letter-spacing: 0.06em;
+    line-height: 2.2;
+  }
+
+  .footer a {
+    color: rgba(240,237,232,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer a:hover { color: var(--gold); }
+
+  .footer-sep {
+    opacity: 0.3;
+    margin: 0 8px;
+  }
+
+  /* ─── Animation ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-title { animation: fadeUp 0.6s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.1s ease both; }
+  .products { animation: fadeUp 0.6s 0.2s ease both; }
+
+  /* ─── Responsive ─── */
+  @media (min-width: 720px) {
+    .container { max-width: 800px; padding: 0 40px; }
+    .hero { padding: 100px 0 80px; }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    .hero { padding: 60px 0 48px; }
+    .product-card { padding: 24px 20px; }
+    .product-brand { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="logo">周全<span class="logo-en">ChouLegal</span></div>
+
+    <h1 class="hero-title">法律很複雜<br>我們讓它變<em>簡單</em></h1>
+
+    <p class="hero-sub">台灣法律科技平台，為勞工、雇主、律師、會計師打造的專業計算工具。<br>依最新法條與實務判例設計，所有核心功能完全免費。</p>
+  </section>
+
+  <!-- Products -->
+  <section class="section">
+    <div class="section-label">旗下產品</div>
+
+    <div class="products">
+
+      <a class="product-card inheritance" href="https://inheritancepro.app" target="_blank" rel="noopener">
+        <div class="product-top">
+          <div class="product-brand">InheritancePro</div>
+          <span class="product-tag">民法</span>
+        </div>
+        <div class="product-subtitle">中華民國民法財產權益計算平台 — 30+ 個專業工具，涵蓋繼承、離婚、保險、損害賠償。</div>
+        <div class="product-features">
+          <span class="product-feature">遺產繼承</span>
+          <span class="product-feature">贍養費</span>
+          <span class="product-feature">剩餘財產分配</span>
+          <span class="product-feature">保險規劃</span>
+          <span class="product-feature">脫產偵測</span>
+          <span class="product-feature">消滅時效</span>
+        </div>
+        <div class="product-cta">
+          <span>前往平台</span>
+          <span class="product-cta-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="product-card labor" href="https://laborpro.vercel.app" target="_blank" rel="noopener">
+        <div class="product-top">
+          <div class="product-brand">LaborPro</div>
+          <span class="product-tag">勞基法</span>
+        </div>
+        <div class="product-subtitle">台灣勞基法計算平台 — 20+ 個工具，支援勞工與雇主雙身份模式。</div>
+        <div class="product-features">
+          <span class="product-feature">資遣費</span>
+          <span class="product-feature">加班費</span>
+          <span class="product-feature">職災補償</span>
+          <span class="product-feature">合規自檢</span>
+          <span class="product-feature">人事成本</span>
+          <span class="product-feature">解僱成本</span>
+        </div>
+        <div class="product-cta">
+          <span>前往平台</span>
+          <span class="product-cta-arrow">→</span>
+        </div>
+      </a>
+
+      <div class="product-card coming-soon">
+        <div class="product-top">
+          <div class="product-brand">AdminPro</div>
+          <span class="product-tag">Coming Soon</span>
+        </div>
+        <div class="product-subtitle">台灣行政法計算平台 — 開發中。</div>
+        <div class="product-features">
+          <span class="product-feature">行政罰</span>
+          <span class="product-feature">訴願</span>
+          <span class="product-feature">行政訴訟</span>
+        </div>
+        <div class="product-cta">
+          <span>敬請期待</span>
+          <span class="product-cta-arrow"></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section">
+    <div class="section-label">品牌理念</div>
+
+    <div class="values">
+      <div class="value-item">
+        <span class="value-num">01</span>
+        <div>
+          <div class="value-title">精準</div>
+          <div class="value-desc">每一個計算模型都依據最新法條、施行細則與實務判例設計，定期隨法規修正更新。</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <span class="value-num">02</span>
+        <div>
+          <div class="value-title">免費</div>
+          <div class="value-desc">所有核心計算功能完全免費，不需註冊、不需登入、不需付費。法律知識不應該有門檻。</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <span class="value-num">03</span>
+        <div>
+          <div class="value-title">專業</div>
+          <div class="value-desc">從第一次接觸法律的一般民眾，到每天處理案件的律師與會計師——同一個平台，不同深度。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business -->
+  <section class="business">
+    <div class="section-label">Business</div>
+    <div class="business-title">商業合作</div>
+    <div class="business-desc">事務所白標導入、法律科技合作、教育機構授權、媒體採訪，歡迎來信討論。</div>
+    <a class="business-email" href="mailto:businessjoechou@gmail.com">businessjoechou@gmail.com</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2026 周全法律科技 ChouLegal. All rights reserved.<br>
+    <a href="#">隱私權政策</a>
+    <span class="footer-sep">·</span>
+    <a href="#">使用者條款</a>
+  </footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "周全法律科技 ChouLegal",
+  "description": "台灣法律科技平台，旗下 InheritancePro、LaborPro 等專業法律計算工具。",
+  "url": "https://choulegal.com",
+  "foundingDate": "2026",
+  "founder": {
+    "@type": "Person",
+    "name": "Joe Chou"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "businessjoechou@gmail.com",
+    "contactType": "business"
+  }
+}
+</script>
+</body>
+</html>
