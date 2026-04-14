@@ -373,10 +373,7 @@
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  @keyframes cardShine {
-    from { left: -75%; }
-    to { left: 125%; }
-  }
+  /* cardShine removed — user feedback */
 
   @keyframes revealIn {
     from { opacity: 0; transform: translateY(24px); }
@@ -451,40 +448,9 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
-  /* Shine/glare sweep on hover */
-  .product-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.04) 45%,
-      rgba(255, 255, 255, 0.08) 50%,
-      rgba(255, 255, 255, 0.04) 55%,
-      transparent 100%
-    );
-    transform: skewX(-20deg);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .product-card:hover::after {
-    animation: cardShine 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-
-  [data-theme="light"] .product-card::after {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.2) 45%,
-      rgba(255, 255, 255, 0.35) 50%,
-      rgba(255, 255, 255, 0.2) 55%,
-      transparent 100%
-    );
+  /* Product card hover: gold border glow (replaces removed shine sweep) */
+  .product-card:hover {
+    border-color: var(--gold);
   }
 
   /* ─── Value Items Stagger ─── */
