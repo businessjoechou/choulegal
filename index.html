@@ -384,9 +384,109 @@
     .product-card { padding: 24px 20px; }
     .product-brand { font-size: 19px; }
   }
+
+  /* ─── Light Mode ─── */
+  [data-theme="light"] {
+    --ink: #f8f6f2;
+    --ink-2: #efece6;
+    --paper: #1a1a1e;
+    --gold: #a87a1a;
+    --muted: #6e6e78;
+    --border: #d8d4ce;
+  }
+
+  [data-theme="light"] .footer {
+    border-top-color: rgba(0,0,0,0.08);
+    color: rgba(26,26,30,0.35);
+  }
+  [data-theme="light"] .footer a {
+    color: rgba(26,26,30,0.45);
+  }
+
+  [data-theme="light"] .product-card.inheritance {
+    border-color: rgba(168, 122, 26, 0.3);
+  }
+  [data-theme="light"] .product-card.inheritance::before {
+    background: linear-gradient(135deg, rgba(168, 122, 26, 0.08) 0%, transparent 60%);
+  }
+  [data-theme="light"] .product-card.inheritance:hover {
+    border-color: var(--gold);
+  }
+
+  [data-theme="light"] .product-card.labor {
+    border-color: rgba(34, 100, 54, 0.3);
+  }
+  [data-theme="light"] .product-card.labor::before {
+    background: linear-gradient(135deg, rgba(34, 100, 54, 0.08) 0%, transparent 60%);
+  }
+  [data-theme="light"] .product-card.labor:hover {
+    border-color: #226436;
+  }
+
+  [data-theme="light"] .product-card.labor .product-tag {
+    color: #226436;
+    border-color: rgba(34, 100, 54, 0.4);
+  }
+
+  [data-theme="light"] .product-card.coming-soon {
+    border-color: rgba(106, 106, 114, 0.25);
+  }
+  [data-theme="light"] .product-card.coming-soon .product-tag {
+    border-color: rgba(106, 106, 114, 0.3);
+  }
+
+  [data-theme="light"] .business-email {
+    color: #fff;
+  }
+
+  [data-theme="light"] div[style*="免責聲明"] {
+    color: rgba(26,26,30,0.5) !important;
+  }
+  [data-theme="light"] div[style*="免責聲明"] strong {
+    color: rgba(26,26,30,0.7) !important;
+  }
+
+  /* ─── Theme Toggle Button ─── */
+  #themeToggle {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: rgba(128,128,128,0.12);
+    color: var(--paper);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    line-height: 1;
+    padding: 0;
+  }
+  #themeToggle:hover {
+    background: rgba(128,128,128,0.22);
+    border-color: var(--gold);
+    transform: scale(1.08);
+  }
+
+  /* ─── Theme Transition ─── */
+  html.theme-transitioning,
+  html.theme-transitioning *,
+  html.theme-transitioning *::before,
+  html.theme-transitioning *::after {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+  }
 </style>
 </head>
 <body>
+
+<button id="themeToggle" aria-label="切換深色/淺色模式"></button>
 
 <div class="container">
 
@@ -517,6 +617,35 @@
 
 </div>
 
+<script>
+(function(){
+  var html = document.documentElement;
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var theme = stored || (prefersDark ? 'dark' : 'light');
+  if (theme === 'light') html.setAttribute('data-theme', 'light');
+
+  function updateIcon(t) {
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = t === 'light' ? '\u263E' : '\u2600';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    updateIcon(theme);
+    btn.addEventListener('click', function() {
+      html.classList.add('theme-transitioning');
+      var current = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      if (current === 'light') html.setAttribute('data-theme', 'light');
+      else html.removeAttribute('data-theme');
+      localStorage.setItem('theme', current);
+      updateIcon(current);
+      setTimeout(function(){ html.classList.remove('theme-transitioning'); }, 350);
+    });
+  });
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
