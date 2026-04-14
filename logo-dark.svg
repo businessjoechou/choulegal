@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none">
+  <!-- Dark background version (for light backgrounds) -->
+
+  <!-- 周全 Chinese logotype -->
+  <text x="0" y="68" font-family="'Noto Serif TC', 'Georgia', serif" font-size="56" font-weight="700" fill="#141418" letter-spacing="0.04em">周全</text>
+
+  <!-- Divider line -->
+  <line x1="138" y1="28" x2="138" y2="78" stroke="#c4932a" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- CHOULEGAL English -->
+  <text x="152" y="52" font-family="'DM Mono', 'Courier New', monospace" font-size="13" font-weight="500" fill="#c4932a" letter-spacing="0.28em">CHOULEGAL</text>
+
+  <!-- Tagline -->
+  <text x="152" y="72" font-family="'Noto Sans TC', 'Helvetica', sans-serif" font-size="11" fill="#6a6a72" letter-spacing="0.06em">法律科技</text>
+</svg>
