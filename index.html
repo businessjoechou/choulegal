@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>周全法律科技 ChouLegal｜法律計算平台</title>
 <meta name="description" content="周全法律科技 — 中華民國法律科技平台。旗下 InheritancePro、LaborPro 等專業法律計算工具，為勞工、雇主、律師、會計師打造。">
@@ -16,25 +17,24 @@
 <meta property="og:site_name" content="周全法律科技 ChouLegal">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:url" content="https://choulegal.com/">
-<meta property="og:image" content="https://choulegal.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://choulegal.com/social-avatar.svg">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="周全法律科技 ChouLegal｜中華民國法律計算平台">
 <meta name="twitter:description" content="法律很複雜，我們讓它變簡單。旗下 InheritancePro、LaborPro 等專業工具。">
-<meta name="twitter:image" content="https://choulegal.com/og-image.png">
+<meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="js/ga.js" defer></script>
 <style>
   :root {
-    --ink: #141418;
-    --ink-2: #1a1a20;
-    --paper: #f0ede8;
-    --gold: #c4932a;
-    --muted: #6a6a72;
-    --border: #2a2a30;
+    /* 2026-04-19 拍板：墨藍 + 米白 + 暗金 */
+    --ink: #0d1b2a;      /* 墨藍主背景（Oxford Blue 方向）*/
+    --ink-2: #14253a;    /* 墨藍次層 */
+    --paper: #f0ede8;    /* 米白 */
+    --gold: #c4932a;     /* 暗金 */
+    --muted: #8890a0;     /* 對比度 4.6+ 達 WCAG AA（原 #6a7080 僅 3.5 不達標）*/
+    --border: #233148;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -172,6 +172,17 @@
     border-color: #2a6e3e;
   }
 
+  .product-card.business {
+    border-color: rgba(196, 147, 42, 0.5);
+    background: linear-gradient(180deg, rgba(196, 147, 42, 0.04), var(--ink-2));
+  }
+  .product-card.business::before {
+    background: linear-gradient(135deg, rgba(196, 147, 42, 0.10) 0%, transparent 60%);
+  }
+  .product-card.business:hover {
+    border-color: var(--gold);
+  }
+
   .product-card.coming-soon {
     border-color: rgba(106, 106, 114, 0.2);
     pointer-events: none;
@@ -218,6 +229,25 @@
   .product-card.coming-soon .product-tag {
     color: var(--muted);
     border: 1px solid rgba(106, 106, 114, 0.3);
+  }
+
+  .product-card.business .product-tag {
+    color: var(--gold);
+    background: rgba(196, 147, 42, 0.12);
+    border: 1px solid rgba(196, 147, 42, 0.5);
+  }
+
+  .product-card.business .product-status {
+    display: inline-block;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--paper);
+    background: var(--gold);
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
   }
 
   .product-subtitle {
@@ -677,7 +707,7 @@
 
     <h1 class="hero-title">法律很複雜<br>我們讓它變<em>簡單</em></h1>
 
-    <p class="hero-sub">中華民國法律科技平台，涵蓋民法、勞基法等多領域專業計算工具。<br>參考現行法條與實務判例設計，所有核心功能完全免費。</p>
+    <p class="hero-sub">中華民國法律科技平台，涵蓋民法、勞基法等多領域專業計算工具。<br>民眾版完全免費；事務所版另有訂閱方案。</p>
   </section>
 
   <!-- Products -->
@@ -726,20 +756,41 @@
         </div>
       </a>
 
-      <div class="product-card coming-soon reveal" data-delay="300" role="region" aria-label="消費爭議計算平台（開發中）" aria-disabled="true">
+      <a class="product-card business reveal" data-delay="300" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%91%A8%E5%85%A8%E5%95%86%E6%A5%AD%E7%89%88%5D%20%E5%80%99%E8%A3%9C%E9%80%9A%E7%9F%A5&amp;body=%E5%91%A8%E5%85%A8%E5%95%86%E6%A5%AD%E7%89%88%E4%B8%8A%E7%B7%9A%E6%99%82%E8%AB%8B%E9%80%9A%E7%9F%A5%E6%88%91%E3%80%82%0A%0A%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E4%BA%8B%E5%8B%99%E6%89%80%E4%B8%BB%E6%94%BB%E9%A0%98%E5%9F%9F%EF%BC%9A%0A%E8%A9%A6%E7%94%A8%E5%BE%85%E9%9B%BB%EF%BC%9A">
+        <div class="product-top">
+          <div class="product-brand">周全 商業版<span class="product-status">籌備中</span></div>
+          <span class="product-tag">律師事務所 B2B</span>
+        </div>
+        <div class="product-subtitle">律師事務所專用民法財產權案件工作台 — 案件管理、法源自動引證、PDF 工作底稿、多律師協作。目前僅開放候補名單，上線時優先通知。</div>
+        <div class="product-features">
+          <span class="product-feature">案件管理</span>
+          <span class="product-feature">法源引證</span>
+          <span class="product-feature">PDF 工作底稿</span>
+          <span class="product-feature">多租戶 SaaS</span>
+        </div>
+        <div class="product-cta">
+          <span>加入候補名單</span>
+          <span class="product-cta-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+
+      <div style="text-align:center; margin: -4px 0 8px;">
+        <a href="pricing.html" style="font-family:'Noto Serif TC',serif; font-size:12px; color:var(--gold); text-decoration:none; letter-spacing:0.06em; border-bottom:1px solid rgba(196,147,42,0.3); padding-bottom:2px; transition: border-color 0.2s;" onmouseover="this.style.borderBottomColor='var(--gold)'" onmouseout="this.style.borderBottomColor='rgba(196,147,42,0.3)'">→ 了解完整訂閱方案（Starter / Pro / Enterprise）</a>
+      </div>
+
+      <div class="product-card coming-soon reveal" data-delay="450" aria-label="消費爭議計算平台｜規劃中" aria-disabled="true">
         <div class="product-top">
           <div class="product-brand">Coming Soon</div>
           <span class="product-tag">消費爭議</span>
         </div>
-        <div class="product-subtitle">消費者保護與爭議處理計算平台 — 開發中。</div>
+        <div class="product-subtitle">消費者保護與爭議處理計算平台 — 目前於規劃階段，尚未排入開發時程。</div>
         <div class="product-features">
           <span class="product-feature">消費糾紛</span>
           <span class="product-feature">退貨退款</span>
           <span class="product-feature">損害賠償</span>
         </div>
         <div class="product-cta">
-          <span>敬請期待</span>
-          <span class="product-cta-arrow" aria-hidden="true"></span>
+          <span>規劃中</span>
         </div>
       </div>
 
@@ -789,6 +840,10 @@
       <strong style="color:rgba(240,237,232,0.75);">免責聲明</strong>：本平台旗下所有工具之計算結果僅供初步參考，不構成法律意見或法律諮詢服務。實際案件因個案事實、適用法規及法院見解不同，結果可能有所差異，建議諮詢具執照之律師或相關法律專業人員。
     </section>
     &copy; 2026 周全法律科技 ChouLegal. All rights reserved.<br>
+    <a href="about.html">關於</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="pricing.html">商業版方案</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
     <a href="privacy.html">隱私權政策</a>
     <span class="footer-sep" aria-hidden="true">·</span>
     <a href="terms.html">使用者條款</a>

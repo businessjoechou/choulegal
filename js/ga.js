@@ -1,5 +1,5 @@
 (function () {
-  var id = 'G-RCG00XWHCT';
+  var id = 'G-47PHC68RJM';
   var s = document.createElement('script');
   s.async = true;
   s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;

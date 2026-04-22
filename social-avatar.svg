@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
   <!-- Background -->
-  <rect width="400" height="400" fill="#141418"/>
+  <rect width="400" height="400" fill="#0d1b2a"/>
 
   <!-- Top: CHOULEGAL small label -->
-  <text x="200" y="145" font-family="'DM Mono', Courier New, monospace" font-size="12" font-weight="500" fill="#6a6a72" text-anchor="middle" letter-spacing="0.36em">CHOULEGAL</text>
+  <text x="200" y="145" font-family="'JetBrains Mono', Courier New, monospace" font-size="12" font-weight="500" fill="#8890a0" text-anchor="middle" letter-spacing="0.36em">CHOULEGAL</text>
 
   <!-- Center: 周全 -->
   <text x="200" y="220" font-family="'Noto Serif TC', Georgia, serif" font-size="72" font-weight="700" fill="#f0ede8" text-anchor="middle" letter-spacing="0.08em">周全</text>
