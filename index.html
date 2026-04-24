@@ -68,7 +68,7 @@
 
   /* ─── Hero ─── */
   .hero {
-    padding: 96px 0 72px;
+    padding: 72px 0 64px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -490,6 +490,67 @@
     line-height: 1.75;
   }
 
+  /* ─── How It Works ─── */
+  .how-it-works {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 24px;
+  }
+  @media (min-width: 720px) {
+    .how-it-works { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  }
+  .how-step {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    background: rgba(20,37,58,0.3);
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .how-step:hover {
+    border-color: rgba(196,147,42,0.5);
+    transform: translateY(-2px);
+  }
+  .how-step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.22em;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .how-step-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 10px;
+    line-height: 1.45;
+  }
+  .how-step-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+  .how-step-arrow {
+    display: none;
+  }
+  @media (min-width: 720px) {
+    .how-step { padding-top: 40px; }
+    .how-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 20px;
+      opacity: 0.6;
+      z-index: 2;
+    }
+  }
+
   /* ─── Stats Strip ─── */
   .stats {
     display: grid;
@@ -896,7 +957,7 @@
   /* ─── Responsive ─── */
   @media (min-width: 720px) {
     .container { max-width: 960px; padding: 0 40px; }
-    .hero { padding: 120px 0 88px; }
+    .hero { padding: 96px 0 84px; }
     .hero-title { letter-spacing: 0.03em; }
     .section { padding: 64px 0; }
   }
@@ -972,27 +1033,87 @@
     color: rgba(26,26,30,0.7) !important;
   }
 
-  /* ─── Theme Toggle Button ─── */
+  /* ─── Sticky Site Header ─── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,27,42,0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,147,42,0.12);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  [data-theme="light"] .site-header {
+    background: rgba(248,246,242,0.86);
+    border-bottom-color: rgba(168,122,26,0.18);
+  }
+  .site-header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  @media (min-width: 720px) {
+    .site-header-inner { max-width: 960px; padding: 18px 40px; }
+  }
+  @media (min-width: 1080px) {
+    .site-header-inner { max-width: 1040px; }
+  }
+  .site-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+    text-decoration: none;
+    transition: letter-spacing 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .site-logo:hover { letter-spacing: 0.14em; }
+  .site-logo-en {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.16em;
+    margin-left: 10px;
+    text-transform: uppercase;
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .site-nav a {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 12.5px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+  .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--gold); }
+
+  /* ─── Theme Toggle Button (in header) ─── */
   #themeToggle {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    z-index: 1000;
-    width: 36px;
-    height: 36px;
+    position: relative;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     border: 1px solid var(--border);
     background: rgba(128,128,128,0.12);
     color: var(--paper);
-    font-size: 18px;
+    font-size: 14px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     line-height: 1;
     padding: 0;
+    flex-shrink: 0;
   }
   /* themeToggle hover handled in animation section */
 
@@ -1007,17 +1128,25 @@
 </head>
 <body>
 
-<button id="themeToggle" aria-label="切換深色/淺色模式"></button>
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo" aria-label="周全法律科技 ChouLegal 首頁">周全<span class="site-logo-en">ChouLegal</span></a>
+    <nav class="site-nav" aria-label="主選單">
+      <a href="index.html" aria-current="page">首頁</a>
+      <a href="about.html">關於</a>
+      <a href="pricing.html">方案</a>
+      <button id="themeToggle" aria-label="切換深色/淺色模式"></button>
+    </nav>
+  </div>
+</header>
 
 <div class="container">
 
   <!-- Hero -->
-  <section class="hero" aria-labelledby="brand-name">
-    <div class="logo" id="brand-name" aria-label="周全法律科技 ChouLegal">周全<span class="logo-en" aria-hidden="true">ChouLegal</span></div>
-
+  <section class="hero" aria-labelledby="hero-title">
     <div class="hero-eyebrow" aria-hidden="true">Legal Technology · Taiwan</div>
 
-    <h1 class="hero-title">法律很複雜<br>我們讓它變<em>簡單</em></h1>
+    <h1 class="hero-title" id="hero-title">法律很複雜<br>我們讓它變<em>簡單</em></h1>
 
     <p class="hero-sub">中華民國法律科技平台，涵蓋民法、勞基法等多領域專業計算工具。<br>民眾版完全免費；事務所版另有訂閱方案。</p>
   </section>
@@ -1041,12 +1170,34 @@
       <div class="stat-label">民眾版費用</div>
     </div>
     <div>
-      <div class="stat-num">V2025</div>
+      <div class="stat-num">V2026</div>
       <div class="stat-label">最新法規對齊</div>
     </div>
     <div>
       <div class="stat-num">100%</div>
       <div class="stat-label">法源可追溯</div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section" aria-labelledby="how-heading">
+    <div class="section-label reveal" id="how-heading">如何使用</div>
+    <div class="how-it-works">
+      <div class="how-step reveal">
+        <span class="how-step-num">STEP 01</span>
+        <div class="how-step-title">選擇對應的計算器</div>
+        <div class="how-step-desc">從 InheritancePro 或 LaborPro 找到對應你問題的工具——繼承、資遣費、贈與稅、加班費等，每個工具都有清楚的使用情境說明。</div>
+      </div>
+      <div class="how-step reveal">
+        <span class="how-step-num">STEP 02</span>
+        <div class="how-step-title">在瀏覽器裡填資料</div>
+        <div class="how-step-desc">不需註冊、不需登入。所有計算都在你的瀏覽器跑完，輸入的金額、身份、家庭狀況不會傳到我們這邊——我們連你今天算了什麼都不知道。</div>
+      </div>
+      <div class="how-step reveal">
+        <span class="how-step-num">STEP 03</span>
+        <div class="how-step-title">拿到結果＋法源</div>
+        <div class="how-step-desc">每一筆數字都附上所依據的法條編號與施行細則；結論下方有「為什麼是這個數字」的逐項拆解，可自行對照全國法規資料庫複驗。</div>
+      </div>
     </div>
   </section>
 
