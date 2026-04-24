@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法律指南｜周全法律科技 — 看得懂的中華民國法律</title>
+<meta name="description" content="8 篇白話法律指南：遺產怎麼分、資遣費怎麼算、加班費、保險理賠 AMT、贈與稅免稅額、離婚財產分配、特留分、遺產稅級距。每篇附法條編號與全國法規資料庫連結。">
+<meta name="keywords" content="法律指南,台灣法律,遺產繼承,特留分,資遣費,加班費,保險AMT,贈與稅,離婚財產,剩餘財產分配,遺產稅">
+<meta name="robots" content="index, follow">
+<meta name="author" content="周全法律科技 ChouLegal">
+<link rel="canonical" href="https://choulegal.com/guide.html">
+<meta property="og:title" content="法律指南｜周全法律科技 — 看得懂的中華民國法律">
+<meta property="og:description" content="8 篇白話法律指南，每篇附法條編號與全國法規資料庫連結；不賣你律師諮詢、不塞廣告。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="周全法律科技 ChouLegal">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:url" content="https://choulegal.com/guide.html">
+<meta property="og:image" content="https://choulegal.com/social-avatar.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="法律指南｜周全法律科技">
+<meta name="twitter:description" content="白話法律指南，每篇附法條連結。">
+<meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="js/ga.js" defer></script>
+<style>
+  :root {
+    --ink: #0d1b2a;
+    --ink-2: #14253a;
+    --paper: #f0ede8;
+    --gold: #c4932a;
+    --muted: #8890a0;
+    --border: #233148;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--paper); font-family: 'Noto Sans TC', sans-serif; font-size: 15px; line-height: 1.75; min-height: 100vh; }
+  *:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* Sticky header — 與 index.html 對齊 */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,27,42,0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,147,42,0.12);
+  }
+  .site-header-inner {
+    max-width: 1040px; margin: 0 auto; padding: 16px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  @media (min-width: 720px) { .site-header-inner { padding: 18px 40px; } }
+  .site-logo { font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 700; letter-spacing: 0.06em; color: var(--paper); text-decoration: none; transition: letter-spacing 0.3s; }
+  .site-logo:hover { letter-spacing: 0.14em; }
+  .site-logo-en { font-family: 'Noto Serif TC', serif; font-size: 11px; font-weight: 400; color: var(--muted); letter-spacing: 0.16em; margin-left: 10px; text-transform: uppercase; }
+  .site-nav { display: flex; align-items: center; gap: 22px; }
+  .site-nav a { font-family: 'Noto Serif TC', serif; font-size: 12.5px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+  .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--gold); }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+  @media (min-width: 720px) { .container { max-width: 1040px; padding: 0 40px; } }
+
+  /* Hero */
+  .hero { padding: 72px 0 56px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before {
+    content: '典'; position: absolute;
+    font-family: 'Noto Serif TC', serif; font-weight: 700;
+    font-size: clamp(200px, 36vw, 380px);
+    color: var(--gold); opacity: 0.035;
+    top: 50%; left: 50%; transform: translate(-50%, -48%);
+    z-index: 0; pointer-events: none; line-height: 1; user-select: none;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 22px; display: inline-flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .hero-title { font-family: 'Noto Serif TC', serif; font-size: clamp(30px, 6vw, 44px); font-weight: 700; line-height: 1.3; margin-bottom: 22px; letter-spacing: 0.02em; }
+  .hero-title em { font-style: normal; color: var(--gold); }
+  .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.85; max-width: 600px; margin: 0 auto; }
+
+  /* Main layout */
+  .layout { display: grid; grid-template-columns: 1fr; gap: 40px; padding: 40px 0 64px; }
+  @media (min-width: 960px) { .layout { grid-template-columns: 220px 1fr; gap: 64px; } }
+
+  /* TOC */
+  .toc {
+    position: sticky; top: 88px; align-self: start;
+    font-family: 'Noto Serif TC', serif;
+    padding: 24px 20px;
+    border-left: 1px solid var(--border);
+    max-height: calc(100vh - 120px); overflow-y: auto;
+  }
+  .toc-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 14px; }
+  .toc ol { list-style: none; counter-reset: toc; }
+  .toc li { counter-increment: toc; margin-bottom: 10px; line-height: 1.55; }
+  .toc a {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    padding-left: 22px;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute; left: 0; top: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+  .toc a:hover { color: var(--paper); }
+
+  /* Article */
+  article {
+    border-top: 1px solid var(--border);
+    padding-top: 52px;
+    margin-top: 52px;
+    scroll-margin-top: 88px;
+  }
+  article:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .art-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.22em; margin-bottom: 14px; display: block; }
+  .art-title { font-family: 'Noto Serif TC', serif; font-size: clamp(24px, 3.5vw, 32px); font-weight: 700; color: var(--paper); margin-bottom: 14px; line-height: 1.4; letter-spacing: 0.02em; }
+  .art-lead { font-family: 'Noto Serif TC', serif; font-size: 16.5px; color: rgba(240,237,232,0.8); line-height: 1.85; margin-bottom: 24px; font-style: italic; padding-left: 16px; border-left: 2px solid var(--gold); }
+
+  article h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--paper);
+    margin: 28px 0 12px;
+    letter-spacing: 0.02em;
+  }
+  article p { color: rgba(240,237,232,0.82); margin-bottom: 14px; font-size: 15px; line-height: 1.9; }
+  article ul, article ol { margin: 6px 0 16px 1.4em; }
+  article li { color: rgba(240,237,232,0.82); margin-bottom: 8px; line-height: 1.85; }
+  article strong { color: var(--paper); font-weight: 600; }
+
+  .law-refs {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: rgba(20,37,58,0.45);
+    border-left: 2px solid var(--gold);
+    border-radius: 4px;
+  }
+  .law-refs-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+  .law-refs a {
+    color: rgba(240,237,232,0.85);
+    font-size: 13px;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(196,147,42,0.4);
+    padding-bottom: 1px;
+    margin-right: 12px;
+    line-height: 2;
+    transition: color 0.2s, border-color 0.2s;
+    display: inline-block;
+  }
+  .law-refs a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+  .misconception {
+    margin: 18px 0;
+    padding: 14px 18px;
+    background: rgba(122,47,57,0.14);
+    border-left: 2px solid #9b3340;
+    border-radius: 4px;
+    font-size: 14px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.85;
+  }
+  .misconception strong { color: #e28392; }
+
+  .when-lawyer {
+    margin: 18px 0;
+    padding: 14px 18px;
+    background: rgba(196,147,42,0.08);
+    border-left: 2px solid var(--gold);
+    border-radius: 4px;
+    font-size: 14px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.85;
+  }
+  .when-lawyer strong { color: var(--gold); }
+
+  .tool-cta {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: rgba(196,147,42,0.12);
+    border: 1px solid rgba(196,147,42,0.4);
+    border-radius: 8px;
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-family: 'Noto Serif TC', serif;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .tool-cta:hover { background: rgba(196,147,42,0.22); transform: translateY(-1px); }
+  .tool-cta-arrow { color: var(--gold); }
+
+  /* Disclaimer */
+  .disclaimer {
+    margin-top: 80px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(20,37,58,0.4);
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .disclaimer strong { color: var(--paper); }
+
+  /* Footer */
+  .footer { border-top: 1px solid var(--border); padding: 32px 0 48px; text-align: center; font-family: 'Noto Serif TC', serif; font-size: 11px; color: rgba(240,237,232,0.35); letter-spacing: 0.06em; line-height: 2.2; margin-top: 48px; }
+  .footer a { color: rgba(240,237,232,0.5); text-decoration: none; border-bottom: none; }
+  .footer a:hover { color: var(--gold); }
+  .footer-sep { opacity: 0.3; margin: 0 8px; }
+
+  /* Light mode */
+  [data-theme="light"] { --ink: #f8f6f2; --ink-2: #efece6; --paper: #1a1a1e; --gold: #a87a1a; --muted: #5a5a62; --border: #d8d4ce; }
+  [data-theme="light"] .site-header { background: rgba(248,246,242,0.86); border-bottom-color: rgba(168,122,26,0.18); }
+  [data-theme="light"] .misconception { background: rgba(155,51,64,0.05); }
+  [data-theme="light"] .when-lawyer { background: rgba(168,122,26,0.06); }
+  [data-theme="light"] .tool-cta { background: rgba(168,122,26,0.08); }
+  [data-theme="light"] .tool-cta:hover { background: rgba(168,122,26,0.16); }
+
+  /* Theme toggle */
+  #themeToggle { position: relative; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: rgba(128,128,128,0.12); color: var(--paper); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; padding: 0; flex-shrink: 0; }
+  #themeToggle:hover { background: rgba(128,128,128,0.22); border-color: var(--gold); }
+
+  @media (max-width: 959px) {
+    .toc { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo" aria-label="周全法律科技 ChouLegal 首頁">周全<span class="site-logo-en">ChouLegal</span></a>
+    <nav class="site-nav" aria-label="主選單">
+      <a href="index.html">首頁</a>
+      <a href="guide.html" aria-current="page">指南</a>
+      <a href="about.html">關於</a>
+      <a href="pricing.html">方案</a>
+      <button id="themeToggle" aria-label="切換深色/淺色模式"></button>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow" aria-hidden="true">Legal Guide · Taiwan</div>
+    <h1 class="hero-title">看得懂的<em>中華民國法律</em></h1>
+    <p class="hero-sub">八個最常被問的法律題目，用白話說清楚。每篇附法條編號與全國法規資料庫連結；看完如果還有疑問，也告訴你什麼情況該找律師。</p>
+  </section>
+
+  <div class="layout">
+
+    <!-- TOC -->
+    <aside class="toc" aria-label="目錄">
+      <div class="toc-label">目錄 · Index</div>
+      <ol>
+        <li><a href="#art1">沒寫遺囑，遺產怎麼分？</a></li>
+        <li><a href="#art2">特留分是什麼？</a></li>
+        <li><a href="#art3">被資遣，資遣費怎麼算？</a></li>
+        <li><a href="#art4">加班費平日 / 休息日 / 國定假日</a></li>
+        <li><a href="#art5">保險理賠算遺產嗎？AMT？</a></li>
+        <li><a href="#art6">每年贈與免稅額</a></li>
+        <li><a href="#art7">離婚夫妻財產怎麼分？</a></li>
+        <li><a href="#art8">遺產稅級距與扣除額</a></li>
+      </ol>
+    </aside>
+
+    <!-- Articles -->
+    <main>
+
+      <!-- Article 1 -->
+      <article id="art1">
+        <span class="art-num">Article 01 · 民法繼承篇</span>
+        <h2 class="art-title">沒寫遺囑，遺產怎麼分？</h2>
+        <p class="art-lead">長輩過世沒留遺囑，家裡第一個討論的事情通常是：誰能分、分多少、誰先誰後？中華民國民法對此有非常清楚的順位規定，不是「大家平分」也不是「長子多拿」——所有規則寫在民法第 1138 條與第 1144 條。</p>
+
+        <h3>法定繼承順位（配偶永遠是繼承人）</h3>
+        <p>依民法第 1138 條，除配偶外，遺產繼承人依以下順序：</p>
+        <ol>
+          <li><strong>第一順位：直系血親卑親屬</strong> — 子女、孫子女等。孫子女在父母先死的情況下可代位繼承。</li>
+          <li><strong>第二順位：父母</strong> — 只有在沒有子女、孫子女的情況下才輪到。</li>
+          <li><strong>第三順位：兄弟姊妹</strong> — 沒有第一、第二順位時才輪到。</li>
+          <li><strong>第四順位：祖父母</strong> — 前三順位都沒有才輪到。</li>
+        </ol>
+        <p>配偶永遠是繼承人，但「應繼分」比例會依配偶搭配哪個順位的其他繼承人而不同（民法第 1144 條）。</p>
+
+        <h3>應繼分怎麼算？</h3>
+        <ul>
+          <li>配偶 + 子女 → 配偶與子女<strong>均分</strong></li>
+          <li>配偶 + 父母 → 配偶 <strong>1/2</strong>，父母均分剩下 1/2</li>
+          <li>配偶 + 兄弟姊妹 → 配偶 <strong>1/2</strong>，兄弟姊妹均分剩下 1/2</li>
+          <li>配偶 + 祖父母 → 配偶 <strong>2/3</strong>，祖父母均分剩下 1/3</li>
+          <li>只有配偶 → 配偶拿全部</li>
+        </ul>
+
+        <div class="misconception">
+          <strong>常見誤解：</strong>「長子要多拿一份」、「女兒出嫁了就沒繼承權」——都不是法律規定。子女無論性別、排行、是否已婚，應繼分一律均分。
+        </div>
+
+        <div class="when-lawyer">
+          <strong>這幾種情況建議找律師：</strong>有失聯繼承人、跨國繼承（繼承人或資產在國外）、被繼承人生前有贈與疑似要歸扣、有繼承人要拋棄繼承、有債務要辦限定繼承。
+        </div>
+
+        <div class="law-refs">
+          <div class="law-refs-label">法源</div>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&amp;flno=1138" target="_blank" rel="noopener">民法 §1138 繼承順位</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&amp;flno=1144" target="_blank" rel="noopener">民法 §1144 配偶應繼分</a>
+        </div>
+
+        <a href="https://inheritance.choulegal.com" target="_blank" rel="noopener" class="tool-cta">
+          使用 InheritancePro 繼承計算器 <span class="tool-cta-arrow">→</span>
+        </a>
+      </article>
+
+      <!-- Article 2 -->
+      <article id="art2">
+        <span class="art-num">Article 02 · 民法繼承篇</span>
+        <h2 class="art-title">特留分是什麼？遺囑可以全部給某個人嗎？</h2>
+        <p class="art-lead">「我想把房子全部留給最照顧我的小女兒，其他人都不分。」——法律允許這麼做嗎？部分允許、部分不允許。允許的部分叫「可自由處分」，不允許的部分叫「特留分」。</p>
+
+        <h3>特留分 = 法定繼承人不能被剝奪的底線</h3>
+        <p>依民法第 1223 條，特留分是應繼分的一定比例，立遺囑人<strong>不能以遺囑剝奪</strong>這部分：</p>
+        <ul>
+          <li>直系血親卑親屬：應繼分的 <strong>1/2</strong></li>
+          <li>父母：應繼分的 <strong>1/2</strong></li>
+          <li>配偶：應繼分的 <strong>1/2</strong></li>
+          <li>兄弟姊妹：應繼分的 <strong>1/3</strong></li>
+          <li>祖父母：應繼分的 <strong>1/3</strong></li>
+        </ul>
+        <p>舉例：父親留下 1,200 萬、有配偶與 2 個子女，3 人應繼分各 400 萬；若父親立遺囑把 800 萬全給小女兒，其他 400 萬由配偶、大女兒分。配偶與大女兒的特留分各是 200 萬（應繼分 400 × 1/2），所以遺囑有效的部分是 400 萬給小女兒（剩下 800 萬平均分給配偶與大女兒）。</p>
+
+        <h3>扣減順序（民法第 1225 條）</h3>
+        <p>當遺囑分配超出可自由處分範圍時，扣減依以下順序：先扣給非繼承人的遺贈（給鄰居、朋友、慈善機構等），再扣對特定繼承人的超額指定部分。</p>
+
+        <div class="misconception">
+          <strong>常見誤解：</strong>「只要寫在遺囑裡就完全有效」——不是。任何遺囑都不能完全排除配偶與直系血親的特留分，這是保障家庭生計的強制規定。
+        </div>
+
+        <div class="when-lawyer">
+          <strong>這幾種情況建議找律師：</strong>想排除特定繼承人（法律上很難百分之百達成，但有「繼承權喪失」等極端事由可討論）、繼承人已主張特留分被侵害要打官司、遺產價值變動大需評估扣減金額。
+        </div>
+
+        <div class="law-refs">
+          <div class="law-refs-label">法源</div>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&amp;flno=1223" target="_blank" rel="noopener">民法 §1223 特留分</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&amp;flno=1225" target="_blank" rel="noopener">民法 §1225 扣減順序</a>
+        </div>
+
+        <a href="https://inheritance.choulegal.com" target="_blank" rel="noopener" class="tool-cta">
+          使用 InheritancePro 特留分計算器 <span class="tool-cta-arrow">→</span>
+        </a>
+      </article>
+
+      <!-- Article 3 -->
+      <article id="art3">
+        <span class="art-num">Article 03 · 勞基法</span>
+        <h2 class="art-title">被資遣，資遣費怎麼算？</h2>
+        <p class="art-lead">被資遣不等於被開除——資遣是雇主因為營運需要（關廠、轉讓、虧損、業務緊縮、不可抗力等）與勞工終止契約，勞工依法拿資遣費。被開除（嚴重違反工作規則）則不用給。所以第一件事是釐清：你屬於哪一種？</p>
+
+        <h3>資遣費兩套計法：新制 vs 舊制</h3>
+        <p>分水嶺是 <strong>2005 年 7 月 1 日勞退新制上路</strong>：</p>
+        <ul>
+          <li><strong>新制（2005/7/1 後到職 或 選擇新制者）：</strong>依勞工退休金條例第 12 條，每滿 1 年發 <strong>0.5 個月平均工資</strong>；未滿 1 年者按比例計算，<strong>最高 6 個月</strong>。</li>
+          <li><strong>舊制（2005/7/1 前到職且未選新制）：</strong>依勞基法第 17 條，每滿 1 年發 <strong>1 個月平均工資</strong>；未滿 1 年者按比例計算，<strong>無上限</strong>。</li>
+        </ul>
+
+        <h3>「平均工資」是什麼？</h3>
+        <p>依勞基法第 2 條第 4 款，平均工資是「被資遣前 6 個月」工資總額除以總日數，再 × 30 為一個月。所以最近 6 個月加班多、領獎金多，資遣費也會跟著變多。</p>
+
+        <h3>還要給什麼？</h3>
+        <ul>
+          <li><strong>預告期間</strong>（勞基法第 16 條）：3 個月以上年資預告 10 日；1 年以上 20 日；3 年以上 30 日。未預告要發「預告期間工資」。</li>
+          <li><strong>非自願離職證明書</strong>：可以請領就業保險的失業給付（6 個月為上限，60% 投保薪資）。</li>
+        </ul>
+
+        <div class="misconception">
+          <strong>常見誤解：</strong>「雇主說是資遣但叫我簽自願離職書」——千萬別簽！簽了自願離職就拿不到資遣費，也拿不到失業給付。若雇主真要資遣，應主動給資遣費與非自願離職證明書。
+        </div>
+
+        <div class="when-lawyer">
+          <strong>這幾種情況建議找律師：</strong>雇主說「你是被開除的」拒絕給資遣費、雇主拿「商業利益受損」等不明確理由、需要追溯計算近 6 個月完整薪資、被迫簽下不利文件。
+        </div>
+
+        <div class="law-refs">
+          <div class="law-refs-label">法源</div>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=17" target="_blank" rel="noopener">勞基法 §17 資遣費（舊制）</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=16" target="_blank" rel="noopener">勞基法 §16 預告期間</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030014&amp;flno=12" target="_blank" rel="noopener">勞退條例 §12 資遣費（新制）</a>
+        </div>
+
+        <a href="https://labor.choulegal.com" target="_blank" rel="noopener" class="tool-cta">
+          使用 LaborPro 資遣費計算器 <span class="tool-cta-arrow">→</span>
+        </a>
+      </article>
+
+      <!-- Article 4 -->
+      <article id="art4">
+        <span class="art-num">Article 04 · 勞基法</span>
+        <h2 class="art-title">加班費怎麼算？平日、休息日、國定假日差別在哪？</h2>
+        <p class="art-lead">台灣週休二日有三種「日」：正常工作日（平日）、休息日、例假日／國定假日／特休。三種日的加班費倍率完全不同，搞混就可能少拿幾萬塊或被雇主多扣錢。</p>
+
+        <h3>平日延長工時（勞基法第 24 條）</h3>
+        <ul>
+          <li>前 2 小時：每小時加給 <strong>1/3</strong>（即 1.33 倍）</li>
+          <li>第 3 小時起：每小時加給 <strong>2/3</strong>（即 1.67 倍）</li>
+        </ul>
+        <p>注意：勞基法第 32 條規定一日延長工時不得逾 4 小時、1 個月累計不得逾 46 小時，違反者雇主有行政責任；但已付出的加班仍要依法給工資。</p>
+
+        <h3>休息日工作（勞基法第 24 條第 2 項）</h3>
+        <ul>
+          <li>前 2 小時：每小時加給 <strong>1/3</strong>（1.33 倍）</li>
+          <li>第 3 小時起：每小時加給 <strong>2/3</strong>（1.67 倍）</li>
+        </ul>
+        <p>2018 年修法後，休息日工作依「實際工作時數」計酬（不再是以前「做 1 小時算 4 小時」的核實制之前版本）。</p>
+
+        <h3>例假日、國定假日、特休日上班（勞基法第 39 條）</h3>
+        <p>依第 39 條，勞工於例假、國定假日或特別休假出勤，<strong>工資加倍發給</strong>（原薪 + 1 日工資 = 2 倍）。</p>
+
+        <div class="misconception">
+          <strong>常見誤解：</strong>「我是月薪制沒有加班費」——月薪制一樣要算加班費。月薪折算成時薪後，用倍率計算。時薪 = 月薪 ÷ 30 ÷ 8（勞基法施行細則第 11 條）。
+        </div>
+
+        <div class="when-lawyer">
+          <strong>這幾種情況建議找律師：</strong>雇主主張「責任制」但職務不在勞動部公告名單內、雇主未經同意扣掉加班費、長期未給加班費要追溯請求（時效 5 年）、需要申請勞動檢查。
+        </div>
+
+        <div class="law-refs">
+          <div class="law-refs-label">法源</div>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=24" target="_blank" rel="noopener">勞基法 §24 平日與休息日加班</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=32" target="_blank" rel="noopener">勞基法 §32 延長工時上限</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=39" target="_blank" rel="noopener">勞基法 §39 例假與休假工資加倍</a>
+        </div>
+
+        <a href="https://labor.choulegal.com" target="_blank" rel="noopener" class="tool-cta">
+          使用 LaborPro 加班費計算器 <span class="tool-cta-arrow">→</span>
+        </a>
+      </article>
+
+      <!-- Article 5 -->
+      <article id="art5">
+        <span class="art-num">Article 05 · 遺產稅 + AMT</span>
+        <h2 class="art-title">保險理賠算遺產嗎？AMT 是什麼？</h2>
+        <p class="art-lead">很多人誤以為「保險金永遠不課稅」。真相是：要保人和被保險人同一人、有指定受益人的身故保險金，的確<strong>不計入遺產總額</strong>；但若金額很大，仍可能在「最低稅負制」（AMT）被抓到。</p>
+
+        <h3>保險法第 112 條：保險金不算遺產的要件</h3>
+        <p>保險法第 112 條規定：「保險金額約定於被保險人死亡時給付於其所指定之受益人者，其金額不得作為被保險人之遺產。」</p>
+        <p>條件有三：</p>
+        <ul>
+          <li>是「死亡保險金」（不是生存保險金、解約金）</li>
+          <li>有「指定受益人」（不是「法定繼承人」空白未指定）</li>
+          <li>是「人壽保險」或具備明確死亡給付屬性的保險</li>
+        </ul>
+
+        <h3>AMT：雖不計入遺產稅，但可能計入基本所得課 20%</h3>
+        <p>所得基本稅額條例（俗稱最低稅負制）第 12 條，受益人領到的保險給付超過一定金額時，要納入受益人的基本所得課 AMT：</p>
+        <ul>
+          <li>AMT 保險給付排除額：<strong>3,740 萬</strong>（2025 年起，超過部分才計入基本所得）</li>
+          <li>基本所得免稅額：<strong>750 萬</strong></li>
+          <li>AMT 稅率：<strong>20%</strong></li>
+        </ul>
+        <p>實例：若受益人拿到 5,000 萬保險金，計入基本所得的是 5,000 − 3,740 = 1,260 萬；扣除 750 萬免稅額後，510 萬 × 20% = 102 萬 AMT。</p>
+
+        <div class="misconception">
+          <strong>常見誤解：</strong>「保險指定受益人 = 完全免稅」——不一定。AMT 是第二道檢查；另外財政部有「實質課稅原則」，若壽險被認定為「假保險真避稅」（高齡投保、臨終投保、躉繳、短期、鉅額等），仍可能被併入遺產課稅。
+        </div>
+
+        <div class="when-lawyer">
+          <strong>這幾種情況建議找（稅務）律師或會計師：</strong>保險金額超過 AMT 門檻（3,740 萬）、被繼承人生前有多張保單且有爭議、保險規劃涉及贈與稅連動、國稅局已發函質疑實質課稅。
+        </div>
+
+        <div class="law-refs">
+          <div class="law-refs-label">法源</div>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0390002&amp;flno=112" target="_blank" rel="noopener">保險法 §112 保險金不計入遺產</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340118&amp;flno=12" target="_blank" rel="noopener">所得基本稅額條例 §12 AMT</a>
+        </div>
+
+        <a href="https://inheritance.choulegal.com" target="_blank" rel="noopener" class="tool-cta">
+          使用 InheritancePro 保險 AMT 試算 <span class="tool-cta-arrow">→</span>
+        </a>
+      </article>
+
+      <!-- Article 6 -->
+      <article id="art6">
+        <span class="art-num">Article 06 · 贈與稅</span>
+        <h2 class="art-title">每年贈與子女多少不用繳稅？</h2>
+        <p class="art-lead">「每年給小孩 XXX 萬好像不用報稅對不對？」這是很多父母在問的問題。答案是有的——遺產及贈與稅法第 22 條給每一位贈與人每年一定的免稅額度。</p>
+
+        <h3>免稅額 244 萬 / 每人每年（自 2022 起）</h3>
+        <p>依遺贈稅法第 22 條，贈與稅每一贈與人每年免稅額 <strong>244 萬元</strong>。夫妻可以<strong>各自</strong>使用免稅額，所以父母一年合贈子女最多 <strong>488 萬</strong>不課贈與稅。</p>
+
+        <h3>超過免稅額怎麼課？（遺贈稅法第 19 條）</h3>
+        <p>依第 19 條三級累進：</p>
+        <ul>
+          <li>贈與淨額 ≤ <strong>2,811 萬</strong>：10%</li>
+          <li>2,811 萬 ~ <strong>5,621 萬</strong>：10% + 超過部分 15%</li>
+          <li>超過 5,621 萬：累進課 20%</li>
+        </ul>
+        <p>「贈與淨額」= 當年度贈與總額 − 免稅額 − 扣除額（例：附負擔之贈與中的負擔部分）。</p>
+
+        <h3>不計入贈與總額的情況（遺贈稅法第 20 條）</h3>
+        <ul>
+          <li>配偶相互贈與</li>
+          <li>父母於子女婚嫁時各贈 100 萬以內</li>
+          <li>經政府核准免稅的公益捐贈</li>
+        </ul>
+
+        <div class="misconception">
+          <strong>常見誤解：</strong>「我把錢先打到我太太帳戶，她再打給小孩就不算贈與」——錯！國稅局會看資金流向與實質行為；若被認定為「名義贈與實為規避」，仍會依實質課稅。
+        </div>
+
+        <div class="when-lawyer">
+          <strong>這幾種情況建議找律師或會計師：</strong>想跨年度分批贈與節稅、贈與標的是不動產或股票（涉及公告現值、市價認定）、贈與附負擔（收禮方要承擔債務）、海外贈與、子女海外資產規劃。
+        </div>
+
+        <div class="law-refs">
+          <div class="law-refs-label">法源</div>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&amp;flno=22" target="_blank" rel="noopener">遺贈稅法 §22 免稅額</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&amp;flno=19" target="_blank" rel="noopener">遺贈稅法 §19 贈與稅率級距</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&amp;flno=20" target="_blank" rel="noopener">遺贈稅法 §20 不計入贈與總額</a>
+        </div>
+
+        <a href="https://inheritance.choulegal.com" target="_blank" rel="noopener" class="tool-cta">
+          使用 InheritancePro 贈與稅計算器 <span class="tool-cta-arrow">→</span>
+        </a>
+      </article>
+
+      <!-- Article 7 -->
+      <article id="art7">
+        <span class="art-num">Article 07 · 民法親屬篇</span>
+        <h2 class="art-title">離婚時，夫妻財產怎麼分？</h2>
+        <p class="art-lead">台灣民法預設「法定財產制」——婚前財產各自保有；婚後財產名義上各自所有，但離婚時有「剩餘財產分配請求權」可以把差額一半要回來。如果婚姻中沒有特別約定財產制，這就是你適用的規則。</p>
+
+        <h3>剩餘財產分配（民法第 1030-1 條）</h3>
+        <p>婚姻關係消滅（離婚或一方死亡）時，法定財產制夫妻雙方的「婚後財產」扣除「婚後所負債務」後，剩餘較少的一方可向另一方請求平均分配差額。</p>
+        <p>算式：<br>
+          夫剩餘 = 夫婚後財產 − 夫婚後債務<br>
+          妻剩餘 = 妻婚後財產 − 妻婚後債務<br>
+          差額 = |夫剩餘 − 妻剩餘|<br>
+          少的一方可請求 = 差額 ÷ 2</p>
+
+        <h3>不列入分配的財產（民法第 1030-1 第 1 項但書）</h3>
+        <ul>
+          <li><strong>因繼承取得</strong>的財產</li>
+          <li><strong>無償取得</strong>的財產（如贈與、獎金）</li>
+          <li><strong>慰撫金</strong>（如車禍對方賠的精神損害）</li>
+        </ul>
+
+        <h3>時效（民法第 1030-1 第 4 項）</h3>
+        <p>剩餘財產分配請求權，自知有剩餘財產差額時起，<strong>2 年</strong>間不行使而消滅；或自法定財產制關係消滅時起 <strong>5 年</strong>間不行使而消滅。</p>
+
+        <div class="misconception">
+          <strong>常見誤解：</strong>「老公做生意賺的錢我沒份」——錯。只要在婚姻存續期間賺的，不管登記在誰名下，都算「婚後財產」，另一方可透過剩餘財產分配拿回差額的一半。
+        </div>
+
+        <div class="when-lawyer">
+          <strong>這幾種情況建議找律師：</strong>一方有隱匿或脫產（民法 §1030-3 增加計算）、有婚前債務已清償爭議、有跨國資產、有股權或公司持股複雜、對方拖延不談離婚。
+        </div>
+
+        <div class="law-refs">
+          <div class="law-refs-label">法源</div>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&amp;flno=1030-1" target="_blank" rel="noopener">民法 §1030-1 剩餘財產分配請求權</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&amp;flno=1030-3" target="_blank" rel="noopener">民法 §1030-3 五年內脫產之追算</a>
+        </div>
+
+        <a href="https://inheritance.choulegal.com" target="_blank" rel="noopener" class="tool-cta">
+          使用 InheritancePro 剩餘財產分配計算器 <span class="tool-cta-arrow">→</span>
+        </a>
+      </article>
+
+      <!-- Article 8 -->
+      <article id="art8">
+        <span class="art-num">Article 08 · 遺產稅</span>
+        <h2 class="art-title">遺產稅怎麼算？免稅額、扣除額、級距一次看懂</h2>
+        <p class="art-lead">遺產稅的算法分三層：遺產總額扣免稅額、再扣扣除額，剩下的叫「課稅遺產淨額」，按級距課稅。</p>
+
+        <h3>V2025 現行數字（2025 年 1 月 1 日起）</h3>
+        <p>以下皆為財政部 113 年底公告、2025 年起適用的數值：</p>
+
+        <h3>免稅額</h3>
+        <ul>
+          <li>一般被繼承人：<strong>1,333 萬</strong></li>
+          <li>軍警公教因執行職務死亡：加倍 2,666 萬</li>
+        </ul>
+
+        <h3>扣除額（遺贈稅法第 17 條）</h3>
+        <ul>
+          <li>配偶扣除額：<strong>553 萬</strong></li>
+          <li>直系血親卑親屬（子女、孫等）每人：<strong>56 萬</strong>（未成年加扣至成年）</li>
+          <li>父母每人：<strong>138 萬</strong>（最多 2 人）</li>
+          <li>重度以上身心障礙者每人：<strong>693 萬</strong></li>
+          <li>受扶養之兄弟姊妹、祖父母每人：56 萬</li>
+          <li>喪葬費：<strong>138 萬</strong>（固定金額）</li>
+          <li>被繼承人所遺之債務、未納稅捐、醫療費等</li>
+        </ul>
+
+        <h3>級距（遺贈稅法第 13 條）</h3>
+        <p>遺產淨額 = 遺產總額 − 免稅額 − 扣除額</p>
+        <ul>
+          <li>淨額 ≤ <strong>5,621 萬</strong>：10%</li>
+          <li>5,621 萬 ~ <strong>1 億 1,242 萬</strong>：10% + 超過部分 15%</li>
+          <li>超過 1 億 1,242 萬：累進課 20%</li>
+        </ul>
+
+        <h3>實例</h3>
+        <p>被繼承人遺產 3,000 萬，配偶 1 人 + 子女 2 人：<br>
+          扣免稅額 1,333 + 喪葬 138 + 配偶 553 + 子女 56×2 = 2,136 萬<br>
+          課稅淨額 = 3,000 − 2,136 = 864 萬<br>
+          稅額 = 864 × 10% = 86.4 萬</p>
+
+        <div class="misconception">
+          <strong>常見誤解：</strong>「我爸留給我 3,000 萬的房子，我要繳 10% = 300 萬遺產稅」——錯。稅是對「淨額」課，不是對「總額」課；先扣免稅額與扣除額後才是課稅基礎。
+        </div>
+
+        <div class="when-lawyer">
+          <strong>這幾種情況建議找律師或會計師：</strong>遺產含不動產（公告現值與市價落差大）、有境外資產、有股票或公司股權（估價複雜）、涉及 AMT 實質課稅、 6 個月申報期將至來不及整理、打算辦拋棄或限定繼承。
+        </div>
+
+        <div class="law-refs">
+          <div class="law-refs-label">法源</div>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&amp;flno=13" target="_blank" rel="noopener">遺贈稅法 §13 級距</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&amp;flno=17" target="_blank" rel="noopener">遺贈稅法 §17 扣除額</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&amp;flno=18" target="_blank" rel="noopener">遺贈稅法 §18 免稅額</a>
+        </div>
+
+        <a href="https://inheritance.choulegal.com" target="_blank" rel="noopener" class="tool-cta">
+          使用 InheritancePro 遺產稅計算器 <span class="tool-cta-arrow">→</span>
+        </a>
+      </article>
+
+      <section class="disclaimer">
+        <strong>免責聲明</strong>：本指南所有內容僅供法律常識性教育與初步參考，不構成法律意見、稅務意見或法律諮詢服務。實際個案因事實、適用法規、法院與國稅局見解不同，結果可能有所差異，建議諮詢具執照之律師或相關法律專業人員。所有法條引用若發現與全國法規資料庫最新修正版本有出入，以全國法規資料庫原文為準。
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    &copy; <span id="year">2026</span> 周全法律科技 ChouLegal<br>
+    <a href="index.html">首頁</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="guide.html">指南</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="about.html">關於</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="pricing.html">方案</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="privacy.html">隱私權政策</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="terms.html">使用者條款</a>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function(){
+    var html = document.documentElement;
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored || (prefersDark ? 'dark' : 'light');
+    if (theme === 'light') html.setAttribute('data-theme', 'light');
+
+    var btn = document.getElementById('themeToggle');
+    function updateIcon(t) { if (btn) btn.textContent = t === 'light' ? '\u263E' : '\u2600'; }
+    updateIcon(theme);
+
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        if (current === 'light') html.setAttribute('data-theme', 'light');
+        else html.removeAttribute('data-theme');
+        localStorage.setItem('theme', current);
+        updateIcon(current);
+      });
+    }
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "沒寫遺囑，遺產怎麼分？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "依民法第 1138 條，配偶永遠是繼承人；其他繼承人依序為直系血親卑親屬、父母、兄弟姊妹、祖父母。應繼分比例依配偶與不同順位繼承人組合而定（民法第 1144 條）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "特留分是什麼？遺囑可以全部排除某個繼承人嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "特留分是法定繼承人不能被剝奪的最低份額。直系血親卑親屬、父母、配偶的特留分為應繼分的二分之一；兄弟姊妹、祖父母為三分之一（民法第 1223 條）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "被資遣，資遣費怎麼算？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "新制（2005/7/1 後）每滿 1 年發 0.5 個月平均工資、最高 6 個月（勞退條例第 12 條）；舊制每滿 1 年發 1 個月、無上限（勞基法第 17 條）。平均工資依被資遣前 6 個月計算。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "加班費平日、休息日、國定假日怎麼算？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "平日延長工時前 2 小時加給 1/3、第 3 小時起加給 2/3（勞基法第 24 條）。休息日前 2 小時加給 1/3、第 3 小時起加給 2/3。例假、國定假日、特休工資加倍（勞基法第 39 條）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "保險理賠金算遺產嗎？AMT 是什麼？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "要保人等於被保險人且有指定受益人的死亡保險金，不計入遺產總額（保險法第 112 條）。但若保險給付累計超過 3,740 萬，超過部分計入受益人基本所得，課 20% AMT（所得基本稅額條例第 12 條）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "每年贈與子女多少不用繳稅？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "每一贈與人每年免稅額 244 萬元（遺贈稅法第 22 條）。夫妻可各自贈與，父母一年合贈子女最多 488 萬不課贈與稅。超過部分依 10%/15%/20% 三級累進課稅（第 19 條）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "離婚時夫妻財產怎麼分？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "法定財產制下，雙方婚後財產扣除婚後債務後，剩餘較少的一方可向另一方請求平均分配差額（民法第 1030-1 條）。因繼承、無償取得、慰撫金所得的財產不列入分配。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "遺產稅怎麼算？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "遺產總額扣免稅額（1,333 萬）與扣除額（配偶 553、卑親每人 56、父母每人 138、喪葬 138 萬等）後為課稅淨額。淨額 ≤ 5,621 萬課 10%；5,621 萬 ~ 1 億 1,242 萬課 15%；超過課 20%。數值為 2025 年起適用。"
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
