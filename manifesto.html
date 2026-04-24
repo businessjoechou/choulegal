@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>為什麼做這件事｜周全法律科技 — 創辦人手記</title>
+<meta name="description" content="周全法律科技創辦人 Joe Chou 說明為什麼民眾版永遠免費、為什麼由商業版訂閱支撐、為什麼一個人做得到。一份不煽情的創辦信念。">
+<meta name="keywords" content="周全法律科技,ChouLegal,創辦人,Joe Chou,法律科技,民眾版免費,商業版,信念">
+<meta name="robots" content="index, follow">
+<meta name="author" content="周全法律科技 ChouLegal">
+<link rel="canonical" href="https://choulegal.com/manifesto.html">
+<meta property="og:title" content="為什麼做這件事｜周全法律科技">
+<meta property="og:description" content="民眾版永遠免費、商業版月費支撐、一個人做到的原因。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="周全法律科技 ChouLegal">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:url" content="https://choulegal.com/manifesto.html">
+<meta property="og:image" content="https://choulegal.com/social-avatar.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="為什麼做這件事｜周全法律科技">
+<meta name="twitter:description" content="民眾版永遠免費；由付得起的人付，讓付不起的人也能用。">
+<meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="js/ga.js" defer></script>
+<style>
+  :root {
+    --ink: #0d1b2a;
+    --ink-2: #14253a;
+    --paper: #f0ede8;
+    --gold: #c4932a;
+    --muted: #8890a0;
+    --border: #233148;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--paper); font-family: 'Noto Sans TC', sans-serif; font-size: 15px; line-height: 1.85; min-height: 100vh; }
+  *:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* Sticky header */
+  .site-header { position: sticky; top: 0; z-index: 100; background: rgba(13,27,42,0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(196,147,42,0.12); }
+  .site-header-inner { max-width: 1040px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; }
+  @media (min-width: 720px) { .site-header-inner { padding: 18px 40px; } }
+  .site-logo { font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 700; letter-spacing: 0.06em; color: var(--paper); text-decoration: none; transition: letter-spacing 0.3s; }
+  .site-logo:hover { letter-spacing: 0.14em; }
+  .site-logo-en { font-family: 'Noto Serif TC', serif; font-size: 11px; font-weight: 400; color: var(--muted); letter-spacing: 0.16em; margin-left: 10px; text-transform: uppercase; }
+  .site-nav { display: flex; align-items: center; gap: 22px; }
+  .site-nav a { font-family: 'Noto Serif TC', serif; font-size: 12.5px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+  .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--gold); }
+
+  /* Container — narrower than others; long-form reading */
+  .container { max-width: 680px; margin: 0 auto; padding: 0 28px; }
+
+  /* Hero */
+  .hero { padding: 72px 0 48px; text-align: center; position: relative; }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(28px, 5vw, 38px);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+  }
+  .hero-sub {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+  .hero-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+
+  /* Body text */
+  article {
+    padding: 48px 0 72px;
+    font-family: 'Noto Serif TC', serif;
+  }
+  article p {
+    font-size: 16.5px;
+    line-height: 1.95;
+    color: rgba(240,237,232,0.9);
+    margin-bottom: 22px;
+    letter-spacing: 0.015em;
+  }
+  article p.lead {
+    font-size: 18px;
+    color: var(--paper);
+  }
+  article strong {
+    color: var(--paper);
+    font-weight: 600;
+  }
+  article em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 4.8em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.85;
+    margin: 0.05em 0.12em 0 0;
+    color: var(--gold);
+  }
+
+  /* Section break */
+  .section-break {
+    text-align: center;
+    margin: 44px 0;
+    color: var(--gold);
+    opacity: 0.45;
+    font-family: 'Noto Serif TC', serif;
+    letter-spacing: 1.2em;
+    font-size: 11px;
+    user-select: none;
+    padding-left: 1.2em;
+  }
+
+  h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--paper);
+    margin: 40px 0 18px;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  /* Pull quote */
+  .pullquote {
+    margin: 40px 0;
+    padding: 28px 32px;
+    border-left: 2px solid var(--gold);
+    background: rgba(20,37,58,0.3);
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--paper);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  /* Signature */
+  .signature {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: right;
+  }
+  .signature-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--paper);
+    letter-spacing: 0.03em;
+  }
+  .signature-role {
+    display: block;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* CTA back */
+  .cta-back {
+    margin-top: 56px;
+    text-align: center;
+  }
+  .cta-back a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 26px;
+    background: rgba(196,147,42,0.12);
+    border: 1px solid rgba(196,147,42,0.4);
+    border-radius: 10px;
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13.5px;
+    letter-spacing: 0.06em;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-back a:hover { background: rgba(196,147,42,0.22); transform: translateY(-1px); }
+  .cta-back a span.arrow { color: var(--gold); }
+
+  /* Footer */
+  .footer { border-top: 1px solid var(--border); padding: 32px 0 48px; text-align: center; font-family: 'Noto Serif TC', serif; font-size: 11px; color: rgba(240,237,232,0.35); letter-spacing: 0.06em; line-height: 2.2; margin-top: 48px; }
+  .footer a { color: rgba(240,237,232,0.5); text-decoration: none; border-bottom: none; }
+  .footer a:hover { color: var(--gold); }
+  .footer-sep { opacity: 0.3; margin: 0 8px; }
+
+  /* Theme toggle */
+  #themeToggle { position: relative; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: rgba(128,128,128,0.12); color: var(--paper); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; padding: 0; flex-shrink: 0; }
+  #themeToggle:hover { background: rgba(128,128,128,0.22); border-color: var(--gold); }
+
+  /* Light mode */
+  [data-theme="light"] { --ink: #f8f6f2; --ink-2: #efece6; --paper: #1a1a1e; --gold: #a87a1a; --muted: #5a5a62; --border: #d8d4ce; }
+  [data-theme="light"] .site-header { background: rgba(248,246,242,0.86); border-bottom-color: rgba(168,122,26,0.18); }
+  [data-theme="light"] .pullquote { background: rgba(168,122,26,0.04); }
+</style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo" aria-label="周全法律科技 ChouLegal 首頁">周全<span class="site-logo-en">ChouLegal</span></a>
+    <nav class="site-nav" aria-label="主選單">
+      <a href="index.html">首頁</a>
+      <a href="guide.html">指南</a>
+      <a href="about.html">關於</a>
+      <a href="pricing.html">方案</a>
+      <button id="themeToggle" aria-label="切換深色/淺色模式"></button>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-eyebrow" aria-hidden="true">Manifesto · 創辦人手記</div>
+    <h1 class="hero-title">為什麼做這件事</h1>
+    <p class="hero-sub">一篇不煽情的 1,000 字。</p>
+    <div class="hero-date">Joe Chou · 2026</div>
+  </section>
+
+  <article>
+
+    <p class="lead dropcap">
+      我看過太多人為了一個簡單的法律問題四處奔波。長輩過世，不知道遺產怎麼分；被資遣，不知道資遣費合不合理；離婚，不知道剩餘財產分配怎麼算。這些不是「疑難雜症」，都是民法與勞基法寫得清清楚楚的題目。可是對一般人來說，問律師要錢、查法條看不懂、網路上的文章是 2015 年的。
+    </p>
+
+    <p>
+      我把這件事想成一個公式：<strong>法律資訊的取得成本，在最沒能力負擔的人身上最重</strong>。付得起律師諮詢費的人通常不需要工具——他們打一通電話就好；真正需要工具的是那些不太敢開口問律師、又被專業術語擋在門外的人。如果向這群人收費，就等於用同一個問題對他們再收一次稅。
+    </p>
+
+    <p>
+      法律已經夠複雜了，不需要再加上一道付費牆。所以我選擇：<em>民眾版永遠完全免費</em>。不註冊、不登入、不看廣告、沒有進階版、沒有解鎖按鈕。InheritancePro、LaborPro，以及未來的每一款民眾版工具都是這樣。
+    </p>
+
+    <div class="section-break" aria-hidden="true">◆ ◆ ◆</div>
+
+    <h2>那錢從哪裡來？</h2>
+
+    <p>
+      民眾版的營運成本，由 <strong>B2B「周全 商業版」</strong>的訂閱費用支撐。商業版是設計給律師事務所、會計師事務所、地政士事務所、企業法務部門、HR 部門使用的工作台 Suite。事務所每月付訂閱費、拿到專業工具與案件管理能力；民眾版則繼續免費開放給所有人。
+    </p>
+
+    <p>
+      這個商業模型不是新的。<em>由付得起的人付，讓付不起的人也能用</em>——《維基百科》走的是捐款，《可汗學院》走的是機構授權，我走的是 B2B SaaS。結構不同，邏輯一樣：把金流往高負擔能力的一端集中，讓資訊自由流動。
+    </p>
+
+    <div class="pullquote">
+      我不是在做慈善。<br>我相信這是這個行業裡，最符合市場邏輯、也最符合常識的結構。
+    </div>
+
+    <h2>為什麼一個人做得到</h2>
+
+    <p>
+      我不諱言：能讓一個人撐起兩條完整產品線，關鍵是 <strong>AI 輔助</strong>。我使用 Claude 等工具寫程式、交叉查核法規、整理條文結構。我的工作是把法律研究做對、把產品判斷做對，再由 AI 協助快速實作。如果你在 about 頁上看到我的 bio，我故意沒把自己包裝成一個全能工程師——<em>這件事做得成，是因為這個時代讓一個人就有機會做到</em>。
+    </p>
+
+    <p>
+      但 AI 輔助不代表品質打折。每一條法規引用都由我逐條對照全國法規資料庫；每一筆數字都有條號、修正日期與來源 URL。工具的每個計算都可追溯到一段可被檢驗的文字，不是黑盒子、不是「系統算的」這種回答。這是我作為一個人，對使用者做的承諾。
+    </p>
+
+    <div class="section-break" aria-hidden="true">◆ ◆ ◆</div>
+
+    <h2>這不是革命，是市場結構</h2>
+
+    <p>
+      我不相信「顛覆法律業」這種矽谷敘事。律師做的很多事不是工具可以取代的——出庭、談判、判斷個案細節、承擔法律責任——這些永遠需要人。我做的是別的事：把<em>最常被問到的那幾百個標準題</em>工程化、把法條隱藏起來、把介面做給一般人看得懂，然後把它放在瀏覽器裡，不收錢。
+    </p>
+
+    <p>
+      這對律師事務所也是好事。律師少一半時間花在被問「這樣算不算資遣？」、「一年能贈與多少？」這類每天重複十次的題目，可以把時間留給真正需要律師的案件。事務所用商業版的工具、民眾用免費的工具，中間的成本由商業版訂閱攤平。
+    </p>
+
+    <p>
+      三方都能受益。律師事務所買工具，民眾用工具，我維持營運。沒有神話，沒有「這個產品改變了誰的命運」，只是一個我相信的市場結構——<strong>資訊應該流向最需要它的人，費用應該由最有能力負擔的人支付</strong>。
+    </p>
+
+    <h2>寫在最後</h2>
+
+    <p>
+      我知道一家一人公司的承諾有多脆弱。我不會假裝這個承諾不會有風險。但只要這個公式成立——只要有律師事務所願意付訂閱費給我用在工具與法規研究上——民眾版就會繼續免費。不是永遠的「優惠」，不是「限時免費」，就是免費。
+    </p>
+
+    <p>
+      這是我為什麼做這件事。
+    </p>
+
+    <div class="signature">
+      <span class="signature-name">Joe Chou</span>
+      <span class="signature-role">周全法律科技 創辦人 · 2026</span>
+    </div>
+
+    <div class="cta-back">
+      <a href="index.html">
+        返回首頁看所有工具 <span class="arrow">→</span>
+      </a>
+    </div>
+
+  </article>
+
+  <footer class="footer">
+    &copy; <span id="year">2026</span> 周全法律科技 ChouLegal<br>
+    <a href="index.html">首頁</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="guide.html">指南</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="about.html">關於</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="pricing.html">方案</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="privacy.html">隱私權政策</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="terms.html">使用者條款</a>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  (function(){
+    var html = document.documentElement;
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored || (prefersDark ? 'dark' : 'light');
+    if (theme === 'light') html.setAttribute('data-theme', 'light');
+    var btn = document.getElementById('themeToggle');
+    function updateIcon(t) { if (btn) btn.textContent = t === 'light' ? '\u263E' : '\u2600'; }
+    updateIcon(theme);
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        if (current === 'light') html.setAttribute('data-theme', 'light');
+        else html.removeAttribute('data-theme');
+        localStorage.setItem('theme', current);
+        updateIcon(current);
+      });
+    }
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "為什麼做這件事",
+  "author": { "@type": "Person", "name": "Joe Chou" },
+  "publisher": { "@type": "Organization", "name": "周全法律科技 ChouLegal", "url": "https://choulegal.com" },
+  "datePublished": "2026-04-24",
+  "inLanguage": "zh-TW",
+  "url": "https://choulegal.com/manifesto.html",
+  "about": "法律科技 / 免費民眾工具 / B2B 商業模式"
+}
+</script>
+
+</body>
+</html>
