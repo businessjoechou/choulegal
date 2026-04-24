@@ -490,6 +490,146 @@
     line-height: 1.75;
   }
 
+  /* ─── Stats Strip ─── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 20px;
+    padding: 44px 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 16px 0 8px;
+  }
+  @media (min-width: 720px) {
+    .stats { grid-template-columns: repeat(4, 1fr); padding: 52px 0; }
+  }
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(30px, 3.8vw, 42px);
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .stat-label {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ─── Law Updates ─── */
+  .updates {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  @media (min-width: 720px) {
+    .updates { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  }
+  .update-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 22px;
+    background: rgba(20,37,58,0.35);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .update-card:hover {
+    border-color: rgba(196,147,42,0.5);
+    transform: translateY(-2px);
+  }
+  .update-date {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    padding: 4px 10px;
+    border: 1px solid rgba(196,147,42,0.35);
+    border-radius: 20px;
+  }
+  .update-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--paper);
+    margin: 14px 0 10px;
+    line-height: 1.5;
+  }
+  .update-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .update-src {
+    display: block;
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(136,144,160,0.7);
+    letter-spacing: 0.14em;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-lead {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 auto 28px;
+    max-width: 560px;
+    line-height: 1.85;
+  }
+  .faq {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  @media (min-width: 720px) {
+    .faq { grid-template-columns: 1fr 1fr; gap: 18px; }
+  }
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    background: rgba(20,37,58,0.25);
+    transition: border-color 0.25s;
+  }
+  .faq-item:hover { border-color: rgba(196,147,42,0.4); }
+  .faq-q {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 10px;
+    line-height: 1.55;
+  }
+  .faq-q::before {
+    content: 'Q';
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    margin-right: 10px;
+    letter-spacing: 0.1em;
+    vertical-align: 1px;
+    font-weight: 500;
+  }
+  .faq-a {
+    font-size: 13.5px;
+    color: rgba(240,237,232,0.72);
+    line-height: 1.85;
+  }
+  .faq-law {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: rgba(196,147,42,0.75);
+    letter-spacing: 0.1em;
+  }
+
   /* ─── Business ─── */
   .business {
     text-align: center;
@@ -890,6 +1030,26 @@
     <div class="manifesto-attr">— 周全法律科技的信念</div>
   </section>
 
+  <!-- Stats -->
+  <section class="stats" aria-label="平台數據">
+    <div>
+      <div class="stat-num">50+</div>
+      <div class="stat-label">計算工具</div>
+    </div>
+    <div>
+      <div class="stat-num">NT$0</div>
+      <div class="stat-label">民眾版費用</div>
+    </div>
+    <div>
+      <div class="stat-num">V2025</div>
+      <div class="stat-label">最新法規對齊</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">法源可追溯</div>
+    </div>
+  </section>
+
   <!-- Products -->
   <section class="section">
     <div class="section-label reveal">旗下產品</div>
@@ -977,6 +1137,31 @@
     </div>
   </section>
 
+  <!-- Law Updates -->
+  <section class="section" aria-labelledby="updates-heading">
+    <div class="section-label reveal" id="updates-heading">法規同步紀錄</div>
+    <div class="updates">
+      <div class="update-card reveal">
+        <span class="update-date">2026 · 01</span>
+        <div class="update-title">基本工資調整</div>
+        <div class="update-desc">月薪 29,500 元、時薪 196 元，2026 年 1 月 1 日起適用（由 2025 年的 28,590 / 190 調升）。LaborPro 的平均工資、資遣費、加班費、特休工資等相關算式同步更新。</div>
+        <span class="update-src">SOURCE · 勞動部公告</span>
+      </div>
+      <div class="update-card reveal">
+        <span class="update-date">2025 · 01</span>
+        <div class="update-title">遺產稅級距 / 扣除額</div>
+        <div class="update-desc">級距 5,621 萬 / 1 億 1,242 萬；配偶扣除 553 萬、每位卑親屬 56 萬、父母 138 萬、喪葬費 138 萬。InheritancePro 全站算式已對齊 V2025。</div>
+        <span class="update-src">SOURCE · 遺產及贈與稅法施行細則</span>
+      </div>
+      <div class="update-card reveal">
+        <span class="update-date">2025 · 01</span>
+        <div class="update-title">贈與稅與 AMT</div>
+        <div class="update-desc">贈與稅級距 2,811 萬 / 5,621 萬、每人每年免稅額 244 萬；所得基本稅額條例第 12 條保險給付排除額為 3,740 萬，InheritancePro 同步修正。</div>
+        <span class="update-src">SOURCE · 財政部公告</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Values -->
   <section class="section">
     <div class="section-label reveal">品牌理念</div>
@@ -1002,6 +1187,54 @@
           <div class="value-title">專業</div>
           <div class="value-desc">從第一次接觸法律的一般民眾，到每天處理案件的律師與會計師——同一個平台，不同深度。</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-heading">
+    <div class="section-label reveal" id="faq-heading">常見法律問題</div>
+    <p class="faq-lead reveal">以下為常見問題的方向性說明，實際個案請諮詢律師；想試算請直接使用對應工具，每筆結果都附法源。</p>
+    <div class="faq">
+      <div class="faq-item reveal">
+        <div class="faq-q">沒寫遺囑，遺產怎麼分？</div>
+        <div class="faq-a">配偶永遠是繼承人；其他繼承人依序為：直系血親卑親屬（子女、孫）、父母、兄弟姊妹、祖父母。前順位存在時，後順位不能繼承。應繼分比例依配偶與不同順位繼承人的組合而定。</div>
+        <div class="faq-law">民法 §1138、§1144</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">特留分是什麼？可以全部遺贈給別人嗎？</div>
+        <div class="faq-a">特留分是法定繼承人不能被遺囑剝奪的最低份額。卑親屬、父母、配偶的特留分為應繼分的二分之一；兄弟姊妹、祖父母為三分之一。超過特留分的部分才能依遺囑自由處分。</div>
+        <div class="faq-law">民法 §1223</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">被資遣，資遣費怎麼算？</div>
+        <div class="faq-a">勞退新制（2005 / 7 / 1 後到職或選擇新制）每滿 1 年發 0.5 個月平均工資，未滿 1 年者按比例計，最高 6 個月；舊制每滿 1 年發 1 個月，無上限。月薪以「被資遣前 6 個月」平均工資為準。</div>
+        <div class="faq-law">勞基法 §17、勞工退休金條例 §12</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">加班費怎麼算？</div>
+        <div class="faq-a">平日延長工時：前 2 小時每小時加給 1/3，第 3 小時起加給 2/3。休息日出勤另有加倍計算規則。實際金額因日薪、工時長短、是否為休息日而異，建議直接用 LaborPro 加班費試算。</div>
+        <div class="faq-law">勞基法 §24</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">保險理賠算遺產嗎？</div>
+        <div class="faq-a">要保人與被保險人同一人、且有指定受益人的死亡給付，不計入遺產總額。但若受益人所獲保險給付累計超過一定金額，會被納入基本所得課徵 AMT（最低稅負制）。</div>
+        <div class="faq-law">保險法 §112、所得基本稅額條例 §12</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">每年能贈與多少不用繳稅？</div>
+        <div class="faq-a">每一贈與人每年有 244 萬元免稅額。夫妻可各自贈與，所以父母一年合計贈子女最高 488 萬元不課贈與稅；超過部分依級距課 10% / 15% / 20%。</div>
+        <div class="faq-law">遺產及贈與稅法 §22、§19</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">離婚時，夫妻財產怎麼分？</div>
+        <div class="faq-a">若適用法定財產制，雙方婚後財產扣除婚後債務後，剩餘較少的一方可向對方請求平均分配差額。因繼承、無償取得或慰撫金所得的財產不列入分配。</div>
+        <div class="faq-law">民法 §1030-1、§1030-4</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">結果可以直接當作法律意見嗎？</div>
+        <div class="faq-a">不行。本平台工具的計算僅供初步參考，不構成法律意見。個案因事實、適用法規、法院見解不同可能有差異，建議諮詢具執照之律師或相關法律專業人員。</div>
+        <div class="faq-law">免責聲明</div>
       </div>
     </div>
   </section>
