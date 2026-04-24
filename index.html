@@ -72,6 +72,69 @@
     text-align: center;
   }
 
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* ─── Ornament ─── */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    opacity: 0.55;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 10px;
+    letter-spacing: 1.2em;
+    padding-left: 1.2em;
+    margin: 12px 0 36px;
+    user-select: none;
+  }
+
+  /* ─── Manifesto ─── */
+  .manifesto {
+    text-align: center;
+    padding: 44px 0 52px;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .manifesto-quote {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--paper);
+    letter-spacing: 0.04em;
+    position: relative;
+    padding: 0 8px;
+  }
+  .manifesto-quote em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .manifesto-attr {
+    margin-top: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
   .logo {
     font-family: 'Noto Serif TC', serif;
     font-size: 14px;
@@ -325,11 +388,13 @@
 
   .value-num {
     font-family: 'Noto Serif TC', serif;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--gold);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     flex-shrink: 0;
-    padding-top: 2px;
+    padding-top: 4px;
+    font-style: italic;
+    min-width: 28px;
   }
 
   .value-title {
@@ -710,10 +775,22 @@
   <section class="hero" aria-labelledby="brand-name">
     <div class="logo" id="brand-name" aria-label="周全法律科技 ChouLegal">周全<span class="logo-en" aria-hidden="true">ChouLegal</span></div>
 
+    <div class="hero-eyebrow" aria-hidden="true">Legal Technology · Taiwan</div>
+
     <h1 class="hero-title">法律很複雜<br>我們讓它變<em>簡單</em></h1>
 
     <p class="hero-sub">中華民國法律科技平台，涵蓋民法、勞基法等多領域專業計算工具。<br>民眾版完全免費；事務所版另有訂閱方案。</p>
   </section>
+
+  <!-- Manifesto -->
+  <section class="manifesto" aria-label="品牌信念">
+    <blockquote class="manifesto-quote">
+      「法律應該是<em>所有人</em>的權利，<br>而非有錢人的專利。」
+    </blockquote>
+    <div class="manifesto-attr">— 周全法律科技的信念</div>
+  </section>
+
+  <div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
 
   <!-- Products -->
   <section class="section">
@@ -808,21 +885,21 @@
 
     <div class="values">
       <div class="value-item reveal">
-        <span class="value-num">01</span>
+        <span class="value-num" aria-hidden="true">I</span>
         <div>
           <div class="value-title">嚴謹</div>
           <div class="value-desc">計算模型依據現行法條、施行細則與實務判例設計，我們持續追蹤法規變動並在查證後發布更新。</div>
         </div>
       </div>
       <div class="value-item reveal">
-        <span class="value-num">02</span>
+        <span class="value-num" aria-hidden="true">II</span>
         <div>
           <div class="value-title">免費</div>
           <div class="value-desc">所有核心計算功能完全免費，不需註冊、不需登入、不需付費。法律知識不應該有門檻。</div>
         </div>
       </div>
       <div class="value-item reveal">
-        <span class="value-num">03</span>
+        <span class="value-num" aria-hidden="true">III</span>
         <div>
           <div class="value-title">專業</div>
           <div class="value-desc">從第一次接觸法律的一般民眾，到每天處理案件的律師與會計師——同一個平台，不同深度。</div>
