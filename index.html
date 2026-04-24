@@ -68,9 +68,31 @@
 
   /* ─── Hero ─── */
   .hero {
-    padding: 80px 0 64px;
+    padding: 96px 0 72px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
+
+  /* 大字水印：serif 周字，極低透明度 */
+  .hero::before {
+    content: '周';
+    position: absolute;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: clamp(220px, 42vw, 460px);
+    color: var(--gold);
+    opacity: 0.035;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+    z-index: 0;
+    pointer-events: none;
+    line-height: 1;
+    letter-spacing: 0;
+    user-select: none;
+  }
+  .hero > * { position: relative; z-index: 1; }
 
   .hero-eyebrow {
     font-family: 'JetBrains Mono', monospace;
@@ -108,26 +130,40 @@
   /* ─── Manifesto ─── */
   .manifesto {
     text-align: center;
-    padding: 44px 0 52px;
-    max-width: 620px;
+    padding: 56px 0 64px;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .manifesto::before,
+  .manifesto::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.45;
     margin: 0 auto;
   }
+  .manifesto::before { margin-bottom: 32px; }
+  .manifesto::after { margin-top: 32px; }
   .manifesto-quote {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(18px, 3vw, 22px);
+    font-size: clamp(19px, 2.8vw, 24px);
     font-weight: 400;
-    line-height: 1.75;
+    line-height: 1.8;
     color: var(--paper);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     position: relative;
     padding: 0 8px;
   }
   .manifesto-quote em {
     font-style: normal;
     color: var(--gold);
+    font-weight: 600;
   }
   .manifesto-attr {
-    margin-top: 18px;
+    margin-top: 22px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
     color: var(--muted);
@@ -193,9 +229,35 @@
   }
 
   .products {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 16px;
+  }
+  @media (min-width: 720px) {
+    .products { grid-template-columns: 1fr 1fr; gap: 20px; }
+    /* 商業版、候補名單連結、Coming Soon 保留整寬 */
+    .product-card.business,
+    .product-card.coming-soon,
+    .products > .pricing-link { grid-column: 1 / -1; }
+  }
+
+  .pricing-link {
+    text-align: center;
+    margin: 4px 0 0;
+  }
+  .pricing-link a {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 12.5px;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid rgba(196,147,42,0.3);
+    padding-bottom: 3px;
+    transition: border-color 0.25s, letter-spacing 0.3s;
+  }
+  .pricing-link a:hover {
+    border-bottom-color: var(--gold);
+    letter-spacing: 0.12em;
   }
 
   .product-card {
@@ -386,6 +448,23 @@
 
   .value-item:last-child { border-bottom: none; }
 
+  @media (min-width: 720px) {
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .value-item {
+      flex-direction: column;
+      padding: 36px 28px;
+      border-bottom: none;
+      border-right: 1px solid var(--border);
+      gap: 12px;
+    }
+    .value-item:last-child { border-right: none; }
+    .value-num { padding-top: 0; }
+  }
+
   .value-num {
     font-family: 'Noto Serif TC', serif;
     font-size: 13px;
@@ -414,22 +493,38 @@
   /* ─── Business ─── */
   .business {
     text-align: center;
-    padding: 48px 0;
+    padding: 56px 32px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(196,147,42,0.04) 0%, transparent 60%);
+    margin: 24px 0;
+    position: relative;
+  }
+  .business::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 60px; height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+    transform: translateX(-50%);
   }
 
   .business-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--paper);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
   }
 
   .business-desc {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 24px;
+    line-height: 1.85;
+    margin: 0 auto 28px;
+    max-width: 520px;
   }
 
   .business-email {
@@ -660,8 +755,13 @@
 
   /* ─── Responsive ─── */
   @media (min-width: 720px) {
-    .container { max-width: 800px; padding: 0 40px; }
-    .hero { padding: 100px 0 80px; }
+    .container { max-width: 960px; padding: 0 40px; }
+    .hero { padding: 120px 0 88px; }
+    .hero-title { letter-spacing: 0.03em; }
+    .section { padding: 64px 0; }
+  }
+  @media (min-width: 1080px) {
+    .container { max-width: 1040px; }
   }
 
   @media (max-width: 480px) {
@@ -790,8 +890,6 @@
     <div class="manifesto-attr">— 周全法律科技的信念</div>
   </section>
 
-  <div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
-
   <!-- Products -->
   <section class="section">
     <div class="section-label reveal">旗下產品</div>
@@ -838,12 +936,12 @@
         </div>
       </a>
 
-      <a class="product-card business reveal" data-delay="300" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%91%A8%E5%85%A8%E5%95%86%E6%A5%AD%E7%89%88%5D%20%E5%80%99%E8%A3%9C%E9%80%9A%E7%9F%A5&amp;body=%E5%91%A8%E5%85%A8%E5%95%86%E6%A5%AD%E7%89%88%E4%B8%8A%E7%B7%9A%E6%99%82%E8%AB%8B%E9%80%9A%E7%9F%A5%E6%88%91%E3%80%82%0A%0A%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E4%BA%8B%E5%8B%99%E6%89%80%E4%B8%BB%E6%94%BB%E9%A0%98%E5%9F%9F%EF%BC%9A%0A%E8%A9%A6%E7%94%A8%E5%BE%85%E9%9B%BB%EF%BC%9A">
+      <a class="product-card business reveal" data-delay="300" href="https://etp.choulegal.com" target="_blank" rel="noopener">
         <div class="product-top">
-          <div class="product-brand">周全 商業版<span class="product-status">籌備中</span></div>
+          <div class="product-brand">周全 商業版</div>
           <span class="product-tag">律師事務所 B2B</span>
         </div>
-        <div class="product-subtitle">律師事務所專用民法財產權案件工作台 — 案件管理、法源自動引證、PDF 工作底稿、多律師協作。目前僅開放候補名單，上線時優先通知。</div>
+        <div class="product-subtitle">律師事務所專用民法財產權案件工作台 — 案件管理、法源自動引證、PDF 工作底稿、多律師協作。</div>
         <div class="product-features">
           <span class="product-feature">案件管理</span>
           <span class="product-feature">法源引證</span>
@@ -851,13 +949,13 @@
           <span class="product-feature">多租戶 SaaS</span>
         </div>
         <div class="product-cta">
-          <span>加入候補名單</span>
+          <span>前往商業版</span>
           <span class="product-cta-arrow" aria-hidden="true">→</span>
         </div>
       </a>
 
-      <div style="text-align:center; margin: -4px 0 8px;">
-        <a href="pricing.html" style="font-family:'Noto Serif TC',serif; font-size:12px; color:var(--gold); text-decoration:none; letter-spacing:0.06em; border-bottom:1px solid rgba(196,147,42,0.3); padding-bottom:2px; transition: border-color 0.2s;" onmouseover="this.style.borderBottomColor='var(--gold)'" onmouseout="this.style.borderBottomColor='rgba(196,147,42,0.3)'">→ 了解完整訂閱方案（Starter / Pro / Enterprise）</a>
+      <div class="pricing-link">
+        <a href="pricing.html">→ 了解完整訂閱方案（Starter / Pro / Enterprise）</a>
       </div>
 
       <div class="product-card coming-soon reveal" data-delay="450" aria-label="消費爭議計算平台｜規劃中" aria-disabled="true">
