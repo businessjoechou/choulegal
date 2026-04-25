@@ -248,6 +248,18 @@
     border-color: rgba(253,230,138,0.6);
     color: #fde68a;
   }
+  .hero-cta.link {
+    color: rgba(255,255,255,0.7);
+    padding: 12px 12px;
+  }
+  .hero-cta.link::after {
+    content: '↗';
+    margin-left: 4px;
+    color: #fde68a;
+    transition: transform 0.3s;
+  }
+  .hero-cta.link:hover { color: #fde68a; }
+  .hero-cta.link:hover::after { transform: translateX(2px); }
 
   .hero-meta {
     margin-top: 36px;
@@ -649,22 +661,22 @@
   <section class="hero">
     <div class="hero-eyebrow">中華民國 · 法律科技</div>
     <h1 class="hero-title">
-      一個品牌
-      <em>兩種使用方式</em>
+      看得懂的
+      <em>中華民國法律。</em>
     </h1>
     <p class="hero-sub">
-      民眾自己用的權益計算工具，<br>
-      與事務所部門用的專業工作台。
+      遺產怎麼分、資遣費多少、加班費對不對 ── <br>
+      自己算，不用問律師。事務所要協作，整套工作台都在。
     </p>
     <div class="hero-actions">
-      <a class="hero-cta primary" href="#doors">看兩個平台 <span aria-hidden="true">↓</span></a>
-      <a class="hero-cta ghost" href="manifesto.html">為什麼做這件事 <span aria-hidden="true">→</span></a>
-      <a class="hero-cta ghost" href="guide.html">看法律指南 <span aria-hidden="true">→</span></a>
+      <a class="hero-cta primary" href="https://people.choulegal.com">免費算我的權益 <span aria-hidden="true">→</span></a>
+      <a class="hero-cta ghost" href="https://etp.choulegal.com">事務所工作台 <span aria-hidden="true">→</span></a>
+      <a class="hero-cta link" href="manifesto.html">為什麼做這件事</a>
     </div>
     <div class="hero-meta">
-      <span><strong>2</strong> 個獨立平台</span>
       <span><strong>50+</strong> 計算工具</span>
-      <span><strong>1</strong> 個信念</span>
+      <span>每筆都附 <strong>法條</strong></span>
+      <span>民眾版 <strong>NT$0</strong> · 永久免費</span>
     </div>
   </section>
 
