@@ -11,78 +11,143 @@
 <link rel="canonical" href="https://choulegal.com/terms.html">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/brand.css">
 <script src="js/ga.js" defer></script>
 <style>
-  :root { --ink: #0d1b2a; --paper: #f0ede8; --gold: #c4932a; --muted: #8890a0; --border: #233148; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--ink); color: var(--paper); font-family: 'Noto Sans TC', sans-serif; font-size: 15px; line-height: 1.6; }
-  .container { max-width: 640px; margin: 0 auto; padding: 0 28px; }
-  .header { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
-  .logo { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 700; color: var(--paper); text-decoration: none; }
-  .logo-en { font-family: 'Noto Serif TC', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.16em; margin-left: 10px; }
-  .back { font-family: 'Noto Serif TC', monospace; font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; }
-  .back:hover { color: var(--gold); }
-  h1 { font-family: 'Noto Serif TC', serif; font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-  .date { font-family: 'Noto Serif TC', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 48px; }
-  .section { margin-bottom: 36px; }
-  h2 { font-family: 'Noto Serif TC', serif; font-size: 17px; font-weight: 700; margin-bottom: 12px; color: var(--paper); }
-  p { font-size: 14px; color: var(--muted); line-height: 1.85; }
-  a { color: var(--gold); }
-  .footer { border-top: 1px solid var(--border); padding: 24px 0 48px; margin-top: 48px; font-family: 'Noto Serif TC', monospace; font-size: 11px; color: rgba(240,237,232,0.25); text-align: center; }
+  .legal { max-width: 720px; margin: 0 auto; padding: 28px 0 56px; }
+  .legal h1 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 400;
+    font-size: clamp(30px, 4vw, 40px);
+    color: rgba(255, 255, 255, 0.97);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .legal .updated {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .legal section {
+    margin-bottom: 30px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .legal section:last-child { border-bottom: none; }
+  .legal h2 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.96);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .legal p {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.95;
+    margin-bottom: 12px;
+  }
+  .legal strong { color: rgba(255, 255, 255, 0.95); font-weight: 600; }
+  .legal a {
+    color: #fde68a;
+    border-bottom: 1px solid rgba(253, 230, 138, 0.4);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .legal a:hover { color: #fef3c7; border-color: rgba(253, 230, 138, 0.85); }
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <a href="index.html" class="logo">周全<span class="logo-en">ChouLegal</span></a>
-    <a href="index.html" class="back">← 首頁</a>
-  </div>
 
-  <h1>使用者條款</h1>
-  <div class="date">最後更新：2026-04-13</div>
-
-  <div class="section">
-    <h2>一、服務說明</h2>
-    <p>周全法律科技（以下簡稱「本平台」）及旗下產品（包括但不限於 InheritancePro、LaborPro）提供依中華民國法律設計的計算工具，協助使用者初步瞭解法律權益相關數據。</p>
-  </div>
-
-  <div class="section">
-    <h2>二、免責聲明</h2>
-    <p>本平台所有計算結果僅供參考，不構成法律意見、法律諮詢或任何形式之專業服務。實際案件因個案事實、適用法規、主管機關裁量及法院見解不同，結果可能有所差異。使用者應就具體案件諮詢具執照之律師或相關法律專業人員。</p>
-  </div>
-
-  <div class="section">
-    <h2>三、計算準確性</h2>
-    <p>本平台依現行法規設計計算邏輯，但法規可能隨時修正。本平台盡力維持計算模型之準確性，但不保證計算結果完全正確或即時反映最新法規變動。</p>
-  </div>
-
-  <div class="section">
-    <h2>四、智慧財產權</h2>
-    <p>本平台之內容、計算邏輯、介面設計、原始碼及相關智慧財產權均歸周全法律科技所有。使用者不得以任何方式複製、修改、散布或商業利用，除非事先取得書面授權。</p>
-  </div>
-
-  <div class="section">
-    <h2>五、責任限制</h2>
-    <p>就因軟體故障、資料傳輸錯誤、第三方服務中斷、不可抗力或其他不可歸責於本平台之事由所生之間接或衍生性損失，本平台於法律允許之最大範圍內不負賠償責任；但因本平台故意或重大過失所致之損害，以及依消費者保護法、民法或其他強制規定應負責之情形，不在此限。</p>
-  </div>
-
-  <div class="section">
-    <h2>六、條款變更</h2>
-    <p>本平台保留隨時修改本條款的權利。修改後將於本頁面公告，繼續使用本平台即表示同意修改後的條款。</p>
-  </div>
-
-  <div class="section">
-    <h2>七、準據法</h2>
-    <p>本條款以中華民國法律為準據法。因本條款所生之爭議，以臺灣臺北地方法院為第一審管轄法院。</p>
-  </div>
-
-  <div class="section">
-    <h2>八、聯絡方式</h2>
-    <p>如對本條款有任何疑問，請聯繫：<a href="mailto:businessjoechou@gmail.com">businessjoechou@gmail.com</a></p>
-  </div>
-
-  <div class="footer">&copy; 2026 周全法律科技 ChouLegal</div>
+<div class="bg-mesh" aria-hidden="true">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="blob blob-c"></div>
 </div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
+
+<div class="container-narrow">
+
+  <header class="site-nav">
+    <a href="index.html" class="site-logo">周全<small>ChouLegal</small></a>
+    <nav class="site-nav-links" aria-label="主選單">
+      <a href="index.html">首頁</a>
+      <a href="guide.html">指南</a>
+      <a href="manifesto.html">理念</a>
+      <a href="about.html">關於</a>
+      <a href="pricing.html">方案</a>
+    </nav>
+  </header>
+
+  <article class="legal">
+    <div class="eyebrow">Legal</div>
+    <h1 style="margin-top:18px;">使用者條款</h1>
+    <div class="updated">最後更新：2026-04-13</div>
+
+    <section>
+      <h2>一、服務說明</h2>
+      <p>周全法律科技（以下簡稱「本平台」）及旗下產品（包括但不限於 InheritancePro、LaborPro）提供依中華民國法律設計的計算工具，協助使用者初步瞭解法律權益相關數據。</p>
+    </section>
+
+    <section>
+      <h2>二、免責聲明</h2>
+      <p>本平台所有計算結果僅供參考，不構成法律意見、法律諮詢或任何形式之專業服務。實際案件因個案事實、適用法規、主管機關裁量及法院見解不同，結果可能有所差異。使用者應就具體案件諮詢具執照之律師或相關法律專業人員。</p>
+    </section>
+
+    <section>
+      <h2>三、計算準確性</h2>
+      <p>本平台依現行法規設計計算邏輯，但法規可能隨時修正。本平台盡力維持計算模型之準確性，但不保證計算結果完全正確或即時反映最新法規變動。</p>
+    </section>
+
+    <section>
+      <h2>四、智慧財產權</h2>
+      <p>本平台之內容、計算邏輯、介面設計、原始碼及相關智慧財產權均歸周全法律科技所有。使用者不得以任何方式複製、修改、散布或商業利用，除非事先取得書面授權。</p>
+    </section>
+
+    <section>
+      <h2>五、責任限制</h2>
+      <p>就因軟體故障、資料傳輸錯誤、第三方服務中斷、不可抗力或其他不可歸責於本平台之事由所生之間接或衍生性損失，本平台於法律允許之最大範圍內不負賠償責任；但因本平台故意或重大過失所致之損害，以及依消費者保護法、民法或其他強制規定應負責之情形，不在此限。</p>
+    </section>
+
+    <section>
+      <h2>六、條款變更</h2>
+      <p>本平台保留隨時修改本條款的權利。修改後將於本頁面公告，繼續使用本平台即表示同意修改後的條款。</p>
+    </section>
+
+    <section>
+      <h2>七、準據法</h2>
+      <p>本條款以中華民國法律為準據法。因本條款所生之爭議，以臺灣臺北地方法院為第一審管轄法院。</p>
+    </section>
+
+    <section>
+      <h2>八、聯絡方式</h2>
+      <p>如對本條款有任何疑問，請聯繫：<a href="mailto:businessjoechou@gmail.com">businessjoechou@gmail.com</a></p>
+    </section>
+  </article>
+
+  <footer class="site-foot">
+    <div class="foot-mark">周全法律科技<small>© <span id="year">2026</span> · ChouLegal</small></div>
+    <nav class="foot-links" aria-label="頁尾">
+      <a href="index.html">首頁</a>
+      <a href="guide.html">指南</a>
+      <a href="manifesto.html">理念</a>
+      <a href="about.html">關於</a>
+      <a href="pricing.html">方案</a>
+      <a href="privacy.html">隱私權</a>
+      <a href="terms.html">條款</a>
+    </nav>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>

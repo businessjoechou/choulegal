@@ -24,131 +24,119 @@
 <meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/brand.css">
 <script src="js/ga.js" defer></script>
 <style>
-  :root {
-    --ink: #0d1b2a;
-    --ink-2: #14253a;
-    --paper: #f0ede8;
-    --gold: #c4932a;
-    --muted: #8890a0;
-    --border: #233148;
+  .founder-card {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    padding: 26px 28px;
+    margin: 28px 0 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.025);
+    border-radius: 16px;
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--ink); color: var(--paper); font-family: 'Noto Sans TC', sans-serif; font-size: 15px; line-height: 1.7; min-height: 100vh; }
-  *:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-
-  .container { max-width: 720px; margin: 0 auto; padding: 0 28px; }
-
-  .header { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
-  .logo { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 700; color: var(--paper); text-decoration: none; letter-spacing: 0.06em; }
-  .logo-en { font-family: 'Noto Serif TC', serif; font-size: 11px; color: var(--muted); letter-spacing: 0.16em; margin-left: 10px; text-transform: uppercase; font-weight: 400; }
-  .nav { display: flex; gap: 20px; }
-  .nav a { font-family: 'Noto Serif TC', serif; font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
-  .nav a:hover, .nav a[aria-current="page"] { color: var(--gold); }
-
-  /* Hero */
-  .hero { padding: 40px 0 56px; text-align: center; }
-  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
-  .hero-title { font-family: 'Noto Serif TC', serif; font-size: clamp(28px, 6vw, 40px); font-weight: 700; line-height: 1.35; margin-bottom: 20px; letter-spacing: 0.02em; }
-  .hero-title em { font-style: normal; color: var(--gold); }
-  .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.85; max-width: 520px; margin: 0 auto; }
-
-  /* Section */
-  .section { padding: 40px 0; border-top: 1px solid var(--border); }
-  .section-label { font-family: 'Noto Serif TC', serif; font-size: 10px; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 16px; }
-  h2 { font-family: 'Noto Serif TC', serif; font-size: 22px; font-weight: 700; color: var(--paper); margin-bottom: 20px; line-height: 1.4; }
-  h3 { font-family: 'Noto Serif TC', serif; font-size: 16px; font-weight: 600; color: var(--paper); margin: 24px 0 10px; }
-  p { color: rgba(240,237,232,0.82); margin-bottom: 16px; font-size: 15px; }
-  p.muted { color: var(--muted); font-size: 14px; }
-  strong { color: var(--paper); font-weight: 600; }
-  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(196,147,42,0.3); transition: border-color 0.2s; }
-  a:hover { border-color: var(--gold); }
-
-  /* Founder card */
-  .founder { display: flex; gap: 20px; align-items: flex-start; background: var(--ink-2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 20px; }
-  .founder-initial { font-family: 'Noto Serif TC', serif; font-size: 36px; font-weight: 700; color: var(--gold); width: 64px; height: 64px; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .founder-name { font-family: 'Noto Serif TC', serif; font-size: 17px; font-weight: 700; margin-bottom: 2px; }
-  .founder-role { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
-  .founder-bio { font-size: 13px; color: var(--muted); line-height: 1.75; }
-
-  /* Pillar list */
-  .pillars { display: grid; gap: 14px; margin-top: 20px; }
-  .pillar { border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; background: rgba(20,37,58,0.4); }
-  .pillar-title { font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 700; color: var(--paper); margin-bottom: 6px; }
-  .pillar-title::before { content: '▸'; color: var(--gold); margin-right: 8px; }
-  .pillar-desc { font-size: 13.5px; color: var(--muted); line-height: 1.75; }
-
-  /* Product mini cards */
-  .mini-products { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-  .mini-card { border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
-  .mini-card:hover { border-color: var(--gold); transform: translateY(-2px); }
-  .mini-card-brand { font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 700; color: var(--paper); margin-bottom: 4px; }
-  .mini-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.12em; }
-  .mini-card-desc { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
-
-  /* CTA */
-  .cta { text-align: center; padding: 56px 0 40px; }
-  .cta-btn { display: inline-block; padding: 14px 28px; background: var(--gold); color: var(--ink); text-decoration: none; border: none; border-radius: 10px; font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
-  .cta-btn:hover { background: #b5820e; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(196,147,42,0.3); border-color: transparent; }
-  .cta-secondary { display: inline-block; margin-left: 14px; font-family: 'Noto Serif TC', serif; font-size: 13px; color: var(--muted); letter-spacing: 0.06em; border-bottom: none; }
-  .cta-secondary:hover { color: var(--gold); border-bottom: none; }
-
-  /* Footer */
-  .footer { border-top: 1px solid var(--border); padding: 32px 0 48px; text-align: center; font-family: 'Noto Serif TC', serif; font-size: 11px; color: rgba(240,237,232,0.35); letter-spacing: 0.06em; line-height: 2.2; margin-top: 40px; }
-  .footer a { color: rgba(240,237,232,0.5); border-bottom: none; }
-  .footer a:hover { color: var(--gold); }
-  .footer-sep { opacity: 0.3; margin: 0 8px; }
-
-  @media (max-width: 480px) {
-    .container { padding: 0 20px; }
-    .hero { padding: 24px 0 40px; }
-    .mini-products { grid-template-columns: 1fr; }
-    .founder { flex-direction: column; text-align: left; }
+  .founder-initial {
+    flex-shrink: 0;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(253,230,138,0.7);
+    color: #fde68a;
+    font-family: "Noto Serif TC", serif;
+    font-size: 30px;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
   }
+  .founder-name { font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.97); margin-bottom: 4px; }
+  .founder-role { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.16em; color: #fde68a; text-transform: uppercase; margin-bottom: 12px; }
+  .founder-bio { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.85; }
+
+  .pillars { display: grid; gap: 14px; margin: 22px 0 8px; }
+  @media (min-width: 720px) { .pillars { grid-template-columns: 1fr 1fr; } }
+  .pillar {
+    padding: 20px 22px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.02);
+    border-radius: 14px;
+  }
+  .pillar-title { font-family: "Noto Serif TC", serif; font-size: 15.5px; font-weight: 500; color: rgba(255,255,255,0.97); margin-bottom: 8px; }
+  .pillar-title::before { content: '▸'; color: #fde68a; margin-right: 8px; }
+  .pillar-desc { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.85; }
+
+  .mini-products { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+  @media (max-width: 600px) { .mini-products { grid-template-columns: 1fr; } }
+  .mini-card {
+    display: block;
+    padding: 18px 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.02);
+    border-radius: 14px;
+    transition: border-color 0.25s, transform 0.3s;
+  }
+  .mini-card:hover { border-color: rgba(253,230,138,0.6); transform: translateY(-2px); }
+  .mini-card-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; color: #fde68a; text-transform: uppercase; margin-bottom: 6px; }
+  .mini-card-brand { font-family: "Noto Serif TC", serif; font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.97); margin-bottom: 6px; }
+  .mini-card-desc { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+  .end-cta { text-align: center; padding: 56px 0 24px; }
+  .end-cta .btn + .btn-link { margin-left: 18px; }
+  .btn-link { font-family: "Noto Serif TC", serif; font-size: 14px; color: rgba(255,255,255,0.7); transition: color 0.2s; }
+  .btn-link:hover { color: #fde68a; }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <header class="header">
-    <a href="index.html" class="logo">周全<span class="logo-en">ChouLegal</span></a>
-    <nav class="nav" aria-label="主選單">
+<div class="bg-mesh" aria-hidden="true">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="blob blob-c"></div>
+</div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
+
+<div class="container-narrow">
+
+  <header class="site-nav">
+    <a href="index.html" class="site-logo">周全<small>ChouLegal</small></a>
+    <nav class="site-nav-links" aria-label="主選單">
       <a href="index.html">首頁</a>
       <a href="guide.html">指南</a>
+      <a href="manifesto.html">理念</a>
       <a href="about.html" aria-current="page">關於</a>
       <a href="pricing.html">方案</a>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="hero-eyebrow">About ChouLegal</div>
-    <h1 class="hero-title">法律應該是<em>所有人</em>的權利<br>而非有錢人的專利</h1>
-    <p class="hero-sub">周全法律科技是一家一人經營的法律科技公司。我們把專業計算工具免費開放給民眾，同時以訂閱方式服務律師事務所——用兩條產品線，支撐一個信念。</p>
+    <div class="eyebrow">About ChouLegal</div>
+    <h1 class="h-display">法律應該是<em>所有人的權利。</em></h1>
+    <p class="lead">周全法律科技是一家一人經營的法律科技公司。我們把專業計算工具免費開放給民眾，同時以訂閱方式服務律師事務所——用兩條產品線，支撐一個信念。</p>
   </section>
 
-  <section class="section" aria-labelledby="founder-heading">
-    <div class="section-label">Founder</div>
+  <section class="sec prose" aria-labelledby="founder-heading">
+    <div class="sec-eyebrow">Founder</div>
     <h2 id="founder-heading">創辦人的緣起</h2>
     <p>周全法律科技由 <strong>Joe Chou</strong> 一人於 2026 年創辦、獨立維運。沒有 VC、沒有共同創辦人、沒有工程團隊——產品方向、法條研究、介面設計與客服，都由我自己把關。</p>
     <p>老實說，能讓一個人撐起這樣一條產品線，關鍵是 AI。我使用 Claude 等 AI 工具輔助寫程式、交叉查核法規、整理條文結構；我的工作是把法律研究做對、把產品判斷做對，再由 AI 協助我把它快速實作出來。我不想把自己包裝成一個全能的工程師——這件事做得成，是因為這個時代讓一個人就有機會做到。</p>
     <p>會做這件事，是因為看過太多人為了一個簡單的法律問題四處奔波：長輩過世想知道遺產怎麼分、被資遣想算算資遣費合不合理、離婚時不知道剩餘財產分配怎麼計算。問律師要錢、查法條看不懂、網路上資訊零散又常常過時。</p>
     <p>市面上不是沒有工具，但多半要付費、要註冊、要看完滿滿的廣告。於是決定自己做一個——把最常被問到的民法、勞基法計算題全部工程化，放在瀏覽器裡直接跑，不收錢、不要登入、不塞廣告。</p>
 
-    <div class="founder">
+    <div class="founder-card">
       <div class="founder-initial" aria-hidden="true">J</div>
       <div>
         <div class="founder-name">Joe Chou</div>
-        <div class="founder-role">Founder / Sole Operator</div>
+        <div class="founder-role">Founder · Sole Operator</div>
         <div class="founder-bio">主責產品方向、法條研究、介面設計與客服。開發時倚賴 AI 工具加速實作，再由我逐條把關每個法規引用與計算邏輯——做對的判斷，比什麼都重要。</div>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="why-free-heading">
-    <div class="section-label">Philosophy</div>
+  <section class="sec prose" aria-labelledby="why-free-heading">
+    <div class="sec-eyebrow">Philosophy</div>
     <h2 id="why-free-heading">為什麼民眾版完全免費</h2>
     <p>因為法律服務的真實成本，落在最沒能力付費的人身上最重。付得起律師諮詢費的人通常不需要這些工具——他們直接問律師就好；真正需要工具的是那些不太敢開口問律師、又被專業術語擋在門外的一般人。</p>
     <p>如果工具向這群人收費，就等於用同一個問題再收一次稅——法律已經夠複雜了，不需要再加上一道付費牆。</p>
@@ -158,8 +146,8 @@
     <p>民眾版的營運成本，由 B2B 的「<strong>周全 商業版</strong>」訂閱費用支撐。商業版是設計給律師事務所用的案件工作台，律師每月付訂閱費、事務所得到專業工具、民眾則繼續拿到免費的計算器。</p>
   </section>
 
-  <section class="section" aria-labelledby="stance-heading">
-    <div class="section-label">Technical Stance</div>
+  <section class="sec prose" aria-labelledby="stance-heading">
+    <div class="sec-eyebrow">Technical Stance</div>
     <h2 id="stance-heading">技術立場</h2>
     <div class="pillars">
       <div class="pillar">
@@ -181,8 +169,8 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="products-heading">
-    <div class="section-label">Products</div>
+  <section class="sec prose" aria-labelledby="products-heading">
+    <div class="sec-eyebrow">Products</div>
     <h2 id="products-heading">旗下產品</h2>
     <p class="muted">一個品牌、兩條產品線：民眾版給所有人免費用，商業版讓事務所付費升級。</p>
     <div class="mini-products">
@@ -201,7 +189,7 @@
         <div class="mini-card-brand">周全 商業版</div>
         <div class="mini-card-desc">律師事務所專用民法財產權案件工作台。前往商業版 →</div>
       </a>
-      <a class="mini-card" href="index.html#products">
+      <a class="mini-card" href="index.html">
         <div class="mini-card-tag">完整列表</div>
         <div class="mini-card-brand">回首頁瀏覽</div>
         <div class="mini-card-desc">查看所有上線與籌備中的產品。</div>
@@ -209,8 +197,8 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="contact-heading">
-    <div class="section-label">Contact</div>
+  <section class="sec prose" aria-labelledby="contact-heading">
+    <div class="sec-eyebrow">Contact</div>
     <h2 id="contact-heading">聯絡方式</h2>
     <p><strong>合作/商業洽詢：</strong><a href="mailto:businessjoechou@gmail.com">businessjoechou@gmail.com</a></p>
     <p><strong>個資權利行使：</strong>同上信箱，主旨註明「個資權利行使」。</p>
@@ -218,22 +206,22 @@
     <p class="muted">因為是一人公司，客服回信可能需要 1–3 個工作日，請見諒。</p>
   </section>
 
-  <section class="cta">
-    <a class="cta-btn" href="index.html">返回首頁查看所有工具</a>
-    <a class="cta-secondary" href="pricing.html">或查看商業版方案 →</a>
+  <section class="end-cta">
+    <a class="btn btn-primary" href="index.html">返回首頁查看所有工具</a>
+    <a class="btn-link" href="pricing.html">或查看商業版方案 →</a>
   </section>
 
-  <footer class="footer">
-    &copy; <span id="year">2026</span> 周全法律科技 ChouLegal — 周全法律科技<br>
-    <a href="index.html">首頁</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="about.html">關於</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="pricing.html">方案</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="privacy.html">隱私權政策</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="terms.html">使用者條款</a>
+  <footer class="site-foot">
+    <div class="foot-mark">周全法律科技<small>© <span id="year">2026</span> · ChouLegal</small></div>
+    <nav class="foot-links" aria-label="頁尾">
+      <a href="index.html">首頁</a>
+      <a href="guide.html">指南</a>
+      <a href="manifesto.html">理念</a>
+      <a href="about.html">關於</a>
+      <a href="pricing.html">方案</a>
+      <a href="privacy.html">隱私權</a>
+      <a href="terms.html">條款</a>
+    </nav>
   </footer>
 
 </div>

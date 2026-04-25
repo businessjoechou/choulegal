@@ -24,247 +24,225 @@
 <meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/brand.css">
 <script src="js/ga.js" defer></script>
 <style>
-  :root {
-    --ink: #0d1b2a;
-    --ink-2: #14253a;
-    --paper: #f0ede8;
-    --gold: #c4932a;
-    --muted: #8890a0;
-    --border: #233148;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--ink); color: var(--paper); font-family: 'Noto Sans TC', sans-serif; font-size: 15px; line-height: 1.75; min-height: 100vh; }
-  *:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  /* Guide-specific layout */
+  .container.guide { max-width: 1100px; }
+  @media (min-width: 720px) { .container.guide { padding: 0 40px; } }
 
-  /* Sticky header — 與 index.html 對齊 */
-  .site-header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(13,27,42,0.82);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(196,147,42,0.12);
-  }
-  .site-header-inner {
-    max-width: 1040px; margin: 0 auto; padding: 16px 28px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  @media (min-width: 720px) { .site-header-inner { padding: 18px 40px; } }
-  .site-logo { font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 700; letter-spacing: 0.06em; color: var(--paper); text-decoration: none; transition: letter-spacing 0.3s; }
-  .site-logo:hover { letter-spacing: 0.14em; }
-  .site-logo-en { font-family: 'Noto Serif TC', serif; font-size: 11px; font-weight: 400; color: var(--muted); letter-spacing: 0.16em; margin-left: 10px; text-transform: uppercase; }
-  .site-nav { display: flex; align-items: center; gap: 22px; }
-  .site-nav a { font-family: 'Noto Serif TC', serif; font-size: 12.5px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
-  .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--gold); }
-
-  .container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
-  @media (min-width: 720px) { .container { max-width: 1040px; padding: 0 40px; } }
-
-  /* Hero */
-  .hero { padding: 72px 0 56px; text-align: center; position: relative; overflow: hidden; }
-  .hero::before {
-    content: '典'; position: absolute;
-    font-family: 'Noto Serif TC', serif; font-weight: 700;
-    font-size: clamp(200px, 36vw, 380px);
-    color: var(--gold); opacity: 0.035;
-    top: 50%; left: 50%; transform: translate(-50%, -48%);
-    z-index: 0; pointer-events: none; line-height: 1; user-select: none;
-  }
-  .hero > * { position: relative; z-index: 1; }
-  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 22px; display: inline-flex; align-items: center; gap: 12px; }
-  .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--gold); opacity: 0.5; }
-  .hero-title { font-family: 'Noto Serif TC', serif; font-size: clamp(30px, 6vw, 44px); font-weight: 700; line-height: 1.3; margin-bottom: 22px; letter-spacing: 0.02em; }
-  .hero-title em { font-style: normal; color: var(--gold); }
-  .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.85; max-width: 600px; margin: 0 auto; }
-
-  /* Main layout */
-  .layout { display: grid; grid-template-columns: 1fr; gap: 40px; padding: 40px 0 64px; }
+  .layout { display: grid; grid-template-columns: 1fr; gap: 40px; padding: 32px 0 64px; }
   @media (min-width: 960px) { .layout { grid-template-columns: 220px 1fr; gap: 64px; } }
 
   /* TOC */
   .toc {
-    position: sticky; top: 88px; align-self: start;
-    font-family: 'Noto Serif TC', serif;
-    padding: 24px 20px;
-    border-left: 1px solid var(--border);
-    max-height: calc(100vh - 120px); overflow-y: auto;
+    position: sticky; top: 28px;
+    align-self: start;
+    font-family: "Noto Serif TC", serif;
+    padding: 22px 20px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
   }
-  .toc-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 14px; }
-  .toc ol { list-style: none; counter-reset: toc; }
-  .toc li { counter-increment: toc; margin-bottom: 10px; line-height: 1.55; }
+  .toc-label {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    color: #fde68a;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .toc ol { list-style: none; counter-reset: toc; padding: 0; margin: 0; }
+  .toc li { counter-increment: toc; margin-bottom: 12px; line-height: 1.55; }
   .toc a {
     display: block;
     font-size: 13px;
-    color: var(--muted);
-    text-decoration: none;
-    padding-left: 22px;
+    color: rgba(255,255,255,0.7);
+    padding-left: 26px;
     position: relative;
     transition: color 0.2s;
   }
   .toc a::before {
     content: counter(toc, decimal-leading-zero);
     position: absolute; left: 0; top: 0;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
     font-size: 10px;
-    color: var(--gold);
-    opacity: 0.6;
+    color: rgba(253,230,138,0.7);
+    letter-spacing: 0.06em;
   }
-  .toc a:hover { color: var(--paper); }
+  .toc a:hover { color: rgba(255,255,255,0.97); }
+  @media (max-width: 959px) { .toc { display: none; } }
 
   /* Article */
   article {
-    border-top: 1px solid var(--border);
-    padding-top: 52px;
-    margin-top: 52px;
-    scroll-margin-top: 88px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 56px;
+    margin-top: 56px;
+    scroll-margin-top: 28px;
   }
   article:first-child { border-top: none; padding-top: 0; margin-top: 0; }
-  .art-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.22em; margin-bottom: 14px; display: block; }
-  .art-title { font-family: 'Noto Serif TC', serif; font-size: clamp(24px, 3.5vw, 32px); font-weight: 700; color: var(--paper); margin-bottom: 14px; line-height: 1.4; letter-spacing: 0.02em; }
-  .art-lead { font-family: 'Noto Serif TC', serif; font-size: 16.5px; color: rgba(240,237,232,0.8); line-height: 1.85; margin-bottom: 24px; font-style: italic; padding-left: 16px; border-left: 2px solid var(--gold); }
-
-  article h3 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--paper);
-    margin: 28px 0 12px;
-    letter-spacing: 0.02em;
+  .art-num {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    color: #fde68a;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: block;
   }
-  article p { color: rgba(240,237,232,0.82); margin-bottom: 14px; font-size: 15px; line-height: 1.9; }
-  article ul, article ol { margin: 6px 0 16px 1.4em; }
-  article li { color: rgba(240,237,232,0.82); margin-bottom: 8px; line-height: 1.85; }
-  article strong { color: var(--paper); font-weight: 600; }
+  .art-title {
+    font-family: "Noto Serif TC", serif;
+    font-size: clamp(24px, 3.4vw, 32px);
+    font-weight: 500;
+    color: rgba(255,255,255,0.97);
+    margin-bottom: 16px;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+  }
+  .art-lead {
+    font-family: "Noto Serif TC", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.85;
+    margin-bottom: 24px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(253,230,138,0.6);
+  }
+  article h3 {
+    font-family: "Noto Serif TC", serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.95);
+    margin: 32px 0 12px;
+    line-height: 1.45;
+  }
+  article p {
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.95;
+  }
+  article ul, article ol { margin: 6px 0 18px 1.4em; }
+  article li { color: rgba(255,255,255,0.82); margin-bottom: 8px; line-height: 1.85; font-size: 15px; }
+  article strong { color: rgba(255,255,255,0.97); font-weight: 600; }
 
   .law-refs {
-    margin-top: 20px;
+    margin-top: 22px;
     padding: 16px 20px;
-    background: rgba(20,37,58,0.45);
-    border-left: 2px solid var(--gold);
-    border-radius: 4px;
+    background: rgba(253,230,138,0.045);
+    border-left: 2px solid rgba(253,230,138,0.6);
+    border-radius: 0 10px 10px 0;
   }
-  .law-refs-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+  .law-refs-label {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10px;
+    color: #fde68a;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
   .law-refs a {
-    color: rgba(240,237,232,0.85);
+    color: rgba(255,255,255,0.92);
     font-size: 13px;
-    text-decoration: none;
-    border-bottom: 1px dotted rgba(196,147,42,0.4);
+    border-bottom: 1px dotted rgba(253,230,138,0.5);
     padding-bottom: 1px;
-    margin-right: 12px;
+    margin-right: 14px;
     line-height: 2;
-    transition: color 0.2s, border-color 0.2s;
     display: inline-block;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .law-refs a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .law-refs a:hover { color: #fde68a; border-bottom-color: #fde68a; }
 
+  .misconception, .when-lawyer {
+    margin: 20px 0;
+    padding: 14px 20px;
+    border-radius: 0 10px 10px 0;
+    font-size: 14px;
+    line-height: 1.85;
+  }
   .misconception {
-    margin: 18px 0;
-    padding: 14px 18px;
-    background: rgba(122,47,57,0.14);
-    border-left: 2px solid #9b3340;
-    border-radius: 4px;
-    font-size: 14px;
-    color: rgba(240,237,232,0.8);
-    line-height: 1.85;
+    background: rgba(244, 63, 94, 0.07);
+    border-left: 2px solid rgba(244, 63, 94, 0.65);
+    color: rgba(255,255,255,0.82);
   }
-  .misconception strong { color: #e28392; }
-
+  .misconception strong { color: #fb7185; font-weight: 600; }
   .when-lawyer {
-    margin: 18px 0;
-    padding: 14px 18px;
-    background: rgba(196,147,42,0.08);
-    border-left: 2px solid var(--gold);
-    border-radius: 4px;
-    font-size: 14px;
-    color: rgba(240,237,232,0.8);
-    line-height: 1.85;
+    background: rgba(253,230,138,0.06);
+    border-left: 2px solid rgba(253,230,138,0.6);
+    color: rgba(255,255,255,0.82);
   }
-  .when-lawyer strong { color: var(--gold); }
+  .when-lawyer strong { color: #fde68a; font-weight: 600; }
 
   .tool-cta {
-    margin-top: 22px;
+    margin-top: 24px;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 20px;
-    background: rgba(196,147,42,0.12);
-    border: 1px solid rgba(196,147,42,0.4);
-    border-radius: 8px;
-    color: var(--paper);
-    text-decoration: none;
-    font-size: 13.5px;
-    font-family: 'Noto Serif TC', serif;
-    letter-spacing: 0.04em;
-    transition: background 0.2s, transform 0.2s;
+    padding: 12px 22px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(253,230,138,0.5);
+    border-radius: 999px;
+    color: rgba(255,255,255,0.95);
+    font-family: "Noto Serif TC", serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.3s, border-color 0.2s;
   }
-  .tool-cta:hover { background: rgba(196,147,42,0.22); transform: translateY(-1px); }
-  .tool-cta-arrow { color: var(--gold); }
+  .tool-cta:hover {
+    background: rgba(253,230,138,0.15);
+    transform: translateY(-2px);
+    border-color: #fde68a;
+  }
+  .tool-cta-arrow { color: #fde68a; transition: transform 0.3s; }
+  .tool-cta:hover .tool-cta-arrow { transform: translateX(4px); }
 
-  /* Disclaimer */
   .disclaimer {
-    margin-top: 80px;
-    padding: 28px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: rgba(20,37,58,0.4);
+    margin-top: 72px;
+    padding: 24px 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.025);
     font-size: 13px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.65);
     line-height: 1.9;
   }
-  .disclaimer strong { color: var(--paper); }
-
-  /* Footer */
-  .footer { border-top: 1px solid var(--border); padding: 32px 0 48px; text-align: center; font-family: 'Noto Serif TC', serif; font-size: 11px; color: rgba(240,237,232,0.35); letter-spacing: 0.06em; line-height: 2.2; margin-top: 48px; }
-  .footer a { color: rgba(240,237,232,0.5); text-decoration: none; border-bottom: none; }
-  .footer a:hover { color: var(--gold); }
-  .footer-sep { opacity: 0.3; margin: 0 8px; }
-
-  /* Light mode */
-  [data-theme="light"] { --ink: #f8f6f2; --ink-2: #efece6; --paper: #1a1a1e; --gold: #a87a1a; --muted: #5a5a62; --border: #d8d4ce; }
-  [data-theme="light"] .site-header { background: rgba(248,246,242,0.86); border-bottom-color: rgba(168,122,26,0.18); }
-  [data-theme="light"] .misconception { background: rgba(155,51,64,0.05); }
-  [data-theme="light"] .when-lawyer { background: rgba(168,122,26,0.06); }
-  [data-theme="light"] .tool-cta { background: rgba(168,122,26,0.08); }
-  [data-theme="light"] .tool-cta:hover { background: rgba(168,122,26,0.16); }
-
-  /* Theme toggle */
-  #themeToggle { position: relative; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: rgba(128,128,128,0.12); color: var(--paper); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; padding: 0; flex-shrink: 0; }
-  #themeToggle:hover { background: rgba(128,128,128,0.22); border-color: var(--gold); }
-
-  @media (max-width: 959px) {
-    .toc { display: none; }
-  }
+  .disclaimer strong { color: rgba(255,255,255,0.95); font-weight: 600; }
 </style>
 </head>
 <body>
 
-<header class="site-header" role="banner">
-  <div class="site-header-inner">
-    <a href="index.html" class="site-logo" aria-label="周全法律科技 ChouLegal 首頁">周全<span class="site-logo-en">ChouLegal</span></a>
-    <nav class="site-nav" aria-label="主選單">
+<div class="bg-mesh" aria-hidden="true">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="blob blob-c"></div>
+</div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
+
+<div class="container guide">
+
+  <header class="site-nav">
+    <a href="index.html" class="site-logo">周全<small>ChouLegal</small></a>
+    <nav class="site-nav-links" aria-label="主選單">
       <a href="index.html">首頁</a>
       <a href="guide.html" aria-current="page">指南</a>
+      <a href="manifesto.html">理念</a>
       <a href="about.html">關於</a>
       <a href="pricing.html">方案</a>
-      <button id="themeToggle" aria-label="切換深色/淺色模式"></button>
     </nav>
-  </div>
-</header>
-
-<div class="container">
+  </header>
 
   <section class="hero">
-    <div class="hero-eyebrow" aria-hidden="true">Legal Guide · Taiwan</div>
-    <h1 class="hero-title">看得懂的<em>中華民國法律</em></h1>
-    <p class="hero-sub">八個最常被問的法律題目，用白話說清楚。每篇附法條編號與全國法規資料庫連結；看完如果還有疑問，也告訴你什麼情況該找律師。</p>
+    <div class="eyebrow">Legal Guide · Taiwan</div>
+    <h1 class="h-display">看得懂的<em>中華民國法律。</em></h1>
+    <p class="lead">八個最常被問的法律題目，用白話說清楚。每篇附法條編號與全國法規資料庫連結；看完如果還有疑問，也告訴你什麼情況該找律師。</p>
   </section>
 
   <div class="layout">
 
-    <!-- TOC -->
     <aside class="toc" aria-label="目錄">
       <div class="toc-label">目錄 · Index</div>
       <ol>
@@ -279,10 +257,8 @@
       </ol>
     </aside>
 
-    <!-- Articles -->
     <main>
 
-      <!-- Article 1 -->
       <article id="art1">
         <span class="art-num">Article 01 · 民法繼承篇</span>
         <h2 class="art-title">沒寫遺囑，遺產怎麼分？</h2>
@@ -326,7 +302,6 @@
         </a>
       </article>
 
-      <!-- Article 2 -->
       <article id="art2">
         <span class="art-num">Article 02 · 民法繼承篇</span>
         <h2 class="art-title">特留分是什麼？遺囑可以全部給某個人嗎？</h2>
@@ -365,7 +340,6 @@
         </a>
       </article>
 
-      <!-- Article 3 -->
       <article id="art3">
         <span class="art-num">Article 03 · 勞基法</span>
         <h2 class="art-title">被資遣，資遣費怎麼算？</h2>
@@ -407,7 +381,6 @@
         </a>
       </article>
 
-      <!-- Article 4 -->
       <article id="art4">
         <span class="art-num">Article 04 · 勞基法</span>
         <h2 class="art-title">加班費怎麼算？平日、休息日、國定假日差別在哪？</h2>
@@ -450,7 +423,6 @@
         </a>
       </article>
 
-      <!-- Article 5 -->
       <article id="art5">
         <span class="art-num">Article 05 · 遺產稅 + AMT</span>
         <h2 class="art-title">保險理賠算遺產嗎？AMT 是什麼？</h2>
@@ -493,7 +465,6 @@
         </a>
       </article>
 
-      <!-- Article 6 -->
       <article id="art6">
         <span class="art-num">Article 06 · 贈與稅</span>
         <h2 class="art-title">每年贈與子女多少不用繳稅？</h2>
@@ -538,7 +509,6 @@
         </a>
       </article>
 
-      <!-- Article 7 -->
       <article id="art7">
         <span class="art-num">Article 07 · 民法親屬篇</span>
         <h2 class="art-title">離婚時，夫妻財產怎麼分？</h2>
@@ -581,7 +551,6 @@
         </a>
       </article>
 
-      <!-- Article 8 -->
       <article id="art8">
         <span class="art-num">Article 08 · 遺產稅</span>
         <h2 class="art-title">遺產稅怎麼算？免稅額、扣除額、級距一次看懂</h2>
@@ -648,47 +617,23 @@
     </main>
   </div>
 
-  <footer class="footer">
-    &copy; <span id="year">2026</span> 周全法律科技 ChouLegal<br>
-    <a href="index.html">首頁</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="guide.html">指南</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="about.html">關於</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="pricing.html">方案</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="privacy.html">隱私權政策</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="terms.html">使用者條款</a>
+  <footer class="site-foot">
+    <div class="foot-mark">周全法律科技<small>© <span id="year">2026</span> · ChouLegal</small></div>
+    <nav class="foot-links" aria-label="頁尾">
+      <a href="index.html">首頁</a>
+      <a href="guide.html">指南</a>
+      <a href="manifesto.html">理念</a>
+      <a href="about.html">關於</a>
+      <a href="pricing.html">方案</a>
+      <a href="privacy.html">隱私權</a>
+      <a href="terms.html">條款</a>
+    </nav>
   </footer>
 
 </div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  (function(){
-    var html = document.documentElement;
-    var stored = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = stored || (prefersDark ? 'dark' : 'light');
-    if (theme === 'light') html.setAttribute('data-theme', 'light');
-
-    var btn = document.getElementById('themeToggle');
-    function updateIcon(t) { if (btn) btn.textContent = t === 'light' ? '\u263E' : '\u2600'; }
-    updateIcon(theme);
-
-    if (btn) {
-      btn.addEventListener('click', function() {
-        var current = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        if (current === 'light') html.setAttribute('data-theme', 'light');
-        else html.removeAttribute('data-theme');
-        localStorage.setItem('theme', current);
-        updateIcon(current);
-      });
-    }
-  })();
 </script>
 
 <script type="application/ld+json">
@@ -696,70 +641,14 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "沒寫遺囑，遺產怎麼分？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "依民法第 1138 條，配偶永遠是繼承人；其他繼承人依序為直系血親卑親屬、父母、兄弟姊妹、祖父母。應繼分比例依配偶與不同順位繼承人組合而定（民法第 1144 條）。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "特留分是什麼？遺囑可以全部排除某個繼承人嗎？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "特留分是法定繼承人不能被剝奪的最低份額。直系血親卑親屬、父母、配偶的特留分為應繼分的二分之一；兄弟姊妹、祖父母為三分之一（民法第 1223 條）。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "被資遣，資遣費怎麼算？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "新制（2005/7/1 後）每滿 1 年發 0.5 個月平均工資、最高 6 個月（勞退條例第 12 條）；舊制每滿 1 年發 1 個月、無上限（勞基法第 17 條）。平均工資依被資遣前 6 個月計算。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "加班費平日、休息日、國定假日怎麼算？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "平日延長工時前 2 小時加給 1/3、第 3 小時起加給 2/3（勞基法第 24 條）。休息日前 2 小時加給 1/3、第 3 小時起加給 2/3。例假、國定假日、特休工資加倍（勞基法第 39 條）。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "保險理賠金算遺產嗎？AMT 是什麼？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "要保人等於被保險人且有指定受益人的死亡保險金，不計入遺產總額（保險法第 112 條）。但若保險給付累計超過 3,740 萬，超過部分計入受益人基本所得，課 20% AMT（所得基本稅額條例第 12 條）。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "每年贈與子女多少不用繳稅？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "每一贈與人每年免稅額 244 萬元（遺贈稅法第 22 條）。夫妻可各自贈與，父母一年合贈子女最多 488 萬不課贈與稅。超過部分依 10%/15%/20% 三級累進課稅（第 19 條）。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "離婚時夫妻財產怎麼分？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "法定財產制下，雙方婚後財產扣除婚後債務後，剩餘較少的一方可向另一方請求平均分配差額（民法第 1030-1 條）。因繼承、無償取得、慰撫金所得的財產不列入分配。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "遺產稅怎麼算？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "遺產總額扣免稅額（1,333 萬）與扣除額（配偶 553、卑親每人 56、父母每人 138、喪葬 138 萬等）後為課稅淨額。淨額 ≤ 5,621 萬課 10%；5,621 萬 ~ 1 億 1,242 萬課 15%；超過課 20%。數值為 2025 年起適用。"
-      }
-    }
+    { "@type": "Question", "name": "沒寫遺囑，遺產怎麼分？", "acceptedAnswer": { "@type": "Answer", "text": "依民法第 1138 條，配偶永遠是繼承人；其他繼承人依序為直系血親卑親屬、父母、兄弟姊妹、祖父母。應繼分比例依配偶與不同順位繼承人組合而定（民法第 1144 條）。" } },
+    { "@type": "Question", "name": "特留分是什麼？遺囑可以全部排除某個繼承人嗎？", "acceptedAnswer": { "@type": "Answer", "text": "特留分是法定繼承人不能被剝奪的最低份額。直系血親卑親屬、父母、配偶的特留分為應繼分的二分之一；兄弟姊妹、祖父母為三分之一（民法第 1223 條）。" } },
+    { "@type": "Question", "name": "被資遣，資遣費怎麼算？", "acceptedAnswer": { "@type": "Answer", "text": "新制（2005/7/1 後）每滿 1 年發 0.5 個月平均工資、最高 6 個月（勞退條例第 12 條）；舊制每滿 1 年發 1 個月、無上限（勞基法第 17 條）。平均工資依被資遣前 6 個月計算。" } },
+    { "@type": "Question", "name": "加班費平日、休息日、國定假日怎麼算？", "acceptedAnswer": { "@type": "Answer", "text": "平日延長工時前 2 小時加給 1/3、第 3 小時起加給 2/3（勞基法第 24 條）。休息日前 2 小時加給 1/3、第 3 小時起加給 2/3。例假、國定假日、特休工資加倍（勞基法第 39 條）。" } },
+    { "@type": "Question", "name": "保險理賠金算遺產嗎？AMT 是什麼？", "acceptedAnswer": { "@type": "Answer", "text": "要保人等於被保險人且有指定受益人的死亡保險金，不計入遺產總額（保險法第 112 條）。但若保險給付累計超過 3,740 萬，超過部分計入受益人基本所得，課 20% AMT（所得基本稅額條例第 12 條）。" } },
+    { "@type": "Question", "name": "每年贈與子女多少不用繳稅？", "acceptedAnswer": { "@type": "Answer", "text": "每一贈與人每年免稅額 244 萬元（遺贈稅法第 22 條）。夫妻可各自贈與，父母一年合贈子女最多 488 萬不課贈與稅。超過部分依 10%/15%/20% 三級累進課稅（第 19 條）。" } },
+    { "@type": "Question", "name": "離婚時夫妻財產怎麼分？", "acceptedAnswer": { "@type": "Answer", "text": "法定財產制下，雙方婚後財產扣除婚後債務後，剩餘較少的一方可向另一方請求平均分配差額（民法第 1030-1 條）。因繼承、無償取得、慰撫金所得的財產不列入分配。" } },
+    { "@type": "Question", "name": "遺產稅怎麼算？", "acceptedAnswer": { "@type": "Answer", "text": "遺產總額扣免稅額（1,333 萬）與扣除額（配偶 553、卑親每人 56、父母每人 138、喪葬 138 萬等）後為課稅淨額。淨額 ≤ 5,621 萬課 10%；5,621 萬 ~ 1 億 1,242 萬課 15%；超過課 20%。數值為 2025 年起適用。" } }
   ]
 }
 </script>

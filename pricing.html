@@ -24,138 +24,177 @@
 <meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/brand.css">
 <script src="js/ga.js" defer></script>
 <style>
-  :root {
-    --ink: #0d1b2a;
-    --ink-2: #14253a;
-    --paper: #f0ede8;
-    --gold: #c4932a;
-    --muted: #8890a0;
-    --border: #233148;
+  .plans { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 32px 0 18px; }
+  @media (min-width: 820px) { .plans { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+  .plan {
+    position: relative;
+    display: flex; flex-direction: column;
+    padding: 30px 26px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.025);
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+    border-radius: 18px;
+    transition: border-color 0.3s, transform 0.4s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.4s;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--ink); color: var(--paper); font-family: 'Noto Sans TC', sans-serif; font-size: 15px; line-height: 1.7; min-height: 100vh; }
-  *:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-
-  .container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
-  .narrow { max-width: 720px; margin-left: auto; margin-right: auto; }
-
-  .header { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
-  .logo { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 700; color: var(--paper); text-decoration: none; letter-spacing: 0.06em; }
-  .logo-en { font-family: 'Noto Serif TC', serif; font-size: 11px; color: var(--muted); letter-spacing: 0.16em; margin-left: 10px; text-transform: uppercase; font-weight: 400; }
-  .nav { display: flex; gap: 20px; }
-  .nav a { font-family: 'Noto Serif TC', serif; font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
-  .nav a:hover, .nav a[aria-current="page"] { color: var(--gold); }
-
-  /* Hero */
-  .hero { padding: 32px 0 48px; text-align: center; }
-  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
-  .hero-title { font-family: 'Noto Serif TC', serif; font-size: clamp(28px, 6vw, 42px); font-weight: 700; line-height: 1.3; margin-bottom: 20px; letter-spacing: 0.02em; }
-  .hero-title em { font-style: normal; color: var(--gold); }
-  .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.85; max-width: 600px; margin: 0 auto 12px; }
-  .hero-note { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-top: 12px; }
-  .hero-note strong { color: var(--gold); font-weight: 500; }
-
-  /* Plan cards */
-  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 40px 0 24px; }
-  .plan { border: 1.5px solid var(--border); border-radius: 14px; padding: 28px 24px; background: var(--ink-2); position: relative; display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
-  .plan:hover { border-color: rgba(196,147,42,0.45); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-  .plan.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(196,147,42,0.08), var(--ink-2)); }
-  .plan-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--ink); font-family: 'Noto Serif TC', serif; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; padding: 3px 12px; border-radius: 20px; }
-  .plan-name { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 600; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
-  .plan-price { font-family: 'Noto Serif TC', serif; font-size: 32px; font-weight: 700; color: var(--paper); line-height: 1.1; }
-  .plan-price .currency { font-size: 16px; font-weight: 400; color: var(--muted); margin-right: 4px; vertical-align: top; }
-  .plan-price-unit { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; margin-top: 4px; }
-  .plan-target { font-size: 12px; color: var(--muted); line-height: 1.6; margin: 14px 0 18px; min-height: 36px; }
+  .plan:hover { border-color: rgba(253,230,138,0.45); transform: translateY(-3px); box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6); }
+  .plan.featured { border-color: rgba(253,230,138,0.75); background: linear-gradient(180deg, rgba(253,230,138,0.06), rgba(255,255,255,0.025)); }
+  .plan-badge {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(110deg, #fde68a, #fb923c);
+    color: #06070b;
+    font-family: "Noto Serif TC", serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+    padding: 4px 14px; border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .plan-name { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 500; color: #fde68a; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 14px; }
+  .plan-price { font-family: "Noto Serif TC", serif; font-size: 38px; font-weight: 400; color: rgba(255,255,255,0.97); line-height: 1.05; }
+  .plan-price .currency { font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.55); margin-right: 4px; vertical-align: top; }
+  .plan-price-unit { font-family: "JetBrains Mono", monospace; font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; margin-top: 6px; }
+  .plan-target { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; margin: 16px 0 22px; min-height: 44px; }
   .plan-features { list-style: none; margin-bottom: 24px; flex-grow: 1; }
-  .plan-features li { font-size: 13px; color: rgba(240,237,232,0.82); padding: 6px 0; padding-left: 22px; position: relative; line-height: 1.55; }
-  .plan-features li::before { content: '✓'; position: absolute; left: 0; top: 6px; color: var(--gold); font-weight: 700; }
-  .plan-features li.coming { color: var(--muted); }
-  .plan-features li.coming::before { content: '◦'; color: var(--muted); }
-  .plan-cta { display: block; text-align: center; padding: 12px 18px; background: transparent; border: 1.5px solid var(--gold); color: var(--gold); text-decoration: none; border-radius: 10px; font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; transition: background 0.2s, color 0.2s; }
-  .plan-cta:hover { background: var(--gold); color: var(--ink); }
-  .plan.featured .plan-cta { background: var(--gold); color: var(--ink); }
-  .plan.featured .plan-cta:hover { background: #b5820e; border-color: #b5820e; }
+  .plan-features li { font-size: 13px; color: rgba(255,255,255,0.85); padding: 7px 0 7px 22px; position: relative; line-height: 1.6; }
+  .plan-features li::before { content: '✓'; position: absolute; left: 0; top: 7px; color: #fde68a; font-weight: 600; }
+  .plan-features li.coming { color: rgba(255,255,255,0.55); }
+  .plan-features li.coming::before { content: '◦'; color: rgba(255,255,255,0.4); }
+  .plan-cta {
+    display: block; text-align: center;
+    padding: 12px 18px; border-radius: 999px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(253,230,138,0.6);
+    color: #fde68a;
+    font-family: "Noto Serif TC", serif;
+    font-size: 14px; font-weight: 500;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .plan-cta:hover { background: rgba(253,230,138,0.15); color: #fef3c7; border-color: #fde68a; }
+  .plan.featured .plan-cta { background: rgba(253,230,138,0.92); color: #06070b; border-color: transparent; }
+  .plan.featured .plan-cta:hover { background: #fde68a; color: #06070b; }
 
-  .price-footnote { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--muted); text-align: center; letter-spacing: 0.04em; margin-top: 8px; }
+  .price-footnote { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: rgba(255,255,255,0.5); text-align: center; letter-spacing: 0.08em; margin-top: 16px; }
 
   /* Comparison table */
-  .section { padding: 56px 0; border-top: 1px solid var(--border); margin-top: 40px; }
-  .section-label { font-family: 'Noto Serif TC', serif; font-size: 10px; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 12px; text-align: center; }
-  h2 { font-family: 'Noto Serif TC', serif; font-size: 24px; font-weight: 700; color: var(--paper); text-align: center; margin-bottom: 28px; }
-
-  .compare-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+  .compare-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.02);
+  }
   table.compare { width: 100%; border-collapse: collapse; min-width: 560px; font-size: 13px; }
-  table.compare thead th { background: rgba(196,147,42,0.06); font-family: 'Noto Serif TC', serif; font-weight: 600; color: var(--paper); padding: 16px 14px; text-align: center; border-bottom: 1px solid var(--border); letter-spacing: 0.04em; }
-  table.compare thead th:first-child { text-align: left; color: var(--muted); font-weight: 400; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
-  table.compare tbody td { padding: 14px; border-bottom: 1px solid var(--border); text-align: center; color: rgba(240,237,232,0.85); }
-  table.compare tbody td:first-child { text-align: left; color: var(--paper); font-weight: 500; }
+  table.compare thead th {
+    background: rgba(253,230,138,0.05);
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    color: rgba(255,255,255,0.95);
+    padding: 16px 14px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: 0.04em;
+  }
+  table.compare thead th:first-child {
+    text-align: left;
+    color: rgba(255,255,255,0.55);
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  table.compare tbody td { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); text-align: center; color: rgba(255,255,255,0.85); }
+  table.compare tbody td:first-child { text-align: left; color: rgba(255,255,255,0.95); font-weight: 500; }
   table.compare tbody tr:last-child td { border-bottom: none; }
-  table.compare .yes { color: var(--gold); font-weight: 700; }
-  table.compare .no { color: var(--muted); }
-  table.compare .soon { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.08em; }
+  table.compare .yes { color: #fde68a; font-weight: 600; }
+  table.compare .no { color: rgba(255,255,255,0.4); }
+  table.compare .soon { font-family: "JetBrains Mono", monospace; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; }
 
   /* FAQ */
-  .faq-list { display: grid; gap: 12px; }
-  details.faq { border: 1px solid var(--border); border-radius: 10px; background: var(--ink-2); padding: 0; }
-  details.faq[open] { border-color: rgba(196,147,42,0.4); }
-  details.faq summary { cursor: pointer; padding: 18px 22px; font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 600; color: var(--paper); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-  details.faq summary::-webkit-details-marker { display: none; }
-  details.faq summary::after { content: '+'; color: var(--gold); font-size: 20px; font-family: 'JetBrains Mono', monospace; line-height: 1; transition: transform 0.2s; }
-  details.faq[open] summary::after { content: '−'; }
-  details.faq .faq-body { padding: 0 22px 20px; color: var(--muted); font-size: 14px; line-height: 1.85; }
-  details.faq .faq-body a { color: var(--gold); }
-
-  /* CTA */
-  .cta { text-align: center; padding: 64px 0 32px; }
-  .cta-btn { display: inline-block; padding: 16px 36px; background: var(--gold); color: var(--ink); text-decoration: none; border-radius: 10px; font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
-  .cta-btn:hover { background: #b5820e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196,147,42,0.35); }
-  .cta-secondary { display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
-
-  /* Footer */
-  .footer { border-top: 1px solid var(--border); padding: 32px 0 48px; text-align: center; font-family: 'Noto Serif TC', serif; font-size: 11px; color: rgba(240,237,232,0.35); letter-spacing: 0.06em; line-height: 2.2; margin-top: 40px; }
-  .footer a { color: rgba(240,237,232,0.5); text-decoration: none; }
-  .footer a:hover { color: var(--gold); }
-  .footer-sep { opacity: 0.3; margin: 0 8px; }
-
-  @media (max-width: 720px) {
-    .plans { grid-template-columns: 1fr; gap: 20px; }
-    .plan.featured { transform: scale(1); }
+  .faq-list { display: grid; gap: 10px; }
+  details.faq {
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.025);
+    border-radius: 12px;
+    transition: border-color 0.2s;
   }
-  @media (max-width: 480px) {
-    .container { padding: 0 20px; }
-    .plan { padding: 24px 20px; }
+  details.faq[open] { border-color: rgba(253,230,138,0.5); background: rgba(253,230,138,0.04); }
+  details.faq summary {
+    cursor: pointer; padding: 18px 22px;
+    font-family: "Noto Serif TC", serif;
+    font-size: 15px; font-weight: 500;
+    color: rgba(255,255,255,0.95);
+    list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after {
+    content: '+';
+    color: #fde68a;
+    font-size: 22px;
+    font-family: "JetBrains Mono", monospace;
+    line-height: 1;
+    transition: transform 0.3s;
+  }
+  details.faq[open] summary::after { transform: rotate(45deg); }
+  details.faq .faq-body {
+    padding: 0 22px 20px;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  details.faq .faq-body a { color: #fde68a; border-bottom: 1px solid rgba(253,230,138,0.4); }
+  details.faq .faq-body strong { color: rgba(255,255,255,0.97); font-weight: 600; }
+
+  .end-cta { text-align: center; padding: 64px 0 32px; }
+  .end-cta-note {
+    display: block; margin-top: 16px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
   }
 </style>
 </head>
 <body>
+
+<div class="bg-mesh" aria-hidden="true">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="blob blob-c"></div>
+</div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
+
 <div class="container">
 
-  <header class="header">
-    <a href="index.html" class="logo">周全<span class="logo-en">ChouLegal</span></a>
-    <nav class="nav" aria-label="主選單">
+  <header class="site-nav">
+    <a href="index.html" class="site-logo">周全<small>ChouLegal</small></a>
+    <nav class="site-nav-links" aria-label="主選單">
       <a href="index.html">首頁</a>
       <a href="guide.html">指南</a>
+      <a href="manifesto.html">理念</a>
       <a href="about.html">關於</a>
       <a href="pricing.html" aria-current="page">方案</a>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="hero-eyebrow">ChouLegal Business · 周全 商業版</div>
-    <h1 class="hero-title">律師事務所的<br><em>民法財產權案件工作台</em></h1>
-    <p class="hero-sub">案件管理、法源自動引證、PDF 工作底稿、多律師協作——把民眾版的 30+ 個計算工具，升級成事務所等級的案件流程平台。</p>
-    <p class="hero-note"><strong>民眾版完全免費</strong>；事務所版另有訂閱方案。</p>
+    <div class="eyebrow">ChouLegal Business · 周全 商業版</div>
+    <h1 class="h-display">律師事務所的<em>民法財產權案件工作台。</em></h1>
+    <p class="lead">案件管理、法源自動引證、PDF 工作底稿、多律師協作——把民眾版的 30+ 個計算工具，升級成事務所等級的案件流程平台。</p>
+    <p class="essay-meta-note" style="margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.12em;">
+      <strong style="color:#fde68a;font-weight:500;">民眾版完全免費</strong>　·　事務所版另有訂閱方案
+    </p>
   </section>
 
   <section aria-labelledby="plans-heading">
-    <h2 id="plans-heading" class="visually-hidden" style="position:absolute;left:-9999px;">方案選擇</h2>
+    <h2 id="plans-heading" style="position:absolute;left:-9999px;">方案選擇</h2>
     <div class="plans">
 
-      <article class="plan">
+      <article class="plan" id="starter">
         <div class="plan-name">Starter</div>
         <div class="plan-price"><span class="currency">NT$</span>1,980</div>
         <div class="plan-price-unit">/ 月 · 月付制</div>
@@ -172,7 +211,7 @@
         <a class="plan-cta" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%95%86%E6%A5%AD%E7%89%88%5D%20Starter%20%E5%80%99%E8%A3%9C%E5%90%8D%E5%96%AE&body=%E6%96%B9%E6%A1%88%EF%BC%9AStarter%0A%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E9%9B%BB%E8%A9%B1%EF%BC%9A%0A%0A%E8%AB%8B%E5%95%8F%E9%A0%90%E8%A8%88%E4%BD%BF%E7%94%A8%E6%99%82%E9%96%93%EF%BC%9A">加入候補名單</a>
       </article>
 
-      <article class="plan featured">
+      <article class="plan featured" id="pro">
         <div class="plan-badge">最受歡迎</div>
         <div class="plan-name">Pro</div>
         <div class="plan-price"><span class="currency">NT$</span>5,980</div>
@@ -191,10 +230,10 @@
         <a class="plan-cta" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%95%86%E6%A5%AD%E7%89%88%5D%20Pro%20%E5%80%99%E8%A3%9C%E5%90%8D%E5%96%AE&body=%E6%96%B9%E6%A1%88%EF%BC%9APro%0A%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E9%9B%BB%E8%A9%B1%EF%BC%9A%0A%E9%A0%90%E8%A8%88%E5%B8%B3%E8%99%9F%E6%95%B8%EF%BC%9A">加入候補名單</a>
       </article>
 
-      <article class="plan">
+      <article class="plan" id="enterprise">
         <div class="plan-name">Enterprise</div>
         <div class="plan-price"><span class="currency">NT$</span>15,980</div>
-        <div class="plan-price-unit">/ 月 · 起，可客製化</div>
+        <div class="plan-price-unit">/ 月起 · 可客製化</div>
         <div class="plan-target">中大型事務所、聯合律師事務所，需要客製化與整合。</div>
         <ul class="plan-features">
           <li>無限律師帳號</li>
@@ -214,9 +253,9 @@
     <p class="price-footnote">* 定價以實際簽約為準，月付方案隨時可取消。未來可能因成本或功能擴充調整。</p>
   </section>
 
-  <section class="section narrow" aria-labelledby="compare-heading">
-    <div class="section-label">Compare Plans</div>
-    <h2 id="compare-heading">方案功能比較</h2>
+  <section class="sec" aria-labelledby="compare-heading">
+    <div class="sec-eyebrow" style="text-align:center;">Compare Plans</div>
+    <h2 class="sec-title" id="compare-heading" style="text-align:center;">方案功能<em>比較。</em></h2>
     <div class="compare-wrap">
       <table class="compare">
         <thead>
@@ -246,9 +285,9 @@
     </div>
   </section>
 
-  <section class="section narrow" aria-labelledby="faq-heading">
-    <div class="section-label">FAQ</div>
-    <h2 id="faq-heading">常見問題</h2>
+  <section class="sec" aria-labelledby="faq-heading">
+    <div class="sec-eyebrow" style="text-align:center;">FAQ</div>
+    <h2 class="sec-title" id="faq-heading" style="text-align:center;">常見<em>問題。</em></h2>
     <div class="faq-list">
 
       <details class="faq">
@@ -297,22 +336,22 @@
     </div>
   </section>
 
-  <section class="cta">
-    <a class="cta-btn" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%95%86%E6%A5%AD%E7%89%88%5D%20Pricing%20%E8%AB%AE%E8%A9%A2&body=%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E9%9B%BB%E8%A9%B1%EF%BC%9A%0A%E4%BA%8B%E5%8B%99%E6%89%80%E4%BA%BA%E6%95%B8%EF%BC%9A%0A%E6%84%9F%E8%88%88%E8%B6%A3%E7%9A%84%E6%96%B9%E6%A1%88%EF%BC%9A%0A%E6%8F%90%E5%95%8F%EF%BC%9A">加入候補名單</a>
-    <span class="cta-secondary">businessjoechou@gmail.com · 上線時優先通知</span>
+  <section class="end-cta">
+    <a class="btn btn-primary" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%95%86%E6%A5%AD%E7%89%88%5D%20Pricing%20%E8%AB%AE%E8%A9%A2&body=%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E9%9B%BB%E8%A9%B1%EF%BC%9A%0A%E4%BA%8B%E5%8B%99%E6%89%80%E4%BA%BA%E6%95%B8%EF%BC%9A%0A%E6%84%9F%E8%88%88%E8%B6%A3%E7%9A%84%E6%96%B9%E6%A1%88%EF%BC%9A%0A%E6%8F%90%E5%95%8F%EF%BC%9A">加入候補名單 <span aria-hidden="true">→</span></a>
+    <span class="end-cta-note">businessjoechou@gmail.com · 上線時優先通知</span>
   </section>
 
-  <footer class="footer">
-    &copy; <span id="year">2026</span> 周全法律科技 ChouLegal — 周全法律科技<br>
-    <a href="index.html">首頁</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="about.html">關於</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="pricing.html">方案</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="privacy.html">隱私權政策</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="terms.html">使用者條款</a>
+  <footer class="site-foot">
+    <div class="foot-mark">周全法律科技<small>© <span id="year">2026</span> · ChouLegal</small></div>
+    <nav class="foot-links" aria-label="頁尾">
+      <a href="index.html">首頁</a>
+      <a href="guide.html">指南</a>
+      <a href="manifesto.html">理念</a>
+      <a href="about.html">關於</a>
+      <a href="pricing.html">方案</a>
+      <a href="privacy.html">隱私權</a>
+      <a href="terms.html">條款</a>
+    </nav>
   </footer>
 
 </div>
@@ -330,48 +369,9 @@
   "brand": { "@type": "Brand", "name": "周全法律科技 ChouLegal" },
   "url": "https://choulegal.com/pricing.html",
   "offers": [
-    {
-      "@type": "Offer",
-      "name": "Starter",
-      "price": "1980",
-      "priceCurrency": "TWD",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "1980",
-        "priceCurrency": "TWD",
-        "unitText": "MONTH"
-      },
-      "availability": "https://schema.org/PreOrder",
-      "url": "https://choulegal.com/pricing.html#starter"
-    },
-    {
-      "@type": "Offer",
-      "name": "Pro",
-      "price": "5980",
-      "priceCurrency": "TWD",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "5980",
-        "priceCurrency": "TWD",
-        "unitText": "MONTH"
-      },
-      "availability": "https://schema.org/PreOrder",
-      "url": "https://choulegal.com/pricing.html#pro"
-    },
-    {
-      "@type": "Offer",
-      "name": "Enterprise",
-      "price": "15980",
-      "priceCurrency": "TWD",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "15980",
-        "priceCurrency": "TWD",
-        "unitText": "MONTH"
-      },
-      "availability": "https://schema.org/PreOrder",
-      "url": "https://choulegal.com/pricing.html#enterprise"
-    }
+    { "@type": "Offer", "name": "Starter", "price": "1980", "priceCurrency": "TWD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1980", "priceCurrency": "TWD", "unitText": "MONTH" }, "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#starter" },
+    { "@type": "Offer", "name": "Pro", "price": "5980", "priceCurrency": "TWD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "5980", "priceCurrency": "TWD", "unitText": "MONTH" }, "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#pro" },
+    { "@type": "Offer", "name": "Enterprise", "price": "15980", "priceCurrency": "TWD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "15980", "priceCurrency": "TWD", "unitText": "MONTH" }, "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#enterprise" }
   ]
 }
 </script>
@@ -381,41 +381,13 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "什麼是周全 商業版？",
-      "acceptedAnswer": { "@type": "Answer", "text": "周全 商業版是中華民國律師事務所專用的多租戶 SaaS 案件工作台，聚焦民法財產權案件，整合 30+ 個計算工具、法源引證、PDF 工作底稿與多律師協作功能。目前為籌備階段，僅開放候補名單。" }
-    },
-    {
-      "@type": "Question",
-      "name": "商業版與民眾版 InheritancePro 差別？",
-      "acceptedAnswer": { "@type": "Answer", "text": "民眾版 InheritancePro 為單次計算工具、免費、不需登入，適合一般民眾自用；商業版以「案件」為單位提供建檔、指派、PDF 工作底稿、稽核紀錄與多律師協作，適合事務所長期累積案件檔案。" }
-    },
-    {
-      "@type": "Question",
-      "name": "有試用方案嗎？",
-      "acceptedAnswer": { "@type": "Answer", "text": "產品正式上線時將開放試用。現階段可加入候補名單，上線前優先通知並提供早鳥優惠。" }
-    },
-    {
-      "@type": "Question",
-      "name": "如何終止訂閱？",
-      "acceptedAnswer": { "@type": "Answer", "text": "月付方案於事務所設定頁面可隨時停止續訂，不綁約、不收解約費，當期月費不退但可用至週期結束。" }
-    },
-    {
-      "@type": "Question",
-      "name": "案件資料的所有權歸誰？",
-      "acceptedAnswer": { "@type": "Answer", "text": "事務所自己上傳與建立的案件資料所有權完全歸事務所；周全法律科技僅為資料處理者。Enterprise 方案可簽訂 DPA 明確雙方權責，終止訂閱後可匯出資料並於約定期間內刪除。" }
-    },
-    {
-      "@type": "Question",
-      "name": "為什麼商業版目前只涵蓋民法財產權？",
-      "acceptedAnswer": { "@type": "Answer", "text": "第一階段聚焦案量大、計算繁瑣、誤差成本高的民法財產權領域（繼承、剩餘財產、贍養費、損害賠償等）。未來是否擴充至勞基法、公司法視使用者回饋決定。" }
-    },
-    {
-      "@type": "Question",
-      "name": "可以開立抬頭發票嗎？",
-      "acceptedAnswer": { "@type": "Answer", "text": "可以。所有方案皆可開立三聯式發票或收據，於訂閱時填寫事務所抬頭與統編。" }
-    }
+    { "@type": "Question", "name": "什麼是周全 商業版？", "acceptedAnswer": { "@type": "Answer", "text": "周全 商業版是中華民國律師事務所專用的多租戶 SaaS 案件工作台，聚焦民法財產權案件，整合 30+ 個計算工具、法源引證、PDF 工作底稿與多律師協作功能。目前為籌備階段，僅開放候補名單。" } },
+    { "@type": "Question", "name": "商業版與民眾版 InheritancePro 差別？", "acceptedAnswer": { "@type": "Answer", "text": "民眾版 InheritancePro 為單次計算工具、免費、不需登入，適合一般民眾自用；商業版以「案件」為單位提供建檔、指派、PDF 工作底稿、稽核紀錄與多律師協作，適合事務所長期累積案件檔案。" } },
+    { "@type": "Question", "name": "有試用方案嗎？", "acceptedAnswer": { "@type": "Answer", "text": "產品正式上線時將開放試用。現階段可加入候補名單，上線前優先通知並提供早鳥優惠。" } },
+    { "@type": "Question", "name": "如何終止訂閱？", "acceptedAnswer": { "@type": "Answer", "text": "月付方案於事務所設定頁面可隨時停止續訂，不綁約、不收解約費，當期月費不退但可用至週期結束。" } },
+    { "@type": "Question", "name": "案件資料的所有權歸誰？", "acceptedAnswer": { "@type": "Answer", "text": "事務所自己上傳與建立的案件資料所有權完全歸事務所；周全法律科技僅為資料處理者。Enterprise 方案可簽訂 DPA 明確雙方權責，終止訂閱後可匯出資料並於約定期間內刪除。" } },
+    { "@type": "Question", "name": "為什麼商業版目前只涵蓋民法財產權？", "acceptedAnswer": { "@type": "Answer", "text": "第一階段聚焦案量大、計算繁瑣、誤差成本高的民法財產權領域（繼承、剩餘財產、贍養費、損害賠償等）。未來是否擴充至勞基法、公司法視使用者回饋決定。" } },
+    { "@type": "Question", "name": "可以開立抬頭發票嗎？", "acceptedAnswer": { "@type": "Answer", "text": "可以。所有方案皆可開立三聯式發票或收據，於訂閱時填寫事務所抬頭與統編。" } }
   ]
 }
 </script>

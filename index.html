@@ -5,1702 +5,797 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周全法律科技 ChouLegal｜法律計算平台</title>
-<meta name="description" content="周全法律科技 — 中華民國法律科技平台。旗下 InheritancePro、LaborPro 等專業法律計算工具，為勞工、雇主、律師、會計師打造。">
-<meta name="keywords" content="法律科技,法律計算,遺產繼承,勞基法,資遣費,加班費,台灣法律,LegalTech">
+<title>周全法律科技 ChouLegal — 民眾版 · 商業版</title>
+<meta name="description" content="周全法律科技 ChouLegal。母品牌底下兩個法律平台：周全民眾版（免費權益計算）與周全商業版（事務所與部門工作台）。">
 <meta name="robots" content="index, follow">
-<meta name="author" content="周全法律科技 ChouLegal">
 <link rel="canonical" href="https://choulegal.com/">
-<meta property="og:title" content="周全法律科技 ChouLegal｜中華民國法律計算平台">
-<meta property="og:description" content="法律很複雜，我們讓它變簡單。旗下 InheritancePro、LaborPro 等專業工具。">
+<meta property="og:title" content="周全法律科技 ChouLegal">
+<meta property="og:description" content="兩個法律平台。民眾版自己算，商業版事務所用。">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="周全法律科技 ChouLegal">
-<meta property="og:locale" content="zh_TW">
 <meta property="og:url" content="https://choulegal.com/">
-<!-- TODO: og:image 建議改為 PNG 1200×630（FB/LINE 分享大圖品質 + 多數 crawler 不 render SVG） -->
-<meta property="og:image" content="https://choulegal.com/social-avatar.svg">
-<meta property="og:image:type" content="image/svg+xml">
-<meta property="og:image:width" content="400">
-<meta property="og:image:height" content="400">
-<meta property="og:image:alt" content="周全法律科技 ChouLegal 品牌標誌">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周全法律科技 ChouLegal｜中華民國法律計算平台">
-<meta name="twitter:description" content="法律很複雜，我們讓它變簡單。旗下 InheritancePro、LaborPro 等專業工具。">
-<meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
+<meta property="og:locale" content="zh_TW">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="js/ga.js" defer></script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 <style>
-  :root {
-    /* 2026-04-19 拍板：墨藍 + 米白 + 暗金 */
-    --ink: #0d1b2a;      /* 墨藍主背景（Oxford Blue 方向）*/
-    --ink-2: #14253a;    /* 墨藍次層 */
-    --paper: #f0ede8;    /* 米白 */
-    --gold: #c4932a;     /* 暗金 */
-    --muted: #8890a0;     /* 對比度 4.6+ 達 WCAG AA（原 #6a7080 僅 3.5 不達標）*/
-    --border: #233148;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--ink);
-    color: var(--paper);
-    font-family: 'Noto Sans TC', sans-serif;
+    background: #06070B;
+    color: rgba(255,255,255,0.92);
+    font-family: 'Noto Sans TC', system-ui, sans-serif;
     font-size: 15px;
     line-height: 1.6;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  *:focus-visible { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 3px; border-radius: 2px; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Mesh gradient background ── */
+  .bg-mesh {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.55;
+    will-change: transform;
+  }
+  .blob-1 {
+    top: -20vh; left: -10vw;
+    width: 70vw; height: 70vw;
+    background: radial-gradient(circle, rgba(217,119,6,0.55), rgba(217,119,6,0) 60%);
+    animation: drift1 28s ease-in-out infinite;
+  }
+  .blob-2 {
+    top: 20vh; right: -15vw;
+    width: 70vw; height: 70vw;
+    background: radial-gradient(circle, rgba(124,58,237,0.5), rgba(124,58,237,0) 60%);
+    animation: drift2 32s ease-in-out infinite;
+  }
+  .blob-3 {
+    bottom: -20vh; left: 30vw;
+    width: 50vw; height: 50vw;
+    background: radial-gradient(circle, rgba(14,165,233,0.45), rgba(14,165,233,0) 60%);
+    animation: drift3 36s ease-in-out infinite;
+  }
+  @keyframes drift1 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%     { transform: translate(80px,-40px) scale(1.1); }
+  }
+  @keyframes drift2 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%     { transform: translate(-60px,60px) scale(1.05); }
+  }
+  @keyframes drift3 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%     { transform: translate(40px,-50px) scale(0.95); }
+  }
+  /* Subtle grid */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.4;
+    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85), transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85), transparent 80%);
+  }
+  /* Grain */
+  .bg-grain {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
   }
 
-  *:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 2px;
-  }
-
-  /* ─── Layout ─── */
+  /* ── Layout ── */
   .container {
-    max-width: 720px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 28px;
   }
 
-  /* ─── Hero ─── */
-  .hero {
-    padding: 72px 0 64px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  /* ── Header ── */
+  .nav {
+    padding: 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-
-  /* 大字水印：serif 周字，極低透明度 */
-  .hero::before {
-    content: '周';
-    position: absolute;
+  .nav-logo {
     font-family: 'Noto Serif TC', serif;
-    font-weight: 700;
-    font-size: clamp(220px, 42vw, 460px);
-    color: var(--gold);
-    opacity: 0.035;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -48%);
-    z-index: 0;
-    pointer-events: none;
-    line-height: 1;
-    letter-spacing: 0;
-    user-select: none;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.95);
   }
-  .hero > * { position: relative; z-index: 1; }
-
-  .hero-eyebrow {
+  .nav-logo span {
+    margin-left: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .nav-meta {
+    display: flex;
+    gap: 28px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.28em;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.45);
     text-transform: uppercase;
-    margin-bottom: 22px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 100px 0 80px;
+    text-align: center;
+    position: relative;
+  }
+  .hero-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-  }
-  .hero-eyebrow::before,
-  .hero-eyebrow::after {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.5;
-  }
-
-
-  /* ─── Manifesto ─── */
-  .manifesto {
-    text-align: center;
-    padding: 56px 0 64px;
-    max-width: 640px;
-    margin: 0 auto;
-    position: relative;
-  }
-  .manifesto::before,
-  .manifesto::after {
-    content: '';
-    display: block;
-    width: 48px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.45;
-    margin: 0 auto;
-  }
-  .manifesto::before { margin-bottom: 32px; }
-  .manifesto::after { margin-top: 32px; }
-  .manifesto-quote {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(19px, 2.8vw, 24px);
-    font-weight: 400;
-    line-height: 1.8;
-    color: var(--paper);
-    letter-spacing: 0.06em;
-    position: relative;
-    padding: 0 8px;
-  }
-  .manifesto-quote em {
-    font-style: normal;
-    color: var(--gold);
-    font-weight: 600;
-  }
-  .manifesto-attr {
-    margin-top: 22px;
+    gap: 10px;
+    padding: 7px 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
-    color: var(--muted);
     letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.7);
     text-transform: uppercase;
+    margin-bottom: 36px;
   }
-  .manifesto-more {
-    display: inline-block;
-    margin-top: 22px;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 13px;
-    color: var(--gold);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid rgba(196,147,42,0.35);
-    padding-bottom: 3px;
-    transition: border-color 0.25s, letter-spacing 0.3s;
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #34d399;
+    animation: pulse 2.4s ease-in-out infinite;
   }
-  .manifesto-more:hover {
-    border-bottom-color: var(--gold);
-    letter-spacing: 0.14em;
-  }
-
-  .logo {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--paper);
-    margin-bottom: 64px;
-    display: block;
-  }
-
-  .logo-en {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--muted);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-left: 10px;
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; }
+    50%     { opacity: 1; }
   }
 
   .hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(32px, 7vw, 48px);
-    font-weight: 700;
-    line-height: 1.25;
+    font-weight: 400;
+    font-size: clamp(44px, 7vw, 84px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: rgba(255,255,255,0.97);
     margin-bottom: 24px;
-    letter-spacing: 0.02em;
   }
-
   .hero-title em {
-    font-style: normal;
-    color: var(--gold);
+    font-style: italic;
+    font-weight: 300;
+    background: linear-gradient(110deg, #fde68a, #f9a8d4, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+    margin-top: 8px;
   }
 
   .hero-sub {
-    font-size: 15px;
-    color: var(--muted);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: clamp(15px, 1.4vw, 17px);
+    color: rgba(255,255,255,0.7);
     line-height: 1.85;
-    max-width: 480px;
-    margin: 0 auto;
+    max-width: 540px;
+    margin: 0 auto 0;
   }
 
-  /* ─── Products ─── */
-  .section {
-    padding: 48px 0;
-  }
-
-  .section-label {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-
-  .products {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  @media (min-width: 720px) {
-    .products { grid-template-columns: 1fr 1fr; gap: 20px; }
-    /* 商業版、候補名單連結、Coming Soon 保留整寬 */
-    .product-card.business,
-    .product-card.coming-soon,
-    .products > .pricing-link { grid-column: 1 / -1; }
-  }
-
-  .pricing-link {
-    text-align: center;
-    margin: 4px 0 0;
-  }
-  .pricing-link a {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 12.5px;
-    color: var(--gold);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid rgba(196,147,42,0.3);
-    padding-bottom: 3px;
-    transition: border-color 0.25s, letter-spacing 0.3s;
-  }
-  .pricing-link a:hover {
-    border-bottom-color: var(--gold);
-    letter-spacing: 0.12em;
-  }
-
-  .product-card {
-    display: block;
-    text-decoration: none;
-    border: 1.5px solid var(--border);
-    border-radius: 16px;
-    padding: 32px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-
-  /* hover transform handled in animation section */
-
-  .product-card:hover::before { opacity: 1; }
-
-  .product-card.inheritance {
-    border-color: rgba(196, 147, 42, 0.3);
-  }
-  .product-card.inheritance::before {
-    background: linear-gradient(135deg, rgba(196, 147, 42, 0.06) 0%, transparent 60%);
-  }
-  .product-card.inheritance:hover {
-    border-color: var(--gold);
-  }
-
-  .product-card.labor {
-    border-color: rgba(42, 110, 62, 0.3);
-  }
-  .product-card.labor::before {
-    background: linear-gradient(135deg, rgba(42, 110, 62, 0.06) 0%, transparent 60%);
-  }
-  .product-card.labor:hover {
-    border-color: #2a6e3e;
-  }
-
-  .product-card.business {
-    border-color: rgba(196, 147, 42, 0.5);
-    background: linear-gradient(180deg, rgba(196, 147, 42, 0.04), var(--ink-2));
-  }
-  .product-card.business::before {
-    background: linear-gradient(135deg, rgba(196, 147, 42, 0.10) 0%, transparent 60%);
-  }
-  .product-card.business:hover {
-    border-color: var(--gold);
-  }
-
-  .product-card.coming-soon {
-    border-color: rgba(106, 106, 114, 0.2);
-    pointer-events: none;
-  }
-
-  .product-card.coming-soon:not(.reveal) {
-    opacity: 0.5;
-  }
-
-  .product-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-  }
-
-  .product-brand {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--paper);
-    line-height: 1.3;
-  }
-
-  .product-tag {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    padding: 4px 10px;
-    border-radius: 20px;
-    flex-shrink: 0;
-  }
-
-  .product-card.inheritance .product-tag {
-    color: var(--gold);
-    border: 1px solid rgba(196, 147, 42, 0.4);
-  }
-
-  .product-card.labor .product-tag {
-    color: #6acd8a;
-    border: 1px solid rgba(42, 110, 62, 0.4);
-  }
-
-  .product-card.coming-soon .product-tag {
-    color: var(--muted);
-    border: 1px solid rgba(106, 106, 114, 0.3);
-  }
-
-  .product-card.business .product-tag {
-    color: var(--gold);
-    background: rgba(196, 147, 42, 0.12);
-    border: 1px solid rgba(196, 147, 42, 0.5);
-  }
-
-  .product-card.business .product-status {
-    display: inline-block;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--paper);
-    background: var(--gold);
-    padding: 2px 8px;
-    border-radius: 3px;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-
-  .product-subtitle {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 18px;
-    line-height: 1.7;
-  }
-
-  .product-features {
+  /* Hero CTAs */
+  .hero-actions {
+    margin-top: 36px;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 20px;
+    justify-content: center;
+    gap: 12px 14px;
   }
-
-  .product-feature {
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
     font-family: 'Noto Serif TC', serif;
-    font-size: 10px;
-    color: var(--muted);
-    padding: 4px 10px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    letter-spacing: 0.06em;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform 0.3s, background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .hero-cta.primary {
+    background: rgba(255,255,255,0.96);
+    color: #06070b;
+    box-shadow: 0 6px 22px -6px rgba(253,230,138,0.4);
+  }
+  .hero-cta.primary:hover {
+    background: linear-gradient(110deg, #fde68a, #fb923c);
+    transform: translateY(-2px);
+  }
+  .hero-cta.ghost {
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.92);
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  .hero-cta.ghost:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(253,230,138,0.6);
+    color: #fde68a;
   }
 
-  .product-cta {
+  .hero-meta {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+  }
+  .hero-meta strong {
+    color: #fde68a;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 4px;
+    letter-spacing: 0;
+  }
+  .hero-meta span + span::before {
+    content: '·';
+    color: rgba(255,255,255,0.25);
+    margin-right: 22px;
+  }
+
+  /* ── Two doors ── */
+  .doors {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 60px 0 120px;
+  }
+  @media (min-width: 880px) {
+    .doors { grid-template-columns: 1fr 1fr; gap: 24px; }
+  }
+
+  .door {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 480px;
+    padding: 36px 36px 32px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition:
+      transform 0.5s cubic-bezier(0.2,0.8,0.2,1),
+      border-color 0.4s,
+      box-shadow 0.5s;
+  }
+  .door:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.3);
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+  }
+
+  /* Each door has its own gradient glow */
+  .door::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -30%;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.55;
+    transition: opacity 0.6s;
+    pointer-events: none;
+  }
+  .door:hover::before { opacity: 0.85; }
+
+  .door.people::before {
+    background: radial-gradient(circle, rgba(251,146,60,0.65), rgba(251,191,36,0.25) 50%, transparent 70%);
+  }
+  .door.commercial::before {
+    background: radial-gradient(circle, rgba(167,139,250,0.55), rgba(244,114,182,0.25) 50%, transparent 70%);
+  }
+
+  .door-top {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
+    margin-bottom: 60px;
   }
-
-  .product-cta-arrow {
-    font-size: 16px;
-    transition: transform 0.2s;
-  }
-
-  .product-card:hover .product-cta-arrow {
-    transform: translateX(4px);
-    color: var(--gold);
-  }
-
-  .product-card:hover .product-cta {
-    color: var(--paper);
-  }
-
-  /* ─── Values ─── */
-  .values {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 48px;
-  }
-
-  .value-item {
-    display: flex;
-    gap: 20px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-    align-items: flex-start;
-  }
-
-  .value-item:last-child { border-bottom: none; }
-
-  @media (min-width: 720px) {
-    .values {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-    }
-    .value-item {
-      flex-direction: column;
-      padding: 36px 28px;
-      border-bottom: none;
-      border-right: 1px solid var(--border);
-      gap: 12px;
-    }
-    .value-item:last-child { border-right: none; }
-    .value-num { padding-top: 0; }
-  }
-
-  .value-num {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 13px;
-    color: var(--gold);
-    letter-spacing: 0.12em;
-    flex-shrink: 0;
-    padding-top: 4px;
-    font-style: italic;
-    min-width: 28px;
-  }
-
-  .value-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--paper);
-    margin-bottom: 6px;
-  }
-
-  .value-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.75;
-  }
-
-  /* ─── How It Works ─── */
-  .how-it-works {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    margin-top: 24px;
-  }
-  @media (min-width: 720px) {
-    .how-it-works { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  }
-  .how-step {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 24px;
-    background: rgba(20,37,58,0.3);
-    position: relative;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .how-step:hover {
-    border-color: rgba(196,147,42,0.5);
-    transform: translateY(-2px);
-  }
-  .how-step-num {
+  .door-num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: var(--gold);
     letter-spacing: 0.22em;
-    margin-bottom: 14px;
-    display: block;
-  }
-  .how-step-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--paper);
-    margin-bottom: 10px;
-    line-height: 1.45;
-  }
-  .how-step-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.85;
-  }
-  .how-step-arrow {
-    display: none;
-  }
-  @media (min-width: 720px) {
-    .how-step { padding-top: 40px; }
-    .how-step:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--gold);
-      font-size: 20px;
-      opacity: 0.6;
-      z-index: 2;
-    }
-  }
-
-  /* ─── Stats Strip ─── */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px 20px;
-    padding: 44px 0;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    margin: 16px 0 8px;
-  }
-  @media (min-width: 720px) {
-    .stats { grid-template-columns: repeat(4, 1fr); padding: 52px 0; }
-  }
-  .stat-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(30px, 3.8vw, 42px);
-    color: var(--gold);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-  .stat-label {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
     text-transform: uppercase;
   }
-
-  /* ─── Law Updates ─── */
-  .updates {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-top: 24px;
-  }
-  @media (min-width: 720px) {
-    .updates { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  }
-  .update-card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 22px;
-    background: rgba(20,37,58,0.35);
-    transition: border-color 0.25s, transform 0.25s;
-  }
-  .update-card:hover {
-    border-color: rgba(196,147,42,0.5);
-    transform: translateY(-2px);
-  }
-  .update-date {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    color: var(--gold);
-    letter-spacing: 0.18em;
-    padding: 4px 10px;
-    border: 1px solid rgba(196,147,42,0.35);
-    border-radius: 20px;
-  }
-  .update-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 15.5px;
-    font-weight: 700;
-    color: var(--paper);
-    margin: 14px 0 10px;
-    line-height: 1.5;
-  }
-  .update-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-  .update-src {
-    display: block;
-    margin-top: 14px;
+  .door-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: rgba(136,144,160,0.7);
-    letter-spacing: 0.14em;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
   }
+  .door.people .door-tag { color: #fde68a; border-color: rgba(253,230,138,0.4); }
+  .door.commercial .door-tag { color: #ddd6fe; border-color: rgba(221,214,254,0.35); }
 
-  /* ─── FAQ ─── */
-  .faq-lead {
-    text-align: center;
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0 auto 28px;
-    max-width: 560px;
-    line-height: 1.85;
-  }
-  .faq {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  @media (min-width: 720px) {
-    .faq { grid-template-columns: 1fr 1fr; gap: 18px; }
-  }
-  .faq-item {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 24px;
-    background: rgba(20,37,58,0.25);
-    transition: border-color 0.25s;
-  }
-  .faq-item:hover { border-color: rgba(196,147,42,0.4); }
-  .faq-q {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--paper);
-    margin-bottom: 10px;
-    line-height: 1.55;
-  }
-  .faq-q::before {
-    content: 'Q';
-    color: var(--gold);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    margin-right: 10px;
-    letter-spacing: 0.1em;
-    vertical-align: 1px;
-    font-weight: 500;
-  }
-  .faq-a {
-    font-size: 13.5px;
-    color: rgba(240,237,232,0.72);
-    line-height: 1.85;
-  }
-  .faq-law {
-    margin-top: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    color: rgba(196,147,42,0.75);
-    letter-spacing: 0.1em;
-  }
-
-  /* ─── Business ─── */
-  .business {
-    text-align: center;
-    padding: 56px 32px;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(196,147,42,0.04) 0%, transparent 60%);
-    margin: 24px 0;
+  .door-name {
     position: relative;
-  }
-  .business::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    width: 60px; height: 1px;
-    background: var(--gold);
-    opacity: 0.6;
-    transform: translateX(-50%);
-  }
-
-  .business-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--paper);
-    margin-bottom: 12px;
-    letter-spacing: 0.04em;
+    font-size: clamp(34px, 3.2vw, 44px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.97);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
   }
-
-  .business-desc {
+  .door-en {
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .door-line {
+    position: relative;
+    font-family: 'Noto Serif TC', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(18px, 1.6vw, 22px);
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    margin-bottom: 18px;
+    max-width: 24ch;
+  }
+  .door-desc {
+    position: relative;
     font-size: 14px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.55);
     line-height: 1.85;
-    margin: 0 auto 28px;
-    max-width: 520px;
+    max-width: 38ch;
+    margin-bottom: 32px;
   }
-
-  .business-email {
-    display: inline-block;
-    padding: 12px 24px;
-    background: var(--gold);
-    color: var(--ink);
-    text-decoration: none;
-    border-radius: 10px;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    transition: background 0.2s;
+  .door-bullets {
+    position: relative;
+    list-style: none;
+    margin: 0 0 36px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
   }
-
-  /* business-email hover handled in animation section */
-
-  /* ─── Footer ─── */
-  .footer {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 24px 0 48px;
-    text-align: center;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 11px;
-    color: rgba(240,237,232,0.25);
-    letter-spacing: 0.06em;
-    line-height: 2.2;
+  .door-bullets li {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
-
-  .footer a {
-    color: rgba(240,237,232,0.35);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer a:hover { color: var(--gold); }
-
-  .footer-sep {
-    opacity: 0.3;
-    margin: 0 8px;
-  }
-
-  /* ─── Animation Keyframes ─── */
-  @keyframes heroFadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes heroScaleIn {
-    from { opacity: 0; transform: translateY(16px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  /* cardShine removed — user feedback */
-
-  @keyframes revealIn {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ─── Hero Entrance Animations ─── */
-  .hero-title {
-    opacity: 0;
-    animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-    will-change: transform, opacity;
-  }
-
-  .hero-sub {
-    opacity: 0;
-    animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
-    will-change: transform, opacity;
-  }
-
-  .hero .logo {
-    opacity: 0;
-    animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0s both;
-    will-change: transform, opacity;
-  }
-
-  /* ─── Scroll Reveal Base ─── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
-  }
-
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ─── Product Card Animations ─── */
-  .product-card.reveal {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  /* Product card hover: premium lift + shadow + shine */
-  .product-card.reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .product-card.coming-soon.reveal.is-visible {
+  .door-bullets li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: currentColor;
     opacity: 0.5;
   }
 
-  .product-card:not(.reveal) {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  [data-theme="light"] .product-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
-  }
-
-  /* Product card hover: gold border glow (replaces removed shine sweep) */
-  .product-card:hover {
-    border-color: var(--gold);
-  }
-
-  /* ─── Value Items Stagger ─── */
-  .value-item.reveal:nth-child(1) { transition-delay: 0s; }
-  .value-item.reveal:nth-child(2) { transition-delay: 0.1s; }
-  .value-item.reveal:nth-child(3) { transition-delay: 0.2s; }
-
-  /* ─── Logo Hover: Letter Spacing ─── */
-  .logo {
-    transition: letter-spacing 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: default;
-  }
-
-  .logo:hover {
-    letter-spacing: 0.14em;
-  }
-
-  /* ─── Link Underline Slide-In ─── */
-  .footer a,
-  .product-cta span:first-child {
+  .door-cta {
     position: relative;
-    display: inline-block;
-  }
-
-  .footer a::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .footer a:hover::after {
-    width: 100%;
-  }
-
-  /* ─── Theme Toggle Rotation ─── */
-  #themeToggle {
-    transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  #themeToggle.is-rotating {
-    transform: rotate(360deg) scale(1.08);
-  }
-
-  #themeToggle:hover {
-    background: rgba(128,128,128,0.22);
-    border-color: var(--gold);
-    transform: scale(1.08);
-  }
-
-  /* ─── Business Email Button Hover ─── */
-  .business-email {
-    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .business-email:hover {
-    background: #b5820e;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(196, 147, 42, 0.3);
-  }
-
-  /* ─── Accessibility: Reduced Motion ─── */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-
-    .reveal {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
-
-    .hero-title,
-    .hero-sub,
-    .hero .logo {
-      opacity: 1 !important;
-      animation: none !important;
-    }
-
-    .product-card.coming-soon.reveal {
-      opacity: 0.5 !important;
-    }
-  }
-
-  /* ─── Responsive ─── */
-  @media (min-width: 720px) {
-    .container { max-width: 960px; padding: 0 40px; }
-    .hero { padding: 96px 0 84px; }
-    .hero-title { letter-spacing: 0.03em; }
-    .section { padding: 64px 0; }
-  }
-  @media (min-width: 1080px) {
-    .container { max-width: 1040px; }
-  }
-
-  @media (max-width: 480px) {
-    .container { padding: 0 20px; }
-    .hero { padding: 60px 0 48px; }
-    .product-card { padding: 24px 20px; }
-    .product-brand { font-size: 19px; }
-  }
-
-  /* ─── Light Mode ─── */
-  [data-theme="light"] {
-    --ink: #f8f6f2;
-    --ink-2: #efece6;
-    --paper: #1a1a1e;
-    --gold: #a87a1a;
-    --muted: #5a5a62; /* darkened from #6e6e78 for WCAG 2.2 AA 4.5:1 contrast against #f8f6f2 */
-    --border: #d8d4ce;
-  }
-
-  [data-theme="light"] .footer {
-    border-top-color: rgba(0,0,0,0.08);
-    color: rgba(26,26,30,0.62); /* was 0.35 → failed 4.5:1；0.62 yields ≈4.7:1 */
-  }
-  [data-theme="light"] .footer a {
-    color: rgba(26,26,30,0.72); /* was 0.45 */
-  }
-
-  [data-theme="light"] .product-card.inheritance {
-    border-color: rgba(168, 122, 26, 0.3);
-  }
-  [data-theme="light"] .product-card.inheritance::before {
-    background: linear-gradient(135deg, rgba(168, 122, 26, 0.08) 0%, transparent 60%);
-  }
-  [data-theme="light"] .product-card.inheritance:hover {
-    border-color: var(--gold);
-  }
-
-  [data-theme="light"] .product-card.labor {
-    border-color: rgba(34, 100, 54, 0.3);
-  }
-  [data-theme="light"] .product-card.labor::before {
-    background: linear-gradient(135deg, rgba(34, 100, 54, 0.08) 0%, transparent 60%);
-  }
-  [data-theme="light"] .product-card.labor:hover {
-    border-color: #226436;
-  }
-
-  [data-theme="light"] .product-card.labor .product-tag {
-    color: #226436;
-    border-color: rgba(34, 100, 54, 0.4);
-  }
-
-  [data-theme="light"] .product-card.coming-soon {
-    border-color: rgba(106, 106, 114, 0.25);
-  }
-  [data-theme="light"] .product-card.coming-soon .product-tag {
-    border-color: rgba(106, 106, 114, 0.3);
-  }
-
-  [data-theme="light"] .business-email {
-    color: #fff;
-  }
-
-  [data-theme="light"] div[style*="免責聲明"] {
-    color: rgba(26,26,30,0.5) !important;
-  }
-  [data-theme="light"] div[style*="免責聲明"] strong {
-    color: rgba(26,26,30,0.7) !important;
-  }
-
-  /* ─── Sticky Site Header ─── */
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(13,27,42,0.82);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(196,147,42,0.12);
-    transition: background 0.3s, border-color 0.3s;
-  }
-  [data-theme="light"] .site-header {
-    background: rgba(248,246,242,0.86);
-    border-bottom-color: rgba(168,122,26,0.18);
-  }
-  .site-header-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 16px 28px;
+    margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
   }
-  @media (min-width: 720px) {
-    .site-header-inner { max-width: 960px; padding: 18px 40px; }
-  }
-  @media (min-width: 1080px) {
-    .site-header-inner { max-width: 1040px; }
-  }
-  .site-logo {
+  .door-cta-label {
     font-family: 'Noto Serif TC', serif;
     font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--paper);
-    text-decoration: none;
-    transition: letter-spacing 0.3s cubic-bezier(0.4,0,0.2,1);
+    color: rgba(255,255,255,0.95);
+    font-weight: 500;
   }
-  .site-logo:hover { letter-spacing: 0.14em; }
-  .site-logo-en {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--muted);
-    letter-spacing: 0.16em;
-    margin-left: 10px;
-    text-transform: uppercase;
-  }
-  .site-nav {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-  }
-  .site-nav a {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 12.5px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    transition: color 0.2s;
-  }
-  .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--gold); }
-
-  /* ─── Theme Toggle Button (in header) ─── */
-  #themeToggle {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: rgba(128,128,128,0.12);
-    color: var(--paper);
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
+  .door-cta-arrow {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
-    padding: 0;
-    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1), background 0.3s, border-color 0.3s;
+    font-size: 14px;
   }
-  /* themeToggle hover handled in animation section */
-
-  /* ─── Theme Transition ─── */
-  html.theme-transitioning,
-  html.theme-transitioning *,
-  html.theme-transitioning *::before,
-  html.theme-transitioning *::after {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+  .door:hover .door-cta-arrow {
+    background: rgba(255,255,255,0.95);
+    color: #06070B;
+    border-color: transparent;
+    transform: translateX(4px);
   }
-
-  /* ═══════════════════════════════════════════════════════════
-     PREMIUM EDITORIAL LAYER — grain, seal, ornaments, dramatic type
-     ═══════════════════════════════════════════════════════════ */
-
-  /* Paper grain: fixed, subtle, blends with background */
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 200;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.85  0 0 0 0.42 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
-    mix-blend-mode: screen;
-    opacity: 0.05;
+  .door-cta-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.55);
   }
-  [data-theme="light"] body::after {
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.04  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
-    opacity: 0.18;
+  @media (max-width: 980px) {
+    .door-cta-url { display: none; }
+  }
+  .nav-meta { flex-wrap: wrap; }
+  @media (max-width: 720px) {
+    .nav-meta { gap: 16px; font-size: 10.5px; letter-spacing: 0.14em; }
   }
 
-  /* Hero typography push — dramatize scale */
-  .hero-title {
-    font-size: clamp(42px, 9vw, 84px) !important;
-    line-height: 1.08 !important;
-    letter-spacing: -0.01em !important;
+  /* ── Principles pillars ── */
+  .pillars {
+    padding: 64px 0 80px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
   }
-  @media (min-width: 720px) {
-    .hero-title { letter-spacing: 0.01em !important; }
+  .pillars-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 36px;
   }
-  .hero-title em {
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: left;
+    margin-bottom: 28px;
+  }
+  @media (min-width: 760px) {
+    .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  }
+  .pillar {
+    padding: 26px 28px 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.025);
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+    border-radius: 16px;
+    transition: border-color 0.3s, transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .pillar:hover { border-color: rgba(253,230,138,0.35); transform: translateY(-2px); }
+  .pillar-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: #fde68a;
+    margin-bottom: 18px;
+  }
+  .pillar-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.96);
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+  .pillar-title em {
     font-style: italic;
-    font-weight: 700;
-    background: linear-gradient(180deg, var(--gold) 0%, #d4a44a 100%);
+    font-weight: 300;
+    background: linear-gradient(110deg, #fde68a, #fb923c);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+  }
+  .pillar-desc {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.85;
+  }
+  .pillars-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fde68a;
+    margin-top: 8px;
+    transition: color 0.2s, transform 0.3s;
+  }
+  .pillars-link:hover { color: #fef3c7; transform: translateX(3px); }
+
+  /* ── Manifesto strip ── */
+  .manifesto {
+    padding: 80px 0 100px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .manifesto-quote {
+    font-family: 'Noto Serif TC', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .manifesto-quote em {
+    font-style: italic;
+    background: linear-gradient(110deg, #fde68a, #f9a8d4);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-
-  /* Gold-line monogram — upright, on-brand, no red, no tilt */
-  .hero-monogram {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 1;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    background: transparent;
-    position: relative;
-    margin: 0 auto 28px;
-    user-select: none;
-  }
-  .hero-monogram::before {
-    content: "";
-    position: absolute;
-    inset: 3px;
-    border: 1px solid rgba(196, 147, 42, 0.3);
-    pointer-events: none;
-  }
-
-  /* Hairline gold rule — quiet, on-brand divider */
-  .gold-rule {
-    height: 1px;
-    max-width: 280px;
-    margin: 40px auto;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(196,147,42,0.55) 30%,
-      rgba(196,147,42,0.55) 70%,
-      transparent 100%);
-  }
-  [data-theme="light"] .gold-rule {
-    background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(168,122,26,0.5) 30%,
-      rgba(168,122,26,0.5) 70%,
-      transparent 100%);
-  }
-
-  /* Section header — add italic chapter marker */
-  .section-chapter {
-    display: block;
-    font-family: 'Noto Serif TC', serif;
-    font-style: italic;
-    font-size: clamp(12px, 1.4vw, 14px);
-    color: var(--gold);
+  .manifesto-attr {
+    margin-top: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
     letter-spacing: 0.28em;
+    color: rgba(255,255,255,0.4);
     text-transform: uppercase;
-    margin-bottom: 6px;
-    opacity: 0.85;
   }
 
-  /* Stats number — gold underline mark under each figure */
-  .stat-num {
-    position: relative;
-    display: inline-block;
+  /* ── Footer ── */
+  .foot {
+    padding: 40px 0 56px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
   }
-  .stat-num::after {
-    content: "";
-    position: absolute;
-    left: 20%;
-    right: 20%;
-    bottom: -6px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.4;
+  .foot-mark {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
   }
+  .foot-mark span {
+    margin-left: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+  .foot-links {
+    display: flex;
+    gap: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+  .foot-links a:hover { color: rgba(255,255,255,0.9); }
 
-  /* Stronger product brand type */
-  .product-brand {
-    letter-spacing: 0.02em;
+  /* ── Reveal entrance ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
   }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-  /* Business section — premium callout feel */
-  .business {
-    background:
-      radial-gradient(ellipse at 50% 0%, rgba(196,147,42,0.12) 0%, transparent 70%),
-      linear-gradient(180deg, rgba(196,147,42,0.03) 0%, transparent 60%) !important;
-    border: 1px solid rgba(196,147,42,0.35) !important;
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none !important; }
+    .reveal { opacity: 1; transform: none; transition: none; }
   }
-  .business::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.6;
-    transform: translateX(-50%);
-  }
-  .business-title {
-    font-size: clamp(24px, 3.4vw, 30px) !important;
-    letter-spacing: 0.02em;
-  }
-
-  /* Hero container: bring watermark more present */
-  .hero::before {
-    opacity: 0.06 !important;
-  }
-  [data-theme="light"] .hero::before {
-    opacity: 0.05 !important;
-    color: #8a6718 !important;
-  }
-
 </style>
 </head>
 <body>
 
-<header class="site-header" role="banner">
-  <div class="site-header-inner">
-    <a href="index.html" class="site-logo" aria-label="周全法律科技 ChouLegal 首頁">周全<span class="site-logo-en">ChouLegal</span></a>
-    <nav class="site-nav" aria-label="主選單">
-      <a href="index.html" aria-current="page">首頁</a>
-      <a href="guide.html">指南</a>
-      <a href="about.html">關於</a>
-      <a href="pricing.html">方案</a>
-      <button id="themeToggle" aria-label="切換深色/淺色模式"></button>
-    </nav>
-  </div>
-</header>
+<div class="bg-mesh" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
 
 <div class="container">
 
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-monogram" aria-hidden="true">周</div>
+  <header class="nav">
+    <a href="/" class="nav-logo">周全法律科技<span>ChouLegal</span></a>
+    <nav class="nav-meta" aria-label="主選單">
+      <a href="manifesto.html">理念</a>
+      <a href="guide.html">指南</a>
+      <a href="pricing.html">方案</a>
+      <a href="https://people.choulegal.com">民眾版</a>
+      <a href="https://etp.choulegal.com">商業版</a>
+    </nav>
+  </header>
 
-    <div class="hero-eyebrow" aria-hidden="true">Legal Technology · Est. Taiwan</div>
-
-    <h1 class="hero-title" id="hero-title">法律很複雜<br>我們讓它變<em>簡單</em></h1>
-
-    <p class="hero-sub">中華民國法律科技平台，涵蓋民法、勞基法等多領域專業計算工具。<br>民眾版完全免費；事務所版另有訂閱方案。</p>
+  <section class="hero">
+    <div class="hero-eyebrow">中華民國 · 法律科技</div>
+    <h1 class="hero-title">
+      一個品牌
+      <em>兩種使用方式</em>
+    </h1>
+    <p class="hero-sub">
+      民眾自己用的權益計算工具，<br>
+      與事務所部門用的專業工作台。
+    </p>
+    <div class="hero-actions">
+      <a class="hero-cta primary" href="#doors">看兩個平台 <span aria-hidden="true">↓</span></a>
+      <a class="hero-cta ghost" href="manifesto.html">為什麼做這件事 <span aria-hidden="true">→</span></a>
+      <a class="hero-cta ghost" href="guide.html">看法律指南 <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="hero-meta">
+      <span><strong>2</strong> 個獨立平台</span>
+      <span><strong>50+</strong> 計算工具</span>
+      <span><strong>1</strong> 個信念</span>
+    </div>
   </section>
 
-  <div class="gold-rule" aria-hidden="true"></div>
+  <section class="doors" id="doors">
 
-  <!-- Manifesto -->
-  <section class="manifesto" aria-label="品牌信念">
+    <a class="door people reveal" href="https://people.choulegal.com" aria-label="進入周全民眾版">
+      <div class="door-top">
+        <span class="door-num">01</span>
+        <span class="door-tag">For Everyone</span>
+      </div>
+      <h2 class="door-name">周全 民眾版</h2>
+      <div class="door-en">PEOPLE · CHOULEGAL · COM</div>
+      <p class="door-line">自己的法律，自己算。</p>
+      <p class="door-desc">
+        民法財產權、勞基法、稅務 ── 30+ 個免費權益計算工具。
+        不需註冊、不需登入、所有計算在你的瀏覽器跑完。
+      </p>
+      <ul class="door-bullets">
+        <li>遺產繼承</li>
+        <li>資遣費</li>
+        <li>剩餘財產分配</li>
+        <li>遺贈稅</li>
+        <li>加班費</li>
+      </ul>
+      <div class="door-cta">
+        <span class="door-cta-label">進入民眾版</span>
+        <span class="door-cta-url">people.choulegal.com</span>
+        <span class="door-cta-arrow" aria-hidden="true">→</span>
+      </div>
+    </a>
+
+    <a class="door commercial reveal" href="https://etp.choulegal.com" aria-label="進入周全商業版">
+      <div class="door-top">
+        <span class="door-num">02</span>
+        <span class="door-tag">For Professionals</span>
+      </div>
+      <h2 class="door-name">周全 商業版</h2>
+      <div class="door-en">ETP · CHOULEGAL · COM</div>
+      <p class="door-line">事務所與部門的專業工作台。</p>
+      <p class="door-desc">
+        律師、會計師、地政士事務所；企業法務與 HR 部門。
+        五個各為其業的平台，整合計算、文書、案件、合規與法源同步。
+      </p>
+      <ul class="door-bullets">
+        <li>律師 Pro</li>
+        <li>會計師 Pro</li>
+        <li>地政士 Pro</li>
+        <li>企業法務 Pro</li>
+        <li>HR Pro</li>
+      </ul>
+      <div class="door-cta">
+        <span class="door-cta-label">進入商業版</span>
+        <span class="door-cta-url">etp.choulegal.com</span>
+        <span class="door-cta-arrow" aria-hidden="true">→</span>
+      </div>
+    </a>
+
+  </section>
+
+  <section class="pillars" aria-label="周全的三個原則">
+    <div class="pillars-eyebrow">Principles · 三個原則</div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h3 class="pillar-title">每筆計算都<em>追得到法條</em></h3>
+        <p class="pillar-desc">所有工具的數字都附條號、修正日期、全國法規資料庫連結。沒有黑盒子，沒有「系統算的」這種回答。</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h3 class="pillar-title">民眾版<em>永遠完全免費</em></h3>
+        <p class="pillar-desc">不註冊、不登入、不看廣告、沒有進階版。成本由 B2B 商業版的訂閱費支撐——付得起的人付，付不起的人也能用。</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <h3 class="pillar-title">一個 <em>ChouLegal</em> 帳號</h3>
+        <p class="pillar-desc">事務所一個 SSO 進入所有商業版 Suite；民眾版完全不要登入。法源、規格、品牌底層整合，介面各自為角色而生。</p>
+      </div>
+    </div>
+    <a class="pillars-link" href="manifesto.html">看完整理念 <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="manifesto">
     <blockquote class="manifesto-quote">
-      「法律應該是<em>所有人</em>的權利，<br>而非有錢人的專利。」
+      「法律應該是<em>所有人</em>的權利，<br>
+      而非有錢人的專利。」
     </blockquote>
     <div class="manifesto-attr">— 周全法律科技的信念</div>
-    <a href="manifesto.html" class="manifesto-more">讀完整版信念 <span aria-hidden="true">→</span></a>
   </section>
 
-  <!-- Stats -->
-  <section class="stats" aria-label="平台數據">
-    <div>
-      <div class="stat-num">50+</div>
-      <div class="stat-label">計算工具</div>
-    </div>
-    <div>
-      <div class="stat-num">NT$0</div>
-      <div class="stat-label">民眾版費用</div>
-    </div>
-    <div>
-      <div class="stat-num">V2026</div>
-      <div class="stat-label">最新法規對齊</div>
-    </div>
-    <div>
-      <div class="stat-num">100%</div>
-      <div class="stat-label">法源可追溯</div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section class="section" aria-labelledby="how-heading">
-    <div class="section-label reveal" id="how-heading">如何使用</div>
-    <div class="how-it-works">
-      <div class="how-step reveal">
-        <span class="how-step-num">STEP 01</span>
-        <div class="how-step-title">選擇對應的計算器</div>
-        <div class="how-step-desc">從 InheritancePro 或 LaborPro 找到對應你問題的工具——繼承、資遣費、贈與稅、加班費等，每個工具都有清楚的使用情境說明。</div>
-      </div>
-      <div class="how-step reveal">
-        <span class="how-step-num">STEP 02</span>
-        <div class="how-step-title">在瀏覽器裡填資料</div>
-        <div class="how-step-desc">不需註冊、不需登入。所有計算都在你的瀏覽器跑完，輸入的金額、身份、家庭狀況不會傳到我們這邊——我們連你今天算了什麼都不知道。</div>
-      </div>
-      <div class="how-step reveal">
-        <span class="how-step-num">STEP 03</span>
-        <div class="how-step-title">拿到結果＋法源</div>
-        <div class="how-step-desc">每一筆數字都附上所依據的法條編號與施行細則；結論下方有「為什麼是這個數字」的逐項拆解，可自行對照全國法規資料庫複驗。</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section class="section">
-    <div class="section-label reveal">旗下產品</div>
-
-    <div class="products">
-
-      <a class="product-card inheritance reveal" data-delay="0" href="https://inheritance.choulegal.com" target="_blank" rel="noopener">
-        <div class="product-top">
-          <div class="product-brand">InheritancePro</div>
-          <span class="product-tag">民法</span>
-        </div>
-        <div class="product-subtitle">中華民國民法財產權益計算平台 — 30+ 個專業工具，涵蓋繼承、離婚、保險、損害賠償。</div>
-        <div class="product-features">
-          <span class="product-feature">遺產繼承</span>
-          <span class="product-feature">贍養費</span>
-          <span class="product-feature">剩餘財產分配</span>
-          <span class="product-feature">保險規劃</span>
-          <span class="product-feature">脫產偵測</span>
-          <span class="product-feature">消滅時效</span>
-        </div>
-        <div class="product-cta">
-          <span>前往平台</span>
-          <span class="product-cta-arrow">→</span>
-        </div>
-      </a>
-
-      <a class="product-card labor reveal" data-delay="150" href="https://labor.choulegal.com" target="_blank" rel="noopener">
-        <div class="product-top">
-          <div class="product-brand">LaborPro</div>
-          <span class="product-tag">勞基法</span>
-        </div>
-        <div class="product-subtitle">中華民國勞基法權益計算平台 — 20+ 個工具，支援勞工與雇主雙身份模式。</div>
-        <div class="product-features">
-          <span class="product-feature">資遣費</span>
-          <span class="product-feature">加班費</span>
-          <span class="product-feature">職災補償</span>
-          <span class="product-feature">合規自檢</span>
-          <span class="product-feature">人事成本</span>
-          <span class="product-feature">解僱成本</span>
-        </div>
-        <div class="product-cta">
-          <span>前往平台</span>
-          <span class="product-cta-arrow">→</span>
-        </div>
-      </a>
-
-      <a class="product-card business reveal" data-delay="300" href="https://etp.choulegal.com" target="_blank" rel="noopener">
-        <div class="product-top">
-          <div class="product-brand">周全 商業版</div>
-          <span class="product-tag">律師事務所 B2B</span>
-        </div>
-        <div class="product-subtitle">律師事務所專用民法財產權案件工作台 — 案件管理、法源自動引證、PDF 工作底稿、多律師協作。</div>
-        <div class="product-features">
-          <span class="product-feature">案件管理</span>
-          <span class="product-feature">法源引證</span>
-          <span class="product-feature">PDF 工作底稿</span>
-          <span class="product-feature">多租戶 SaaS</span>
-        </div>
-        <div class="product-cta">
-          <span>前往商業版</span>
-          <span class="product-cta-arrow" aria-hidden="true">→</span>
-        </div>
-      </a>
-
-      <div class="pricing-link">
-        <a href="pricing.html">→ 了解完整訂閱方案（Starter / Pro / Enterprise）</a>
-      </div>
-
-      <div class="product-card coming-soon reveal" data-delay="450" aria-label="消費爭議計算平台｜規劃中" aria-disabled="true">
-        <div class="product-top">
-          <div class="product-brand">Coming Soon</div>
-          <span class="product-tag">消費爭議</span>
-        </div>
-        <div class="product-subtitle">消費者保護與爭議處理計算平台 — 目前於規劃階段，尚未排入開發時程。</div>
-        <div class="product-features">
-          <span class="product-feature">消費糾紛</span>
-          <span class="product-feature">退貨退款</span>
-          <span class="product-feature">損害賠償</span>
-        </div>
-        <div class="product-cta">
-          <span>規劃中</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Law Updates -->
-  <section class="section" aria-labelledby="updates-heading">
-    <div class="section-label reveal" id="updates-heading">法規同步紀錄</div>
-    <div class="updates">
-      <div class="update-card reveal">
-        <span class="update-date">2026 · 01</span>
-        <div class="update-title">基本工資調整</div>
-        <div class="update-desc">月薪 29,500 元、時薪 196 元，2026 年 1 月 1 日起適用（由 2025 年的 28,590 / 190 調升）。LaborPro 的平均工資、資遣費、加班費、特休工資等相關算式同步更新。</div>
-        <span class="update-src">SOURCE · 勞動部公告</span>
-      </div>
-      <div class="update-card reveal">
-        <span class="update-date">2025 · 01</span>
-        <div class="update-title">遺產稅級距 / 扣除額</div>
-        <div class="update-desc">級距 5,621 萬 / 1 億 1,242 萬；配偶扣除 553 萬、每位卑親屬 56 萬、父母 138 萬、喪葬費 138 萬。InheritancePro 全站算式已對齊 V2025。</div>
-        <span class="update-src">SOURCE · 遺產及贈與稅法施行細則</span>
-      </div>
-      <div class="update-card reveal">
-        <span class="update-date">2025 · 01</span>
-        <div class="update-title">贈與稅與 AMT</div>
-        <div class="update-desc">贈與稅級距 2,811 萬 / 5,621 萬、每人每年免稅額 244 萬；所得基本稅額條例第 12 條保險給付排除額為 3,740 萬，InheritancePro 同步修正。</div>
-        <span class="update-src">SOURCE · 財政部公告</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Values -->
-  <section class="section">
-    <div class="section-label reveal">品牌理念</div>
-
-    <div class="values">
-      <div class="value-item reveal">
-        <span class="value-num" aria-hidden="true">I</span>
-        <div>
-          <div class="value-title">嚴謹</div>
-          <div class="value-desc">計算模型依據現行法條、施行細則與實務判例設計，我們持續追蹤法規變動並在查證後發布更新。</div>
-        </div>
-      </div>
-      <div class="value-item reveal">
-        <span class="value-num" aria-hidden="true">II</span>
-        <div>
-          <div class="value-title">免費</div>
-          <div class="value-desc">所有核心計算功能完全免費，不需註冊、不需登入、不需付費。法律知識不應該有門檻。</div>
-        </div>
-      </div>
-      <div class="value-item reveal">
-        <span class="value-num" aria-hidden="true">III</span>
-        <div>
-          <div class="value-title">專業</div>
-          <div class="value-desc">從第一次接觸法律的一般民眾，到每天處理案件的律師與會計師——同一個平台，不同深度。</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" aria-labelledby="faq-heading">
-    <div class="section-label reveal" id="faq-heading">常見法律問題</div>
-    <p class="faq-lead reveal">以下為常見問題的方向性說明，實際個案請諮詢律師；想試算請直接使用對應工具，每筆結果都附法源。</p>
-    <div class="faq">
-      <div class="faq-item reveal">
-        <div class="faq-q">沒寫遺囑，遺產怎麼分？</div>
-        <div class="faq-a">配偶永遠是繼承人；其他繼承人依序為：直系血親卑親屬（子女、孫）、父母、兄弟姊妹、祖父母。前順位存在時，後順位不能繼承。應繼分比例依配偶與不同順位繼承人的組合而定。</div>
-        <div class="faq-law">民法 §1138、§1144</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">特留分是什麼？可以全部遺贈給別人嗎？</div>
-        <div class="faq-a">特留分是法定繼承人不能被遺囑剝奪的最低份額。卑親屬、父母、配偶的特留分為應繼分的二分之一；兄弟姊妹、祖父母為三分之一。超過特留分的部分才能依遺囑自由處分。</div>
-        <div class="faq-law">民法 §1223</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">被資遣，資遣費怎麼算？</div>
-        <div class="faq-a">勞退新制（2005 / 7 / 1 後到職或選擇新制）每滿 1 年發 0.5 個月平均工資，未滿 1 年者按比例計，最高 6 個月；舊制每滿 1 年發 1 個月，無上限。月薪以「被資遣前 6 個月」平均工資為準。</div>
-        <div class="faq-law">勞基法 §17、勞工退休金條例 §12</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">加班費怎麼算？</div>
-        <div class="faq-a">平日延長工時：前 2 小時每小時加給 1/3，第 3 小時起加給 2/3。休息日出勤另有加倍計算規則。實際金額因日薪、工時長短、是否為休息日而異，建議直接用 LaborPro 加班費試算。</div>
-        <div class="faq-law">勞基法 §24</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">保險理賠算遺產嗎？</div>
-        <div class="faq-a">要保人與被保險人同一人、且有指定受益人的死亡給付，不計入遺產總額。但若受益人所獲保險給付累計超過一定金額，會被納入基本所得課徵 AMT（最低稅負制）。</div>
-        <div class="faq-law">保險法 §112、所得基本稅額條例 §12</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">每年能贈與多少不用繳稅？</div>
-        <div class="faq-a">每一贈與人每年有 244 萬元免稅額。夫妻可各自贈與，所以父母一年合計贈子女最高 488 萬元不課贈與稅；超過部分依級距課 10% / 15% / 20%。</div>
-        <div class="faq-law">遺產及贈與稅法 §22、§19</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">離婚時，夫妻財產怎麼分？</div>
-        <div class="faq-a">若適用法定財產制，雙方婚後財產扣除婚後債務後，剩餘較少的一方可向對方請求平均分配差額。因繼承、無償取得或慰撫金所得的財產不列入分配。</div>
-        <div class="faq-law">民法 §1030-1、§1030-4</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">結果可以直接當作法律意見嗎？</div>
-        <div class="faq-a">不行。本平台工具的計算僅供初步參考，不構成法律意見。個案因事實、適用法規、法院見解不同可能有差異，建議諮詢具執照之律師或相關法律專業人員。</div>
-        <div class="faq-law">免責聲明</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Business -->
-  <section class="business reveal">
-    <div class="section-label">Business</div>
-    <div class="business-title">商業合作</div>
-    <div class="business-desc">事務所白標導入、法律科技合作、教育機構授權、媒體採訪，歡迎來信討論。</div>
-    <a class="business-email" href="mailto:businessjoechou@gmail.com">businessjoechou@gmail.com</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <section aria-label="免責聲明" style="max-width:720px;margin:0 auto 16px;font-size:11.5px;color:rgba(240,237,232,0.55);line-height:1.75;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.08);">
-      <strong style="color:rgba(240,237,232,0.75);">免責聲明</strong>：本平台旗下所有工具之計算結果僅供初步參考，不構成法律意見或法律諮詢服務。實際案件因個案事實、適用法規及法院見解不同，結果可能有所差異，建議諮詢具執照之律師或相關法律專業人員。
-    </section>
-    &copy; 2026 周全法律科技 ChouLegal. All rights reserved.<br>
-    <a href="about.html">關於</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="pricing.html">商業版方案</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="privacy.html">隱私權政策</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="terms.html">使用者條款</a>
+  <footer class="foot">
+    <div class="foot-mark">周全法律科技<span>© <span id="year">2026</span> · ChouLegal</span></div>
+    <nav class="foot-links" aria-label="頁尾">
+      <a href="about.html">關於</a>
+      <a href="manifesto.html">理念</a>
+      <a href="guide.html">指南</a>
+      <a href="pricing.html">方案</a>
+      <a href="privacy.html">隱私權</a>
+      <a href="terms.html">條款</a>
+      <a href="https://people.choulegal.com">民眾版</a>
+      <a href="https://etp.choulegal.com">商業版</a>
+    </nav>
   </footer>
 
 </div>
 
 <script>
-(function(){
-  var html = document.documentElement;
-  var stored = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var theme = stored || (prefersDark ? 'dark' : 'light');
-  if (theme === 'light') html.setAttribute('data-theme', 'light');
-
-  function updateIcon(t) {
-    var btn = document.getElementById('themeToggle');
-    if (btn) btn.textContent = t === 'light' ? '\u263E' : '\u2600';
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-
-    /* ── Theme Toggle with Rotation ── */
-    var btn = document.getElementById('themeToggle');
-    if (btn) {
-      updateIcon(theme);
-      btn.addEventListener('click', function() {
-        /* Smooth rotation animation */
-        btn.classList.add('is-rotating');
-        setTimeout(function() { btn.classList.remove('is-rotating'); }, 400);
-
-        html.classList.add('theme-transitioning');
-        var current = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        if (current === 'light') html.setAttribute('data-theme', 'light');
-        else html.removeAttribute('data-theme');
-        localStorage.setItem('theme', current);
-        updateIcon(current);
-        setTimeout(function(){ html.classList.remove('theme-transitioning'); }, 350);
+  // Year stamp
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+  // Scroll reveal — JS-fail safe
+  if (typeof IntersectionObserver !== 'undefined') {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
       });
-    }
-
-    /* ── Scroll Reveal with IntersectionObserver ── */
-    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReduced) {
-      var reveals = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              var el = entry.target;
-              var delay = parseInt(el.getAttribute('data-delay') || '0', 10);
-              setTimeout(function() {
-                el.classList.add('is-visible');
-              }, delay);
-              observer.unobserve(el);
-            }
-          });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-        reveals.forEach(function(el) { observer.observe(el); });
-      } else {
-        /* Fallback: show all immediately */
-        reveals.forEach(function(el) { el.classList.add('is-visible'); });
-      }
-    } else {
-      /* Reduced motion: make everything visible */
-      document.querySelectorAll('.reveal').forEach(function(el) {
-        el.classList.add('is-visible');
+    }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Fail-safe: any reveal still hidden after 1.6s force visible (e.g. above-fold race)
+    setTimeout(function () {
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight) el.classList.add('is-visible');
       });
-    }
-
-    /* ── Number Counter Animation ── */
-    if (!prefersReduced) {
-      var numberEls = document.querySelectorAll('[data-count]');
-      if (numberEls.length > 0 && 'IntersectionObserver' in window) {
-        var countObserver = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              var el = entry.target;
-              var target = parseInt(el.getAttribute('data-count'), 10);
-              var suffix = el.getAttribute('data-suffix') || '';
-              var duration = 1200;
-              var start = 0;
-              var startTime = null;
-
-              function easeOutExpo(t) {
-                return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-              }
-
-              function step(timestamp) {
-                if (!startTime) startTime = timestamp;
-                var progress = Math.min((timestamp - startTime) / duration, 1);
-                var current = Math.floor(easeOutExpo(progress) * target);
-                el.textContent = current + suffix;
-                if (progress < 1) {
-                  requestAnimationFrame(step);
-                } else {
-                  el.textContent = target + suffix;
-                }
-              }
-
-              requestAnimationFrame(step);
-              countObserver.unobserve(el);
-            }
-          });
-        }, { threshold: 0.5 });
-
-        numberEls.forEach(function(el) { countObserver.observe(el); });
-      }
-    }
-
-  });
-})();
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "周全法律科技 ChouLegal",
-  "description": "中華民國法律科技平台，旗下 InheritancePro、LaborPro 等專業法律計算工具。",
-  "url": "https://choulegal.com",
-  "foundingDate": "2026",
-  "founder": {
-    "@type": "Person",
-    "name": "Joe Chou"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "businessjoechou@gmail.com",
-    "contactType": "business"
+    }, 1600);
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
   }
-}
 </script>
+
 </body>
 </html>
