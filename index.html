@@ -2,18 +2,50 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周全法律科技 ChouLegal — 民眾版 · 商業版</title>
-<meta name="description" content="周全法律科技 ChouLegal。母品牌底下兩個法律平台：周全民眾版（免費權益計算）與周全商業版（事務所與部門工作台）。">
+<title>周全法律科技 ChouLegal — 民眾版 · 商業版 · AI 初判</title>
+<meta name="description" content="周全法律科技 ChouLegal。母品牌底下三個法律平台：周全民眾版（免費權益計算）、周全商業版（事務所與部門工作台）、周全 AI 初判（AI 案情判斷）。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://choulegal.com/">
-<meta property="og:title" content="周全法律科技 ChouLegal">
-<meta property="og:description" content="兩個法律平台。民眾版自己算，商業版事務所用。">
+<meta property="og:title" content="周全法律科技 ChouLegal — 民眾版 · 商業版 · AI 初判">
+<meta property="og:description" content="中華民國法律科技平台。民眾版免費權益計算、商業版事務所與部門工作台、AI 初判 8 大領域案情判斷。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choulegal.com/">
+<meta property="og:site_name" content="周全法律科技 ChouLegal">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://choulegal.com/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="周全法律科技 ChouLegal — 中華民國法律科技平台">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="周全法律科技 ChouLegal">
+<meta name="twitter:description" content="中華民國法律科技平台。民眾版 + 商業版 + AI 初判。">
+<meta name="twitter:image" content="https://choulegal.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "周全法律科技",
+  "alternateName": "ChouLegal",
+  "url": "https://choulegal.com/",
+  "logo": "https://choulegal.com/icon-512.png",
+  "description": "中華民國法律科技平台，提供民眾版（免費權益計算）、商業版（事務所工作台）、AI 初判（8 大領域案情判斷）。",
+  "sameAs": [
+    "https://people.choulegal.com/",
+    "https://etp.choulegal.com/",
+    "https://ai.choulegal.com/",
+    "https://inheritance.choulegal.com/",
+    "https://labor.choulegal.com/"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -287,7 +319,7 @@
     margin-right: 22px;
   }
 
-  /* ── Two doors ── */
+  /* ── Three doors ── */
   .doors {
     display: grid;
     grid-template-columns: 1fr;
@@ -295,7 +327,7 @@
     padding: 60px 0 120px;
   }
   @media (min-width: 880px) {
-    .doors { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .doors { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   }
 
   .door {
@@ -342,6 +374,9 @@
   .door.commercial::before {
     background: radial-gradient(circle, rgba(167,139,250,0.55), rgba(244,114,182,0.25) 50%, transparent 70%);
   }
+  .door.ai::before {
+    background: radial-gradient(circle, rgba(45,212,191,0.55), rgba(56,189,248,0.25) 50%, transparent 70%);
+  }
 
   .door-top {
     position: relative;
@@ -369,6 +404,7 @@
   }
   .door.people .door-tag { color: #fde68a; border-color: rgba(253,230,138,0.4); }
   .door.commercial .door-tag { color: #ddd6fe; border-color: rgba(221,214,254,0.35); }
+  .door.ai .door-tag { color: #99f6e4; border-color: rgba(153,246,228,0.4); }
 
   .door-name {
     position: relative;
@@ -732,6 +768,32 @@
       </div>
     </a>
 
+    <a class="door ai reveal" href="https://ai.choulegal.com" aria-label="進入周全 AI 初判">
+      <div class="door-top">
+        <span class="door-num">03</span>
+        <span class="door-tag">AI Triage</span>
+      </div>
+      <h2 class="door-name">周全 AI 初判</h2>
+      <div class="door-en">AI · CHOULEGAL · COM</div>
+      <p class="door-line">說一次你遇到的事，AI 幫你找方向。</p>
+      <p class="door-desc">
+        民事、勞動、消保、行政、稅務、家事繼承、車禍、醫療糾紛 ── 8 大領域 AI 案情初判。
+        每筆回答附法條依據，超出範圍直接引導律師。
+      </p>
+      <ul class="door-bullets">
+        <li>RAG 法源 grounding</li>
+        <li>事實查核</li>
+        <li>越界即停</li>
+        <li>不收個資</li>
+        <li>付費</li>
+      </ul>
+      <div class="door-cta">
+        <span class="door-cta-label">進入 AI 初判</span>
+        <span class="door-cta-url">ai.choulegal.com</span>
+        <span class="door-cta-arrow" aria-hidden="true">→</span>
+      </div>
+    </a>
+
   </section>
 
   <section class="pillars" aria-label="周全的三個原則">
@@ -775,6 +837,7 @@
       <a href="terms.html">條款</a>
       <a href="https://people.choulegal.com">民眾版</a>
       <a href="https://etp.choulegal.com">商業版</a>
+      <a href="https://ai.choulegal.com">AI 初判</a>
     </nav>
   </footer>
 
