@@ -5,221 +5,429 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>關於周全法律科技｜一人法律科技公司，信奉法律服務平民化</title>
-<meta name="description" content="周全法律科技由 Joe Chou 一人創辦。旗下 InheritancePro、LaborPro 等工具完全免費；另推出 B2B「周全 商業版」服務律師事務所。法條隨公告即時更新，每筆計算都可追溯法源。">
-<meta name="keywords" content="周全法律科技,ChouLegal,Joe Chou,法律科技新創,LegalTech Taiwan,InheritancePro,LaborPro,周全商業版,法律計算平台">
+<title>關於 — 周全 ChouLegal</title>
+<meta name="description" content="周全 ChouLegal 由 Joe Chou 一人創辦。中華民國法律科技。每筆計算都可追溯法源、每句回答都附條文。">
 <meta name="robots" content="index, follow">
-<meta name="author" content="周全法律科技 ChouLegal">
 <link rel="canonical" href="https://choulegal.com/about.html">
-<meta property="og:title" content="關於周全法律科技｜一人公司，做給所有人用的法律工具">
-<meta property="og:description" content="創辦人 Joe Chou 的緣起、為何堅持民眾版完全免費、為何同時經營 B2B 商業版。">
+<meta property="og:title" content="關於 — 周全 ChouLegal">
+<meta property="og:description" content="一人法律科技公司，信奉法律服務平民化。">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="周全法律科技 ChouLegal">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:url" content="https://choulegal.com/about.html">
-<meta property="og:image" content="https://choulegal.com/social-avatar.svg">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="關於周全法律科技｜一人公司，做給所有人用的法律工具">
-<meta name="twitter:description" content="法律服務不該只有有錢人享受。民眾版完全免費；事務所版另有訂閱方案。">
-<meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/brand.css">
 <script src="js/ga.js" defer></script>
 <style>
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: #06080d;
+    color: rgba(255,255,255,0.92);
+    font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+    font-size: 17px; line-height: 1.65;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  *:focus-visible { outline: 2px solid rgba(253,230,138,0.7); outline-offset: 3px; border-radius: 2px; }
+  a { color: inherit; text-decoration: none; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(6,8,13,0.72);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px; font-weight: 500; letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.97);
+  }
+  .nav-logo small {
+    margin-left: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.26em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase; font-weight: 400;
+  }
+  .nav-links { display: flex; gap: 28px; font-size: 13px; color: rgba(255,255,255,0.72); }
+  .nav-links a { transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a[aria-current="page"] { color: rgba(255,255,255,0.97); }
+  @media (max-width: 720px) { .nav-inner { padding: 14px 22px; } .nav-links { gap: 18px; font-size: 12px; } }
+
+  .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 640px) { .wrap-narrow { padding: 0 22px; } }
+
+  .hero {
+    padding: 120px 0 60px;
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.28em;
+    color: #fde68a; text-transform: uppercase;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  h1.title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.98);
+    margin-bottom: 24px;
+  }
+  h1.title em {
+    font-style: normal;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+  }
+  .lead {
+    font-size: 19px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.65;
+    max-width: 56ch;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  .section { padding: 80px 0; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.28em;
+    color: #fde68a; text-transform: uppercase;
+    margin-bottom: 14px; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 3.6vw, 40px);
+    line-height: 1.12;
+    color: rgba(255,255,255,0.98);
+    letter-spacing: -0.012em;
+    margin-bottom: 28px;
+  }
+
+  .prose p {
+    font-size: 17px;
+    line-height: 1.95;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 22px;
+  }
+  .prose strong { color: rgba(255,255,255,0.97); font-weight: 600; }
+  .prose em { font-style: italic; color: #fde68a; }
+  .prose h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: rgba(255,255,255,0.97);
+    margin: 36px 0 14px;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+
   .founder-card {
     display: flex;
-    gap: 22px;
+    gap: 24px;
     align-items: flex-start;
-    padding: 26px 28px;
-    margin: 28px 0 8px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.025);
-    border-radius: 16px;
-    -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
+    padding: 32px;
+    margin: 36px 0 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #0c1018;
+    border-radius: 22px;
   }
   .founder-initial {
     flex-shrink: 0;
-    width: 60px; height: 60px;
+    width: 64px; height: 64px;
     border-radius: 50%;
     border: 1.5px solid rgba(253,230,138,0.7);
     color: #fde68a;
-    font-family: "Noto Serif TC", serif;
+    font-family: 'Noto Serif TC', serif;
     font-size: 30px;
     font-weight: 500;
     display: flex; align-items: center; justify-content: center;
   }
-  .founder-name { font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.97); margin-bottom: 4px; }
-  .founder-role { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.16em; color: #fde68a; text-transform: uppercase; margin-bottom: 12px; }
-  .founder-bio { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.85; }
-
-  .pillars { display: grid; gap: 14px; margin: 22px 0 8px; }
-  @media (min-width: 720px) { .pillars { grid-template-columns: 1fr 1fr; } }
-  .pillar {
-    padding: 20px 22px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.02);
-    border-radius: 14px;
+  .founder-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 19px; font-weight: 500;
+    color: rgba(255,255,255,0.97);
+    margin-bottom: 6px;
   }
-  .pillar-title { font-family: "Noto Serif TC", serif; font-size: 15.5px; font-weight: 500; color: rgba(255,255,255,0.97); margin-bottom: 8px; }
-  .pillar-title::before { content: '▸'; color: #fde68a; margin-right: 8px; }
-  .pillar-desc { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.85; }
+  .founder-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em;
+    color: #fde68a; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .founder-bio {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.85;
+  }
 
-  .mini-products { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 28px;
+  }
+  @media (max-width: 720px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    padding: 26px 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #0c1018;
+    border-radius: 18px;
+  }
+  .pillar-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px; font-weight: 500;
+    color: rgba(255,255,255,0.97);
+    margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .pillar-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fde68a;
+    margin-right: 10px;
+    vertical-align: middle;
+    transform: translateY(-2px);
+  }
+  .pillar-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.85;
+  }
+
+  .mini-products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
   @media (max-width: 600px) { .mini-products { grid-template-columns: 1fr; } }
   .mini-card {
     display: block;
-    padding: 18px 20px;
+    padding: 22px 24px;
     border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.02);
-    border-radius: 14px;
+    background: #0c1018;
+    border-radius: 16px;
     transition: border-color 0.25s, transform 0.3s;
   }
-  .mini-card:hover { border-color: rgba(253,230,138,0.6); transform: translateY(-2px); }
-  .mini-card-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; color: #fde68a; text-transform: uppercase; margin-bottom: 6px; }
-  .mini-card-brand { font-family: "Noto Serif TC", serif; font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.97); margin-bottom: 6px; }
-  .mini-card-desc { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+  .mini-card:hover { border-color: rgba(253,230,138,0.5); transform: translateY(-2px); }
+  .mini-card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.18em;
+    color: #fde68a;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .mini-card-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px; font-weight: 500;
+    color: rgba(255,255,255,0.97);
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .mini-card-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
 
-  .end-cta { text-align: center; padding: 56px 0 24px; }
-  .end-cta .btn + .btn-link { margin-left: 18px; }
-  .btn-link { font-family: "Noto Serif TC", serif; font-size: 14px; color: rgba(255,255,255,0.7); transition: color 0.2s; }
+  .end {
+    text-align: center;
+    padding: 80px 0 40px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 13px 26px;
+    border-radius: 999px;
+    background: #fde68a;
+    color: #06080d;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px; font-weight: 500;
+    transition: background 0.25s, transform 0.3s;
+  }
+  .btn:hover { background: #fef3c7; transform: translateY(-1px); }
+  .btn::after { content: '›'; font-size: 18px; line-height: 1; transition: transform 0.3s; }
+  .btn:hover::after { transform: translateX(4px); }
+  .btn-link {
+    margin-left: 22px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    transition: color 0.2s;
+  }
   .btn-link:hover { color: #fde68a; }
+
+  .foot {
+    padding: 40px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.4);
+  }
+  .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .foot-links a:hover { color: rgba(255,255,255,0.85); }
+
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 80px 0 40px; }
+    .section { padding: 60px 0; }
+    .founder-card { padding: 24px; gap: 16px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="bg-mesh" aria-hidden="true">
-  <div class="blob blob-a"></div>
-  <div class="blob blob-b"></div>
-  <div class="blob blob-c"></div>
-</div>
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-grain" aria-hidden="true"></div>
-
-<div class="container-narrow">
-
-  <header class="site-nav">
-    <a href="index.html" class="site-logo">周全<small>ChouLegal</small></a>
-    <nav class="site-nav-links" aria-label="主選單">
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">周全<small>ChouLegal</small></a>
+    <nav class="nav-links" aria-label="主選單">
       <a href="index.html">首頁</a>
-      <a href="guide.html">指南</a>
       <a href="manifesto.html">理念</a>
       <a href="about.html" aria-current="page">關於</a>
       <a href="pricing.html">方案</a>
     </nav>
-  </header>
+  </div>
+</header>
+
+<div class="wrap-narrow">
 
   <section class="hero">
-    <div class="eyebrow">About ChouLegal</div>
-    <h1 class="h-display">法律應該是<em>所有人的權利。</em></h1>
-    <p class="lead">周全法律科技是一家一人經營的法律科技公司。我們把專業計算工具免費開放給民眾，同時以訂閱方式服務律師事務所——用兩條產品線，支撐一個信念。</p>
+    <div class="eyebrow">About</div>
+    <h1 class="title">法律應該是<br><em>所有人的權利。</em></h1>
+    <p class="lead">周全是一家一人經營的法律科技公司。同一個結構化法源底層，撐起給民眾的免費計算與給專業人士的 AI Pro。</p>
   </section>
 
-  <section class="sec prose" aria-labelledby="founder-heading">
-    <div class="sec-eyebrow">Founder</div>
-    <h2 id="founder-heading">創辦人的緣起</h2>
-    <p>周全法律科技由 <strong>Joe Chou</strong> 一人於 2026 年創辦、獨立維運。沒有 VC、沒有共同創辦人、沒有工程團隊——產品方向、法條研究、介面設計與客服，都由我自己把關。</p>
-    <p>老實說，能讓一個人撐起這樣一條產品線，關鍵是 AI。我使用 Claude 等 AI 工具輔助寫程式、交叉查核法規、整理條文結構；我的工作是把法律研究做對、把產品判斷做對，再由 AI 協助我把它快速實作出來。我不想把自己包裝成一個全能的工程師——這件事做得成，是因為這個時代讓一個人就有機會做到。</p>
-    <p>會做這件事，是因為看過太多人為了一個簡單的法律問題四處奔波：長輩過世想知道遺產怎麼分、被資遣想算算資遣費合不合理、離婚時不知道剩餘財產分配怎麼計算。問律師要錢、查法條看不懂、網路上資訊零散又常常過時。</p>
-    <p>市面上不是沒有工具，但多半要付費、要註冊、要看完滿滿的廣告。於是決定自己做一個——把最常被問到的民法、勞基法計算題全部工程化，放在瀏覽器裡直接跑，不收錢、不要登入、不塞廣告。</p>
+  <section class="section reveal">
+    <div class="section-eyebrow">Founder</div>
+    <h2 class="section-title">創辦人的緣起。</h2>
+    <div class="prose">
+      <p>周全由 <strong>Joe Chou</strong> 一人於 2026 年創辦、獨立維運。沒有 VC、沒有共同創辦人、沒有工程團隊 — 產品方向、法條研究、介面設計與客服，都由我自己把關。</p>
+      <p>能讓一個人撐起這樣一條產品線，關鍵是 AI 輔助。我使用 Claude 等工具寫程式、交叉查核法規、整理條文結構；我的工作是把法律研究做對、把產品判斷做對，再由 AI 協助快速實作。<em>這件事做得成，是因為這個時代讓一個人就有機會做到。</em></p>
+      <p>會做這件事，是因為看過太多人為了一個簡單的法律問題四處奔波：長輩過世想知道遺產怎麼分、被資遣想算算資遣費合不合理、離婚時不知道剩餘財產分配怎麼計算。問律師要錢、查法條看不懂、網路上的資訊零散又常常過時。</p>
+      <p>市面上不是沒有工具，但多半要付費、要註冊、要看完滿滿的廣告。於是決定自己做一個 — 把最常被問到的民法、勞基法計算題全部工程化，放在瀏覽器裡直接跑，不收錢、不要登入、不塞廣告。</p>
+    </div>
 
     <div class="founder-card">
       <div class="founder-initial" aria-hidden="true">J</div>
       <div>
         <div class="founder-name">Joe Chou</div>
         <div class="founder-role">Founder · Sole Operator</div>
-        <div class="founder-bio">主責產品方向、法條研究、介面設計與客服。開發時倚賴 AI 工具加速實作，再由我逐條把關每個法規引用與計算邏輯——做對的判斷，比什麼都重要。</div>
+        <div class="founder-bio">主責產品方向、法條研究、介面設計與客服。開發時倚賴 AI 工具加速實作，再由我逐條把關每個法規引用與計算邏輯 — 做對的判斷，比什麼都重要。</div>
       </div>
     </div>
   </section>
 
-  <section class="sec prose" aria-labelledby="why-free-heading">
-    <div class="sec-eyebrow">Philosophy</div>
-    <h2 id="why-free-heading">為什麼民眾版完全免費</h2>
-    <p>因為法律服務的真實成本，落在最沒能力付費的人身上最重。付得起律師諮詢費的人通常不需要這些工具——他們直接問律師就好；真正需要工具的是那些不太敢開口問律師、又被專業術語擋在門外的一般人。</p>
-    <p>如果工具向這群人收費，就等於用同一個問題再收一次稅——法律已經夠複雜了，不需要再加上一道付費牆。</p>
-    <p>所以 <strong>InheritancePro、LaborPro 這些民眾版產品永遠完全免費</strong>，不需註冊、不需登入、不看廣告、沒有進階版也沒有解鎖按鈕。</p>
+  <section class="section reveal">
+    <div class="section-eyebrow">Philosophy</div>
+    <h2 class="section-title">為什麼日常工具<br>永遠免費。</h2>
+    <div class="prose">
+      <p>因為法律服務的真實成本，落在最沒能力付費的人身上最重。付得起律師諮詢費的人通常不需要這些工具 — 他們直接問律師就好；真正需要工具的是那些不太敢開口問律師、又被專業術語擋在門外的一般人。</p>
+      <p>如果工具向這群人收費，就等於用同一個問題再收一次稅 — 法律已經夠複雜了，不需要再加上一道付費牆。</p>
+      <p>所以勞動、繼承、公職薪資的計算工具<strong>永遠完全免費</strong>，不需註冊、不需登入、不看廣告、沒有進階版也沒有解鎖按鈕。</p>
 
-    <h3>那錢從哪裡來？</h3>
-    <p>民眾版的營運成本，由 B2B 的「<strong>周全 商業版</strong>」訂閱費用支撐。商業版是設計給律師事務所用的案件工作台，律師每月付訂閱費、事務所得到專業工具、民眾則繼續拿到免費的計算器。</p>
+      <h3>那錢從哪裡來？</h3>
+      <p>這些工具的營運成本，由 <strong>AI Pro</strong> 訂閱費支撐。AI Pro 給律師事務所、會計師事務所、地政士事務所、企業法務、人資與餐飲團隊使用 — 同一套 agentic AI 引擎，五個版本各自接專業 corpus。事務所付訂閱費、得到專業工具；給民眾的計算工具則繼續免費開放。</p>
+    </div>
   </section>
 
-  <section class="sec prose" aria-labelledby="stance-heading">
-    <div class="sec-eyebrow">Technical Stance</div>
-    <h2 id="stance-heading">技術立場</h2>
+  <section class="section reveal">
+    <div class="section-eyebrow">Stance</div>
+    <h2 class="section-title">技術立場。</h2>
     <div class="pillars">
       <div class="pillar">
         <div class="pillar-title">法條隨公告即時更新</div>
-        <div class="pillar-desc">民法、勞基法、基本工資、勞保投保級距等法規，只要總統府、勞動部、司法院公告變動，我們就在驗證後更新計算邏輯並於版本紀錄標註生效日。</div>
+        <div class="pillar-desc">民法、勞基法、基本工資、勞保投保級距等，立法院或主管機關公告變動後，於人工驗證後更新計算邏輯並標註生效日。</div>
       </div>
       <div class="pillar">
-        <div class="pillar-title">每筆計算都可追溯法源</div>
-        <div class="pillar-desc">工具回傳的每個數字，都附上所依據的法條編號與施行細則。使用者點得到、律師也查得到——沒有黑盒子公式，沒有「系統算的」這種回答。</div>
+        <div class="pillar-title">每筆計算都追得到法源</div>
+        <div class="pillar-desc">工具回傳的每個數字，都附上所依據的條號、修正日期與全國法規資料庫連結。沒有黑盒子，沒有「系統算的」這種回答。</div>
       </div>
       <div class="pillar">
-        <div class="pillar-title">純前端計算，資料不進伺服器</div>
-        <div class="pillar-desc">民眾版所有計算都在你的瀏覽器裡跑完。輸入的金額、身份、家庭狀況不會傳到我們這邊——我們連「有沒有人今天算了遺產」都不知道。</div>
+        <div class="pillar-title">純前端計算，不上傳伺服器</div>
+        <div class="pillar-desc">免費計算工具的所有運算都在你的瀏覽器內跑完。輸入的金額、身分、家庭狀況不會傳到我們這邊。</div>
       </div>
       <div class="pillar">
         <div class="pillar-title">不自創法條、不誇大結論</div>
-        <div class="pillar-desc">工具只做法規明文規定的計算。遇到實務見解分歧的爭點，我們標註「司法實務多數見解」並列出出處；遇到立法尚未規範的灰色地帶，直接告訴你「請諮詢律師」。</div>
+        <div class="pillar-desc">工具只做法規明文規定的計算。實務見解分歧的爭點標註多數見解出處；立法尚未規範的灰色地帶，直接告訴你「請諮詢律師」。</div>
       </div>
     </div>
   </section>
 
-  <section class="sec prose" aria-labelledby="products-heading">
-    <div class="sec-eyebrow">Products</div>
-    <h2 id="products-heading">旗下產品</h2>
-    <p class="muted">一個品牌、兩條產品線：民眾版給所有人免費用，商業版讓事務所付費升級。</p>
+  <section class="section reveal">
+    <div class="section-eyebrow">Products</div>
+    <h2 class="section-title">旗下產品。</h2>
     <div class="mini-products">
-      <a class="mini-card" href="https://inheritance.choulegal.com" target="_blank" rel="noopener">
-        <div class="mini-card-tag">民法財產權</div>
-        <div class="mini-card-brand">InheritancePro</div>
-        <div class="mini-card-desc">遺產繼承、剩餘財產分配、贍養費、保險規劃等 30+ 項民法計算工具。</div>
+      <a class="mini-card" href="#" onclick="window.location='index.html#ai-pro';return false;">
+        <div class="mini-card-tag">AI Pro</div>
+        <div class="mini-card-name">Agentic AI 工作台</div>
+        <div class="mini-card-desc">五個版本：律師事務所、會計師事務所、地政士事務所、企業法務、人資與餐飲。</div>
+      </a>
+      <a class="mini-card" href="https://ai.choulegal.com" target="_blank" rel="noopener">
+        <div class="mini-card-tag">周全 AI</div>
+        <div class="mini-card-name">對話式案情判斷</div>
+        <div class="mini-card-desc">說一次你的情境，AI 帶法源回答。八大領域、越界即停。</div>
       </a>
       <a class="mini-card" href="https://labor.choulegal.com" target="_blank" rel="noopener">
-        <div class="mini-card-tag">勞動基準法</div>
-        <div class="mini-card-brand">LaborPro</div>
-        <div class="mini-card-desc">資遣費、加班費、特休、職災補償等 20+ 項勞基法計算工具，支援勞工與雇主雙模式。</div>
+        <div class="mini-card-tag">勞動</div>
+        <div class="mini-card-name">勞基法計算</div>
+        <div class="mini-card-desc">資遣費、加班費、特休、職災補償，雙模式（勞工 / 雇主）。</div>
       </a>
-      <a class="mini-card" href="https://etp.choulegal.com" target="_blank" rel="noopener">
-        <div class="mini-card-tag">律師事務所 B2B</div>
-        <div class="mini-card-brand">周全 商業版</div>
-        <div class="mini-card-desc">律師事務所專用民法財產權案件工作台。前往商業版 →</div>
-      </a>
-      <a class="mini-card" href="index.html">
-        <div class="mini-card-tag">完整列表</div>
-        <div class="mini-card-brand">回首頁瀏覽</div>
-        <div class="mini-card-desc">查看所有上線與籌備中的產品。</div>
+      <a class="mini-card" href="https://inheritance.choulegal.com" target="_blank" rel="noopener">
+        <div class="mini-card-tag">繼承 / 民法財產權</div>
+        <div class="mini-card-name">民法財產權計算</div>
+        <div class="mini-card-desc">應繼分、特留分、剩餘財產分配、贍養費、遺贈稅。</div>
       </a>
     </div>
   </section>
 
-  <section class="sec prose" aria-labelledby="contact-heading">
-    <div class="sec-eyebrow">Contact</div>
-    <h2 id="contact-heading">聯絡方式</h2>
-    <p><strong>合作/商業洽詢：</strong><a href="mailto:businessjoechou@gmail.com">businessjoechou@gmail.com</a></p>
-    <p><strong>個資權利行使：</strong>同上信箱，主旨註明「個資權利行使」。</p>
-    <p><strong>產品意見回饋：</strong>歡迎在民眾版各工具頁底的回饋表單留言，或直接來信。</p>
-    <p class="muted">因為是一人公司，客服回信可能需要 1–3 個工作日，請見諒。</p>
+  <section class="section reveal">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-title">聯絡方式。</h2>
+    <div class="prose">
+      <p><strong>合作 / 商業洽詢：</strong><a href="mailto:businessjoechou@gmail.com" style="color:#fde68a;">businessjoechou@gmail.com</a></p>
+      <p><strong>個資權利行使：</strong>同上信箱，主旨註明「個資權利行使」。</p>
+      <p><strong>產品意見回饋：</strong>歡迎在各工具頁底的回饋表單留言，或直接來信。</p>
+      <p style="color:rgba(255,255,255,0.55);font-size:14px;">因為是一人公司，客服回信可能需要 1–3 個工作日，請見諒。</p>
+    </div>
   </section>
 
-  <section class="end-cta">
-    <a class="btn btn-primary" href="index.html">返回首頁查看所有工具</a>
-    <a class="btn-link" href="pricing.html">或查看商業版方案 →</a>
+  <section class="end">
+    <a class="btn" href="index.html">回首頁看所有產品</a>
+    <a class="btn-link" href="pricing.html">查看訂閱方案 ›</a>
   </section>
 
-  <footer class="site-foot">
-    <div class="foot-mark">周全法律科技<small>© <span id="year">2026</span> · ChouLegal</small></div>
+  <footer class="foot">
+    <span>© <span id="year">2026</span> ChouLegal · 周全</span>
     <nav class="foot-links" aria-label="頁尾">
       <a href="index.html">首頁</a>
-      <a href="guide.html">指南</a>
       <a href="manifesto.html">理念</a>
       <a href="about.html">關於</a>
       <a href="pricing.html">方案</a>
-      <a href="privacy.html">隱私權</a>
+      <a href="privacy.html">隱私</a>
       <a href="terms.html">條款</a>
     </nav>
   </footer>
@@ -228,75 +436,40 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  if (typeof IntersectionObserver !== 'undefined') {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    setTimeout(function () {
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight) el.classList.add('is-visible');
+      });
+    }, 1600);
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+  }
 </script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "name": "關於周全法律科技",
+  "name": "關於 — 周全 ChouLegal",
   "url": "https://choulegal.com/about.html",
   "inLanguage": "zh-TW",
   "mainEntity": {
     "@type": "Organization",
-    "name": "周全法律科技 ChouLegal",
-    "alternateName": "ChouLegal",
+    "name": "周全 ChouLegal",
     "url": "https://choulegal.com",
     "foundingDate": "2026",
-    "description": "中華民國法律科技平台。民眾版 InheritancePro、LaborPro 完全免費；B2B「周全 商業版」為律師事務所提供訂閱制案件工作台。",
     "founder": { "@type": "Person", "name": "Joe Chou", "jobTitle": "Founder" },
     "numberOfEmployees": { "@type": "QuantitativeValue", "value": 1 },
     "contactPoint": { "@type": "ContactPoint", "email": "businessjoechou@gmail.com", "contactType": "customer support" }
   }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "周全法律科技是什麼樣的公司？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "周全法律科技由 Joe Chou 於 2026 年創辦，是一家一人經營的中華民國法律科技公司。旗下有民眾版 InheritancePro、LaborPro 等免費計算工具，以及 B2B 訂閱制「周全 商業版」律師事務所工作台。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "為什麼民眾版工具完全免費？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "因為真正需要法律計算工具的人，多半是不太能負擔律師諮詢費的一般民眾。我們認為法律知識不該有門檻，所以把民眾版的所有核心功能永久免費開放——不註冊、不登入、不看廣告。營運成本由 B2B 商業版的訂閱費支撐。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "法條更新的來源是什麼？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "我們追蹤全國法規資料庫、總統府公報、勞動部公告、司法院判解資料。只要法規變動，就在人工驗證後更新計算邏輯，並於工具頁面與版本紀錄標註生效日。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "計算結果可以直接當作法律意見嗎？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "不行。本平台所有工具之計算結果僅供初步參考，不構成法律意見或法律諮詢服務。實際案件因個案事實、適用法規及法院見解不同，結果可能有所差異，建議諮詢具執照之律師或相關法律專業人員。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "我是律師，商業版和民眾版差別在哪？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "民眾版是單次計算工具，適合自用查詢。「周全 商業版」是多租戶 SaaS，提供案件管理、法源自動引證、PDF 工作底稿、多律師協作、稽核軌跡等事務所必要功能。詳見 /pricing.html。"
-      }
-    }
-  ]
 }
 </script>
 

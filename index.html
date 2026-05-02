@@ -9,56 +9,49 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周全法律科技 ChouLegal — 民眾版 · 商業版 · AI 初判</title>
-<meta name="description" content="周全法律科技 ChouLegal。母品牌底下三個法律平台：周全民眾版（免費權益計算）、周全商業版（事務所與部門工作台）、周全 AI 初判（AI 案情判斷）。">
+<title>周全 ChouLegal — 周全 ChouLegal · 中華民國法律科技</title>
+<meta name="description" content="周全 ChouLegal。中華民國法律科技。AI Pro、周全 AI、勞動、繼承、公職薪資 — 每一筆數字都附法源，每一句回答都追得到條文。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://choulegal.com/">
-<meta property="og:title" content="周全法律科技 ChouLegal — 民眾版 · 商業版 · AI 初判">
-<meta property="og:description" content="中華民國法律科技平台。民眾版免費權益計算、商業版事務所與部門工作台、AI 初判 8 大領域案情判斷。">
+<meta property="og:title" content="周全 ChouLegal — 周全 ChouLegal · 中華民國法律科技">
+<meta property="og:description" content="中華民國法律科技。AI Pro、周全 AI、勞動、繼承、公職薪資 — 每一筆數字都附法源。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choulegal.com/">
-<meta property="og:site_name" content="周全法律科技 ChouLegal">
+<meta property="og:site_name" content="周全 ChouLegal">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://choulegal.com/og-image.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="周全法律科技 ChouLegal — 中華民國法律科技平台">
+<meta property="og:image:alt" content="周全 ChouLegal">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="周全法律科技 ChouLegal">
-<meta name="twitter:description" content="中華民國法律科技平台。民眾版 + 商業版 + AI 初判。">
+<meta name="twitter:title" content="周全 ChouLegal">
+<meta name="twitter:description" content="周全 ChouLegal · 中華民國法律科技。">
 <meta name="twitter:image" content="https://choulegal.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "周全法律科技",
+  "name": "周全",
   "alternateName": "ChouLegal",
   "url": "https://choulegal.com/",
   "logo": "https://choulegal.com/icon-512.png",
-  "description": "中華民國法律科技平台，提供民眾版（免費權益計算）、商業版（事務所工作台）、AI 初判（8 大領域案情判斷）。",
-  "sameAs": [
-    "https://people.choulegal.com/",
-    "https://etp.choulegal.com/",
-    "https://ai.choulegal.com/",
-    "https://inheritance.choulegal.com/",
-    "https://labor.choulegal.com/"
-  ]
+  "description": "中華民國法律科技。AI Pro 帶法源回答並代執行 workspace 操作；周全 AI 對話式案情判斷；勞動、繼承、公職薪資等領域的精確計算。"
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="js/ga.js" defer></script>
 <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 <style>
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
-    background: #06070B;
+    background: #06080d;
     color: rgba(255,255,255,0.92);
-    font-family: 'Noto Sans TC', system-ui, sans-serif;
-    font-size: 15px;
+    font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+    font-size: 17px;
     line-height: 1.6;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -66,101 +59,51 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
-  *:focus-visible { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 3px; border-radius: 2px; }
+  *:focus-visible { outline: 2px solid rgba(253,230,138,0.7); outline-offset: 3px; border-radius: 2px; }
   a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
 
-  /* ── Mesh gradient background ── */
-  .bg-mesh {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.55;
-    will-change: transform;
-  }
-  .blob-1 {
-    top: -20vh; left: -10vw;
-    width: 70vw; height: 70vw;
-    background: radial-gradient(circle, rgba(217,119,6,0.55), rgba(217,119,6,0) 60%);
-    animation: drift1 28s ease-in-out infinite;
-  }
-  .blob-2 {
-    top: 20vh; right: -15vw;
-    width: 70vw; height: 70vw;
-    background: radial-gradient(circle, rgba(124,58,237,0.5), rgba(124,58,237,0) 60%);
-    animation: drift2 32s ease-in-out infinite;
-  }
-  .blob-3 {
-    bottom: -20vh; left: 30vw;
-    width: 50vw; height: 50vw;
-    background: radial-gradient(circle, rgba(14,165,233,0.45), rgba(14,165,233,0) 60%);
-    animation: drift3 36s ease-in-out infinite;
-  }
-  @keyframes drift1 {
-    0%,100% { transform: translate(0,0) scale(1); }
-    50%     { transform: translate(80px,-40px) scale(1.1); }
-  }
-  @keyframes drift2 {
-    0%,100% { transform: translate(0,0) scale(1); }
-    50%     { transform: translate(-60px,60px) scale(1.05); }
-  }
-  @keyframes drift3 {
-    0%,100% { transform: translate(0,0) scale(1); }
-    50%     { transform: translate(40px,-50px) scale(0.95); }
-  }
-  /* Subtle grid */
-  .bg-grid {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 80px 80px;
-    opacity: 0.4;
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85), transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85), transparent 80%);
-  }
-  /* Grain */
-  .bg-grain {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  /* ── Tokens ── */
+  :root {
+    --ink: #06080d;
+    --ink-2: #0c1018;
+    --paper: rgba(255,255,255,0.96);
+    --gold: #fde68a;
+    --gold-2: #fcd34d;
+    --line: rgba(255,255,255,0.08);
+    --line-strong: rgba(255,255,255,0.16);
   }
 
-  /* ── Layout ── */
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
+  /* ── Container ── */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 640px) { .wrap { padding: 0 22px; } }
 
-  /* ── Header ── */
+  /* ── Sticky nav (Apple-style minimal) ── */
   .nav {
-    padding: 28px 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(6,8,13,0.72);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   .nav-logo {
     font-family: 'Noto Serif TC', serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 500;
     letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.95);
+    color: rgba(255,255,255,0.97);
   }
-  .nav-logo span {
+  .nav-logo small {
     margin-left: 10px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -169,455 +112,344 @@
     text-transform: uppercase;
     font-weight: 400;
   }
-  .nav-meta {
+  .nav-links {
     display: flex;
     gap: 28px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: rgba(255,255,255,0.45);
-    text-transform: uppercase;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.72);
+    font-weight: 400;
+  }
+  .nav-links a { transition: color 0.2s; }
+  .nav-links a:hover { color: rgba(255,255,255,0.97); }
+  @media (max-width: 720px) {
+    .nav-inner { padding: 14px 22px; }
+    .nav-links { gap: 18px; font-size: 12px; }
   }
 
-  /* ── Hero ── */
+  /* ── Hero (Apple-grade quiet hero) ── */
   .hero {
-    padding: 100px 0 80px;
+    padding: 140px 0 120px;
     text-align: center;
     position: relative;
   }
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 7px 14px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(8px);
-    border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    letter-spacing: 0.22em;
-    color: rgba(255,255,255,0.7);
-    text-transform: uppercase;
-    margin-bottom: 36px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #34d399;
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%,100% { opacity: 0.4; }
-    50%     { opacity: 1; }
-  }
-
   .hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-weight: 400;
-    font-size: clamp(44px, 7vw, 84px);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    color: rgba(255,255,255,0.97);
-    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: clamp(44px, 7.4vw, 84px);
+    line-height: 1.04;
+    letter-spacing: -0.022em;
+    color: rgba(255,255,255,0.98);
+    max-width: 14ch;
+    margin: 0 auto 28px;
   }
   .hero-title em {
-    font-style: italic;
+    font-style: normal;
     font-weight: 300;
-    background: linear-gradient(110deg, #fde68a, #f9a8d4, #c4b5fd);
+    background: linear-gradient(110deg, var(--gold) 10%, #fbbf24 60%, #f59e0b 100%);
     -webkit-background-clip: text;
-    background-clip: text;
+            background-clip: text;
     color: transparent;
-    display: block;
-    margin-top: 8px;
   }
-
   .hero-sub {
     font-family: 'Noto Sans TC', sans-serif;
-    font-size: clamp(15px, 1.4vw, 17px);
-    color: rgba(255,255,255,0.7);
-    line-height: 1.85;
-    max-width: 540px;
-    margin: 0 auto 0;
+    font-size: clamp(17px, 1.5vw, 21px);
+    color: rgba(255,255,255,0.62);
+    line-height: 1.6;
+    max-width: 580px;
+    margin: 0 auto 40px;
+    font-weight: 300;
   }
-
-  /* Hero CTAs */
   .hero-actions {
-    margin-top: 36px;
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px 14px;
+    gap: 14px;
   }
-  .hero-cta {
+  .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
+    gap: 6px;
+    padding: 13px 26px;
     border-radius: 999px;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
     font-weight: 500;
-    transition: transform 0.3s, background 0.2s, color 0.2s, border-color 0.2s;
+    letter-spacing: 0.01em;
+    transition: transform 0.3s cubic-bezier(0.2,0.8,0.2,1), background 0.25s, color 0.25s, border-color 0.25s;
+    cursor: pointer;
   }
-  .hero-cta.primary {
-    background: rgba(255,255,255,0.96);
-    color: #06070b;
-    box-shadow: 0 6px 22px -6px rgba(253,230,138,0.4);
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
   }
-  .hero-cta.primary:hover {
-    background: linear-gradient(110deg, #fde68a, #fb923c);
-    transform: translateY(-2px);
+  .btn-primary:hover {
+    background: #fef3c7;
+    transform: translateY(-1px);
   }
-  .hero-cta.ghost {
-    background: rgba(255,255,255,0.04);
+  .btn-ghost {
+    background: transparent;
     color: rgba(255,255,255,0.92);
-    border: 1px solid rgba(255,255,255,0.18);
   }
-  .hero-cta.ghost:hover {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(253,230,138,0.6);
-    color: #fde68a;
-  }
-  .hero-cta.link {
-    color: rgba(255,255,255,0.7);
-    padding: 12px 12px;
-  }
-  .hero-cta.link::after {
-    content: '↗';
-    margin-left: 4px;
-    color: #fde68a;
-    transition: transform 0.3s;
-  }
-  .hero-cta.link:hover { color: #fde68a; }
-  .hero-cta.link:hover::after { transform: translateX(2px); }
+  .btn-ghost::after { content: '›'; margin-left: 4px; transition: transform 0.3s; color: var(--gold); font-size: 18px; line-height: 1; }
+  .btn-ghost:hover { color: var(--gold); }
+  .btn-ghost:hover::after { transform: translateX(4px); }
 
-  .hero-meta {
-    margin-top: 36px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 22px;
+  /* ── Section ── */
+  section { position: relative; }
+  .section {
+    padding: 120px 0;
+  }
+  .section-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    letter-spacing: 0.18em;
-    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-  }
-  .hero-meta strong {
-    color: #fde68a;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 16px;
+    color: var(--gold);
+    margin-bottom: 18px;
     font-weight: 500;
-    margin-right: 4px;
-    letter-spacing: 0;
   }
-  .hero-meta span + span::before {
-    content: '·';
-    color: rgba(255,255,255,0.25);
-    margin-right: 22px;
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 4.6vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    color: rgba(255,255,255,0.98);
+    max-width: 22ch;
+    margin-bottom: 22px;
   }
+  .section-title em {
+    font-style: normal;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+  }
+  .section-sub {
+    font-size: 19px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.62);
+    max-width: 60ch;
+    font-weight: 300;
+  }
+  .section-head { margin-bottom: 64px; }
+  .section-head.center { text-align: center; }
+  .section-head.center .section-title,
+  .section-head.center .section-sub { margin-left: auto; margin-right: auto; }
 
-  /* ── Three doors ── */
-  .doors {
+  /* ── Product grid (Apple cards) ── */
+  .grid-products {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 60px 0 120px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
-  @media (min-width: 880px) {
-    .doors { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  }
+  @media (max-width: 880px) { .grid-products { grid-template-columns: 1fr; } }
 
-  .door {
+  .product {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 480px;
-    padding: 36px 36px 32px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.02);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
+    min-height: 460px;
+    padding: 44px 44px 36px;
+    border-radius: 28px;
     overflow: hidden;
-    transition:
-      transform 0.5s cubic-bezier(0.2,0.8,0.2,1),
-      border-color 0.4s,
-      box-shadow 0.5s;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1), border-color 0.4s;
   }
-  .door:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255,255,255,0.3);
-    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
-  }
-
-  /* Each door has its own gradient glow */
-  .door::before {
+  .product:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+  .product::before {
     content: '';
     position: absolute;
-    top: -30%;
-    right: -30%;
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.55;
-    transition: opacity 0.6s;
+    inset: 0;
+    background: radial-gradient(80% 60% at 50% 0%, rgba(253,230,138,0.10), transparent 70%);
     pointer-events: none;
+    opacity: 0.6;
+    transition: opacity 0.5s;
   }
-  .door:hover::before { opacity: 0.85; }
+  .product:hover::before { opacity: 1; }
+  .product.feature {
+    grid-column: span 2;
+    min-height: 520px;
+    padding: 56px 56px 48px;
+  }
+  @media (max-width: 880px) { .product.feature { grid-column: span 1; padding: 44px 32px 36px; min-height: 460px; } }
+  .product.feature::before {
+    background: radial-gradient(60% 50% at 30% 30%, rgba(253,230,138,0.16), transparent 65%),
+                radial-gradient(50% 40% at 80% 80%, rgba(124,58,237,0.18), transparent 65%);
+  }
 
-  .door.people::before {
-    background: radial-gradient(circle, rgba(251,146,60,0.65), rgba(251,191,36,0.25) 50%, transparent 70%);
-  }
-  .door.commercial::before {
-    background: radial-gradient(circle, rgba(167,139,250,0.55), rgba(244,114,182,0.25) 50%, transparent 70%);
-  }
-  .door.ai::before {
-    background: radial-gradient(circle, rgba(45,212,191,0.55), rgba(56,189,248,0.25) 50%, transparent 70%);
-  }
-
-  .door-top {
+  .product-eyebrow {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 60px;
-  }
-  .door-num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    letter-spacing: 0.22em;
-    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.24em;
+    color: rgba(255,255,255,0.55);
     text-transform: uppercase;
+    margin-bottom: 16px;
   }
-  .door-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    padding: 5px 11px;
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 999px;
-  }
-  .door.people .door-tag { color: #fde68a; border-color: rgba(253,230,138,0.4); }
-  .door.commercial .door-tag { color: #ddd6fe; border-color: rgba(221,214,254,0.35); }
-  .door.ai .door-tag { color: #99f6e4; border-color: rgba(153,246,228,0.4); }
-
-  .door-name {
+  .product-eyebrow.gold { color: var(--gold); }
+  .product-name {
     position: relative;
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(34px, 3.2vw, 44px);
-    font-weight: 400;
-    color: rgba(255,255,255,0.97);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
+    font-size: clamp(32px, 3.6vw, 44px);
+    font-weight: 500;
+    color: rgba(255,255,255,0.98);
+    line-height: 1.06;
+    letter-spacing: -0.012em;
+    margin-bottom: 14px;
   }
-  .door-en {
-    position: relative;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.26em;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .door-line {
+  .product.feature .product-name { font-size: clamp(36px, 4.2vw, 56px); }
+  .product-tag {
     position: relative;
     font-family: 'Noto Serif TC', serif;
     font-style: italic;
     font-weight: 300;
     font-size: clamp(18px, 1.6vw, 22px);
-    color: rgba(255,255,255,0.85);
-    line-height: 1.5;
-    margin-bottom: 18px;
-    max-width: 24ch;
+    color: rgba(255,255,255,0.86);
+    line-height: 1.45;
+    margin-bottom: 16px;
+    max-width: 26ch;
   }
-  .door-desc {
+  .product-desc {
     position: relative;
-    font-size: 14px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.85;
-    max-width: 38ch;
-    margin-bottom: 32px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.56);
+    line-height: 1.75;
+    max-width: 44ch;
+    margin-bottom: 28px;
+    flex-grow: 1;
   }
-  .door-bullets {
+  .product-meta {
     position: relative;
-    list-style: none;
-    margin: 0 0 36px;
-    padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 16px;
-  }
-  .door-bullets li {
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .door-bullets li::before {
-    content: '';
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: currentColor;
-    opacity: 0.5;
-  }
-
-  .door-cta {
-    position: relative;
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  .door-cta-label {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 15px;
-    color: rgba(255,255,255,0.95);
-    font-weight: 500;
-  }
-  .door-cta-arrow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.85);
-    transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1), background 0.3s, border-color 0.3s;
-    font-size: 14px;
-  }
-  .door:hover .door-cta-arrow {
-    background: rgba(255,255,255,0.95);
-    color: #06070B;
-    border-color: transparent;
-    transform: translateX(4px);
-  }
-  .door-cta-url {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.55);
-  }
-  @media (max-width: 980px) {
-    .door-cta-url { display: none; }
-  }
-  .nav-meta { flex-wrap: wrap; }
-  @media (max-width: 720px) {
-    .nav-meta { gap: 16px; font-size: 10.5px; letter-spacing: 0.14em; }
-  }
-
-  /* ── Principles pillars ── */
-  .pillars {
-    padding: 64px 0 80px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    text-align: center;
-  }
-  .pillars-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 36px;
-  }
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    text-align: left;
+    gap: 8px;
     margin-bottom: 28px;
   }
-  @media (min-width: 760px) {
-    .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .product-meta li {
+    list-style: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.6);
+    padding: 5px 11px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.02);
   }
+  .product-cta {
+    position: relative;
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .product-cta a {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--gold);
+    transition: color 0.2s, transform 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .product-cta a::after { content: '›'; font-size: 18px; line-height: 1; transition: transform 0.3s; }
+  .product-cta a:hover { color: #fef3c7; }
+  .product-cta a:hover::after { transform: translateX(4px); }
+  .product-cta a.muted { color: rgba(255,255,255,0.7); }
+  .product-cta a.muted:hover { color: rgba(255,255,255,0.97); }
+
+  /* ── Pillars (technical principles) ── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 880px) { .pillars { grid-template-columns: 1fr; gap: 24px; } }
   .pillar {
-    padding: 26px 28px 28px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.025);
-    -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-    border-radius: 16px;
-    transition: border-color 0.3s, transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+    padding: 32px 0 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
   }
-  .pillar:hover { border-color: rgba(253,230,138,0.35); transform: translateY(-2px); }
   .pillar-num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    letter-spacing: 0.22em;
-    color: #fde68a;
-    margin-bottom: 18px;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    margin-bottom: 16px;
   }
   .pillar-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 18px;
     font-weight: 500;
-    color: rgba(255,255,255,0.96);
-    line-height: 1.45;
-    margin-bottom: 10px;
-  }
-  .pillar-title em {
-    font-style: italic;
-    font-weight: 300;
-    background: linear-gradient(110deg, #fde68a, #fb923c);
-    -webkit-background-clip: text;
-            background-clip: text;
-    color: transparent;
+    font-size: 22px;
+    color: rgba(255,255,255,0.97);
+    line-height: 1.4;
+    margin-bottom: 14px;
+    letter-spacing: -0.005em;
   }
   .pillar-desc {
-    font-size: 13.5px;
-    color: rgba(255,255,255,0.7);
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
     line-height: 1.85;
   }
-  .pillars-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #fde68a;
-    margin-top: 8px;
-    transition: color 0.2s, transform 0.3s;
-  }
-  .pillars-link:hover { color: #fef3c7; transform: translateX(3px); }
 
-  /* ── Manifesto strip ── */
-  .manifesto {
-    padding: 80px 0 100px;
+  /* ── AI Pro variants strip ── */
+  .variants {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    overflow: hidden;
+    margin-top: 32px;
+  }
+  @media (max-width: 880px) { .variants { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .variants { grid-template-columns: 1fr; } }
+  .variant {
+    background: var(--ink-2);
+    padding: 28px 22px;
+    transition: background 0.3s;
+  }
+  .variant:hover { background: #131826; }
+  .variant-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.97);
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .variant-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+  }
+
+  /* ── Quote ── */
+  .quote {
     text-align: center;
+    padding: 140px 0;
     border-top: 1px solid rgba(255,255,255,0.06);
   }
-  .manifesto-quote {
+  .quote-text {
     font-family: 'Noto Serif TC', serif;
-    font-style: italic;
     font-weight: 300;
-    font-size: clamp(20px, 2.2vw, 26px);
-    line-height: 1.7;
-    color: rgba(255,255,255,0.78);
-    max-width: 640px;
-    margin: 0 auto;
+    font-size: clamp(26px, 3.4vw, 42px);
+    line-height: 1.42;
+    letter-spacing: -0.012em;
+    color: rgba(255,255,255,0.92);
+    max-width: 22ch;
+    margin: 0 auto 28px;
   }
-  .manifesto-quote em {
-    font-style: italic;
-    background: linear-gradient(110deg, #fde68a, #f9a8d4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .quote-text em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 400;
   }
-  .manifesto-attr {
-    margin-top: 22px;
+  .quote-attr {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.28em;
     color: rgba(255,255,255,0.4);
     text-transform: uppercase;
@@ -625,240 +457,301 @@
 
   /* ── Footer ── */
   .foot {
-    padding: 40px 0 56px;
+    padding: 56px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  .foot-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .foot-col a {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+  .foot-col a:hover { color: rgba(255,255,255,0.97); }
+  .foot-brand {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 12px;
+  }
+  .foot-brand small {
+    margin-left: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+  .foot-tag {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+    max-width: 30ch;
+  }
+  .foot-base {
+    padding-top: 28px;
     border-top: 1px solid rgba(255,255,255,0.06);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
-  }
-  .foot-mark {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-  }
-  .foot-mark span {
-    margin-left: 10px;
+    gap: 14px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.24em;
-    color: rgba(255,255,255,0.3);
-    text-transform: uppercase;
-  }
-  .foot-links {
-    display: flex;
-    gap: 22px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
+    font-size: 11px;
+    letter-spacing: 0.14em;
     color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
   }
-  .foot-links a:hover { color: rgba(255,255,255,0.9); }
 
-  /* ── Reveal entrance ── */
+  /* ── Reveal ── */
   .reveal {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+    transform: translateY(28px);
+    transition: opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1);
   }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
   @media (prefers-reduced-motion: reduce) {
-    .blob { animation: none !important; }
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 100px 0 80px; }
+    .section { padding: 80px 0; }
+    .quote { padding: 80px 0; }
+    .product { padding: 32px 28px 28px; min-height: 380px; }
+    .product.feature { padding: 36px 28px 32px; min-height: 420px; }
   }
 </style>
 </head>
 <body>
 
-<div class="bg-mesh" aria-hidden="true">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-</div>
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-grain" aria-hidden="true"></div>
-
-<div class="container">
-
-  <header class="nav">
-    <a href="/" class="nav-logo">周全法律科技™<span>ChouLegal</span></a>
-    <nav class="nav-meta" aria-label="主選單">
-      <a href="guide.html">指南</a>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">周全<small>ChouLegal</small></a>
+    <nav class="nav-links" aria-label="主選單">
+      <a href="#products">產品</a>
       <a href="manifesto.html">理念</a>
       <a href="about.html">關於</a>
       <a href="pricing.html">方案</a>
     </nav>
-  </header>
+  </div>
+</header>
+
+<main>
 
   <section class="hero">
-    <h1 class="hero-title">
-      看得懂的
-      <em>中華民國法律。</em>
-    </h1>
-    <p class="hero-sub">
-      周全法律科技 ── 提供給所有人的法律平台，<br>
-      讓法律保護你我的權益。
-    </p>
-    <div class="hero-actions">
-      <a class="hero-cta primary" href="https://people.choulegal.com">免費算我的權益 <span aria-hidden="true">→</span></a>
-      <a class="hero-cta ghost" href="https://etp.choulegal.com">事務所工作台 <span aria-hidden="true">→</span></a>
-      <a class="hero-cta link" href="manifesto.html">為什麼做這件事</a>
-    </div>
-    <div class="hero-meta">
-      <span><strong>50+</strong> 計算工具</span>
-      <span>每筆都附 <strong>法條</strong></span>
-      <span>民眾版 <strong>NT$0</strong> · 永久免費</span>
+    <div class="wrap">
+      <h1 class="hero-title">周全 <em>ChouLegal</em></h1>
+      <p class="hero-sub">讓法律走入日常生活。</p>
     </div>
   </section>
 
-  <section class="doors" id="doors">
+  <section class="section" id="products">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <div class="section-eyebrow">Products</div>
+        <h2 class="section-title">六種工具。<em>一個來源。</em></h2>
+        <p class="section-sub">從一個資遣費的計算，到一場跨師業的協作 — 周全把每個法律題目工程化、把法源整理乾淨、放在你需要的地方。</p>
+      </header>
 
-    <a class="door people reveal" href="https://people.choulegal.com" aria-label="進入周全民眾版">
-      <div class="door-top">
-        <span class="door-num">01</span>
-        <span class="door-tag">For Everyone</span>
-      </div>
-      <h2 class="door-name">周全 民眾版</h2>
-      <div class="door-en">PEOPLE · CHOULEGAL · COM</div>
-      <p class="door-line">自己的法律，自己算。</p>
-      <p class="door-desc">
-        民法財產權、勞基法、稅務 ── 30+ 個免費權益計算工具。
-        不需註冊、不需登入、所有計算在你的瀏覽器跑完。
-      </p>
-      <ul class="door-bullets">
-        <li>遺產繼承</li>
-        <li>資遣費</li>
-        <li>剩餘財產分配</li>
-        <li>遺贈稅</li>
-        <li>加班費</li>
-      </ul>
-      <div class="door-cta">
-        <span class="door-cta-label">進入民眾版</span>
-        <span class="door-cta-url">people.choulegal.com</span>
-        <span class="door-cta-arrow" aria-hidden="true">→</span>
-      </div>
-    </a>
+      <div class="grid-products">
 
-    <a class="door commercial reveal" href="https://etp.choulegal.com" aria-label="進入周全商業版">
-      <div class="door-top">
-        <span class="door-num">02</span>
-        <span class="door-tag">For Professionals</span>
-      </div>
-      <h2 class="door-name">周全 商業版</h2>
-      <div class="door-en">ETP · CHOULEGAL · COM</div>
-      <p class="door-line">事務所與部門的專業工作台。</p>
-      <p class="door-desc">
-        律師、會計師、地政士事務所；企業法務與 HR 部門。
-        五個各為其業的平台，整合計算、文書、案件、合規與法源同步。
-      </p>
-      <ul class="door-bullets">
-        <li>律師 Pro</li>
-        <li>會計師 Pro</li>
-        <li>地政士 Pro</li>
-        <li>企業法務 Pro</li>
-        <li>HR Pro</li>
-      </ul>
-      <div class="door-cta">
-        <span class="door-cta-label">進入商業版</span>
-        <span class="door-cta-url">etp.choulegal.com</span>
-        <span class="door-cta-arrow" aria-hidden="true">→</span>
-      </div>
-    </a>
+        <a class="product feature reveal" href="#ai-pro">
+          <div class="product-eyebrow gold">AI Pro</div>
+          <h3 class="product-name">會回答、會計算、<br>也會替你執行。</h3>
+          <p class="product-tag">說一次，AI 帶法源回答 — 並直接在 workspace 完成接下來的事。</p>
+          <p class="product-desc">五個專業版本：律師事務所、會計師事務所、地政士事務所、企業法務、人資與餐飲。每版都接著台灣的判例、函釋與計算引擎，每一筆數字都附法條。</p>
+          <ul class="product-meta">
+            <li>Grounded chat</li>
+            <li>Computations</li>
+            <li>Actions</li>
+            <li>逐字法源</li>
+          </ul>
+          <div class="product-cta">
+            <a href="#ai-pro">看 AI Pro</a>
+            <a class="muted" href="pricing.html">查看訂閱</a>
+          </div>
+        </a>
 
-    <a class="door ai reveal" href="https://ai.choulegal.com" aria-label="進入周全 AI 初判">
-      <div class="door-top">
-        <span class="door-num">03</span>
-        <span class="door-tag">AI Triage</span>
-      </div>
-      <h2 class="door-name">周全 AI 初判</h2>
-      <div class="door-en">AI · CHOULEGAL · COM</div>
-      <p class="door-line">說一次你遇到的事，AI 幫你找方向。</p>
-      <p class="door-desc">
-        民事、勞動、消保、行政、稅務、家事繼承、車禍、醫療糾紛 ── 8 大領域 AI 案情初判。
-        每筆回答附法條依據，超出範圍直接引導律師。
-      </p>
-      <ul class="door-bullets">
-        <li>RAG 法源 grounding</li>
-        <li>事實查核</li>
-        <li>越界即停</li>
-        <li>不收個資</li>
-        <li>付費</li>
-      </ul>
-      <div class="door-cta">
-        <span class="door-cta-label">進入 AI 初判</span>
-        <span class="door-cta-url">ai.choulegal.com</span>
-        <span class="door-cta-arrow" aria-hidden="true">→</span>
-      </div>
-    </a>
+        <a class="product reveal" href="https://ai.choulegal.com">
+          <div class="product-eyebrow">周全 AI</div>
+          <h3 class="product-name">說一次你的<br>情境。</h3>
+          <p class="product-tag">AI 帶法源回答你的法律問題。</p>
+          <p class="product-desc">民事、勞動、消保、行政、稅務、家事繼承、車禍、醫療糾紛 — 八大領域對話式案情判斷，每筆回答附法條，越界即停。</p>
+          <div class="product-cta">
+            <a href="https://ai.choulegal.com">開始對話</a>
+          </div>
+        </a>
 
-  </section>
+        <a class="product reveal" href="https://labor.choulegal.com">
+          <div class="product-eyebrow">勞動</div>
+          <h3 class="product-name">資遣費、加班費、特休。</h3>
+          <p class="product-tag">勞基法的每一個數字，算到分。</p>
+          <p class="product-desc">勞工與雇主雙模式。基本工資、勞退級距、職災補償都對齊勞動部最新公告版本。</p>
+          <div class="product-cta">
+            <a href="https://labor.choulegal.com">開始試算</a>
+          </div>
+        </a>
 
-  <section class="pillars" aria-label="周全的三個原則">
-    <div class="pillars-eyebrow">Principles · 三個原則</div>
-    <div class="pillars-grid">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <h3 class="pillar-title">每筆計算都<em>追得到法條</em></h3>
-        <p class="pillar-desc">所有工具的數字都附條號、修正日期、全國法規資料庫連結。沒有黑盒子，沒有「系統算的」這種回答。</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <h3 class="pillar-title">民眾版<em>永遠完全免費</em></h3>
-        <p class="pillar-desc">不註冊、不登入、不看廣告、沒有進階版。成本由 B2B 商業版的訂閱費支撐——付得起的人付，付不起的人也能用。</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <h3 class="pillar-title">一個 <em>ChouLegal</em> 帳號</h3>
-        <p class="pillar-desc">事務所一個 SSO 進入所有商業版 Suite；民眾版完全不要登入。法源、規格、品牌底層整合，介面各自為角色而生。</p>
+        <a class="product reveal" href="https://inheritance.choulegal.com">
+          <div class="product-eyebrow">繼承 / 民法財產權</div>
+          <h3 class="product-name">應繼分、特留分、<br>遺贈稅。</h3>
+          <p class="product-tag">民法財產權的每一條規定，化成可驗證的計算。</p>
+          <p class="product-desc">遺產繼承、剩餘財產分配、贍養費、保險規劃 — 涵蓋民法 §1030-1 到遺贈稅法的完整計算路徑。</p>
+          <div class="product-cta">
+            <a href="https://inheritance.choulegal.com">開始試算</a>
+          </div>
+        </a>
+
+        <a class="product reveal" href="https://people.choulegal.com">
+          <div class="product-eyebrow">公職薪資</div>
+          <h3 class="product-name">俸給、退撫、<br>考績。</h3>
+          <p class="product-tag">公務人員的薪資結構，明明白白。</p>
+          <p class="product-desc">俸點換算、退撫新制、考績獎金 — 對齊銓敘部與公務人員退休資遣撫卹法。</p>
+          <div class="product-cta">
+            <a href="https://people.choulegal.com">開始試算</a>
+          </div>
+        </a>
+
       </div>
     </div>
-    <a class="pillars-link" href="manifesto.html">看完整理念 <span aria-hidden="true">→</span></a>
   </section>
 
-  <section class="manifesto">
-    <blockquote class="manifesto-quote">
-      「法律應該是<em>所有人</em>的權利，<br>
-      而非有錢人的專利。」
-    </blockquote>
-    <div class="manifesto-attr">— 周全法律科技的信念</div>
+  <section class="section" id="ai-pro">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <div class="section-eyebrow">AI Pro · Five Editions</div>
+        <h2 class="section-title">給五種專業人士的<br><em>AI 工作台。</em></h2>
+        <p class="section-sub">同一套 agentic AI 引擎、同一個結構化法源底層；五個版本各自接不同的法源、計算工具與 action set，為各自的工作流程而生。</p>
+      </header>
+
+      <div class="variants reveal">
+        <div class="variant">
+          <div class="variant-name">律師事務所</div>
+          <div class="variant-desc">民/刑/行/商法 corpus、判例對位、案件流程、PDF 工作底稿。</div>
+        </div>
+        <div class="variant">
+          <div class="variant-name">會計師事務所</div>
+          <div class="variant-desc">稅法 corpus、函釋、估稅引擎、AI 客戶服務升級。</div>
+        </div>
+        <div class="variant">
+          <div class="variant-name">地政士事務所</div>
+          <div class="variant-desc">土地法、不動產稅、過戶流程與地籍整合。</div>
+        </div>
+        <div class="variant">
+          <div class="variant-name">企業法務</div>
+          <div class="variant-desc">公司法、合約審閱、合規 — 串接外部律師、會計師。</div>
+        </div>
+        <div class="variant">
+          <div class="variant-name">人資與餐飲</div>
+          <div class="variant-desc">勞基法雙引擎，含時薪、服務費、排班與公部門 mode。</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer class="foot">
-    <div class="foot-mark">周全法律科技™<span>© <span id="year">2026</span> · ChouLegal</span></div>
-    <nav class="foot-links" aria-label="頁尾">
-      <a href="about.html">關於</a>
-      <a href="manifesto.html">理念</a>
-      <a href="guide.html">指南</a>
-      <a href="pricing.html">方案</a>
-      <a href="privacy.html">隱私權</a>
-      <a href="terms.html">條款</a>
-      <a href="https://people.choulegal.com">民眾版</a>
-      <a href="https://etp.choulegal.com">商業版</a>
-      <a href="https://ai.choulegal.com">AI 初判</a>
-    </nav>
-  </footer>
+  <section class="section">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <div class="section-eyebrow">Principles</div>
+        <h2 class="section-title">三條鐵律，<em>沒有例外。</em></h2>
+      </header>
 
-</div>
+      <div class="pillars">
+        <article class="pillar reveal">
+          <div class="pillar-num">01 / 法源</div>
+          <h3 class="pillar-title">每一個數字都追得到條文。</h3>
+          <p class="pillar-desc">回答附條號、修正日期、全國法規資料庫連結；計算附公式與依據。沒有黑盒子，沒有「系統算的」。</p>
+        </article>
+
+        <article class="pillar reveal">
+          <div class="pillar-num">02 / 範圍</div>
+          <h3 class="pillar-title">越界，就停。</h3>
+          <p class="pillar-desc">超出明文規定或實務見解的灰色地帶，AI 不會自己填空。直接告訴你「請諮詢律師」並附最近的轉介路徑。</p>
+        </article>
+
+        <article class="pillar reveal">
+          <div class="pillar-num">03 / 驗證</div>
+          <h3 class="pillar-title">每一條法規都人工逐條對過。</h3>
+          <p class="pillar-desc">所有條文引用對照全國法規資料庫；爭點實務見解標註出處。AI 加速實作，研究與判斷由人把關。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <div class="wrap">
+      <p class="quote-text reveal">資訊應該流向<em>最需要它的人</em>。</p>
+      <div class="quote-attr reveal">— 周全的信念</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">周全<small>ChouLegal</small></div>
+        <p class="foot-tag">中華民國法律科技。周全 ChouLegal · 中華民國法律科技。</p>
+      </div>
+      <div class="foot-col">
+        <h4>產品</h4>
+        <a href="#ai-pro">AI Pro</a>
+        <a href="https://ai.choulegal.com">周全 AI</a>
+        <a href="https://labor.choulegal.com">勞動</a>
+        <a href="https://inheritance.choulegal.com">繼承</a>
+        <a href="https://people.choulegal.com">公職薪資</a>
+      </div>
+      <div class="foot-col">
+        <h4>公司</h4>
+        <a href="about.html">關於</a>
+        <a href="manifesto.html">理念</a>
+        <a href="guide.html">指南</a>
+        <a href="pricing.html">方案</a>
+      </div>
+      <div class="foot-col">
+        <h4>條款</h4>
+        <a href="privacy.html">隱私權</a>
+        <a href="terms.html">使用條款</a>
+        <a href="mailto:businessjoechou@gmail.com">聯絡</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="year">2026</span> ChouLegal · 周全法律科技</span>
+      <span>Taipei, Taiwan</span>
+    </div>
+  </div>
+</footer>
 
 <script>
-  // Year stamp
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
-  // Scroll reveal — JS-fail safe
   if (typeof IntersectionObserver !== 'undefined') {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
         if (e.isIntersecting) {
           e.target.classList.add('is-visible');
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    // Fail-safe: any reveal still hidden after 1.6s force visible (e.g. above-fold race)
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
     setTimeout(function () {
       document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
         var r = el.getBoundingClientRect();
@@ -866,7 +759,7 @@
       });
     }, 1600);
   } else {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
   }
 </script>
 

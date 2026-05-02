@@ -5,351 +5,649 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>訂閱方案｜周全 商業版 — 律師事務所民法財產權案件工作台</title>
-<meta name="description" content="周全 商業版提供 Starter / Pro / Enterprise 三種月費方案（NT$1,980 / 5,980 / 15,980），涵蓋案件管理、法源自動引證、PDF 工作底稿、多律師協作。民眾版完全免費；事務所版另有訂閱方案。">
-<meta name="keywords" content="律師事務所管理軟體,法律科技SaaS,案件管理系統,周全商業版,ChouLegal Business,律師工作台,民法財產權,法律事務所訂閱">
+<title>方案 — 周全 ChouLegal</title>
+<meta name="description" content="周全 ChouLegal 各產品訂閱方案。AI Pro 五個專業版本各自定價、周全 AI 對話制收費、勞動/繼承/公職薪資工具完全免費。">
 <meta name="robots" content="index, follow">
-<meta name="author" content="周全法律科技 ChouLegal">
 <link rel="canonical" href="https://choulegal.com/pricing.html">
-<meta property="og:title" content="周全 商業版訂閱方案｜律師事務所民法財產權案件工作台">
-<meta property="og:description" content="三種月費方案、案件管理、法源自動引證、PDF 工作底稿。民眾版完全免費，事務所版另有訂閱方案。">
+<meta property="og:title" content="方案 — 周全 ChouLegal">
+<meta property="og:description" content="按產品分開的透明定價。">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="周全法律科技 ChouLegal">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:url" content="https://choulegal.com/pricing.html">
-<meta property="og:image" content="https://choulegal.com/social-avatar.svg">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周全 商業版訂閱方案｜律師事務所民法財產權案件工作台">
-<meta name="twitter:description" content="Starter / Pro / Enterprise 三階方案，月付制，隨時可取消。">
-<meta name="twitter:image" content="https://choulegal.com/social-avatar.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/brand.css">
 <script src="js/ga.js" defer></script>
 <style>
-  .plans { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 32px 0 18px; }
-  @media (min-width: 820px) { .plans { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: #06080d;
+    color: rgba(255,255,255,0.92);
+    font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+    font-size: 17px; line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  *:focus-visible { outline: 2px solid rgba(253,230,138,0.7); outline-offset: 3px; border-radius: 2px; }
+  a { color: inherit; text-decoration: none; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(6,8,13,0.72);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px; font-weight: 500; letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.97);
+  }
+  .nav-logo small {
+    margin-left: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.26em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase; font-weight: 400;
+  }
+  .nav-links { display: flex; gap: 28px; font-size: 13px; color: rgba(255,255,255,0.72); }
+  .nav-links a { transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a[aria-current="page"] { color: rgba(255,255,255,0.97); }
+  @media (max-width: 720px) { .nav-inner { padding: 14px 22px; } .nav-links { gap: 18px; font-size: 12px; } }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 640px) { .wrap { padding: 0 22px; } }
+
+  .hero { padding: 120px 0 60px; text-align: center; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.28em;
+    color: #fde68a; text-transform: uppercase;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  h1.title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.98);
+    max-width: 22ch;
+    margin: 0 auto 24px;
+  }
+  h1.title em {
+    font-style: normal;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+  }
+  .lead {
+    font-size: 19px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.65;
+    max-width: 56ch;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  .section { padding: 80px 0; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.28em;
+    color: #fde68a; text-transform: uppercase;
+    margin-bottom: 14px; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    color: rgba(255,255,255,0.98);
+    letter-spacing: -0.012em;
+    margin-bottom: 12px;
+  }
+  .section-title em {
+    font-style: normal; font-weight: 300; color: rgba(255,255,255,0.55);
+  }
+  .section-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 60ch;
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+
+  /* AI Pro plan grid */
+  .pro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 920px) { .pro-grid { grid-template-columns: 1fr; } }
+
   .plan {
     position: relative;
     display: flex; flex-direction: column;
-    padding: 30px 26px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.025);
-    -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-    border-radius: 18px;
-    transition: border-color 0.3s, transform 0.4s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.4s;
+    padding: 36px 30px 32px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #0c1018;
+    border-radius: 22px;
+    transition: border-color 0.3s, transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
   }
-  .plan:hover { border-color: rgba(253,230,138,0.45); transform: translateY(-3px); box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6); }
-  .plan.featured { border-color: rgba(253,230,138,0.75); background: linear-gradient(180deg, rgba(253,230,138,0.06), rgba(255,255,255,0.025)); }
+  .plan:hover { border-color: rgba(255,255,255,0.22); transform: translateY(-3px); }
+  .plan.featured {
+    border-color: rgba(253,230,138,0.55);
+    background: linear-gradient(180deg, rgba(253,230,138,0.05), rgba(255,255,255,0.02));
+  }
   .plan-badge {
-    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-    background: linear-gradient(110deg, #fde68a, #fb923c);
-    color: #06070b;
-    font-family: "Noto Serif TC", serif;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
-    padding: 4px 14px; border-radius: 999px;
+    position: absolute; top: -11px; left: 30px;
+    background: #fde68a;
+    color: #06080d;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+    padding: 5px 12px; border-radius: 999px;
     text-transform: uppercase;
   }
-  .plan-name { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 500; color: #fde68a; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 14px; }
-  .plan-price { font-family: "Noto Serif TC", serif; font-size: 38px; font-weight: 400; color: rgba(255,255,255,0.97); line-height: 1.05; }
-  .plan-price .currency { font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.55); margin-right: 4px; vertical-align: top; }
-  .plan-price-unit { font-family: "JetBrains Mono", monospace; font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; margin-top: 6px; }
-  .plan-target { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; margin: 16px 0 22px; min-height: 44px; }
-  .plan-features { list-style: none; margin-bottom: 24px; flex-grow: 1; }
-  .plan-features li { font-size: 13px; color: rgba(255,255,255,0.85); padding: 7px 0 7px 22px; position: relative; line-height: 1.6; }
-  .plan-features li::before { content: '✓'; position: absolute; left: 0; top: 7px; color: #fde68a; font-weight: 600; }
-  .plan-features li.coming { color: rgba(255,255,255,0.55); }
-  .plan-features li.coming::before { content: '◦'; color: rgba(255,255,255,0.4); }
+  .plan-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px; font-weight: 500;
+    color: rgba(255,255,255,0.97);
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .plan-target {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    margin-bottom: 28px;
+    min-height: 44px;
+  }
+  .plan-price {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 42px; font-weight: 400;
+    color: rgba(255,255,255,0.98);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+  }
+  .plan-price .currency {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    margin-right: 4px;
+    vertical-align: top;
+  }
+  .plan-unit {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    margin-top: 8px;
+    margin-bottom: 28px;
+  }
+  .plan-features {
+    list-style: none;
+    margin-bottom: 28px;
+    flex-grow: 1;
+  }
+  .plan-features li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.82);
+    padding: 8px 0 8px 22px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .plan-features li::before {
+    content: '';
+    position: absolute; left: 0; top: 14px;
+    width: 12px; height: 6px;
+    border-left: 1.5px solid #fde68a;
+    border-bottom: 1.5px solid #fde68a;
+    transform: rotate(-45deg);
+  }
+  .plan-features li.coming { color: rgba(255,255,255,0.5); }
+  .plan-features li.coming::before { border-color: rgba(255,255,255,0.3); }
   .plan-cta {
     display: block; text-align: center;
-    padding: 12px 18px; border-radius: 999px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(253,230,138,0.6);
+    padding: 13px 22px; border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(253,230,138,0.5);
     color: #fde68a;
-    font-family: "Noto Serif TC", serif;
+    font-family: 'Noto Sans TC', sans-serif;
     font-size: 14px; font-weight: 500;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
   }
-  .plan-cta:hover { background: rgba(253,230,138,0.15); color: #fef3c7; border-color: #fde68a; }
-  .plan.featured .plan-cta { background: rgba(253,230,138,0.92); color: #06070b; border-color: transparent; }
-  .plan.featured .plan-cta:hover { background: #fde68a; color: #06070b; }
+  .plan-cta:hover { background: rgba(253,230,138,0.12); color: #fef3c7; border-color: #fde68a; }
+  .plan.featured .plan-cta { background: #fde68a; color: #06080d; border-color: transparent; }
+  .plan.featured .plan-cta:hover { background: #fef3c7; }
 
-  .price-footnote { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: rgba(255,255,255,0.5); text-align: center; letter-spacing: 0.08em; margin-top: 16px; }
-
-  /* Comparison table */
-  .compare-wrap {
-    overflow-x: auto;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px;
-    background: rgba(255,255,255,0.02);
+  /* Per-edition AI Pro list */
+  .editions {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    overflow: hidden;
   }
-  table.compare { width: 100%; border-collapse: collapse; min-width: 560px; font-size: 13px; }
-  table.compare thead th {
-    background: rgba(253,230,138,0.05);
-    font-family: "Noto Serif TC", serif;
-    font-weight: 500;
-    color: rgba(255,255,255,0.95);
-    padding: 16px 14px;
-    text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+  @media (max-width: 920px) { .editions { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .editions { grid-template-columns: 1fr; } }
+  .edition {
+    background: #0c1018;
+    padding: 26px 22px;
+  }
+  .edition-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px; font-weight: 500;
+    color: rgba(255,255,255,0.97);
+    margin-bottom: 8px;
+  }
+  .edition-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #fde68a;
+    margin-bottom: 10px;
     letter-spacing: 0.04em;
   }
-  table.compare thead th:first-child {
-    text-align: left;
+  .edition-desc {
+    font-size: 12.5px;
     color: rgba(255,255,255,0.55);
-    font-family: "JetBrains Mono", monospace;
-    font-weight: 400;
-    font-size: 11px;
-    letter-spacing: 0.18em;
+    line-height: 1.65;
+  }
+
+  /* Free / single-product cards */
+  .free-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 720px) { .free-grid { grid-template-columns: 1fr; } }
+  .free-card {
+    padding: 32px 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #0c1018;
+    border-radius: 22px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: border-color 0.3s, transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .free-card:hover { border-color: rgba(255,255,255,0.22); transform: translateY(-2px); }
+  .free-card-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.5);
     text-transform: uppercase;
   }
-  table.compare tbody td { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); text-align: center; color: rgba(255,255,255,0.85); }
-  table.compare tbody td:first-child { text-align: left; color: rgba(255,255,255,0.95); font-weight: 500; }
-  table.compare tbody tr:last-child td { border-bottom: none; }
-  table.compare .yes { color: #fde68a; font-weight: 600; }
-  table.compare .no { color: rgba(255,255,255,0.4); }
-  table.compare .soon { font-family: "JetBrains Mono", monospace; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; }
+  .free-card-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 24px; font-weight: 500;
+    color: rgba(255,255,255,0.97);
+    letter-spacing: -0.008em;
+  }
+  .free-card-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #fde68a;
+    letter-spacing: 0.06em;
+  }
+  .free-card-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    flex-grow: 1;
+  }
+  .free-card-link {
+    color: #fde68a;
+    font-size: 14px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 4px;
+    transition: color 0.2s;
+  }
+  .free-card-link::after { content: '›'; font-size: 18px; line-height: 1; transition: transform 0.3s; }
+  .free-card-link:hover { color: #fef3c7; }
+  .free-card-link:hover::after { transform: translateX(4px); }
 
   /* FAQ */
   .faq-list { display: grid; gap: 10px; }
   details.faq {
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.025);
-    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+    border-radius: 14px;
     transition: border-color 0.2s;
   }
-  details.faq[open] { border-color: rgba(253,230,138,0.5); background: rgba(253,230,138,0.04); }
+  details.faq[open] { border-color: rgba(253,230,138,0.45); background: rgba(253,230,138,0.03); }
   details.faq summary {
-    cursor: pointer; padding: 18px 22px;
-    font-family: "Noto Serif TC", serif;
-    font-size: 15px; font-weight: 500;
+    cursor: pointer; padding: 22px 26px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px; font-weight: 500;
     color: rgba(255,255,255,0.95);
     list-style: none;
     display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    letter-spacing: -0.005em;
   }
   details.faq summary::-webkit-details-marker { display: none; }
   details.faq summary::after {
     content: '+';
     color: #fde68a;
-    font-size: 22px;
-    font-family: "JetBrains Mono", monospace;
+    font-size: 24px;
     line-height: 1;
     transition: transform 0.3s;
   }
   details.faq[open] summary::after { transform: rotate(45deg); }
   details.faq .faq-body {
-    padding: 0 22px 20px;
-    color: rgba(255,255,255,0.75);
-    font-size: 14px;
+    padding: 0 26px 22px;
+    color: rgba(255,255,255,0.72);
+    font-size: 15px;
     line-height: 1.85;
   }
-  details.faq .faq-body a { color: #fde68a; border-bottom: 1px solid rgba(253,230,138,0.4); }
   details.faq .faq-body strong { color: rgba(255,255,255,0.97); font-weight: 600; }
 
-  .end-cta { text-align: center; padding: 64px 0 32px; }
-  .end-cta-note {
-    display: block; margin-top: 16px;
-    font-family: "JetBrains Mono", monospace;
+  .end {
+    text-align: center;
+    padding: 100px 0 40px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: #fde68a;
+    color: #06080d;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.25s, transform 0.3s;
+  }
+  .btn:hover { background: #fef3c7; transform: translateY(-1px); }
+  .btn::after { content: '›'; font-size: 18px; line-height: 1; transition: transform 0.3s; }
+  .btn:hover::after { transform: translateX(4px); }
+  .end-note {
+    display: block;
+    margin-top: 18px;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.14em;
+  }
+
+  .foot {
+    padding: 40px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.4);
+  }
+  .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .foot-links a:hover { color: rgba(255,255,255,0.85); }
+
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 80px 0 40px; }
+    .section { padding: 60px 0; }
+    .plan { padding: 30px 24px 28px; }
   }
 </style>
 </head>
 <body>
 
-<div class="bg-mesh" aria-hidden="true">
-  <div class="blob blob-a"></div>
-  <div class="blob blob-b"></div>
-  <div class="blob blob-c"></div>
-</div>
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-grain" aria-hidden="true"></div>
-
-<div class="container">
-
-  <header class="site-nav">
-    <a href="index.html" class="site-logo">周全<small>ChouLegal</small></a>
-    <nav class="site-nav-links" aria-label="主選單">
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">周全<small>ChouLegal</small></a>
+    <nav class="nav-links" aria-label="主選單">
       <a href="index.html">首頁</a>
-      <a href="guide.html">指南</a>
       <a href="manifesto.html">理念</a>
       <a href="about.html">關於</a>
       <a href="pricing.html" aria-current="page">方案</a>
     </nav>
-  </header>
+  </div>
+</header>
+
+<div class="wrap">
 
   <section class="hero">
-    <div class="eyebrow">ChouLegal Business · 周全 商業版</div>
-    <h1 class="h-display">律師事務所的<em>民法財產權案件工作台。</em></h1>
-    <p class="lead">案件管理、法源自動引證、PDF 工作底稿、多律師協作——把民眾版的 30+ 個計算工具，升級成事務所等級的案件流程平台。</p>
-    <p class="essay-meta-note" style="margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.12em;">
-      <strong style="color:#fde68a;font-weight:500;">民眾版完全免費</strong>　·　事務所版另有訂閱方案
-    </p>
+    <div class="eyebrow">Pricing</div>
+    <h1 class="title">每個產品，<em>各自定價。</em></h1>
+    <p class="lead">不分客群、不綑綁。AI Pro 按席次月付；周全 AI 按對話次數計；勞動、繼承、公職薪資的計算工具完全免費。</p>
   </section>
 
-  <section aria-labelledby="plans-heading">
-    <h2 id="plans-heading" style="position:absolute;left:-9999px;">方案選擇</h2>
-    <div class="plans">
+  <!-- AI Pro -->
+  <section class="section reveal" id="ai-pro">
+    <div class="section-eyebrow">AI Pro</div>
+    <h2 class="section-title">給專業人士的 <em>agentic AI 工作台。</em></h2>
+    <p class="section-sub">每個版本各自接不同 corpus 與 action set。月付制、隨時可取消、最低 3 席起。</p>
 
-      <article class="plan" id="starter">
-        <div class="plan-name">Starter</div>
+    <div class="pro-grid">
+
+      <article class="plan" id="ai-pro-starter">
+        <div class="plan-name">Solo</div>
+        <p class="plan-target">個人執業、想先試水溫的小型團隊。</p>
         <div class="plan-price"><span class="currency">NT$</span>1,980</div>
-        <div class="plan-price-unit">/ 月 · 月付制</div>
-        <div class="plan-target">個人執業律師，或想先試水溫的小型事務所。</div>
+        <div class="plan-unit">/ 席 · 月</div>
         <ul class="plan-features">
-          <li>1 位律師帳號</li>
-          <li>每月 10 件案件</li>
-          <li>全部 30+ 民法計算工具</li>
-          <li>法源版本自動引證</li>
-          <li>PDF 工作底稿匯出</li>
-          <li>基本案件範本庫</li>
-          <li class="coming">多律師協作 (Coming Soon)</li>
+          <li>1 位專業人員席次</li>
+          <li>每月 10 件案件 / chat 額度</li>
+          <li>全部計算引擎</li>
+          <li>逐字法源引證</li>
+          <li>PDF 工作底稿</li>
+          <li class="coming">多人協作 (Coming Soon)</li>
         </ul>
-        <a class="plan-cta" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%95%86%E6%A5%AD%E7%89%88%5D%20Starter%20%E5%80%99%E8%A3%9C%E5%90%8D%E5%96%AE&body=%E6%96%B9%E6%A1%88%EF%BC%9AStarter%0A%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E9%9B%BB%E8%A9%B1%EF%BC%9A%0A%0A%E8%AB%8B%E5%95%8F%E9%A0%90%E8%A8%88%E4%BD%BF%E7%94%A8%E6%99%82%E9%96%93%EF%BC%9A">加入候補名單</a>
+        <a class="plan-cta" href="mailto:businessjoechou@gmail.com?subject=AI%20Pro%20Solo%20%E5%80%99%E8%A3%9C">加入候補</a>
       </article>
 
-      <article class="plan featured" id="pro">
+      <article class="plan featured" id="ai-pro-team">
         <div class="plan-badge">最受歡迎</div>
-        <div class="plan-name">Pro</div>
+        <div class="plan-name">Team</div>
+        <p class="plan-target">3 至 5 人的成長型事務所或部門。</p>
         <div class="plan-price"><span class="currency">NT$</span>5,980</div>
-        <div class="plan-price-unit">/ 月 · 月付制</div>
-        <div class="plan-target">3–5 人的成長型事務所，需要協作與案件流程管理。</div>
+        <div class="plan-unit">/ 席 · 月（3 席起）</div>
         <ul class="plan-features">
-          <li>最多 5 位律師帳號</li>
-          <li>無限案件數</li>
-          <li>全部 30+ 民法計算工具</li>
-          <li>法源版本自動引證 + 歷史追蹤</li>
-          <li>PDF 工作底稿（含事務所 logo）</li>
-          <li>進階案件範本庫</li>
-          <li>稽核軌跡（誰改過什麼）</li>
+          <li>最多 5 位席次</li>
+          <li>無限案件 / chat 額度</li>
+          <li>全部計算引擎</li>
+          <li>逐字法源 + 歷史版本追蹤</li>
+          <li>PDF 工作底稿（含 logo）</li>
+          <li>稽核軌跡</li>
           <li class="coming">Webhook 整合 (Coming Soon)</li>
         </ul>
-        <a class="plan-cta" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%95%86%E6%A5%AD%E7%89%88%5D%20Pro%20%E5%80%99%E8%A3%9C%E5%90%8D%E5%96%AE&body=%E6%96%B9%E6%A1%88%EF%BC%9APro%0A%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E9%9B%BB%E8%A9%B1%EF%BC%9A%0A%E9%A0%90%E8%A8%88%E5%B8%B3%E8%99%9F%E6%95%B8%EF%BC%9A">加入候補名單</a>
+        <a class="plan-cta" href="mailto:businessjoechou@gmail.com?subject=AI%20Pro%20Team%20%E5%80%99%E8%A3%9C">加入候補</a>
       </article>
 
-      <article class="plan" id="enterprise">
+      <article class="plan" id="ai-pro-enterprise">
         <div class="plan-name">Enterprise</div>
+        <p class="plan-target">中大型團隊、聯合事務所、需要客製化整合。</p>
         <div class="plan-price"><span class="currency">NT$</span>15,980</div>
-        <div class="plan-price-unit">/ 月起 · 可客製化</div>
-        <div class="plan-target">中大型事務所、聯合律師事務所，需要客製化與整合。</div>
+        <div class="plan-unit">/ 席 · 月起 · 可客製</div>
         <ul class="plan-features">
-          <li>無限律師帳號</li>
-          <li>無限案件數</li>
-          <li>全部 30+ 民法計算工具</li>
-          <li>法源版本自動引證 + 歷史追蹤</li>
-          <li>自訂範本庫與角色權限</li>
+          <li>無限席次</li>
+          <li>無限案件 / chat 額度</li>
+          <li>自訂角色權限與範本庫</li>
           <li>專屬客戶成功窗口</li>
           <li>DPA（資料處理協議）</li>
           <li class="coming">SSO / SAML (Coming Soon)</li>
           <li class="coming">API Token (Coming Soon)</li>
         </ul>
-        <a class="plan-cta" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%95%86%E6%A5%AD%E7%89%88%5D%20Enterprise%20%E5%AE%A2%E8%A3%BD%E5%8C%96%E8%AB%AE%E8%A9%A2&body=%E6%96%B9%E6%A1%88%EF%BC%9AEnterprise%0A%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E9%9B%BB%E8%A9%B1%EF%BC%9A%0A%E4%BA%8B%E5%8B%99%E6%89%80%E4%BA%BA%E6%95%B8%EF%BC%9A%0A%E4%B8%BB%E6%94%BB%E9%A0%98%E5%9F%9F%EF%BC%9A%0A%E5%AE%A2%E8%A3%BD%E5%8C%96%E9%9C%80%E6%B1%82%EF%BC%9A">聯絡我們客製化</a>
+        <a class="plan-cta" href="mailto:businessjoechou@gmail.com?subject=AI%20Pro%20Enterprise%20%E5%AE%A2%E8%A3%BD%E8%A9%A2">聯絡客製</a>
       </article>
 
     </div>
-    <p class="price-footnote">* 定價以實際簽約為準，月付方案隨時可取消。未來可能因成本或功能擴充調整。</p>
-  </section>
 
-  <section class="sec" aria-labelledby="compare-heading">
-    <div class="sec-eyebrow" style="text-align:center;">Compare Plans</div>
-    <h2 class="sec-title" id="compare-heading" style="text-align:center;">方案功能<em>比較。</em></h2>
-    <div class="compare-wrap">
-      <table class="compare">
-        <thead>
-          <tr>
-            <th scope="col">功能</th>
-            <th scope="col">Starter</th>
-            <th scope="col">Pro</th>
-            <th scope="col">Enterprise</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>每月案件數</td><td>10 件</td><td>無限</td><td>無限</td></tr>
-          <tr><td>律師帳號數</td><td>1</td><td>最多 5</td><td>無限</td></tr>
-          <tr><td>民法財產權計算工具</td><td class="yes">✓ 全部</td><td class="yes">✓ 全部</td><td class="yes">✓ 全部</td></tr>
-          <tr><td>法源版本自動引證</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>法源歷史追蹤</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>案件範本庫</td><td>基本</td><td>進階</td><td>自訂</td></tr>
-          <tr><td>PDF 工作底稿</td><td class="yes">✓</td><td class="yes">✓ 含 logo</td><td class="yes">✓ 含 logo</td></tr>
-          <tr><td>稽核軌跡</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>自訂角色權限</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>專屬客戶成功窗口</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>DPA（資料處理協議）</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>API Token</td><td class="soon">Coming Soon</td><td class="soon">Coming Soon</td><td class="soon">Coming Soon</td></tr>
-          <tr><td>SSO / SAML</td><td class="no">—</td><td class="no">—</td><td class="soon">Coming Soon</td></tr>
-        </tbody>
-      </table>
+    <div style="margin-top:48px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:18px;">Five editions, same price tier</p>
+      <div class="editions">
+        <div class="edition">
+          <div class="edition-name">律師事務所</div>
+          <div class="edition-price">Team NT$5,980 / 席</div>
+          <div class="edition-desc">民/刑/行/商法 corpus、判例、案件流程。</div>
+        </div>
+        <div class="edition">
+          <div class="edition-name">會計師事務所</div>
+          <div class="edition-price">Team NT$5,980 / 席</div>
+          <div class="edition-desc">稅法 corpus、函釋、估稅引擎。</div>
+        </div>
+        <div class="edition">
+          <div class="edition-name">地政士事務所</div>
+          <div class="edition-price">Team NT$5,980 / 席</div>
+          <div class="edition-desc">土地法、不動產稅、過戶流程。</div>
+        </div>
+        <div class="edition">
+          <div class="edition-name">企業法務</div>
+          <div class="edition-price">Team NT$5,980 / 席</div>
+          <div class="edition-desc">公司法、合約、合規、跨師業協作。</div>
+        </div>
+        <div class="edition">
+          <div class="edition-name">人資與餐飲</div>
+          <div class="edition-price">Team NT$5,980 / 席</div>
+          <div class="edition-desc">勞基法雙引擎、時薪、服務費、公部門。</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="faq-heading">
-    <div class="sec-eyebrow" style="text-align:center;">FAQ</div>
-    <h2 class="sec-title" id="faq-heading" style="text-align:center;">常見<em>問題。</em></h2>
+  <!-- 周全 AI -->
+  <section class="section reveal">
+    <div class="section-eyebrow">周全 AI</div>
+    <h2 class="section-title">對話制 <em>案情判斷。</em></h2>
+    <p class="section-sub">說一次你遇到的事，AI 帶法源回答。八大領域、越界即停、不收個資。</p>
+
+    <div class="free-grid">
+      <article class="free-card">
+        <div class="free-card-eyebrow">Pay-as-you-go</div>
+        <div class="free-card-name">單次對話</div>
+        <div class="free-card-price">NT$ 49 / 對話</div>
+        <p class="free-card-desc">完整一次案情判斷，含法條引證與下一步建議。不限領域、不收個資。</p>
+        <a class="free-card-link" href="https://ai.choulegal.com">前往周全 AI</a>
+      </article>
+      <article class="free-card">
+        <div class="free-card-eyebrow">Subscription</div>
+        <div class="free-card-name">月會員</div>
+        <div class="free-card-price">NT$ 299 / 月 · 30 次對話</div>
+        <p class="free-card-desc">適合短期內有複雜情境（離婚、繼承、勞資爭議）需要多輪確認的人。</p>
+        <a class="free-card-link" href="https://ai.choulegal.com">前往周全 AI</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Free tools -->
+  <section class="section reveal">
+    <div class="section-eyebrow">Free Forever</div>
+    <h2 class="section-title">日常的法律題目，<em>永遠免費。</em></h2>
+    <p class="section-sub">不註冊、不登入、不看廣告。所有計算在你的瀏覽器內跑完。</p>
+
+    <div class="free-grid">
+      <a class="free-card" href="https://labor.choulegal.com">
+        <div class="free-card-eyebrow">勞動</div>
+        <div class="free-card-name">勞基法計算</div>
+        <div class="free-card-price">NT$ 0 · 永久免費</div>
+        <p class="free-card-desc">資遣費、加班費、特休、職災補償、勞退級距。對齊勞動部最新公告。</p>
+        <span class="free-card-link">開始試算</span>
+      </a>
+      <a class="free-card" href="https://inheritance.choulegal.com">
+        <div class="free-card-eyebrow">繼承 / 民法財產權</div>
+        <div class="free-card-name">民法財產權計算</div>
+        <div class="free-card-price">NT$ 0 · 永久免費</div>
+        <p class="free-card-desc">應繼分、特留分、剩餘財產分配、贍養費、遺贈稅。</p>
+        <span class="free-card-link">開始試算</span>
+      </a>
+      <a class="free-card" href="https://people.choulegal.com">
+        <div class="free-card-eyebrow">公職薪資</div>
+        <div class="free-card-name">俸給與退撫</div>
+        <div class="free-card-price">NT$ 0 · 永久免費</div>
+        <p class="free-card-desc">俸點換算、退撫新制、考績獎金。對齊銓敘部與退撫法。</p>
+        <span class="free-card-link">開始試算</span>
+      </a>
+      <a class="free-card" href="index.html">
+        <div class="free-card-eyebrow">完整列表</div>
+        <div class="free-card-name">所有產品</div>
+        <div class="free-card-price">回首頁瀏覽</div>
+        <p class="free-card-desc">查看所有上線與籌備中的產品。</p>
+        <span class="free-card-link">回首頁</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section reveal" id="faq">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">常見<em>問題。</em></h2>
+    <div style="margin-top:32px;"></div>
+
     <div class="faq-list">
 
       <details class="faq">
-        <summary>什麼是「周全 商業版」？</summary>
-        <div class="faq-body">「周全 商業版」是周全法律科技推出給中華民國律師事務所使用的多租戶 SaaS 案件工作台，聚焦民法財產權案件。它把民眾版 InheritancePro 的 30+ 個計算工具整合進事務所的案件流程裡，並加上法源引證、PDF 工作底稿、多律師協作等事務所必要功能。產品目前處於籌備階段，僅開放候補名單。</div>
+        <summary>AI Pro 是什麼？</summary>
+        <div class="faq-body">AI Pro 是給專業人士的 agentic AI 工作台 — 它會用台灣法源回答問題、計算數字、並在 workspace 內代執行操作（建檔、產生工作底稿、寄信通知）。五個版本：律師事務所、會計師事務所、地政士事務所、企業法務、人資與餐飲。</div>
       </details>
 
       <details class="faq">
-        <summary>商業版與民眾版 InheritancePro 有什麼差別？</summary>
+        <summary>AI Pro 跟周全 AI 差在哪？</summary>
         <div class="faq-body">
-          <p style="margin-bottom:10px;"><strong>民眾版 InheritancePro</strong>：單次計算工具，免費、不需登入，適合一般民眾自用查詢。每次算完關掉瀏覽器，資料就不見。</p>
-          <p><strong>商業版</strong>：以「案件」為單位的工作流程。案件可以建檔、指派律師、綁定計算結果、產出 PDF 工作底稿、保留稽核紀錄。適合事務所長期累積案件檔案、內部協作與客戶報告。</p>
+          <p style="margin-bottom:10px;"><strong>周全 AI</strong>：對話制案情判斷，給遇到法律事的個人。每次回答附法條，越界即停。</p>
+          <p><strong>AI Pro</strong>：給專業人士的 workspace。同樣的 agentic AI 引擎，但接專業 corpus、有計算工具、會代執行操作、保留稽核軌跡。</p>
         </div>
       </details>
 
       <details class="faq">
         <summary>有試用方案嗎？</summary>
-        <div class="faq-body">產品正式上線時將開放試用，詳細天數與試用內容會在候補名單通知中說明。現階段可先透過 mailto 加入候補名單，上線前優先通知並提供早鳥優惠。</div>
+        <div class="faq-body">AI Pro 上線時將開放試用。現階段加入候補名單，上線前優先通知並提供早鳥優惠。</div>
       </details>
 
       <details class="faq">
-        <summary>如何終止訂閱？</summary>
-        <div class="faq-body">月付方案於事務所設定頁面可隨時停止續訂，當期月費不退費，但當月剩餘時間仍可繼續使用至週期結束。不設任何綁約期或解約手續費。</div>
+        <summary>怎麼終止訂閱？</summary>
+        <div class="faq-body">月付方案於設定頁面可隨時停止續訂，當期月費不退費，但當月剩餘時間仍可繼續使用。不綁約、不收解約手續費。</div>
       </details>
 
       <details class="faq">
-        <summary>資料歸事務所還是歸你們？</summary>
-        <div class="faq-body">事務所自己上傳與建立的案件資料，所有權完全歸事務所。我們僅作為資料處理者（Data Processor）提供技術服務，Enterprise 方案可簽訂 DPA（資料處理協議）明確雙方角色。事務所終止訂閱後可匯出全部案件資料，我們於約定期間內完成刪除。</div>
-      </details>
-
-      <details class="faq">
-        <summary>為什麼只做民法財產權？勞基法、公司法為什麼沒有？</summary>
-        <div class="faq-body">商業版第一階段聚焦於民法財產權（繼承、剩餘財產分配、贍養費、損害賠償等）——這是事務所案量最大、計算最繁瑣、誤差成本最高的領域。勞基法（LaborPro）已有對應民眾版工具；商業版是否擴充至勞基法、公司法、消費爭議等領域，視第一階段使用者回饋決定。</div>
+        <summary>資料歸誰？</summary>
+        <div class="faq-body">你上傳與建立的資料，所有權完全是你的。我們僅作為資料處理者提供技術服務；Enterprise 方案可簽訂 DPA 明確雙方角色。終止訂閱後可匯出全部資料，並於約定期間內刪除。</div>
       </details>
 
       <details class="faq">
         <summary>法條更新的頻率？</summary>
-        <div class="faq-body">民法財產權相關條文、施行細則若經立法院三讀並公告，我們於人工驗證後於平台內更新計算邏輯，並在每個案件頁面標註「本次計算依據之法源版本與生效日」。Pro 以上方案可回溯查詢歷史法源版本。</div>
+        <div class="faq-body">立法院三讀公告或主管機關公告變動後，於人工驗證後更新計算邏輯與 corpus，並於每筆回答 / 計算頁面標註法源版本與生效日。Team 以上方案可回溯查詢歷史版本。</div>
       </details>
 
       <details class="faq">
         <summary>可以開立抬頭發票嗎？</summary>
-        <div class="faq-body">可以。所有訂閱方案皆可開立三聯式發票或收據，事務所抬頭、統編於訂閱時填寫。</div>
+        <div class="faq-body">可以。所有訂閱方案皆可開立三聯式發票或收據，於訂閱時填寫公司抬頭與統編。</div>
+      </details>
+
+      <details class="faq">
+        <summary>免費的計算工具會不會哪天突然收費？</summary>
+        <div class="faq-body">不會。勞動、繼承、公職薪資的計算工具<strong>永遠完全免費</strong>。營運成本由 AI Pro 訂閱費支撐。不是「優惠」，不是「限時」，就是免費。</div>
       </details>
 
     </div>
   </section>
 
-  <section class="end-cta">
-    <a class="btn btn-primary" href="mailto:businessjoechou@gmail.com?subject=%5B%E5%95%86%E6%A5%AD%E7%89%88%5D%20Pricing%20%E8%AB%AE%E8%A9%A2&body=%E4%BA%8B%E5%8B%99%E6%89%80%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E4%BA%BA%EF%BC%9A%0A%E8%81%AF%E7%B5%A1%E9%9B%BB%E8%A9%B1%EF%BC%9A%0A%E4%BA%8B%E5%8B%99%E6%89%80%E4%BA%BA%E6%95%B8%EF%BC%9A%0A%E6%84%9F%E8%88%88%E8%B6%A3%E7%9A%84%E6%96%B9%E6%A1%88%EF%BC%9A%0A%E6%8F%90%E5%95%8F%EF%BC%9A">加入候補名單 <span aria-hidden="true">→</span></a>
-    <span class="end-cta-note">businessjoechou@gmail.com · 上線時優先通知</span>
+  <section class="end">
+    <a class="btn" href="mailto:businessjoechou@gmail.com?subject=AI%20Pro%20%E8%AB%AE%E8%A9%A2">加入候補名單</a>
+    <span class="end-note">businessjoechou@gmail.com</span>
   </section>
 
-  <footer class="site-foot">
-    <div class="foot-mark">周全法律科技<small>© <span id="year">2026</span> · ChouLegal</small></div>
+  <footer class="foot">
+    <span>© <span id="year">2026</span> ChouLegal · 周全</span>
     <nav class="foot-links" aria-label="頁尾">
       <a href="index.html">首頁</a>
-      <a href="guide.html">指南</a>
       <a href="manifesto.html">理念</a>
       <a href="about.html">關於</a>
       <a href="pricing.html">方案</a>
-      <a href="privacy.html">隱私權</a>
+      <a href="privacy.html">隱私</a>
       <a href="terms.html">條款</a>
     </nav>
   </footer>
@@ -358,20 +656,36 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  if (typeof IntersectionObserver !== 'undefined') {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    setTimeout(function () {
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight) el.classList.add('is-visible');
+      });
+    }, 1600);
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+  }
 </script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "周全 商業版（ChouLegal Business）",
-  "description": "律師事務所專用民法財產權案件工作台：案件管理、法源自動引證、PDF 工作底稿、多律師協作。",
-  "brand": { "@type": "Brand", "name": "周全法律科技 ChouLegal" },
+  "name": "周全 AI Pro",
+  "description": "給專業人士的 agentic AI 工作台。五個版本：律師事務所、會計師事務所、地政士事務所、企業法務、人資與餐飲。",
+  "brand": { "@type": "Brand", "name": "周全 ChouLegal" },
   "url": "https://choulegal.com/pricing.html",
   "offers": [
-    { "@type": "Offer", "name": "Starter", "price": "1980", "priceCurrency": "TWD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1980", "priceCurrency": "TWD", "unitText": "MONTH" }, "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#starter" },
-    { "@type": "Offer", "name": "Pro", "price": "5980", "priceCurrency": "TWD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "5980", "priceCurrency": "TWD", "unitText": "MONTH" }, "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#pro" },
-    { "@type": "Offer", "name": "Enterprise", "price": "15980", "priceCurrency": "TWD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "15980", "priceCurrency": "TWD", "unitText": "MONTH" }, "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#enterprise" }
+    { "@type": "Offer", "name": "Solo", "price": "1980", "priceCurrency": "TWD", "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#ai-pro-starter" },
+    { "@type": "Offer", "name": "Team", "price": "5980", "priceCurrency": "TWD", "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#ai-pro-team" },
+    { "@type": "Offer", "name": "Enterprise", "price": "15980", "priceCurrency": "TWD", "availability": "https://schema.org/PreOrder", "url": "https://choulegal.com/pricing.html#ai-pro-enterprise" }
   ]
 }
 </script>
@@ -381,13 +695,10 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "什麼是周全 商業版？", "acceptedAnswer": { "@type": "Answer", "text": "周全 商業版是中華民國律師事務所專用的多租戶 SaaS 案件工作台，聚焦民法財產權案件，整合 30+ 個計算工具、法源引證、PDF 工作底稿與多律師協作功能。目前為籌備階段，僅開放候補名單。" } },
-    { "@type": "Question", "name": "商業版與民眾版 InheritancePro 差別？", "acceptedAnswer": { "@type": "Answer", "text": "民眾版 InheritancePro 為單次計算工具、免費、不需登入，適合一般民眾自用；商業版以「案件」為單位提供建檔、指派、PDF 工作底稿、稽核紀錄與多律師協作，適合事務所長期累積案件檔案。" } },
-    { "@type": "Question", "name": "有試用方案嗎？", "acceptedAnswer": { "@type": "Answer", "text": "產品正式上線時將開放試用。現階段可加入候補名單，上線前優先通知並提供早鳥優惠。" } },
-    { "@type": "Question", "name": "如何終止訂閱？", "acceptedAnswer": { "@type": "Answer", "text": "月付方案於事務所設定頁面可隨時停止續訂，不綁約、不收解約費，當期月費不退但可用至週期結束。" } },
-    { "@type": "Question", "name": "案件資料的所有權歸誰？", "acceptedAnswer": { "@type": "Answer", "text": "事務所自己上傳與建立的案件資料所有權完全歸事務所；周全法律科技僅為資料處理者。Enterprise 方案可簽訂 DPA 明確雙方權責，終止訂閱後可匯出資料並於約定期間內刪除。" } },
-    { "@type": "Question", "name": "為什麼商業版目前只涵蓋民法財產權？", "acceptedAnswer": { "@type": "Answer", "text": "第一階段聚焦案量大、計算繁瑣、誤差成本高的民法財產權領域（繼承、剩餘財產、贍養費、損害賠償等）。未來是否擴充至勞基法、公司法視使用者回饋決定。" } },
-    { "@type": "Question", "name": "可以開立抬頭發票嗎？", "acceptedAnswer": { "@type": "Answer", "text": "可以。所有方案皆可開立三聯式發票或收據，於訂閱時填寫事務所抬頭與統編。" } }
+    { "@type": "Question", "name": "AI Pro 是什麼？", "acceptedAnswer": { "@type": "Answer", "text": "AI Pro 是給專業人士的 agentic AI 工作台 — 它會用台灣法源回答問題、計算數字、並在 workspace 內代執行操作。五個版本：律師事務所、會計師事務所、地政士事務所、企業法務、人資與餐飲。" } },
+    { "@type": "Question", "name": "AI Pro 跟周全 AI 差在哪？", "acceptedAnswer": { "@type": "Answer", "text": "周全 AI 是對話制案情判斷，給遇到法律事的個人；AI Pro 是給專業人士的 workspace，有計算工具、會代執行操作、保留稽核軌跡。" } },
+    { "@type": "Question", "name": "免費的計算工具會收費嗎？", "acceptedAnswer": { "@type": "Answer", "text": "不會。勞動、繼承、公職薪資的計算工具永遠完全免費。營運成本由 AI Pro 訂閱費支撐。" } },
+    { "@type": "Question", "name": "資料歸誰？", "acceptedAnswer": { "@type": "Answer", "text": "你上傳與建立的資料，所有權完全是你的。我們僅作為資料處理者提供技術服務。" } }
   ]
 }
 </script>
