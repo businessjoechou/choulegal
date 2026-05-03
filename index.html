@@ -239,18 +239,19 @@
   /* ── Product grid (Apple cards) ── */
   .grid-products {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
   }
-  @media (max-width: 880px) { .grid-products { grid-template-columns: 1fr; } }
+  @media (max-width: 1100px) { .grid-products { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 720px) { .grid-products { grid-template-columns: 1fr; } }
 
   .product {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 460px;
-    padding: 44px 44px 36px;
-    border-radius: 28px;
+    min-height: 380px;
+    padding: 40px 36px 32px;
+    border-radius: 24px;
     overflow: hidden;
     background: var(--ink-2);
     border: 1px solid var(--line);
@@ -263,19 +264,19 @@
     inset: 0;
     background: radial-gradient(80% 60% at 50% 0%, rgba(253,230,138,0.10), transparent 70%);
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.7;
     transition: opacity 0.5s;
   }
   .product:hover::before { opacity: 1; }
-  .product.feature {
-    grid-column: span 2;
-    min-height: 520px;
-    padding: 56px 56px 48px;
+  .product:nth-child(2)::before {
+    background: radial-gradient(70% 55% at 30% 20%, rgba(253,230,138,0.18), transparent 65%),
+                radial-gradient(55% 45% at 80% 85%, rgba(124,58,237,0.16), transparent 65%);
+    opacity: 0.85;
   }
-  @media (max-width: 880px) { .product.feature { grid-column: span 1; padding: 44px 32px 36px; min-height: 460px; } }
-  .product.feature::before {
-    background: radial-gradient(60% 50% at 30% 30%, rgba(253,230,138,0.16), transparent 65%),
-                radial-gradient(50% 40% at 80% 80%, rgba(124,58,237,0.18), transparent 65%);
+  .product:nth-child(3)::before {
+    background: radial-gradient(70% 55% at 70% 20%, rgba(56,189,248,0.16), transparent 65%),
+                radial-gradient(55% 45% at 20% 85%, rgba(244,114,182,0.12), transparent 65%);
+    opacity: 0.8;
   }
 
   .product-eyebrow {
@@ -571,32 +572,26 @@
 
       <div class="grid-products">
 
-        <a class="product feature reveal" href="https://people.choulegal.com">
-          <div class="product-eyebrow">周全｜民眾版</div>
-          <h3 class="product-name">給所有台灣人<br>免費使用的<br>法律工具。</h3>
-          <p class="product-tag">勞動、繼承、民法財產 — 瀏覽器即算，不註冊、不收個資。</p>
-          <p class="product-desc">所有計算對齊主管機關最新公告，每一筆都附法源。</p>
+        <a class="product reveal" href="https://people.choulegal.com">
+          <h3 class="product-name">周全｜民眾版</h3>
+          <p class="product-tag">給所有台灣人免費使用的法律工具。</p>
           <div class="product-cta">
             <a href="https://people.choulegal.com">進入民眾版</a>
           </div>
         </a>
 
-        <a class="product feature reveal" href="https://etp.choulegal.com">
-          <div class="product-eyebrow gold">周全｜商業版</div>
-          <h3 class="product-name">給專業人士使用的<br>專業法律 AI 工具。</h3>
-          <p class="product-tag">五個版本：律師 AI Pro、會計師 AI Pro、地政士 AI Pro、企業法務 AI Pro、HR-餐飲 AI Pro。</p>
-          <p class="product-desc">AI 引用條號、附版本日期，並可代你執行案件動作。</p>
+        <a class="product reveal" href="https://etp.choulegal.com">
+          <h3 class="product-name">周全｜商業版</h3>
+          <p class="product-tag">給專業人士使用的專業法律 AI 工具。</p>
           <div class="product-cta">
             <a href="https://etp.choulegal.com">進入商業版</a>
             <a class="muted" href="pricing.html">查看訂閱</a>
           </div>
         </a>
 
-        <a class="product feature reveal" href="https://ai.choulegal.com">
-          <div class="product-eyebrow">周全 AI</div>
-          <h3 class="product-name">根據事實，<br>參考歷年判例與<br>法條涵攝。</h3>
-          <p class="product-tag">給出具參考性值的回饋與初判意見。</p>
-          <p class="product-desc">說一次你遇到的事，AI 對應台灣的判例、函釋與條文做案情涵攝，每筆回答附法源；超出明文規定即停，並指引下一步。</p>
+        <a class="product reveal" href="https://ai.choulegal.com">
+          <h3 class="product-name">周全 AI</h3>
+          <p class="product-tag">根據事實參考歷年判例與法條涵攝，給出具參考性值的回饋與初判意見。</p>
           <div class="product-cta">
             <a href="https://ai.choulegal.com">開始對話</a>
           </div>
