@@ -267,6 +267,71 @@
     font-size: 14px;
     line-height: 1.75;
   }
+  .wall-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .supporter {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .supporter:hover {
+    border-color: rgba(253,230,138,0.25);
+    background: rgba(253,230,138,0.02);
+  }
+  .supporter-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: rgba(255,255,255,0.35);
+  }
+  .supporter[data-tier="pot"] .supporter-icon { color: var(--gold); }
+  .supporter-body { flex: 1; min-width: 0; }
+  .supporter-name {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.4;
+  }
+  .supporter-tier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    margin-left: 8px;
+  }
+  .supporter-message {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .supporter-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+  .wall-count {
+    text-align: center;
+    margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.08em;
+  }
+
   .wall-empty svg {
     width: 26px;
     height: 26px;
@@ -357,7 +422,7 @@
         <p class="eyebrow" style="margin-bottom:14px;">With Gratitude</p>
         <h2 class="wall-title">感謝名單</h2>
       </div>
-      <div class="wall-empty">
+      <div id="supporters-mount" class="wall-empty">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
         </svg>
@@ -366,6 +431,55 @@
       </div>
     </div>
   </section>
+
+  <script>
+    // 載入 supporters.json 渲染感謝名單。
+    // 新增贊助者：編 supporters.json → commit/push → 自動更新。
+    (function () {
+      var mount = document.getElementById('supporters-mount');
+      if (!mount) return;
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+      var COFFEE_SVG = '<svg class="supporter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg>';
+      var TIER_LABEL = { cup: '一杯', pot: '一壺' };
+
+      fetch('supporters.json', { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : { supporters: [] }; })
+        .then(function (data) {
+          var list = (data && data.supporters) || [];
+          if (list.length === 0) return; // 維持 wall-empty
+
+          // 把 pot 排前面，cup 排後面；同 tier 依 date desc（新的在前）
+          list.sort(function (a, b) {
+            if (a.tier !== b.tier) return a.tier === 'pot' ? -1 : 1;
+            return (b.date || '').localeCompare(a.date || '');
+          });
+
+          var html = '<div class="wall-grid">' + list.map(function (s) {
+            var tier = s.tier === 'pot' ? 'pot' : 'cup';
+            var name = escapeHtml(s.name || '匿名');
+            var tierLabel = TIER_LABEL[tier];
+            var msg = s.message ? '<p class="supporter-message">「' + escapeHtml(s.message) + '」</p>' : '';
+            var date = s.date ? '<p class="supporter-date">' + escapeHtml(s.date) + '</p>' : '';
+            return '<div class="supporter" data-tier="' + tier + '">'
+              + COFFEE_SVG
+              + '<div class="supporter-body">'
+              + '<span class="supporter-name">' + name + '</span>'
+              + '<span class="supporter-tier">' + tierLabel + '</span>'
+              + msg + date
+              + '</div></div>';
+          }).join('') + '</div>'
+            + '<p class="wall-count">共 ' + list.length + ' 位支持者 · 謝謝你們</p>';
+
+          mount.outerHTML = html;
+        })
+        .catch(function () { /* 載入失敗時維持 empty state */ });
+    })();
+  </script>
 
   <section class="footnote">
     <div class="wrap">

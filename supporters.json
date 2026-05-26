@@ -1,0 +1,4 @@
+{
+  "_comment": "感謝名單來源。新增贊助者：在 supporters[] 加 entry → commit + push 即生效。tier = 'cup' (NT$ 90) 或 'pot' (NT$ 300)。message 與 date 為選填。匿名贊助者用 name = '匿名'。pot 會自動排在前面，同 tier 依 date 新→舊。",
+  "supporters": []
+}
