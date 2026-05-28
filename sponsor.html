@@ -162,6 +162,14 @@
     position: relative;
     display: block;
   }
+  button.tier {
+    width: 100%;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
   .tier:hover {
     border-color: rgba(253,230,138,0.55);
     background: rgba(253,230,138,0.03);
@@ -224,6 +232,57 @@
   .tier:hover .tier-cta {
     background: #fef3c7;
   }
+
+  /* 收款端維修中：點贊助按鈕跳出的感謝訊息 */
+  .sponsor-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(10,12,16,0.72);
+    backdrop-filter: blur(4px);
+  }
+  .sponsor-modal.is-open { display: flex; }
+  .sponsor-modal-card {
+    background: #151821;
+    border: 1px solid rgba(253,230,138,0.35);
+    border-radius: 16px;
+    padding: 36px 32px 30px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  }
+  .sponsor-modal-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 18px;
+    color: var(--gold);
+  }
+  .sponsor-modal-text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 26px;
+  }
+  .sponsor-modal-close {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 11px 30px;
+    border: none;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .sponsor-modal-close:hover { background: #fef3c7; }
 
   .note {
     text-align: center;
@@ -384,7 +443,7 @@
 
   <section class="wrap">
     <div class="tiers">
-      <a class="tier" href="https://ko-fi.com/businessjoechou" target="_blank" rel="noopener noreferrer" aria-label="贊助一杯咖啡 NT$ 90">
+      <button type="button" class="tier" data-sponsor-tier="cup" aria-label="贊助一杯咖啡 NT$ 90">
         <svg class="tier-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M10 2v2"/><path d="M14 2v2"/>
           <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/>
@@ -394,9 +453,9 @@
         <p class="tier-price">NT$ 90</p>
         <p class="tier-price-sub">≈ USD 3</p>
         <span class="tier-cta">請我喝一杯 ›</span>
-      </a>
+      </button>
 
-      <a class="tier featured" href="https://ko-fi.com/businessjoechou" target="_blank" rel="noopener noreferrer" aria-label="贊助一壺咖啡 NT$ 300">
+      <button type="button" class="tier featured" data-sponsor-tier="pot" aria-label="贊助一壺咖啡 NT$ 300">
         <span class="tier-badge">×3</span>
         <svg class="tier-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M10 2v2"/><path d="M14 2v2"/>
@@ -407,7 +466,7 @@
         <p class="tier-price">NT$ 300</p>
         <p class="tier-price-sub">≈ USD 10</p>
         <span class="tier-cta">請我喝一壺 ›</span>
-      </a>
+      </button>
     </div>
 
     <p class="note">
@@ -415,6 +474,47 @@
     </p>
     <p class="note-meta">透過 Ko-fi · 安全結帳 · 信用卡 / Apple Pay / PayPal</p>
   </section>
+
+  <div class="sponsor-modal" id="sponsor-modal" role="dialog" aria-modal="true" aria-labelledby="sponsor-modal-text" hidden>
+    <div class="sponsor-modal-card">
+      <svg class="sponsor-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+      </svg>
+      <p class="sponsor-modal-text" id="sponsor-modal-text">感謝您支持我們，我們已經收到心意嘍。<br>不過最近收款端出現問題，所以暫時不開放贊助。<br>再次感謝您～</p>
+      <button type="button" class="sponsor-modal-close" id="sponsor-modal-close">好的</button>
+    </div>
+  </div>
+
+  <script>
+    // 收款端維修中：贊助按鈕暫不導向 Ko-fi，改跳感謝訊息。
+    (function () {
+      var modal = document.getElementById('sponsor-modal');
+      var closeBtn = document.getElementById('sponsor-modal-close');
+      if (!modal) return;
+      var lastFocused = null;
+
+      function open(trigger) {
+        lastFocused = trigger || null;
+        modal.hidden = false;
+        modal.classList.add('is-open');
+        if (closeBtn) closeBtn.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.hidden = true;
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+      }
+
+      document.querySelectorAll('[data-sponsor-tier]').forEach(function (btn) {
+        btn.addEventListener('click', function () { open(btn); });
+      });
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
 
   <section class="wall">
     <div class="wrap">
