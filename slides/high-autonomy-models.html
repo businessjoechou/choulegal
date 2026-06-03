@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>如何駕馭高自主 AI 模型 — 周全 · 成大簡報</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#06070b;
+  --gold:#fde68a;
+  --amber:#fb923c;
+  --violet:#7c3aed;
+  --pink:#f9a8d4;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{
+  background:var(--ink);
+  color:rgba(255,255,255,.92);
+  font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow:hidden;
+}
+
+/* ── animated background mesh (from brand) ── */
+.bg-mesh{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
+.blob{position:absolute;border-radius:50%;filter:blur(130px);opacity:.45;will-change:transform;}
+.blob-a{top:-22vh;left:-12vw;width:72vw;height:72vw;background:radial-gradient(circle,rgba(217,119,6,.55),rgba(217,119,6,0) 60%);animation:drift-a 28s ease-in-out infinite;}
+.blob-b{top:22vh;right:-16vw;width:66vw;height:66vw;background:radial-gradient(circle,rgba(124,58,237,.45),rgba(124,58,237,0) 60%);animation:drift-b 32s ease-in-out infinite;}
+.blob-c{bottom:-20vh;left:26vw;width:52vw;height:52vw;background:radial-gradient(circle,rgba(14,165,233,.38),rgba(14,165,233,0) 60%);animation:drift-c 36s ease-in-out infinite;}
+@keyframes drift-a{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(80px,-40px) scale(1.1);}}
+@keyframes drift-b{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-60px,60px) scale(1.05);}}
+@keyframes drift-c{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,-50px) scale(.95);}}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:80px 80px;opacity:.35;
+  -webkit-mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.85),transparent 80%);
+          mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.85),transparent 80%);}
+
+/* ── deck / slide system ── */
+.deck{position:fixed;inset:0;}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:7vh 9vw;
+  opacity:0;visibility:hidden;
+  transform:translateY(24px);
+  transition:opacity .5s ease,transform .5s cubic-bezier(.16,1,.3,1),visibility .5s;
+}
+.slide.active{opacity:1;visibility:visible;transform:translateY(0);}
+
+/* shared type */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+  padding:7px 14px;margin-bottom:30px;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:999px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:clamp(9px,.78vw,11px);letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.78);
+}
+.eyebrow.dot::before{content:"";width:6px;height:6px;border-radius:50%;background:#34d399;animation:pulse 2.4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1;}}
+
+h1.title{
+  font-family:"Noto Serif TC",serif;font-weight:400;
+  font-size:clamp(40px,6vw,92px);line-height:1.06;letter-spacing:-.01em;
+  color:rgba(255,255,255,.98);
+}
+h1.title em{
+  font-style:italic;font-weight:300;display:block;margin-top:.15em;
+  background:linear-gradient(110deg,var(--gold),var(--amber),var(--pink));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+h2.head{
+  font-family:"Noto Serif TC",serif;font-weight:400;
+  font-size:clamp(30px,4.4vw,60px);line-height:1.12;letter-spacing:-.01em;
+  color:rgba(255,255,255,.98);margin-bottom:.5em;
+}
+h2.head em{font-style:italic;font-weight:300;color:rgba(255,255,255,.62);}
+.kicker{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:clamp(11px,1vw,14px);letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:18px;
+}
+.lead{
+  font-size:clamp(16px,1.8vw,26px);line-height:1.7;
+  color:rgba(255,255,255,.72);max-width:30ch;
+}
+.lead.wide{max-width:46ch;}
+.lead strong{color:rgba(255,255,255,.97);font-weight:600;}
+.lead em{font-style:normal;color:var(--gold);}
+
+/* principle cards */
+.cards{display:grid;gap:22px;margin-top:8px;}
+.card{
+  padding:26px 30px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.025);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border-radius:18px;
+}
+.card .n{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:13px;letter-spacing:.2em;color:var(--gold);margin-bottom:10px;
+}
+.card h3{
+  font-family:"Noto Serif TC",serif;font-weight:500;
+  font-size:clamp(19px,1.9vw,26px);color:rgba(255,255,255,.97);margin-bottom:8px;line-height:1.35;
+}
+.card p{font-size:clamp(13px,1.15vw,16px);line-height:1.7;color:rgba(255,255,255,.68);}
+
+/* good / bad compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px;max-width:1000px;}
+.cmp{padding:22px 24px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);}
+.cmp .tag{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;}
+.cmp.bad .tag{color:#fca5a5;}
+.cmp.good .tag{color:#6ee7b7;}
+.cmp p{font-family:"Noto Serif TC",serif;font-size:clamp(15px,1.5vw,21px);line-height:1.55;color:rgba(255,255,255,.9);}
+.cmp.bad p::before{content:"✗  ";color:#fca5a5;}
+.cmp.good p::before{content:"✓  ";color:#6ee7b7;}
+
+blockquote.big{
+  font-family:"Noto Serif TC",serif;font-weight:300;font-style:italic;
+  font-size:clamp(28px,4.6vw,64px);line-height:1.3;letter-spacing:-.01em;
+  color:rgba(255,255,255,.95);max-width:20ch;
+}
+blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--amber),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.attribution{margin-top:34px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;letter-spacing:.18em;color:rgba(255,255,255,.5);text-transform:uppercase;}
+
+ul.points{list-style:none;margin-top:10px;max-width:42ch;}
+ul.points li{
+  position:relative;padding-left:30px;margin-bottom:22px;
+  font-size:clamp(16px,1.7vw,24px);line-height:1.55;color:rgba(255,255,255,.82);
+}
+ul.points li::before{content:"";position:absolute;left:0;top:.6em;width:11px;height:11px;border-radius:3px;
+  background:linear-gradient(135deg,var(--gold),var(--amber));}
+ul.points li strong{color:rgba(255,255,255,.98);font-weight:600;}
+ul.points li em{font-style:normal;color:var(--gold);}
+
+/* progress + chrome */
+.chrome{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:16px 26px;pointer-events:none;}
+.brandmark{font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em;color:rgba(255,255,255,.55);}
+.brandmark small{margin-left:9px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.32);}
+.counter{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,.45);}
+.bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--amber),var(--pink));z-index:11;transition:width .45s cubic-bezier(.16,1,.3,1);width:0;}
+.hint{position:fixed;bottom:54px;right:26px;z-index:10;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.16em;color:rgba(255,255,255,.3);text-transform:uppercase;animation:fade 6s ease forwards;}
+@keyframes fade{0%,70%{opacity:1;}100%{opacity:0;}}
+
+@media (prefers-reduced-motion:reduce){.blob{animation:none!important;}.slide{transition:opacity .2s,visibility .2s;transform:none!important;}}
+@media (max-width:680px){.slide{padding:8vh 7vw;}.compare,.cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="bg-mesh"><span class="blob blob-a"></span><span class="blob blob-b"></span><span class="blob blob-c"></span></div>
+<div class="bg-grid"></div>
+<div class="bar" id="bar"></div>
+
+<main class="deck" id="deck">
+
+  <!-- 1 · cover -->
+  <section class="slide active">
+    <span class="eyebrow dot">周全 · 成功大學分享</span>
+    <h1 class="title">如何駕馭<em>高自主 AI 模型</em></h1>
+    <p class="lead wide" style="margin-top:32px;">不是模型變笨了，是它變得更會自己想。<br>用對方法，它的上限遠比你預期高。</p>
+  </section>
+
+  <!-- 2 · premise -->
+  <section class="slide">
+    <div class="kicker">前提 · The Premise</div>
+    <h2 class="head">工具沒有高下，<em>錯配才有。</em></h2>
+    <p class="lead wide">把不同設計理念的模型，當成可以「直接互換」的工具——這本身就是錯誤的起點。<br><br>不同模型，對應不同任務。<strong>不存在一套用法通吃。</strong></p>
+  </section>
+
+  <!-- 3 · the shift -->
+  <section class="slide">
+    <div class="kicker">核心轉變 · The Shift</div>
+    <h2 class="head">從「<em>照做</em>」到「<em>會想</em>」</h2>
+    <ul class="points">
+      <li>新一代模型強化了<strong>自主推理</strong>與<strong>延伸思考</strong></li>
+      <li>它對 prompt 的<em>清晰度</em>與<em>邊界</em>更為敏感</li>
+      <li>用舊方法操作，自然出現<strong>偏移</strong>或<strong>過度延伸</strong></li>
+      <li>於是有人下結論說它「變笨了」——其實是用法沒跟上</li>
+    </ul>
+  </section>
+
+  <!-- 4 · principle 1 -->
+  <section class="slide">
+    <div class="kicker">原則一 · Scope</div>
+    <h2 class="head">給範圍，更要給<em>邊界</em></h2>
+    <p class="lead wide">高自主模型會主動補上模糊地帶。<br>所以「<strong>不要做什麼</strong>」的約束，效果常常大於「要做什麼」。</p>
+    <div class="compare">
+      <div class="cmp bad"><div class="tag">模糊</div><p>幫我重構這個模組</p></div>
+      <div class="cmp good"><div class="tag">有邊界</div><p>只重構錯誤處理，不動函式簽名，不碰其他檔案</p></div>
+    </div>
+  </section>
+
+  <!-- 5 · principle 2 -->
+  <section class="slide">
+    <div class="kicker">原則二 · Stop Condition</div>
+    <h2 class="head">定義「<em>完成</em>」長什麼樣</h2>
+    <p class="lead wide">沒有終止條件，延伸思考會傾向「做到更好」，而不是「做到夠」。</p>
+    <div class="compare">
+      <div class="cmp bad"><div class="tag">沒有終點</div><p>把它做好</p></div>
+      <div class="cmp good"><div class="tag">有終點</div><p>通過現有測試就停；大改動先給我計畫，確認再動手</p></div>
+    </div>
+  </section>
+
+  <!-- 6 · principle 3 -->
+  <section class="slide">
+    <div class="kicker">原則三 · Intent</div>
+    <h2 class="head">給<em>意圖</em>，不只給步驟</h2>
+    <p class="lead wide">給它「為什麼」，它能在你沒預見的狀況下做對決策。<br>只給「步驟」，反而在步驟矛盾時亂猜。</p>
+    <div class="compare">
+      <div class="cmp bad"><div class="tag">只有指令</div><p>把這個值改成 500</p></div>
+      <div class="cmp good"><div class="tag">有意圖</div><p>逾時太短導致大檔上傳失敗，調到合理值</p></div>
+    </div>
+  </section>
+
+  <!-- 7 · principle 4 -->
+  <section class="slide">
+    <div class="kicker">原則四 · Trust, but Verify</div>
+    <h2 class="head">信任，但<em>驗證</em></h2>
+    <ul class="points">
+      <li>它會主動探索、跨檔案推理——這是強項</li>
+      <li>代價是：偶爾會<strong>過度自信地宣稱「完成」</strong></li>
+      <li>對<em>不可逆操作</em>（刪檔、送出、外部呼叫）明說「先問我」</li>
+      <li>把人留在迴圈裡，不是不信任，是分工</li>
+    </ul>
+  </section>
+
+  <!-- 8 · the four, recap -->
+  <section class="slide">
+    <div class="kicker">一頁總覽 · Recap</div>
+    <h2 class="head" style="margin-bottom:.7em;">四個原則</h2>
+    <div class="cards" style="grid-template-columns:1fr 1fr;">
+      <div class="card"><div class="n">01 · SCOPE</div><h3>給邊界</h3><p>「不要做什麼」比「要做什麼」更有效。</p></div>
+      <div class="card"><div class="n">02 · STOP</div><h3>定義完成</h3><p>沒有終止條件，它會做過頭。</p></div>
+      <div class="card"><div class="n">03 · INTENT</div><h3>給意圖</h3><p>給為什麼，它替你補對 edge case。</p></div>
+      <div class="card"><div class="n">04 · VERIFY</div><h3>信任但驗證</h3><p>不可逆的事，先確認。</p></div>
+    </div>
+  </section>
+
+  <!-- 9 · closing line -->
+  <section class="slide">
+    <div class="kicker">收尾 · The Takeaway</div>
+    <blockquote class="big">不是模型問題，<br>是<em>用法</em>問題。</blockquote>
+    <p class="lead wide" style="margin-top:30px;">但別把代價全推給使用者——<br>高自主換來的，是更高的操作門檻。<strong>那是設計取捨，不是誰的錯。</strong></p>
+  </section>
+
+  <!-- 10 · end -->
+  <section class="slide" style="align-items:flex-start;">
+    <span class="eyebrow">Q &amp; A</span>
+    <h1 class="title" style="font-size:clamp(36px,5.4vw,80px);">你要怎麼用，<em>決定它能多強。</em></h1>
+    <p class="attribution">周全 · CHOU LEGAL</p>
+  </section>
+
+</main>
+
+<div class="hint">← →  /  空白鍵翻頁 · F 全螢幕</div>
+<div class="chrome">
+  <div class="brandmark">周全 <small>Chou Legal</small></div>
+  <div class="counter"><span id="cur">01</span> / <span id="total">10</span></div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var bar=document.getElementById('bar');
+  var cur=document.getElementById('cur');
+  var total=document.getElementById('total');
+  var i=0;
+  total.textContent=String(slides.length).padStart(2,'0');
+
+  function pad(n){return String(n+1).padStart(2,'0');}
+  function go(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,idx){s.classList.toggle('active',idx===i);});
+    bar.style.width=((i)/(slides.length-1)*100)+'%';
+    cur.textContent=pad(i);
+    location.hash=i?('#'+(i+1)):'';
+  }
+  function next(){go(i+1);}
+  function prev(){go(i-1);}
+
+  document.addEventListener('keydown',function(e){
+    switch(e.key){
+      case 'ArrowRight':case 'ArrowDown':case ' ':case 'PageDown':e.preventDefault();next();break;
+      case 'ArrowLeft':case 'ArrowUp':case 'PageUp':e.preventDefault();prev();break;
+      case 'Home':go(0);break;
+      case 'End':go(slides.length-1);break;
+      case 'f':case 'F':
+        if(!document.fullscreenElement){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();}
+        else{document.exitFullscreen&&document.exitFullscreen();}
+        break;
+    }
+  });
+
+  // click / tap forward, shift-click back
+  document.getElementById('deck').addEventListener('click',function(e){e.shiftKey?prev():next();});
+
+  // basic swipe
+  var x0=null;
+  addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  addEventListener('touchend',function(e){
+    if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>50){dx<0?next():prev();}x0=null;
+  },{passive:true});
+
+  // deep-link via hash
+  var start=parseInt((location.hash||'').replace('#',''),10);
+  go(isNaN(start)?0:start-1);
+})();
+</script>
+</body>
+</html>
