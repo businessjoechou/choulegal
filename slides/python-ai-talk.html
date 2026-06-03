@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>學程式 × AI 實作 — 成大交管系 Python 課演講</title>
+<title>我不是工程師，但我一個人做了一間公司的事 — 成大交管系演講</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,6 @@
 html,body{height:100%;}
 body{background:var(--ink);color:rgba(255,255,255,.92);font-family:"Noto Sans TC",system-ui,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow:hidden;}
 
-/* background */
 .bg-mesh{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
 .blob{position:absolute;border-radius:50%;filter:blur(130px);opacity:.42;will-change:transform;}
 .blob-a{top:-22vh;left:-12vw;width:72vw;height:72vw;background:radial-gradient(circle,rgba(217,119,6,.55),rgba(217,119,6,0) 60%);animation:drift-a 28s ease-in-out infinite;}
@@ -24,99 +23,84 @@ body{background:var(--ink);color:rgba(255,255,255,.92);font-family:"Noto Sans TC
 @keyframes drift-c{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,-50px) scale(.95);}}
 .bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;opacity:.33;-webkit-mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.85),transparent 80%);mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.85),transparent 80%);}
 
-/* deck */
 .deck{position:fixed;inset:0;}
 .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:7vh 8vw;opacity:0;visibility:hidden;transform:translateY(22px);transition:opacity .45s ease,transform .45s cubic-bezier(.16,1,.3,1),visibility .45s;}
 .slide.active{opacity:1;visibility:visible;transform:translateY(0);}
 .slide.center{align-items:center;text-align:center;}
 
-/* type */
 .eyebrow{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;padding:7px 14px;margin-bottom:26px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:999px;font-family:"JetBrains Mono",monospace;font-size:clamp(9px,.78vw,11px);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.78);}
 .center .eyebrow{align-self:center;}
 .eyebrow.dot::before{content:"";width:6px;height:6px;border-radius:50%;background:#34d399;animation:pulse 2.4s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1;}}
 .kicker{font-family:"JetBrains Mono",monospace;font-size:clamp(11px,1vw,14px);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-h1.title{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(38px,5.6vw,86px);line-height:1.07;letter-spacing:-.01em;color:rgba(255,255,255,.98);}
+h1.title{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(36px,5.4vw,84px);line-height:1.08;letter-spacing:-.01em;color:rgba(255,255,255,.98);}
 h1.title em{font-style:italic;font-weight:300;display:block;margin-top:.12em;background:linear-gradient(110deg,var(--gold),var(--amber),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;}
-h2.head{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(28px,4.2vw,58px);line-height:1.13;letter-spacing:-.01em;color:rgba(255,255,255,.98);margin-bottom:.5em;}
+h2.head{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(27px,4vw,56px);line-height:1.14;letter-spacing:-.01em;color:rgba(255,255,255,.98);margin-bottom:.5em;}
 h2.head em{font-style:italic;font-weight:300;color:rgba(255,255,255,.62);}
 h2.head em.g{background:linear-gradient(110deg,var(--gold),var(--amber),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;font-style:normal;font-weight:400;}
-.lead{font-size:clamp(16px,1.75vw,25px);line-height:1.7;color:rgba(255,255,255,.72);max-width:34ch;}
-.lead.wide{max-width:48ch;}
+.lead{font-size:clamp(16px,1.75vw,25px);line-height:1.7;color:rgba(255,255,255,.74);max-width:36ch;}
+.lead.wide{max-width:50ch;}
 .lead strong{color:rgba(255,255,255,.97);font-weight:600;}
 .lead em{font-style:normal;color:var(--gold);}
+.lead.serif{font-family:"Noto Serif TC",serif;font-weight:300;}
 
-/* part divider */
 .divider .pnum{font-family:"JetBrains Mono",monospace;font-size:clamp(60px,16vw,220px);font-weight:600;line-height:.9;background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(255,255,255,.04));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.04em;}
 .divider .plabel{font-family:"Noto Serif TC",serif;font-size:clamp(30px,5vw,68px);font-weight:400;color:rgba(255,255,255,.97);margin-top:-.15em;}
 .divider .psub{margin-top:18px;font-family:"JetBrains Mono",monospace;font-size:clamp(11px,1vw,14px);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);}
 
-/* lists */
-ul.points{list-style:none;margin-top:8px;max-width:46ch;}
+ul.points{list-style:none;margin-top:8px;max-width:48ch;}
 ul.points li{position:relative;padding-left:30px;margin-bottom:20px;font-size:clamp(15px,1.6vw,23px);line-height:1.5;color:rgba(255,255,255,.82);}
 ul.points li::before{content:"";position:absolute;left:0;top:.55em;width:11px;height:11px;border-radius:3px;background:linear-gradient(135deg,var(--gold),var(--amber));}
 ul.points li strong{color:rgba(255,255,255,.98);font-weight:600;}
 ul.points li em{font-style:normal;color:var(--gold);}
 ul.points li .sub{display:block;margin-top:4px;font-size:.7em;color:rgba(255,255,255,.55);line-height:1.5;}
 
-/* cards */
 .cards{display:grid;gap:18px;margin-top:6px;width:100%;}
 .cards.c2{grid-template-columns:1fr 1fr;}
 .cards.c3{grid-template-columns:repeat(3,1fr);}
-.cards.c5{grid-template-columns:repeat(5,1fr);}
-.card{padding:22px 24px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.025);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:16px;}
+.card{padding:24px 26px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.025);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:16px;}
 .card .n{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;color:var(--gold);margin-bottom:10px;}
 .card h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:clamp(17px,1.8vw,24px);color:rgba(255,255,255,.97);margin-bottom:7px;line-height:1.3;}
-.card p{font-size:clamp(12px,1.05vw,15px);line-height:1.6;color:rgba(255,255,255,.66);}
-.cards.c5 .card{padding:18px 16px;}
-.cards.c5 .card h3{font-size:clamp(14px,1.3vw,18px);}
-.cards.c5 .card p{font-size:clamp(11px,.92vw,13px);}
+.card p{font-size:clamp(12px,1.05vw,15px);line-height:1.65;color:rgba(255,255,255,.66);}
+.card p code{font-family:"JetBrains Mono",monospace;color:var(--gold);font-size:.92em;}
 
-/* compare */
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;max-width:1040px;}
 .cmp{padding:20px 24px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);}
 .cmp .tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:11px;}
 .cmp.bad .tag{color:var(--red);} .cmp.good .tag{color:var(--green);}
 .cmp p{font-family:"Noto Serif TC",serif;font-size:clamp(15px,1.5vw,21px);line-height:1.5;color:rgba(255,255,255,.9);}
-.cmp.bad p::before{content:"✗  ";color:var(--red);} .cmp.good p::before{content:"✓  ";color:var(--green);}
+.cmp.bad p::before{content:"舊：";color:var(--red);font-style:normal;} .cmp.good p::before{content:"今：";color:var(--green);}
 
-/* big stat */
 .stat{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin:10px 0 8px;}
-.stat .big{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:clamp(48px,9vw,128px);line-height:1;background:linear-gradient(120deg,var(--gold),var(--amber),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.03em;}
-.stat .unit{font-family:"Noto Serif TC",serif;font-size:clamp(18px,2.2vw,32px);color:rgba(255,255,255,.7);}
+.stat .big{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:clamp(64px,13vw,180px);line-height:1;background:linear-gradient(120deg,var(--gold),var(--amber),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.03em;}
+.stat .unit{font-family:"Noto Serif TC",serif;font-size:clamp(20px,2.6vw,40px);color:rgba(255,255,255,.7);}
 
-/* pipeline */
 .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-top:30px;width:100%;}
-.flow .step{flex:1;min-width:120px;padding:20px 16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.025);border-radius:14px;text-align:center;}
-.flow .arr{display:flex;align-items:center;color:var(--gold);font-size:22px;padding:0 6px;opacity:.7;}
-.flow .step .s-n{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.45);margin-bottom:8px;}
-.flow .step .s-t{font-family:"Noto Serif TC",serif;font-size:clamp(15px,1.5vw,20px);color:rgba(255,255,255,.95);margin-bottom:5px;}
-.flow .step .s-d{font-size:clamp(11px,.95vw,13px);color:rgba(255,255,255,.6);line-height:1.5;}
-.flow .step .s-d code{font-family:"JetBrains Mono",monospace;color:var(--gold);font-size:.92em;}
+.flow .step{flex:1;min-width:110px;padding:18px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.025);border-radius:14px;text-align:center;}
+.flow .step.ai{border-color:rgba(253,230,138,.5);background:rgba(253,230,138,.06);}
+.flow .arr{display:flex;align-items:center;color:var(--gold);font-size:22px;padding:0 5px;opacity:.7;}
+.flow .step .s-t{font-family:"Noto Serif TC",serif;font-size:clamp(14px,1.4vw,19px);color:rgba(255,255,255,.95);margin-bottom:5px;}
+.flow .step .s-d{font-size:clamp(11px,.92vw,13px);color:rgba(255,255,255,.6);line-height:1.45;}
+.flow .step.ai .s-d{color:var(--gold);}
 
-/* code */
-.code-wrap{margin-top:18px;width:100%;max-width:1040px;}
+.code-wrap{margin-top:16px;width:100%;max-width:1060px;}
 .code-title{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
 .code-title::before{content:"";width:10px;height:10px;border-radius:50%;background:#34d399;box-shadow:18px 0 0 #fbbf24,36px 0 0 #f87171;margin-right:34px;}
 pre.code{font-family:"JetBrains Mono",monospace;font-size:clamp(13px,1.25vw,19px);line-height:1.65;background:rgba(8,10,16,.7);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:24px 28px;overflow:auto;color:rgba(255,255,255,.88);}
 pre.code .k{color:#c4b5fd;} pre.code .s{color:#fde68a;} pre.code .c{color:rgba(255,255,255,.4);font-style:italic;} pre.code .fn{color:#7dd3fc;} pre.code .hi{background:rgba(253,230,138,.12);border-radius:3px;padding:0 3px;}
-.code-note{margin-top:14px;font-size:clamp(13px,1.2vw,17px);color:rgba(255,255,255,.7);line-height:1.6;}
+.code-note{margin-top:14px;font-size:clamp(13px,1.2vw,17px);color:rgba(255,255,255,.72);line-height:1.6;max-width:60ch;}
 .code-note em{font-style:normal;color:var(--gold);}
 
-/* two col */
 .two{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:center;width:100%;}
-@media(max-width:820px){.two{grid-template-columns:1fr;}.cards.c3,.cards.c5,.compare,.cards.c2{grid-template-columns:1fr;}.flow{flex-direction:column;}.flow .arr{transform:rotate(90deg);justify-content:center;padding:4px 0;}}
+@media(max-width:820px){.two{grid-template-columns:1fr;}.cards.c3,.cards.c2,.compare{grid-template-columns:1fr;}.flow{flex-direction:column;}.flow .arr{transform:rotate(90deg);justify-content:center;padding:4px 0;}}
 
-/* quote */
-blockquote.big{font-family:"Noto Serif TC",serif;font-weight:300;font-style:italic;font-size:clamp(28px,4.6vw,66px);line-height:1.28;letter-spacing:-.01em;color:rgba(255,255,255,.95);max-width:22ch;}
+blockquote.big{font-family:"Noto Serif TC",serif;font-weight:300;font-style:italic;font-size:clamp(27px,4.4vw,62px);line-height:1.3;letter-spacing:-.01em;color:rgba(255,255,255,.95);max-width:24ch;}
 blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--amber),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;}
-.attribution{margin-top:30px;font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.18em;color:rgba(255,255,255,.5);text-transform:uppercase;}
+.attribution{margin-top:28px;font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.18em;color:rgba(255,255,255,.5);text-transform:uppercase;}
 
-/* result box */
-.result{font-family:"JetBrains Mono",monospace;font-size:clamp(13px,1.3vw,19px);line-height:1.8;background:rgba(8,10,16,.7);border:1px solid rgba(110,231,183,.25);border-radius:14px;padding:22px 26px;color:var(--green);max-width:760px;}
+.result{font-family:"JetBrains Mono",monospace;font-size:clamp(13px,1.3vw,19px);line-height:1.8;background:rgba(8,10,16,.7);border:1px solid rgba(110,231,183,.25);border-radius:14px;padding:22px 26px;color:var(--green);max-width:780px;}
 .badge{display:inline-block;margin-top:18px;padding:6px 14px;border-radius:999px;border:1px solid rgba(251,191,36,.4);background:rgba(251,191,36,.08);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fbbf24;}
 
-/* chrome */
 .chrome{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:15px 26px;pointer-events:none;}
 .brandmark{font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em;color:rgba(255,255,255,.5);}
 .brandmark small{margin-left:9px;font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.3);}
@@ -135,241 +119,240 @@ blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold
 <main class="deck" id="deck">
 
 <!-- 1 cover -->
-<section class="slide active">
+<section class="slide">
   <span class="eyebrow dot">成功大學 · 交通管理系 · Python 課</span>
-  <h1 class="title">學程式 × AI 實作<em>為什麼「會用」≠「會做」</em></h1>
-  <p class="lead wide" style="margin-top:30px;">AI 時代，人人都能用 AI。<br>那——我們為什麼還要學寫程式？</p>
+  <h1 class="title">我不是工程師。<em>但我一個人，做了一間公司的事。</em></h1>
+  <p class="lead wide serif" style="margin-top:30px;">一個法律人，跟你聊聊程式跟 AI 到底改變了什麼——<br>以及為什麼這跟你有關。</p>
 </section>
 
-<!-- 2 hook -->
-<section class="slide center">
-  <div class="kicker">先問一個問題</div>
-  <blockquote class="big" style="max-width:24ch;">「既然 AI 都會了，<br>我還需要<em>學寫程式</em>嗎？」</blockquote>
-  <p class="lead" style="margin-top:28px;max-width:40ch;">如果你今天有閃過這個念頭——<br>這一小時就是為你準備的。</p>
-</section>
-
-<!-- 3 thesis (結論先講) -->
+<!-- 2 intro -->
 <section class="slide">
-  <div class="kicker">先講結論</div>
-  <h2 class="head">程式不是要你<em>取代</em> AI，<br>是讓你能<em class="g">指揮</em> AI。</h2>
-  <p class="lead wide">會用 AI，是擁有一台車。<br>會寫程式，是<strong>握上方向盤</strong>。<br><br>今天要證明這句話——而且讓你知道門檻沒你想的高。</p>
-</section>
-
-<!-- 4 agenda -->
-<section class="slide">
-  <div class="kicker">這一小時 · Agenda</div>
-  <h2 class="head" style="margin-bottom:.6em;">我們會走過三段</h2>
-  <div class="cards c3">
-    <div class="card"><div class="n">PART I</div><h3>必須</h3><p>為什麼「點按鈕」有天花板，程式才是你跟 AI 的真正介面。</p></div>
-    <div class="card"><div class="n">PART II</div><h3>優勢</h3><p>會程式的人，用 AI 多了哪五種槓桿。</p></div>
-    <div class="card"><div class="n">PART III + IV</div><h3>實際做一次 · 怎麼開始</h3><p>30 行程式的現場 demo，加上你下週就能起步的路徑。</p></div>
+  <div class="kicker">開始之前 · 先自我介紹</div>
+  <h2 class="head" style="margin-bottom:.3em;">我叫 Joe，我開了一家公司</h2>
+  <div class="two">
+    <div>
+      <p class="lead">它叫「周全」，做法律科技。<br><br>沒有共同創辦人。<br>沒有募資、沒有 VC。<br>沒有工程團隊。</p>
+    </div>
+    <div>
+      <div class="stat"><span class="big">1</span><span class="unit">名員工</span></div>
+      <p class="lead" style="font-size:clamp(14px,1.4vw,19px);">就是我。</p>
+    </div>
   </div>
 </section>
 
-<!-- 5 divider I -->
+<!-- 3 scale -->
+<section class="slide">
+  <div class="kicker">這個「一個人」在維護什麼</div>
+  <h2 class="head" style="margin-bottom:.5em;">不是一個小工具——是一整條產品線</h2>
+  <div class="cards c2">
+    <div class="card"><div class="n">給所有台灣人 · 免費</div><h3>60+ 個法律計算工具</h3><p>勞動、繼承、民法財產⋯⋯打開瀏覽器就能算，不註冊、不收個資、不塞廣告。</p></div>
+    <div class="card"><div class="n">給企業 · 訂閱</div><h3>三套合規／爭議系統</h3><p>HR 合規、勞資爭議、消費爭議處理，內建 AI 助手。回答附條文、計算附公式。</p></div>
+  </div>
+  <p class="lead wide" style="margin-top:24px;font-size:clamp(16px,1.6vw,22px);">這些，<strong>全部一個人寫、一個人維護、一個人扛。</strong></p>
+</section>
+
+<!-- 4 not a genius -->
+<section class="slide">
+  <div class="kicker">先把話說清楚</div>
+  <h2 class="head">重點不是我多強。<br><em class="g">是工具變了。</em></h2>
+  <p class="lead wide">我大學念的不是資工，我是法律的。<br><br>三年前，要做出這條產品線，你需要一個團隊：<br>工程師、設計、法務、客服。<br><br>今天我一個人做完。<strong>差別不是我變天才——是我手上的工具，跟三年前已經不是同一個東西。</strong></p>
+</section>
+
+<!-- 5 thesis -->
+<section class="slide">
+  <div class="kicker">這一小時，就講這件事</div>
+  <h2 class="head">程式 + AI，把「<em class="g">一個人能做到的事</em>」<br>整個往上拉了一截。</h2>
+  <p class="lead wide">而你們——交管的——<br>可能還沒意識到，這對你意味著什麼。</p>
+</section>
+
+<!-- 6 not AI hype -->
+<section class="slide">
+  <div class="kicker">但我很討厭一種話</div>
+  <h2 class="head">這不是「<em>AI 顛覆一切</em>」的神話</h2>
+  <p class="lead wide serif">AI 沒有取代我。<br><br>它取代的，是「<strong>我需要請一個工程團隊</strong>」這件事。<br><br>判斷還是我做。法條對不對，還是我逐條去查。<br>算錯了，還是我扛。<em>AI 是工具，不是神。</em></p>
+</section>
+
+<!-- 7 what AI really changed -->
+<section class="slide">
+  <div class="kicker">AI 真正改變的，是這個</div>
+  <div class="compare" style="grid-template-columns:1fr;max-width:1000px;margin-top:10px;">
+    <div class="cmp bad"><div class="tag">以前</div><p>有想法的人，要去「等」會做的人。</p></div>
+    <div class="cmp good"><div class="tag">現在</div><p>有想法、又願意學一點程式的人，自己就能做出來。</p></div>
+  </div>
+  <p class="lead wide" style="margin-top:28px;">門檻沒有消失。它從「<strong>會不會寫</strong>」，<br>移到了「<em>知不知道自己要做什麼</em>」。</p>
+</section>
+
+<!-- 8 divider I -->
 <section class="slide center divider">
   <div class="pnum">I</div>
   <div class="plabel">必須</div>
-  <div class="psub">Why it's necessary</div>
+  <div class="psub">為什麼你逃不掉這件事</div>
 </section>
 
-<!-- 6 truth 1 -->
+<!-- 9 just use AI? -->
+<section class="slide center">
+  <div class="kicker">你心裡可能在想</div>
+  <blockquote class="big" style="max-width:26ch;">「那我會用 AI 對話框<br>不就好了？<br><em>幹嘛還學程式。</em>」</blockquote>
+  <p class="lead" style="margin-top:26px;max-width:38ch;">好問題。我用我自己每天的工作，回答你。</p>
+</section>
+
+<!-- 10 chatbox vs product -->
 <section class="slide">
-  <div class="kicker">真相一</div>
-  <h2 class="head">用 AI 很簡單，<br>做出<em class="g">有用的</em> AI 很難。</h2>
-  <p class="lead wide">打開對話框問問題，五分鐘就會。<br><br>但要把 AI 變成「<strong>每天自動跑、結果可信、接得進系統</strong>」的東西——中間那一大段，都是程式。</p>
+  <div class="kicker">對話框能做的 vs 我每天做的</div>
+  <h2 class="head" style="margin-bottom:.45em;">差別在哪？</h2>
+  <div class="two">
+    <div><p class="lead serif"><strong>對話框</strong>：<br>幫我算一筆資遣費。<br><span style="color:rgba(255,255,255,.5)">問一次，得一個答案。</span></p></div>
+    <div><p class="lead serif"><strong>我要的</strong>：<br>一個網頁，任何人輸入年資自動算、<em>附上法條</em>、標修正日期、算錯查得出原因、法規一改我能<em>一次更新全部</em>。</p></div>
+  </div>
+  <p class="lead wide" style="margin-top:22px;font-size:clamp(15px,1.5vw,21px);">前者是「問一次」。後者是「一個產品」。<strong>中間那一大段，全是程式。</strong></p>
 </section>
 
-<!-- 7 button ceiling -->
-<section class="slide">
-  <div class="kicker">「點按鈕」的天花板</div>
-  <h2 class="head">圖形介面，到哪裡會卡住？</h2>
-  <ul class="points">
-    <li>一次只能處理<strong>一筆</strong>——一萬筆呢？<span class="sub">手動複製貼上一萬次，還是寫一個迴圈？</span></li>
-    <li>每次都要<strong>重新手動操作</strong>，明天又得再來一遍<span class="sub">無法排程、無法自動重跑</span></li>
-    <li>只能用工具<strong>給你的功能</strong>，給不了的就做不到<span class="sub">想串自己的資料庫？想客製輸出格式？</span></li>
-    <li>過程<strong>留不下紀錄</strong>，沒人能複製你怎麼做的</li>
-  </ul>
-</section>
-
-<!-- 8 code is interface -->
+<!-- 11 same AI 100x -->
 <section class="slide">
   <div class="kicker">關鍵觀念</div>
-  <h2 class="head">程式，是你跟 AI 之間<br><em class="g">真正的介面</em>。</h2>
-  <p class="lead wide">對話框是給「人」用的門。<br>程式（API）是給「<strong>流程</strong>」用的門。<br><br>同一個 AI 模型，從對話框問，跟用十行程式呼叫——<br>差別不在它多聰明，在<em>你能叫它做多少事</em>。</p>
+  <h2 class="head">同一個 AI，<br>從對話框問，跟用程式叫它——</h2>
+  <p class="lead wide serif">它<strong>沒有變聰明</strong>。<br><br>是我能叫它做的事，差了一百倍。<br><br><em>對話框是給「人」用的門。程式，是給「流程」用的門。</em></p>
 </section>
 
-<!-- 9 manual vs code stat -->
+<!-- 12 pipeline -->
 <section class="slide">
-  <div class="kicker">同一件事 · 兩種做法</div>
-  <h2 class="head" style="margin-bottom:.3em;">分析一萬則使用者回饋</h2>
-  <div class="two">
-    <div>
-      <div class="stat"><span class="big">~3</span><span class="unit">天</span></div>
-      <p class="lead">人工一則一則讀、標記、統計。<br>而且<strong>下個月資料來了，再重做一次</strong>。</p>
-    </div>
-    <div>
-      <div class="stat"><span class="big">~2</span><span class="unit">分鐘</span></div>
-      <p class="lead">寫一次程式叫 AI 跑完。<br><em>下個月？換個檔名，再按一次執行。</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- 10 pipeline -->
-<section class="slide">
-  <div class="kicker">一個 AI 應用真實長怎樣</div>
-  <h2 class="head">模型只是中間一格</h2>
+  <div class="kicker">拆給你看：我的產品實際長怎樣</div>
+  <h2 class="head">AI 其實只佔中間一小格</h2>
   <div class="flow">
-    <div class="step"><div class="s-n">01</div><div class="s-t">取得資料</div><div class="s-d">讀檔／抓 API<br><code>pandas · requests</code></div></div>
+    <div class="step"><div class="s-t">抓法規</div><div class="s-d">全國法規<br>資料庫</div></div>
     <div class="arr">→</div>
-    <div class="step"><div class="s-n">02</div><div class="s-t">清理處理</div><div class="s-d">缺值、格式、特徵<br><code>pandas · numpy</code></div></div>
+    <div class="step"><div class="s-t">結構化</div><div class="s-d">條文整理<br>成資料</div></div>
     <div class="arr">→</div>
-    <div class="step"><div class="s-n">03</div><div class="s-t">模型 / AI</div><div class="s-d">呼叫或訓練<br><code>sklearn · LLM</code></div></div>
+    <div class="step ai"><div class="s-t">AI 輔助</div><div class="s-d">寫程式<br>交叉查核</div></div>
     <div class="arr">→</div>
-    <div class="step"><div class="s-n">04</div><div class="s-t">評估驗證</div><div class="s-d">對不對？多準？<br><code>測試 · 指標</code></div></div>
+    <div class="step"><div class="s-t">計算邏輯</div><div class="s-d">把法條<br>變公式</div></div>
     <div class="arr">→</div>
-    <div class="step"><div class="s-n">05</div><div class="s-t">部署應用</div><div class="s-d">接進系統<br><code>API · 排程</code></div></div>
+    <div class="step"><div class="s-t">逐條驗證</div><div class="s-d">我自己<br>對過</div></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="s-t">上線</div><div class="s-d">放進<br>瀏覽器</div></div>
   </div>
-  <p class="lead wide" style="margin-top:26px;font-size:clamp(15px,1.5vw,20px);">五格裡，<strong>四格是程式</strong>。AI 再強，也要有人把這條鏈黏起來。</p>
+  <p class="lead wide" style="margin-top:26px;font-size:clamp(15px,1.5vw,21px);">AI 很重要，但它只是其中一格。<strong>其餘全是程式把它接起來、跟我把它驗對。</strong></p>
 </section>
 
-<!-- 11 truth 2 verify -->
+<!-- 13 AI lies confidently -->
 <section class="slide">
-  <div class="kicker">真相二</div>
-  <h2 class="head">AI 會給你答案，<br>但「<em class="g">答案對不對</em>」要你判斷。</h2>
-  <p class="lead wide">AI 會很有自信地給你一個<strong>錯的數字</strong>。<br><br>看得懂資料、會寫個小測試去驗證——<br>這是程式素養，也是你<em>不被唬住</em>的底氣。</p>
+  <div class="kicker">而且，AI 會很有自信地騙你</div>
+  <h2 class="head">它會用<em class="g">一模一樣的自信</em>，<br>給你一個不存在的法條。</h2>
+  <p class="lead wide">我每天都在做一件事：AI 給我一個法條引用，看起來完美——<br>我還是<strong>逐條去全國法規資料庫對</strong>。<br><br>看得懂資料、驗得了結果，就是程式素養。<br><em>它讓你不被唬住。這在 AI 時代，比以前更重要，不是更不重要。</em></p>
 </section>
 
-<!-- 12 transportation bridge (輕量) -->
-<section class="slide">
-  <div class="kicker">接回你的領域</div>
-  <h2 class="head">你手上其實有<em class="g">一座金礦</em></h2>
-  <p class="lead wide">刷卡紀錄、車流偵測、GPS 軌跡、路口號誌——<br>交通是全世界<strong>資料最密集</strong>的領域之一。<br><br>但資料躺在那裡不會自己說話。<br><em>會程式，才能把它變成洞見與決策。</em></p>
-</section>
-
-<!-- 13 divider II -->
+<!-- 14 divider II -->
 <section class="slide center divider">
   <div class="pnum">II</div>
   <div class="plabel">優勢</div>
-  <div class="psub">The leverage you gain</div>
+  <div class="psub">會程式的人，到底贏在哪</div>
 </section>
 
-<!-- 14 leverage 1 -->
+<!-- 15 leverage: works while you sleep -->
 <section class="slide">
-  <div class="kicker">槓桿一 · Automation</div>
-  <h2 class="head">把「<em>做一次</em>」變成「<em class="g">自動做無數次</em>」</h2>
-  <p class="lead wide">人做事是線性的：做十次花十倍時間。<br>程式做事是<strong>一次寫好、無限重播</strong>。<br><br>排程半夜自己跑、新資料進來自動更新——<br>你睡覺時它還在替你工作。</p>
+  <div class="kicker">優勢一</div>
+  <h2 class="head">你睡覺的時候，<br><em class="g">它還在替你工作</em></h2>
+  <p class="lead wide serif">我的計算工具，<strong>寫一次</strong>，之後每天幾千人在用，我不用在場。<br><br>不會程式的人，做事是「花一小時，得一小時的成果」。<br>會程式的人，是「花一小時，做出一個<em>會自己重複一萬次</em>的東西」。</p>
 </section>
 
-<!-- 15 leverage 2 -->
+<!-- 16 leverage: scale is free -->
 <section class="slide">
-  <div class="kicker">槓桿二 · Scale</div>
-  <h2 class="head">從一萬列，到<em class="g">一千萬列</em></h2>
-  <p class="lead wide">Excel 拉到幾十萬列就開始卡。<br>程式處理千萬列，是同一段邏輯、多等幾秒的事。<br><br>真實世界的問題，往往<strong>大到只能用程式碰</strong>。</p>
+  <div class="kicker">優勢二</div>
+  <h2 class="head">規模，對你幾乎<em class="g">免費</em></h2>
+  <p class="lead wide serif">一個人算一張表，跟一百萬人用同一個工具——<br>對我來說，<strong>工作量幾乎一樣</strong>。<br><br>這就是為什麼，一個人有辦法服務全台灣。</p>
 </section>
 
-<!-- 16 leverage 3 -->
+<!-- 17 leverage: the 20% -->
 <section class="slide">
-  <div class="kicker">槓桿三 · Reproducibility</div>
-  <h2 class="head">程式是會<em class="g">自我記錄</em>的流程</h2>
-  <p class="lead wide">滑鼠點過的步驟，明年的你、隔壁的同事，都復原不了。<br><br>程式碼本身<strong>就是完整、可重跑的說明書</strong>。<br>科學要可重現，決策要可追溯——這是基本功。</p>
+  <div class="kicker">優勢三</div>
+  <h2 class="head">你改得動那關鍵的 <em class="g">20%</em></h2>
+  <p class="lead wide serif">現成工具給你 80%。<br><br>但我產品的價值，全在那 20%——<br>台灣勞基法的細節、實務見解的分歧。那是買不到的，只能自己寫。<br><br><strong>而你們的那 20%，叫做「交通」。</strong></p>
 </section>
 
-<!-- 17 leverage 4 -->
+<!-- 18 bridge to transportation -->
 <section class="slide">
-  <div class="kicker">槓桿四 · Integration</div>
-  <h2 class="head">把 AI <em class="g">接進</em>真實系統</h2>
-  <p class="lead wide">AI 的價值不在對話框裡，在它能<strong>串起其他東西</strong>：<br><br>你的資料庫、地圖 API、即時感測器、報表、通知——<br>用程式把它們接起來，AI 才從玩具變工具。</p>
+  <div class="kicker">講到這——接回你們的領域</div>
+  <h2 class="head">我的金礦是法條。<br>你們的是<em class="g">車流、刷卡、GPS、號誌</em>。</h2>
+  <p class="lead wide">我用程式 + AI，把法條變成產品。<br><br>同一套能力，你們可以對「交通」做。<br><strong>而且老實說，你們的資料，比我的多得多。</strong></p>
 </section>
 
-<!-- 18 leverage 5 -->
-<section class="slide">
-  <div class="kicker">槓桿五 · Control</div>
-  <h2 class="head">不被工具的<em class="g">預設值</em>綁死</h2>
-  <p class="lead wide">現成工具給你 80%。<br>剩下最關鍵的 20%——客製邏輯、特殊規則、你領域才懂的細節——<br><strong>只有會程式的人改得動。</strong></p>
-</section>
-
-<!-- 19 leverage recap -->
-<section class="slide">
-  <div class="kicker">五個槓桿 · Recap</div>
-  <h2 class="head" style="margin-bottom:.6em;">會程式，你多了這五種力量</h2>
-  <div class="cards c5">
-    <div class="card"><div class="n">01</div><h3>自動化</h3><p>一次寫好，無限重播</p></div>
-    <div class="card"><div class="n">02</div><h3>規模</h3><p>千萬列也不怕</p></div>
-    <div class="card"><div class="n">03</div><h3>可重現</h3><p>流程即說明書</p></div>
-    <div class="card"><div class="n">04</div><h3>整合</h3><p>接進真實系統</p></div>
-    <div class="card"><div class="n">05</div><h3>控制</h3><p>改得動關鍵 20%</p></div>
-  </div>
-  <p class="lead wide" style="margin-top:26px;font-size:clamp(15px,1.5vw,20px);">同樣一個 AI，<strong>會程式的人榨得出多十倍的價值</strong>。</p>
-</section>
-
-<!-- 20 divider III -->
+<!-- 19 divider III -->
 <section class="slide center divider">
   <div class="pnum">III</div>
-  <div class="plabel">實際做一次</div>
-  <div class="psub">Let's actually build one</div>
+  <div class="plabel">那，到底長怎樣</div>
+  <div class="psub">我們實際做一次</div>
+</section>
+
+<!-- 20 not making you an engineer -->
+<section class="slide">
+  <div class="kicker">先讓你放心</div>
+  <h2 class="head">我不是要把你變成工程師。<br><em>我自己都不算。</em></h2>
+  <p class="lead wide">我要你會的，其實只有三件：</p>
+  <ul class="points" style="margin-top:18px;">
+    <li><strong>讀得懂資料</strong>——把一堆數字變成看得懂的東西</li>
+    <li><strong>叫得動 AI</strong>——用幾行程式，不是用滑鼠</li>
+    <li><strong>驗得了結果</strong>——知道它什麼時候在唬你</li>
+  </ul>
+  <p class="lead wide" style="margin-top:14px;font-size:clamp(15px,1.5vw,20px);">就這三件。<em>投入產出比，高到不講道理。</em></p>
 </section>
 
 <!-- 21 toolmap -->
 <section class="slide">
-  <div class="kicker">先給你一張地圖</div>
-  <h2 class="head" style="margin-bottom:.6em;">Python 做 AI，你會碰到這幾塊</h2>
-  <div class="cards c3">
-    <div class="card"><div class="n">資料</div><h3>pandas · numpy</h3><p>表格與數值運算的瑞士刀，整理資料都靠它。</p></div>
-    <div class="card"><div class="n">取得</div><h3>requests</h3><p>跟網路 / API 要資料、送請求。</p></div>
-    <div class="card"><div class="n">模型</div><h3>scikit-learn</h3><p>傳統機器學習：分類、預測、分群。</p></div>
-    <div class="card"><div class="n">大模型</div><h3>LLM SDK</h3><p>幾行就能呼叫 GPT / Claude 等大語言模型。</p></div>
-    <div class="card"><div class="n">視覺化</div><h3>matplotlib</h3><p>把數字變成一眼看懂的圖。</p></div>
-    <div class="card"><div class="n">心態</div><h3>不用全會</h3><p>你需要的是「會查、會拼」，不是背起來。</p></div>
+  <div class="kicker">給你一張地圖（不用背）</div>
+  <h2 class="head" style="margin-bottom:.5em;">用 Python 做這些，你會碰到幾塊</h2>
+  <div class="cards c2">
+    <div class="card"><div class="n">整理資料</div><h3>pandas</h3><p>處理表格的瑞士刀。讀檔、篩選、統計都靠它。</p></div>
+    <div class="card"><div class="n">跟外界要資料</div><h3>requests</h3><p>跟網路、API 拿資料、送請求。</p></div>
+    <div class="card"><div class="n">叫 AI</div><h3>一個 LLM SDK</h3><p>幾行就能呼叫大語言模型（我用的是 Claude）。</p></div>
+    <div class="card"><div class="n">畫成圖</div><h3>matplotlib</h3><p>把數字變成一眼看懂的圖。</p></div>
   </div>
+  <p class="lead wide" style="margin-top:20px;font-size:clamp(14px,1.4vw,19px);"><strong>你不用全會。</strong>你要會的是「會查、會拼」，不是背起來。</p>
 </section>
 
 <!-- 22 demo intro -->
 <section class="slide center">
   <span class="eyebrow dot">LIVE DEMO</span>
-  <h2 class="head" style="text-align:center;">現在，我們用 <em class="g">30 行</em><br>做一個小 AI</h2>
-  <p class="lead" style="max-width:42ch;">目標：把 <strong>1000 則使用者回饋</strong>，<br>自動分成正面 / 負面 / 中立，再畫成一張圖。<br><br>人工做要一整天。看程式要多久。</p>
+  <h2 class="head" style="text-align:center;">我們花五分鐘，<br>用 <em class="g">30 行</em>，做一個會呼叫 AI 的小東西</h2>
+  <p class="lead" style="max-width:42ch;">把一堆雜亂的使用者留言，<strong>自動分類、統計、畫成圖</strong>。<br>你會發現——它一點都不像魔法。</p>
 </section>
 
-<!-- 23 demo step 1 -->
+<!-- 23 demo code 1 -->
 <section class="slide">
   <div class="kicker">DEMO · 第一步：叫 AI 判斷一則</div>
   <div class="code-wrap">
-    <div class="code-title">sentiment.py</div>
+    <div class="code-title">classify.py</div>
 <pre class="code"><span class="k">import</span> pandas <span class="k">as</span> pd
-<span class="k">from</span> openai <span class="k">import</span> OpenAI
+<span class="k">from</span> anthropic <span class="k">import</span> Anthropic
 
-client = <span class="fn">OpenAI</span>()
-df = pd.<span class="fn">read_csv</span>(<span class="s">"feedback.csv"</span>)   <span class="c"># 一欄 text，共 1000 則</span>
+ai = <span class="fn">Anthropic</span>()
+df = pd.<span class="fn">read_csv</span>(<span class="s">"留言.csv"</span>)        <span class="c"># 一欄 text，共 1000 則</span>
 
-<span class="k">def</span> <span class="fn">judge</span>(text):
-    r = client.chat.completions.<span class="fn">create</span>(
-        model=<span class="s">"gpt-4o-mini"</span>,
+<span class="k">def</span> <span class="fn">分類</span>(text):
+    r = ai.messages.<span class="fn">create</span>(
+        model=<span class="s">"claude-haiku-4-5"</span>, max_tokens=<span class="s">10</span>,
         messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>,
-            <span class="s">"content"</span>: <span class="s">f"判斷情緒，只回 正面/負面/中立：\n{text}"</span>}])
-    <span class="k">return</span> r.choices[0].message.content.<span class="fn">strip</span>()</pre>
-    <p class="code-note">這段就是<em>整個 AI 的核心</em>——把一段文字丟給模型，拿回一個判斷。看懂這 10 行，你就懂「呼叫 AI」是怎麼回事了。</p>
+            <span class="s">"content"</span>: <span class="s">f"只回 正面/負面/中立：\n{text}"</span>}])
+    <span class="k">return</span> r.content[0].text.<span class="fn">strip</span>()</pre>
+    <p class="code-note">這 10 行就是整個 AI 的核心：<em>把一段文字丟給模型，拿回一個判斷。</em>看懂它，你就懂「程式怎麼呼叫 AI」了。</p>
   </div>
 </section>
 
-<!-- 24 demo step 2 -->
+<!-- 24 demo code 2 -->
 <section class="slide">
-  <div class="kicker">DEMO · 第二步：讓它跑完 1000 則並畫圖</div>
+  <div class="kicker">DEMO · 第二步：讓它跑完 1000 則，畫成圖</div>
   <div class="code-wrap">
-    <div class="code-title">sentiment.py（續）</div>
+    <div class="code-title">classify.py（續）</div>
 <pre class="code"><span class="c"># 一行，套用到全部 1000 則 —— 這就是「自動化」</span>
-df[<span class="s">"情緒"</span>] = df[<span class="s">"text"</span>].<span class="hi">apply(judge)</span>
+df[<span class="s">"情緒"</span>] = df[<span class="s">"text"</span>].<span class="hi">apply(分類)</span>
 
-<span class="c"># 統計各類有幾則</span>
+<span class="c"># 統計 + 一行畫圖</span>
 <span class="fn">print</span>(df[<span class="s">"情緒"</span>].<span class="fn">value_counts</span>())
-
-<span class="c"># 一行畫成長條圖</span>
 df[<span class="s">"情緒"</span>].<span class="fn">value_counts</span>().plot.<span class="fn">bar</span>()</pre>
-    <p class="code-note">關鍵就是被框起來的那一行 <em>.apply(judge)</em>——「對每一則都做一次」。<br>人要做一千次的事，程式用一行交代完。</p>
+    <p class="code-note">關鍵就是框起來那一行 <em>.apply(分類)</em>——「對每一則都做一次」。<br>人要做一千次的事，程式一行交代完。這，就是我說的槓桿。</p>
   </div>
 </section>
 
-<!-- 25 demo result (備援) -->
+<!-- 25 demo result -->
 <section class="slide">
   <div class="kicker">DEMO · 執行結果</div>
   <h2 class="head" style="margin-bottom:.4em;">兩分鐘，跑完一千則</h2>
@@ -381,94 +364,57 @@ df[<span class="s">"情緒"</span>].<span class="fn">value_counts</span>().plot.
     Name: count, dtype: int64<br>
     <span style="color:rgba(255,255,255,.5)">→ 同時跳出一張長條圖</span>
   </div>
-  <div class="badge">備援截圖 · 若現場網路不穩，這是預先跑好的結果</div>
+  <div class="badge">備援截圖 · 現場網路若不穩，這是預先跑好的結果</div>
 </section>
 
 <!-- 26 demo takeaway -->
 <section class="slide">
-  <div class="kicker">DEMO 的重點</div>
+  <div class="kicker">這個 demo 的重點</div>
   <h2 class="head">你看到的不是魔法，<br>是幾個<em class="g">可以學的積木</em>。</h2>
-  <p class="lead wide">讀檔、一個函式、一個迴圈、呼叫模型、畫圖。<br><br>每一塊都不難，難的是「<strong>知道它們能這樣拼</strong>」。<br>而這個，正是學程式給你的眼光。</p>
+  <p class="lead wide">讀檔、一個函式、一個迴圈、呼叫 AI、畫圖。<br>每一塊都不難。難的是「<strong>知道它們可以這樣拼</strong>」。<br><br><em>還有——別忘了：它跑出來的東西，你要會驗。</em>（還記得那些假法條嗎？）</p>
 </section>
 
 <!-- 27 divider IV -->
 <section class="slide center divider">
   <div class="pnum">IV</div>
-  <div class="plabel">你怎麼開始</div>
-  <div class="psub">Where you start — this week</div>
+  <div class="plabel">最後</div>
+  <div class="psub">講點真話</div>
 </section>
 
-<!-- 28 paths -->
+<!-- 28 what's actually scarce -->
 <section class="slide">
-  <div class="kicker">兩條路徑 · 看你現在在哪</div>
-  <h2 class="head" style="margin-bottom:.6em;">不管你程度如何，都有下一步</h2>
-  <div class="cards c2">
-    <div class="card"><div class="n">剛起步</div><h3>先讓「一個東西能跑」</h3><p>裝好 Python，讀一個 CSV、印出來、畫一張圖。能跑起來的成就感，比讀十章語法更重要。目標：本週跑出第一張圖。</p></div>
-    <div class="card"><div class="n">已有基礎</div><h3>做一個你在乎的小專案</h3><p>挑一個你自己想解決的問題，從頭做到尾。讀官方文件、串一個 API、把它變成能用的東西。專案，才是真正讓你變強的地方。</p></div>
-  </div>
+  <div class="kicker">什麼才是真正值錢的</div>
+  <h2 class="head">會用 AI 的人，<br>明年<em>滿街都是</em>。</h2>
+  <p class="lead wide">真正稀缺的，是「<strong>懂一個領域 + 能把想法自己做出來</strong>」的人。<br><br>領域，你們正在念了。<br><em class="g">剩下那一半，要自己補。</em></p>
 </section>
 
-<!-- 29 AI as tutor -->
+<!-- 29 honest note -->
 <section class="slide">
-  <div class="kicker">最強的學習加速器</div>
-  <h2 class="head">AI 本身，就是你<br><em class="g">24 小時的程式家教</em></h2>
-  <ul class="points">
-    <li>看不懂的錯誤訊息，<strong>貼給它問「這是什麼意思」</strong></li>
-    <li>不會寫的功能，請它<strong>給範例再逐行問你不懂的地方</strong></li>
-    <li>關鍵心法：<em>讓它教你，而不是替你寫</em><span class="sub">複製貼上能跑、但你沒變強；理解每一行，你才真的學到</span></li>
-  </ul>
-  <p class="lead wide" style="margin-top:18px;font-size:clamp(15px,1.5vw,20px);">這是史上第一次，學程式有一個<strong>無限耐心的老師</strong>陪你。</p>
+  <div class="kicker">一個誠實的提醒</div>
+  <h2 class="head">我不會跟你說<br>「學程式人生就開外掛」。</h2>
+  <p class="lead wide serif">那種話我自己都不信。<br><br>我只會說：這是我這幾年看到，<strong>投入產出比最高的一件事</strong>。<br><br><em>我一個法律人都做到了。沒道理你們不行。</em></p>
 </section>
 
-<!-- 30 minimum viable -->
-<section class="slide">
-  <div class="kicker">給你一個安心</div>
-  <h2 class="head">你不必變成<em>工程師</em></h2>
-  <p class="lead wide">目標不是去寫作業系統。<br>是讓程式成為你<strong>專業上的放大器</strong>——<br><br>能讀資料、能自動化、能叫得動 AI、能驗證結果。<br><em>這個「最小投入」，回報率高得不成比例。</em></p>
-</section>
-
-<!-- 31 myths -->
-<section class="slide">
-  <div class="kicker">三個常見誤解</div>
-  <h2 class="head" style="margin-bottom:.2em;">先把這些丟掉</h2>
-  <div class="compare" style="grid-template-columns:1fr;max-width:1040px;margin-top:22px;">
-    <div class="cmp bad"><div class="tag">誤解</div><p>「我數學不好，學不了。」 → 日常程式，九成是邏輯與耐心，不是數學。</p></div>
-    <div class="cmp bad"><div class="tag">誤解</div><p>「我不是資工系。」 → 最強的應用，常來自「<b>懂領域 + 會一點程式</b>」的人，那就是你。</p></div>
-    <div class="cmp bad"><div class="tag">誤解</div><p>「AI 以後會取代寫程式。」 → AI 讓寫程式更容易，於是<b>會指揮它的人</b>更值錢，不是更不值錢。</p></div>
-  </div>
-</section>
-
-<!-- 32 closing line -->
+<!-- 30 closing line -->
 <section class="slide center">
   <div class="kicker">帶走這一句</div>
-  <blockquote class="big" style="max-width:26ch;">工具的天花板，<br>就是你的天花板——<br><em>除非你會打開它。</em></blockquote>
+  <blockquote class="big" style="max-width:30ch;">工具只會愈來愈強。<br>但「<em>要做什麼、對不對</em>」<br>這個判斷，永遠是你的。<br><br>程式，只是讓你的判斷，<br><em>真的能落地。</em></blockquote>
 </section>
 
-<!-- 33 three actions -->
-<section class="slide">
-  <div class="kicker">這週可以做的三件事</div>
-  <h2 class="head" style="margin-bottom:.6em;">行動，比筆記重要</h2>
-  <div class="cards c3">
-    <div class="card"><div class="n">01</div><h3>裝好 Python</h3><p>今晚就裝好環境，跑出第一行 <code style="font-family:'JetBrains Mono',monospace;color:var(--gold)">print()</code>。</p></div>
-    <div class="card"><div class="n">02</div><h3>跑出一張圖</h3><p>找一份你有興趣的資料，讀進來、畫成圖。</p></div>
-    <div class="card"><div class="n">03</div><h3>問 AI 一個為什麼</h3><p>遇到不懂的，養成「問 AI 並理解」的習慣。</p></div>
-  </div>
-</section>
-
-<!-- 34 end / QA -->
+<!-- 31 end / QA -->
 <section class="slide" style="align-items:flex-start;">
   <span class="eyebrow">Q &amp; A</span>
-  <h1 class="title" style="font-size:clamp(34px,5.2vw,78px);">會用 AI 的人很多，<em class="g">會指揮它的人，稀缺。</em></h1>
-  <p class="lead wide" style="margin-top:26px;">謝謝大家 —— 你的問題，我很想聽。</p>
-  <p class="attribution" style="margin-top:22px;">成功大學 · 交通管理系 · Python 課</p>
+  <h1 class="title" style="font-size:clamp(32px,5vw,74px);">我是 Joe。一個人的公司，<em class="g">靠的就是這些。</em></h1>
+  <p class="lead wide" style="margin-top:24px;">你的問題，我很想聽。</p>
+  <p class="attribution" style="margin-top:20px;">周全 ChouLegal · choulegal.com</p>
 </section>
 
 </main>
 
 <div class="hint">← →  /  空白鍵翻頁 · F 全螢幕</div>
 <div class="chrome">
-  <div class="brandmark">學程式 × AI 實作 <small>NCKU</small></div>
-  <div class="counter"><span id="cur">01</span> / <span id="total">34</span></div>
+  <div class="brandmark">周全 <small>Chou Legal</small></div>
+  <div class="counter"><span id="cur">01</span> / <span id="total">31</span></div>
 </div>
 
 <script>
