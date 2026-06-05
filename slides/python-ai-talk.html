@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>我不是工程師，但我一個人做了一間公司的事 — 成大交管系演講</title>
+<title>AI 實作與程式設計的關聯性 — 成大交管系 Python 課</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@ ul.points li .sub{display:block;margin-top:4px;font-size:.7em;color:rgba(255,255
 .cmp .tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:11px;}
 .cmp.bad .tag{color:var(--red);} .cmp.good .tag{color:var(--green);}
 .cmp p{font-family:"Noto Serif TC",serif;font-size:clamp(15px,1.5vw,21px);line-height:1.5;color:rgba(255,255,255,.9);}
-.cmp.bad p::before{content:"舊：";color:var(--red);font-style:normal;} .cmp.good p::before{content:"今：";color:var(--green);}
+.cmp.lead-num p::before{content:none;}
 
 .stat{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin:10px 0 8px;}
 .stat .big{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:clamp(64px,13vw,180px);line-height:1;background:linear-gradient(120deg,var(--gold),var(--amber),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.03em;}
@@ -121,13 +121,20 @@ blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold
 <!-- 1 cover -->
 <section class="slide">
   <span class="eyebrow dot">成功大學 · 交通管理系 · Python 課</span>
-  <h1 class="title">我不是工程師。<em>但我一個人，做了一間公司的事。</em></h1>
-  <p class="lead wide serif" style="margin-top:30px;">一個法律人，跟你聊聊程式跟 AI 到底改變了什麼——<br>以及為什麼這跟你有關。</p>
+  <h1 class="title">AI 實作與程式設計<em>的關聯性</em></h1>
+  <p class="lead wide serif" style="margin-top:30px;">我不是工程師。<br>但我一個人，用這兩件事，做了一間公司的事。</p>
 </section>
 
-<!-- 2 intro -->
+<!-- ====================  一 · 自介  ==================== -->
+<section class="slide center divider">
+  <div class="pnum">一</div>
+  <div class="plabel">自介</div>
+  <div class="psub">先讓你知道，講台上的是誰</div>
+</section>
+
+<!-- 2 我叫 Joe -->
 <section class="slide">
-  <div class="kicker">開始之前 · 先自我介紹</div>
+  <div class="kicker">先自我介紹</div>
   <h2 class="head" style="margin-bottom:.3em;">我叫 Joe，我開了一家公司</h2>
   <div class="two">
     <div>
@@ -140,7 +147,7 @@ blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold
   </div>
 </section>
 
-<!-- 3 scale -->
+<!-- 3 公司規模 -->
 <section class="slide">
   <div class="kicker">這個「一個人」在維護什麼</div>
   <h2 class="head" style="margin-bottom:.5em;">不是一個小工具——是一整條產品線</h2>
@@ -151,52 +158,38 @@ blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold
   <p class="lead wide" style="margin-top:24px;font-size:clamp(16px,1.6vw,22px);">這些，<strong>全部一個人寫、一個人維護、一個人扛。</strong></p>
 </section>
 
-<!-- 4 not a genius -->
+<!-- 4 工具變了 -->
 <section class="slide">
   <div class="kicker">先把話說清楚</div>
   <h2 class="head">重點不是我多強。<br><em class="g">是工具變了。</em></h2>
-  <p class="lead wide">我大學念的不是資工，我是法律的。<br><br>三年前，要做出這條產品線，你需要一個團隊：<br>工程師、設計、法務、客服。<br><br>今天我一個人做完。<strong>差別不是我變天才——是我手上的工具，跟三年前已經不是同一個東西。</strong></p>
+  <p class="lead wide">我大學念的不是資工，我是法律的。<br><br>三年前，要做出這條產品線，你需要一個團隊：工程師、設計、法務、客服。<br><br>今天我一個人做完。<strong>差別不是我變天才——是我手上的工具，跟三年前已經不是同一個東西。</strong></p>
 </section>
 
-<!-- 5 thesis -->
-<section class="slide">
-  <div class="kicker">這一小時，就講這件事</div>
-  <h2 class="head">程式 + AI，把「<em class="g">一個人能做到的事</em>」<br>整個往上拉了一截。</h2>
-  <p class="lead wide">而你們——交管的——<br>可能還沒意識到，這對你意味著什麼。</p>
-</section>
-
-<!-- 6 not AI hype -->
-<section class="slide">
-  <div class="kicker">但我很討厭一種話</div>
-  <h2 class="head">這不是「<em>AI 顛覆一切</em>」的神話</h2>
-  <p class="lead wide serif">AI 沒有取代我。<br><br>它取代的，是「<strong>我需要請一個工程團隊</strong>」這件事。<br><br>判斷還是我做。法條對不對，還是我逐條去查。<br>算錯了，還是我扛。<em>AI 是工具，不是神。</em></p>
-</section>
-
-<!-- 7 what AI really changed -->
-<section class="slide">
-  <div class="kicker">AI 真正改變的，是這個</div>
-  <div class="compare" style="grid-template-columns:1fr;max-width:1000px;margin-top:10px;">
-    <div class="cmp bad"><div class="tag">以前</div><p>有想法的人，要去「等」會做的人。</p></div>
-    <div class="cmp good"><div class="tag">現在</div><p>有想法、又願意學一點程式的人，自己就能做出來。</p></div>
-  </div>
-  <p class="lead wide" style="margin-top:28px;">門檻沒有消失。它從「<strong>會不會寫</strong>」，<br>移到了「<em>知不知道自己要做什麼</em>」。</p>
-</section>
-
-<!-- 8 divider I -->
+<!-- ====================  二 · 為何要學程式  ==================== -->
 <section class="slide center divider">
-  <div class="pnum">I</div>
-  <div class="plabel">必須</div>
-  <div class="psub">為什麼你逃不掉這件事</div>
+  <div class="pnum">二</div>
+  <div class="plabel">為何要學程式</div>
+  <div class="psub">既然 AI 都會了，為什麼還要學？</div>
 </section>
 
-<!-- 9 just use AI? -->
+<!-- 5 你心裡在想 -->
 <section class="slide center">
   <div class="kicker">你心裡可能在想</div>
   <blockquote class="big" style="max-width:26ch;">「那我會用 AI 對話框<br>不就好了？<br><em>幹嘛還學程式。</em>」</blockquote>
   <p class="lead" style="margin-top:26px;max-width:38ch;">好問題。我用我自己每天的工作，回答你。</p>
 </section>
 
-<!-- 10 chatbox vs product -->
+<!-- 6 AI 真正改變的 -->
+<section class="slide">
+  <div class="kicker">AI 真正改變的，是這個</div>
+  <div class="compare" style="grid-template-columns:1fr;max-width:1000px;margin-top:10px;">
+    <div class="cmp bad lead-num"><div class="tag">以前</div><p>有想法的人，要去「等」會做的人。</p></div>
+    <div class="cmp good lead-num"><div class="tag">現在</div><p>有想法、又願意學一點程式的人，自己就能做出來。</p></div>
+  </div>
+  <p class="lead wide" style="margin-top:28px;">門檻沒有消失。它從「<strong>會不會寫</strong>」，移到了「<em>知不知道自己要做什麼</em>」。</p>
+</section>
+
+<!-- 7 對話框 vs 我做的 -->
 <section class="slide">
   <div class="kicker">對話框能做的 vs 我每天做的</div>
   <h2 class="head" style="margin-bottom:.45em;">差別在哪？</h2>
@@ -207,83 +200,49 @@ blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold
   <p class="lead wide" style="margin-top:22px;font-size:clamp(15px,1.5vw,21px);">前者是「問一次」。後者是「一個產品」。<strong>中間那一大段，全是程式。</strong></p>
 </section>
 
-<!-- 11 same AI 100x -->
+<!-- 8 同一個 AI 差一百倍 -->
 <section class="slide">
-  <div class="kicker">關鍵觀念</div>
+  <div class="kicker">這就是「關聯性」的核心</div>
   <h2 class="head">同一個 AI，<br>從對話框問，跟用程式叫它——</h2>
-  <p class="lead wide serif">它<strong>沒有變聰明</strong>。<br><br>是我能叫它做的事，差了一百倍。<br><br><em>對話框是給「人」用的門。程式，是給「流程」用的門。</em></p>
+  <p class="lead wide serif">它<strong>沒有變聰明</strong>。<br><br>是我能叫它做的事，差了一百倍。<br><br><em>程式，就是「AI 實作」的那雙手。沒有它，AI 只是一個會聊天的框。</em></p>
 </section>
 
-<!-- 12 pipeline -->
-<section class="slide">
-  <div class="kicker">拆給你看：我的產品實際長怎樣</div>
-  <h2 class="head">AI 其實只佔中間一小格</h2>
-  <div class="flow">
-    <div class="step"><div class="s-t">抓法規</div><div class="s-d">全國法規<br>資料庫</div></div>
-    <div class="arr">→</div>
-    <div class="step"><div class="s-t">結構化</div><div class="s-d">條文整理<br>成資料</div></div>
-    <div class="arr">→</div>
-    <div class="step ai"><div class="s-t">AI 輔助</div><div class="s-d">寫程式<br>交叉查核</div></div>
-    <div class="arr">→</div>
-    <div class="step"><div class="s-t">計算邏輯</div><div class="s-d">把法條<br>變公式</div></div>
-    <div class="arr">→</div>
-    <div class="step"><div class="s-t">逐條驗證</div><div class="s-d">我自己<br>對過</div></div>
-    <div class="arr">→</div>
-    <div class="step"><div class="s-t">上線</div><div class="s-d">放進<br>瀏覽器</div></div>
-  </div>
-  <p class="lead wide" style="margin-top:26px;font-size:clamp(15px,1.5vw,21px);">AI 很重要，但它只是其中一格。<strong>其餘全是程式把它接起來、跟我把它驗對。</strong></p>
-</section>
-
-<!-- 13 AI lies confidently -->
+<!-- 9 AI 會自信騙你 -->
 <section class="slide">
   <div class="kicker">而且，AI 會很有自信地騙你</div>
   <h2 class="head">它會用<em class="g">一模一樣的自信</em>，<br>給你一個不存在的法條。</h2>
   <p class="lead wide">我每天都在做一件事：AI 給我一個法條引用，看起來完美——<br>我還是<strong>逐條去全國法規資料庫對</strong>。<br><br>看得懂資料、驗得了結果，就是程式素養。<br><em>它讓你不被唬住。這在 AI 時代，比以前更重要，不是更不重要。</em></p>
 </section>
 
-<!-- 14 divider II -->
-<section class="slide center divider">
-  <div class="pnum">II</div>
-  <div class="plabel">優勢</div>
-  <div class="psub">會程式的人，到底贏在哪</div>
-</section>
-
-<!-- 15 leverage: works while you sleep -->
+<!-- 10 優勢一 睡覺 -->
 <section class="slide">
-  <div class="kicker">優勢一</div>
+  <div class="kicker">會程式，你多了什麼 · 一</div>
   <h2 class="head">你睡覺的時候，<br><em class="g">它還在替你工作</em></h2>
   <p class="lead wide serif">我的計算工具，<strong>寫一次</strong>，之後每天幾千人在用，我不用在場。<br><br>不會程式的人，做事是「花一小時，得一小時的成果」。<br>會程式的人，是「花一小時，做出一個<em>會自己重複一萬次</em>的東西」。</p>
 </section>
 
-<!-- 16 leverage: scale is free -->
+<!-- 11 優勢二 規模 -->
 <section class="slide">
-  <div class="kicker">優勢二</div>
+  <div class="kicker">會程式，你多了什麼 · 二</div>
   <h2 class="head">規模，對你幾乎<em class="g">免費</em></h2>
   <p class="lead wide serif">一個人算一張表，跟一百萬人用同一個工具——<br>對我來說，<strong>工作量幾乎一樣</strong>。<br><br>這就是為什麼，一個人有辦法服務全台灣。</p>
 </section>
 
-<!-- 17 leverage: the 20% -->
+<!-- 12 優勢三 20% -->
 <section class="slide">
-  <div class="kicker">優勢三</div>
+  <div class="kicker">會程式，你多了什麼 · 三</div>
   <h2 class="head">你改得動那關鍵的 <em class="g">20%</em></h2>
-  <p class="lead wide serif">現成工具給你 80%。<br><br>但我產品的價值，全在那 20%——<br>台灣勞基法的細節、實務見解的分歧。那是買不到的，只能自己寫。<br><br><strong>而你們的那 20%，叫做「交通」。</strong></p>
+  <p class="lead wide serif">現成工具給你 80%。<br><br>但我產品的價值，全在那 20%——台灣勞基法的細節、實務見解的分歧。那是買不到的，只能自己寫。<br><br><strong>而你們的那 20%，叫做「交通」。</strong></p>
 </section>
 
-<!-- 18 bridge to transportation -->
-<section class="slide">
-  <div class="kicker">講到這——接回你們的領域</div>
-  <h2 class="head">我的金礦是法條。<br>你們的是<em class="g">車流、刷卡、GPS、號誌</em>。</h2>
-  <p class="lead wide">我用程式 + AI，把法條變成產品。<br><br>同一套能力，你們可以對「交通」做。<br><strong>而且老實說，你們的資料，比我的多得多。</strong></p>
-</section>
-
-<!-- 19 divider III -->
+<!-- ====================  三 · 證明  ==================== -->
 <section class="slide center divider">
-  <div class="pnum">III</div>
-  <div class="plabel">那，到底長怎樣</div>
-  <div class="psub">我們實際做一次</div>
+  <div class="pnum">三</div>
+  <div class="plabel">證明</div>
+  <div class="psub">說了這麼多，做一個給你看</div>
 </section>
 
-<!-- 20 not making you an engineer -->
+<!-- 13 不會把你變工程師 -->
 <section class="slide">
   <div class="kicker">先讓你放心</div>
   <h2 class="head">我不是要把你變成工程師。<br><em>我自己都不算。</em></h2>
@@ -296,7 +255,7 @@ blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold
   <p class="lead wide" style="margin-top:14px;font-size:clamp(15px,1.5vw,20px);">就這三件。<em>投入產出比，高到不講道理。</em></p>
 </section>
 
-<!-- 21 toolmap -->
+<!-- 14 工具地圖 -->
 <section class="slide">
   <div class="kicker">給你一張地圖（不用背）</div>
   <h2 class="head" style="margin-bottom:.5em;">用 Python 做這些，你會碰到幾塊</h2>
@@ -309,14 +268,14 @@ blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold
   <p class="lead wide" style="margin-top:20px;font-size:clamp(14px,1.4vw,19px);"><strong>你不用全會。</strong>你要會的是「會查、會拼」，不是背起來。</p>
 </section>
 
-<!-- 22 demo intro -->
+<!-- 15 demo intro -->
 <section class="slide center">
   <span class="eyebrow dot">LIVE DEMO</span>
   <h2 class="head" style="text-align:center;">我們花五分鐘，<br>用 <em class="g">30 行</em>，做一個會呼叫 AI 的小東西</h2>
   <p class="lead" style="max-width:42ch;">把一堆雜亂的使用者留言，<strong>自動分類、統計、畫成圖</strong>。<br>你會發現——它一點都不像魔法。</p>
 </section>
 
-<!-- 23 demo code 1 -->
+<!-- 16 demo code 1 -->
 <section class="slide">
   <div class="kicker">DEMO · 第一步：叫 AI 判斷一則</div>
   <div class="code-wrap">
@@ -337,7 +296,7 @@ df = pd.<span class="fn">read_csv</span>(<span class="s">"留言.csv"</span>)   
   </div>
 </section>
 
-<!-- 24 demo code 2 -->
+<!-- 17 demo code 2 -->
 <section class="slide">
   <div class="kicker">DEMO · 第二步：讓它跑完 1000 則，畫成圖</div>
   <div class="code-wrap">
@@ -352,7 +311,7 @@ df[<span class="s">"情緒"</span>].<span class="fn">value_counts</span>().plot.
   </div>
 </section>
 
-<!-- 25 demo result -->
+<!-- 18 demo result -->
 <section class="slide">
   <div class="kicker">DEMO · 執行結果</div>
   <h2 class="head" style="margin-bottom:.4em;">兩分鐘，跑完一千則</h2>
@@ -367,41 +326,104 @@ df[<span class="s">"情緒"</span>].<span class="fn">value_counts</span>().plot.
   <div class="badge">備援截圖 · 現場網路若不穩，這是預先跑好的結果</div>
 </section>
 
-<!-- 26 demo takeaway -->
+<!-- 19 demo takeaway -->
 <section class="slide">
-  <div class="kicker">這個 demo 的重點</div>
+  <div class="kicker">這個 demo 證明了什麼</div>
   <h2 class="head">你看到的不是魔法，<br>是幾個<em class="g">可以學的積木</em>。</h2>
-  <p class="lead wide">讀檔、一個函式、一個迴圈、呼叫 AI、畫圖。<br>每一塊都不難。難的是「<strong>知道它們可以這樣拼</strong>」。<br><br><em>還有——別忘了：它跑出來的東西，你要會驗。</em>（還記得那些假法條嗎？）</p>
+  <p class="lead wide">讀檔、一個函式、一個迴圈、呼叫 AI、畫圖。<br>每一塊都不難。難的是「<strong>知道它們可以這樣拼</strong>」。<br><br><em>別忘了：它跑出來的東西，你要會驗。</em>（還記得那些假法條嗎？）</p>
 </section>
 
-<!-- 27 divider IV -->
-<section class="slide center divider">
-  <div class="pnum">IV</div>
-  <div class="plabel">最後</div>
-  <div class="psub">講點真話</div>
-</section>
-
-<!-- 28 what's actually scarce -->
+<!-- 20 pipeline -->
 <section class="slide">
-  <div class="kicker">什麼才是真正值錢的</div>
-  <h2 class="head">會用 AI 的人，<br>明年<em>滿街都是</em>。</h2>
-  <p class="lead wide">真正稀缺的，是「<strong>懂一個領域 + 能把想法自己做出來</strong>」的人。<br><br>領域，你們正在念了。<br><em class="g">剩下那一半，要自己補。</em></p>
+  <div class="kicker">而我的產品，就是這個的放大版</div>
+  <h2 class="head">真實產品裡，AI 只佔<em class="g">中間一格</em></h2>
+  <div class="flow">
+    <div class="step"><div class="s-t">抓法規</div><div class="s-d">全國法規<br>資料庫</div></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="s-t">結構化</div><div class="s-d">條文整理<br>成資料</div></div>
+    <div class="arr">→</div>
+    <div class="step ai"><div class="s-t">AI 輔助</div><div class="s-d">寫程式<br>交叉查核</div></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="s-t">計算邏輯</div><div class="s-d">把法條<br>變公式</div></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="s-t">逐條驗證</div><div class="s-d">我自己<br>對過</div></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="s-t">上線</div><div class="s-d">放進<br>瀏覽器</div></div>
+  </div>
+  <p class="lead wide" style="margin-top:26px;font-size:clamp(15px,1.5vw,21px);">demo 是玩具，這是真的產品。但骨架一樣：<strong>AI 是其中一格，程式把它接成完整的東西。</strong></p>
 </section>
 
-<!-- 29 honest note -->
+<!-- ====================  四 · AI 會取代我們嗎  ==================== -->
+<section class="slide center divider">
+  <div class="pnum">四</div>
+  <div class="plabel">AI 會取代我們嗎？</div>
+  <div class="psub">最該問、卻最少人敢直接問的問題</div>
+</section>
+
+<!-- 21 直球問題 -->
+<section class="slide center">
+  <div class="kicker">直球，不繞</div>
+  <blockquote class="big" style="max-width:24ch;">AI 會不會<br><em>取代我們？</em></blockquote>
+  <p class="lead" style="margin-top:26px;max-width:40ch;">我不會給你一個讓你安心的答案。<br>我給你一個我相信是真的答案。</p>
+</section>
+
+<!-- 22 我的答案 -->
+<section class="slide">
+  <div class="kicker">我的答案</div>
+  <h2 class="head">它取代的是<em class="g">任務</em>，<br>不是人。</h2>
+  <p class="lead wide serif">回到我自己：AI 沒有取代我。<br>它取代的，是「<strong>我需要請一個工程團隊</strong>」這件事。<br><br>真正會被取代的，是<em>把自己活成「只會執行、不做判斷」</em>的那種人。<br>因為那種事，本來就是 AI 最會的。</p>
+</section>
+
+<!-- 23 稀缺 -->
+<section class="slide">
+  <div class="kicker">所以什麼才安全</div>
+  <h2 class="head">會用 AI 的人，<br>明年<em>滿街都是</em>。</h2>
+  <p class="lead wide">當每個人都會用 AI，會用 AI 就不再是優勢——它變成像「會打字」一樣的基本盤。<br><br>真正稀缺、真正難被取代的，是「<strong>懂一個領域 + 能把想法自己做出來</strong>」的人。</p>
+</section>
+
+<!-- 24 交管出路 -->
+<section class="slide">
+  <div class="kicker">接回你們 · 交管的出路</div>
+  <h2 class="head" style="margin-bottom:.5em;">AI 會「插進」你們未來每一個位子</h2>
+  <div class="cards c3">
+    <div class="card"><div class="n">規劃 / 分析</div><h3>運輸規劃 · 需求預測</h3><p>過去靠人力跑模型、做問卷；現在資料量與模型，都靠程式 + AI 處理。</p></div>
+    <div class="card"><div class="n">工程 / 系統</div><h3>號誌 · 智慧運輸 ITS</h3><p>車流偵測、號誌最佳化、即時調度——核心全是資料與演算法。</p></div>
+    <div class="card"><div class="n">營運 / 公部門</div><h3>物流 · 交通局 · 顧問</h3><p>排班、路網、政策評估；會自己分析資料的人，講話份量完全不同。</p></div>
+  </div>
+  <p class="lead wide" style="margin-top:22px;font-size:clamp(15px,1.5vw,21px);">問題不是「AI 會不會取代交管」。是——<strong>這個行業裡的你，是哪一種人。</strong></p>
+</section>
+
+<!-- 25 兩種人對比 (the money slide) -->
+<section class="slide">
+  <div class="kicker">同一個系畢業，十年後的兩條路</div>
+  <h2 class="head" style="margin-bottom:.2em;">差的不是一個職位，是一個量級</h2>
+  <div class="compare" style="margin-top:24px;">
+    <div class="cmp bad lead-num">
+      <div class="tag">只懂交通，不碰程式 / AI</div>
+      <p>等資訊團隊做工具給你用、把分析外包給顧問。你是「<b>用工具的人</b>」——可被替代性高，薪水有天花板。</p>
+    </div>
+    <div class="cmp good lead-num">
+      <div class="tag">懂交通 + 會程式 + 會用 AI</div>
+      <p>自己把車流資料變成預測、把號誌最佳化寫成模型、把 AI 接進你的分析。你是「<b>做工具的人</b>」——稀缺，難取代。</p>
+    </div>
+  </div>
+  <p class="lead wide" style="margin-top:22px;font-size:clamp(15px,1.5vw,21px);">你的領域知識，<em>正在念了</em>。剩下那一半，要自己補。</p>
+</section>
+
+<!-- 26 誠實提醒 -->
 <section class="slide">
   <div class="kicker">一個誠實的提醒</div>
   <h2 class="head">我不會跟你說<br>「學程式人生就開外掛」。</h2>
-  <p class="lead wide serif">那種話我自己都不信。<br><br>我只會說：這是我這幾年看到，<strong>投入產出比最高的一件事</strong>。<br><br><em>我一個法律人都做到了。沒道理你們不行。</em></p>
+  <p class="lead wide serif">那種話我自己都不信。<br><br>我只會說：這是我這幾年看到，<strong>投入產出比最高的一件事</strong>。<br><br><em>我一個法律人都做到了。沒道理你們交管的不行。</em></p>
 </section>
 
-<!-- 30 closing line -->
+<!-- 27 收尾金句 -->
 <section class="slide center">
   <div class="kicker">帶走這一句</div>
   <blockquote class="big" style="max-width:30ch;">工具只會愈來愈強。<br>但「<em>要做什麼、對不對</em>」<br>這個判斷，永遠是你的。<br><br>程式，只是讓你的判斷，<br><em>真的能落地。</em></blockquote>
 </section>
 
-<!-- 31 end / QA -->
+<!-- 28 end / QA -->
 <section class="slide" style="align-items:flex-start;">
   <span class="eyebrow">Q &amp; A</span>
   <h1 class="title" style="font-size:clamp(32px,5vw,74px);">我是 Joe。一個人的公司，<em class="g">靠的就是這些。</em></h1>
@@ -414,7 +436,7 @@ df[<span class="s">"情緒"</span>].<span class="fn">value_counts</span>().plot.
 <div class="hint">← →  /  空白鍵翻頁 · F 全螢幕</div>
 <div class="chrome">
   <div class="brandmark">周全 <small>Chou Legal</small></div>
-  <div class="counter"><span id="cur">01</span> / <span id="total">31</span></div>
+  <div class="counter"><span id="cur">01</span> / <span id="total">28</span></div>
 </div>
 
 <script>
