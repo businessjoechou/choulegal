@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVS — AI Verification Standard · AI 計算自檢系統 by ChouLegal</title>
+<meta name="description" content="AVS 首創 AI 計算輸出四階段自動化驗證協定。法源 SHA-256 存證、Oracle 人工標準案例比對、驗證器零 AI 元件。適用法律、醫療、金融等任何確定性計算領域。專利申請中。by ChouLegal 周全法律科技。">
+<link rel="canonical" href="https://choulegal.com/avs">
+<meta property="og:title" content="AVS — AI Verification Standard">
+<meta property="og:description" content="Prove your AI is correct. Four-phase deterministic verification for any AI system computing deterministic answers. Patent Pending by ChouLegal.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choulegal.com/avs">
+<meta property="og:image" content="https://choulegal.com/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #06080d;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Noto Sans TC', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+:root {
+  --green:      #4ade80;
+  --green-dim:  rgba(74,222,128,0.12);
+  --green-line: rgba(74,222,128,0.22);
+  --gold:       #fde68a;
+  --ink:        #06080d;
+  --line:       rgba(255,255,255,0.08);
+  --line-md:    rgba(255,255,255,0.14);
+  --mono:       'JetBrains Mono', monospace;
+  --serif:      'Noto Serif TC', serif;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+/* ── ambient ── */
+body {
+  background:
+    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(74,222,128,0.07), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(56,189,248,0.04), transparent 60%),
+    #0a0c12;
+  background-attachment: fixed;
+}
+.ambient { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+.ambient-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 25%, black 25%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 25%, black 25%, transparent 72%);
+}
+
+/* ── nav ── */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  background: rgba(10,12,18,0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.nav-inner {
+  max-width: 1120px; margin: 0 auto; padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 14px;
+}
+.nav-logo {
+  font-family: var(--mono); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.12em; color: var(--green);
+}
+.nav-sep { width: 1px; height: 16px; background: var(--line-md); }
+.nav-by { font-size: 12px; color: rgba(255,255,255,0.38); letter-spacing: 0.04em; }
+.nav-links { display: flex; gap: 24px; font-size: 13px; color: rgba(255,255,255,0.6); }
+.nav-links a:hover { color: rgba(255,255,255,0.95); transition: color 0.2s; }
+.nav-cta {
+  padding: 8px 18px; border-radius: 6px;
+  background: var(--green-dim); border: 1px solid var(--green-line);
+  color: #86efac; font-size: 13px; font-family: var(--mono);
+  letter-spacing: 0.08em; transition: background 0.2s;
+}
+.nav-cta:hover { background: rgba(74,222,128,0.2); }
+@media (max-width: 720px) {
+  .nav-inner { padding: 14px 20px; }
+  .nav-links { display: none; }
+}
+
+/* ── hero ── */
+.hero { padding: 108px 0 96px; text-align: center; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 14px; border-radius: 100px;
+  border: 1px solid var(--green-line);
+  background: var(--green-dim);
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.22em; color: rgba(134,239,172,0.9);
+  text-transform: uppercase; margin-bottom: 32px;
+}
+.hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); animation: blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.4;} }
+.hero-en {
+  font-family: var(--mono); font-size: clamp(13px, 1.2vw, 16px);
+  color: rgba(255,255,255,0.35); letter-spacing: 0.24em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-h1 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 1.08; letter-spacing: -0.022em;
+  color: rgba(255,255,255,0.97);
+  max-width: 18ch; margin: 0 auto 22px;
+  text-wrap: balance;
+}
+.hero-h1 em {
+  font-style: normal; font-weight: 300;
+  background: linear-gradient(110deg, #86efac 0%, #4ade80 55%, #22c55e 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-sub {
+  font-size: clamp(15px, 1.3vw, 18px); color: rgba(255,255,255,0.55);
+  max-width: 52ch; margin: 0 auto 40px; line-height: 1.7;
+}
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  padding: 13px 28px; border-radius: 8px;
+  background: var(--green); color: #06080d;
+  font-weight: 500; font-size: 14px; letter-spacing: 0.04em;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.88; }
+.btn-ghost {
+  padding: 13px 28px; border-radius: 8px;
+  border: 1px solid var(--line-md); color: rgba(255,255,255,0.72);
+  font-size: 14px; transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.95); }
+.hero-note {
+  margin-top: 22px; font-family: var(--mono); font-size: 11px;
+  color: rgba(255,255,255,0.28); letter-spacing: 0.14em;
+}
+.hero-note span { color: rgba(134,239,172,0.6); }
+
+/* ── stats strip ── */
+.stats {
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  padding: 40px 0;
+}
+.stats-row {
+  display: flex; justify-content: center; align-items: center;
+  gap: 0; flex-wrap: wrap;
+}
+.stat { flex: 0 0 auto; padding: 0 52px; text-align: center; border-right: 1px solid var(--line); }
+.stat:last-child { border-right: none; }
+@media (max-width: 640px) {
+  .stat { padding: 16px 28px; border-right: none; border-bottom: 1px solid var(--line); flex: 0 0 50%; }
+  .stat:nth-child(even) { border-right: none; }
+}
+.stat-num { font-family: var(--mono); font-size: clamp(28px, 3.5vw, 44px); font-weight: 500; color: var(--green); line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; }
+
+/* ── section ── */
+.sec { padding: 96px 0; }
+.sec-eye { font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; color: rgba(134,239,172,0.7); text-transform: uppercase; margin-bottom: 16px; }
+.sec-h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 3.5vw, 44px); line-height: 1.12; letter-spacing: -0.018em; color: rgba(255,255,255,0.97); margin-bottom: 16px; text-wrap: balance; }
+.sec-h2 em { font-style: normal; font-weight: 300; color: var(--green); }
+.sec-sub { font-size: clamp(14px, 1.2vw, 17px); color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 54ch; }
+
+/* ── problem ── */
+.problems {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  margin-top: 56px;
+  border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+}
+@media (max-width: 720px) { .problems { grid-template-columns: 1fr; } }
+.problem {
+  padding: 36px 32px;
+  background: rgba(255,255,255,0.02);
+  border-right: 1px solid var(--line);
+}
+.problem:last-child { border-right: none; }
+.problem-icon { font-size: 28px; margin-bottom: 18px; }
+.problem-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 10px; }
+.problem-desc { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7; }
+
+/* ── how it works ── */
+.phases { display: flex; flex-direction: column; gap: 2px; margin-top: 56px; }
+.phase {
+  display: grid; grid-template-columns: 220px 1fr;
+  gap: 32px; align-items: start;
+  padding: 32px 36px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.phase:hover { border-color: var(--green-line); background: var(--green-dim); }
+@media (max-width: 720px) { .phase { grid-template-columns: 1fr; gap: 14px; padding: 24px 22px; } }
+.phase-left {}
+.phase-num { font-family: var(--mono); font-size: 11px; color: rgba(134,239,172,0.55); letter-spacing: 0.22em; margin-bottom: 8px; }
+.phase-name { font-family: var(--serif); font-size: 20px; font-weight: 500; color: rgba(255,255,255,0.95); margin-bottom: 4px; }
+.phase-en { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.28); letter-spacing: 0.14em; }
+.phase-right {}
+.phase-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 12px; }
+.phase-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.phase-tag {
+  padding: 3px 10px; border-radius: 4px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.45);
+}
+
+/* ── cert levels ── */
+.certs { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 56px; }
+@media (max-width: 720px) { .certs { grid-template-columns: repeat(2,1fr); } }
+.cert {
+  padding: 28px 24px; border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+  text-align: center; transition: transform 0.25s, border-color 0.25s;
+}
+.cert:hover { transform: translateY(-4px); border-color: var(--green-line); }
+.cert-icon { font-size: 36px; margin-bottom: 14px; line-height: 1; }
+.cert-name { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.14em; color: rgba(255,255,255,0.85); margin-bottom: 8px; }
+.cert-phases { font-family: var(--mono); font-size: 11px; color: rgba(134,239,172,0.65); margin-bottom: 10px; }
+.cert-desc { font-size: 12.5px; color: rgba(255,255,255,0.42); line-height: 1.6; }
+
+/* ── trace window ── */
+.trace-wrap { margin-top: 56px; }
+.trace-window {
+  background: rgba(8,10,16,0.96);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; overflow: hidden;
+  font-family: var(--mono); font-size: 13px;
+  box-shadow: 0 0 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+}
+.trace-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 18px; background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.trace-bar .dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #ef4444; opacity: .7; }
+.dot-y { background: #eab308; opacity: .7; }
+.dot-g { background: #22c55e; opacity: .7; }
+.trace-title { margin-left: 6px; font-size: 11px; color: rgba(255,255,255,0.32); letter-spacing: 0.12em; }
+.trace-body { padding: 24px 28px; line-height: 2.0; overflow-x: auto; }
+.t-dim  { color: rgba(255,255,255,0.25); }
+.t-key  { color: #93c5fd; }
+.t-str  { color: #f9a8d4; }
+.t-num  { color: #86efac; }
+.t-pass { color: #4ade80; font-weight: 500; }
+.t-gray { color: rgba(255,255,255,0.42); }
+.t-cert { color: #fde68a; font-size: 15px; }
+
+/* ── who it's for ── */
+.audiences { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 52px; }
+@media (max-width: 720px) { .audiences { grid-template-columns: 1fr; } }
+.audience {
+  padding: 30px 28px; border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.015);
+}
+.audience-icon { font-size: 26px; margin-bottom: 14px; }
+.audience-title { font-family: var(--serif); font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 10px; }
+.audience-desc { font-size: 13.5px; color: rgba(255,255,255,0.48); line-height: 1.7; margin-bottom: 14px; }
+.audience-use { font-family: var(--mono); font-size: 11.5px; color: rgba(134,239,172,0.7); }
+
+/* ── ip strip ── */
+.ip-strip {
+  margin: 0; padding: 60px 0;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: rgba(74,222,128,0.03);
+}
+.ip-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+@media (max-width: 720px) { .ip-grid { grid-template-columns: repeat(2,1fr); } }
+.ip-item { padding: 20px 28px; }
+.ip-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 8px; }
+.ip-value { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+.ip-value strong { color: rgba(134,239,172,0.9); font-weight: 500; }
+
+/* ── CTA ── */
+.cta-sec {
+  padding: 96px 0; text-align: center;
+}
+.cta-box {
+  display: inline-block; max-width: 640px; width: 100%;
+  padding: 56px 48px; border-radius: 16px;
+  border: 1px solid var(--green-line);
+  background: linear-gradient(135deg, rgba(74,222,128,0.06) 0%, rgba(74,222,128,0.02) 100%);
+}
+@media (max-width: 640px) { .cta-box { padding: 40px 28px; } }
+.cta-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em; color: rgba(134,239,172,0.6); text-transform: uppercase; margin-bottom: 20px; }
+.cta-h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 3.2vw, 36px); color: rgba(255,255,255,0.97); margin-bottom: 14px; line-height: 1.18; text-wrap: balance; }
+.cta-sub { font-size: 14.5px; color: rgba(255,255,255,0.5); margin-bottom: 36px; line-height: 1.7; }
+.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-note { margin-top: 22px; font-size: 12px; color: rgba(255,255,255,0.28); }
+
+/* ── footer ── */
+.foot {
+  padding: 40px 0; border-top: 1px solid var(--line);
+}
+.foot-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.12em; color: rgba(255,255,255,0.32);
+}
+.foot-links { display: flex; gap: 22px; }
+.foot-links a:hover { color: rgba(255,255,255,0.65); transition: color .2s; }
+
+/* ── reveal ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity:1!important; transform:none!important; } }
+</style>
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true"><div class="ambient-grid"></div></div>
+
+<!-- ── Nav ── -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="nav-logo">AVS</span>
+      <span class="nav-sep"></span>
+      <span class="nav-by">by <a href="https://choulegal.com" style="color:inherit;">ChouLegal</a></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#how">如何運作</a>
+      <a href="#cert">認證等級</a>
+      <a href="#who">適用對象</a>
+      <a href="#ip">智財保護</a>
+    </nav>
+    <a class="nav-cta" href="#contact">洽詢授權 →</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="hero-tag"><span class="dot"></span>AI Verification Standard · v1.0</div>
+      <p class="hero-en">Prove your AI is correct.</p>
+      <h1 class="hero-h1">AI 算的，<em>可以被驗證。</em></h1>
+      <p class="hero-sub">首創 — AI 計算輸出四階段自動化驗證協定。法源 SHA-256 存證、Oracle 人工標準案例比對、驗證器零 AI 元件。適用法律、醫療、金融等任何有確定答案的計算領域。</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#how">了解如何運作</a>
+        <a class="btn-ghost" href="#contact">洽詢 B2B 授權</a>
+      </div>
+      <p class="hero-note">
+        <span>Patent Pending</span> · © 2026 ChouLegal 周全法律科技 ·
+        <span>50/50 壓力測試通過</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats ── -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-row reveal">
+      <div class="stat">
+        <div class="stat-num">50</div>
+        <div class="stat-label">壓力測試 100% 通過</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">17</div>
+        <div class="stat-label">人工確認 Oracle 案例</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">33</div>
+        <div class="stat-label">法條 SHA-256 存證</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">確定性驗證階段</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">驗證使用 AI 元件</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Problem ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eye">Problem</div>
+      <h2 class="sec-h2">沒有人敢<em>相信 AI 算的數字。</em></h2>
+      <p class="sec-sub">大型語言模型帶來強大的計算能力，同時帶來三個根本問題。</p>
+    </div>
+    <div class="problems reveal">
+      <div class="problem">
+        <div class="problem-icon">👻</div>
+        <div class="problem-title">來源幻覺</div>
+        <div class="problem-desc">AI 可能引用不存在的法條、規範或文獻。用戶無法快速判斷引用是否為真，錯誤引用難以被發現。</div>
+      </div>
+      <div class="problem">
+        <div class="problem-icon">🔲</div>
+        <div class="problem-title">黑盒計算</div>
+        <div class="problem-desc">計算過程不透明，只看到最終數字。中間哪一步錯了、用了什麼公式，完全無從得知。</div>
+      </div>
+      <div class="problem">
+        <div class="problem-icon">📅</div>
+        <div class="problem-title">版本不明</div>
+        <div class="problem-desc">規範持續修訂。AI 系統基於哪個版本計算？今天算的和三個月前算的一樣嗎？沒有人知道。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ── -->
+<section class="sec" id="how" style="padding-top:0;">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eye">How it works</div>
+      <h2 class="sec-h2">四階段，<em>每一步都可追溯。</em></h2>
+      <p class="sec-sub">AVS 驗證器不使用任何 AI 元件——純確定性邏輯，任何第三方獨立執行均可得到相同結論。</p>
+    </div>
+
+    <div class="phases reveal">
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-num">PHASE 01</div>
+          <div class="phase-name">結構驗證</div>
+          <div class="phase-en">Schema Validation</div>
+        </div>
+        <div class="phase-right">
+          <p class="phase-desc">確認 AI 輸出的推理軌跡（Trace JSON）包含全部必要欄位：版本號、來源引用、計算步驟、輸出值、信心等級宣告。格式不符即終止，不進行後續驗證。</p>
+          <div class="phase-tags">
+            <span class="phase-tag">必要欄位查核</span>
+            <span class="phase-tag">信心等級格式</span>
+            <span class="phase-tag">domain 白名單</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-num">PHASE 02</div>
+          <div class="phase-name">來源查核</div>
+          <div class="phase-en">Source Verification</div>
+        </div>
+        <div class="phase-right">
+          <p class="phase-desc">對每條引用來源，向官方資料庫取得現行原文，計算 SHA-256 哈希值。哈希與推理軌跡預存值不符，代表來源已更新，自動產生異動警告。來源不存在即 FAIL。</p>
+          <div class="phase-tags">
+            <span class="phase-tag">官方資料庫查核</span>
+            <span class="phase-tag">SHA-256 哈希比對</span>
+            <span class="phase-tag">來源異動偵測</span>
+            <span class="phase-tag">離線快取支援</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-num">PHASE 03</div>
+          <div class="phase-name">計算重現</div>
+          <div class="phase-en">Step Re-computation</div>
+        </div>
+        <div class="phase-right">
+          <p class="phase-desc">對每個含公式的計算步驟，使用安全求值引擎（不允許任意程式碼執行）重新計算，並與推理軌跡中預存的數值比對。允許 1 單位容差（處理浮點四捨五入）。超出即 FAIL。</p>
+          <div class="phase-tags">
+            <span class="phase-tag">安全公式求值</span>
+            <span class="phase-tag">逐步數值比對</span>
+            <span class="phase-tag">信心等級交叉驗證</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-num">PHASE 04</div>
+          <div class="phase-name">Oracle 比對</div>
+          <div class="phase-en">Oracle Matching</div>
+        </div>
+        <div class="phase-right">
+          <p class="phase-desc">AI 系統在推理軌跡中宣告「我在回答哪個場景（scenario_id）」，驗證器自動查找對應的人工確認參考案例，比對答案值、必須引用的來源、計算步驟數量與信心等級，全部符合才通過。</p>
+          <div class="phase-tags">
+            <span class="phase-tag">場景識別碼查找</span>
+            <span class="phase-tag">人工確認案例比對</span>
+            <span class="phase-tag">多維條件驗證</span>
+            <span class="phase-tag">產品中立設計</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live trace demo -->
+    <div class="trace-wrap reveal">
+      <div class="trace-window">
+        <div class="trace-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="trace-title">AVS AUDIT — 新制資遣費 5年 月薪 40,000 TWD</span>
+        </div>
+        <div class="trace-body">
+<span class="t-dim">// AI 系統輸出的推理軌跡（任何產品均可產生）</span>
+<span class="t-dim">{</span>
+  <span class="t-key">"avs_version"</span><span class="t-dim">:</span>  <span class="t-str">"1.0"</span><span class="t-dim">,</span>
+  <span class="t-key">"scenario_id"</span><span class="t-dim">:</span>   <span class="t-str">"TW-LABOR-SEVERANCE-NEW-001"</span><span class="t-dim">,</span>
+  <span class="t-key">"laws"</span><span class="t-dim">:</span>          <span class="t-dim">[{</span> <span class="t-key">"article"</span><span class="t-dim">:</span> <span class="t-str">"勞退條例§12"</span> <span class="t-dim">}],</span>
+  <span class="t-key">"steps"</span><span class="t-dim">:</span> <span class="t-dim">[</span>
+    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span><span class="t-str">"年資換算"</span><span class="t-dim">,</span>  <span class="t-key">"formula"</span><span class="t-dim">:</span><span class="t-gray">"60/12"</span><span class="t-dim">,</span>      <span class="t-key">"value"</span><span class="t-dim">:</span><span class="t-num">5</span>       <span class="t-dim">},</span>
+    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span><span class="t-str">"基數計算"</span><span class="t-dim">,</span>  <span class="t-key">"formula"</span><span class="t-dim">:</span><span class="t-gray">"5×0.5"</span><span class="t-dim">,</span>      <span class="t-key">"value"</span><span class="t-dim">:</span><span class="t-num">2.5</span>     <span class="t-dim">},</span>
+    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span><span class="t-str">"資遣費金額"</span><span class="t-dim">,</span><span class="t-key">"formula"</span><span class="t-dim">:</span><span class="t-gray">"2.5×40000"</span><span class="t-dim">,</span>  <span class="t-key">"value"</span><span class="t-dim">:</span><span class="t-num">100000</span>  <span class="t-dim">}</span>
+  <span class="t-dim">],</span>
+  <span class="t-key">"output"</span><span class="t-dim">:</span>      <span class="t-num">100000</span><span class="t-dim">,</span>
+  <span class="t-key">"confidence"</span><span class="t-dim">:</span> <span class="t-str">"deterministic"</span>
+<span class="t-dim">}</span>
+&nbsp;
+<span class="t-dim">// AVS 驗證器輸出（確定性，不使用 AI）</span>
+<span class="t-pass">✓  Phase 1  結構驗證    PASS  · 必要欄位 10/10 齊全</span>
+<span class="t-pass">✓  Phase 2  來源查核    PASS  · 勞退條例§12 ← law.moj.gov.tw SHA-256 一致</span>
+<span class="t-pass">✓  Phase 3  計算重現    PASS  · 3 步驟重算全符（60/12=5, 5×0.5=2.5, 2.5×40000=100000）</span>
+<span class="t-pass">✓  Phase 4  Oracle比對  PASS  · TW-LABOR-SEVERANCE-NEW-001 預期 100,000 TWD ✓</span>
+&nbsp;
+<span class="t-cert">💎  認證等級：Platinum</span>   <span class="t-num">→  OVERALL: PASS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Certification Levels ── -->
+<section class="sec" id="cert" style="padding-top:0;">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eye">Certification Levels</div>
+      <h2 class="sec-h2">四個等級，<em>清楚標示可信程度。</em></h2>
+      <p class="sec-sub">依通過的驗證階段深度，自動輸出認證等級，可嵌入產品頁面或 API 回應中對外展示。</p>
+    </div>
+    <div class="certs reveal">
+      <div class="cert">
+        <div class="cert-icon">🥉</div>
+        <div class="cert-name">BRONZE</div>
+        <div class="cert-phases">Phase 1</div>
+        <div class="cert-desc">推理軌跡格式符合 AVS v1.0 標準，欄位完整</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">🥈</div>
+        <div class="cert-name">SILVER</div>
+        <div class="cert-phases">Phase 1–2</div>
+        <div class="cert-desc">引用來源均已於官方資料庫核驗存在</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">🥇</div>
+        <div class="cert-name">GOLD</div>
+        <div class="cert-phases">Phase 1–3</div>
+        <div class="cert-desc">計算步驟可被獨立重現，公式與數值全符</div>
+      </div>
+      <div class="cert" style="border-color:rgba(253,230,138,0.25);background:rgba(253,230,138,0.03);">
+        <div class="cert-icon">💎</div>
+        <div class="cert-name">PLATINUM</div>
+        <div class="cert-phases">Phase 1–4 · 來源哈希全符</div>
+        <div class="cert-desc">人工確認標準案例比對通過，來源版本完整釘定</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Who it's for ── -->
+<section class="sec" id="who" style="padding-top:0;">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eye">Who it's for</div>
+      <h2 class="sec-h2">三類客戶，<em>同一個需求。</em></h2>
+      <p class="sec-sub">「你怎麼證明 AI 算的是對的？」——政府、企業、各領域 AI 廠商都在問這個問題。</p>
+    </div>
+    <div class="audiences reveal">
+      <div class="audience">
+        <div class="audience-icon">🏛️</div>
+        <div class="audience-title">政府機關</div>
+        <div class="audience-desc">採購 AI 系統前的合規審查，或要求廠商取得 AVS 認證作為採購門檻。</div>
+        <div class="audience-use">司法院 · 勞動部 · 衛福部 · 金管會 · 各縣市政府</div>
+      </div>
+      <div class="audience">
+        <div class="audience-icon">⚖️</div>
+        <div class="audience-title">AI 產品公司</div>
+        <div class="audience-desc">在產品頁掛「AVS Platinum 認證」，向客戶證明 AI 計算可被第三方獨立驗證，建立差異化信任。</div>
+        <div class="audience-use">LegalTech · HealthTech · FinTech · 合規 SaaS</div>
+      </div>
+      <div class="audience">
+        <div class="audience-icon">🏢</div>
+        <div class="audience-title">企業法務 / 稽核</div>
+        <div class="audience-desc">稽核自有或採購的 AI 計算系統輸出，確保每筆判斷有完整可追溯的稽核軌跡。</div>
+        <div class="audience-use">大型企業法務部 · 律師事務所 · 會計師事務所</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IP Strip ── -->
+<div class="ip-strip" id="ip">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eye" style="margin-bottom:28px;">Intellectual Property</div>
+      <div class="ip-grid">
+        <div class="ip-item">
+          <div class="ip-label">專利</div>
+          <div class="ip-value"><strong>發明專利申請中</strong><br>四階段驗證方法 + 系統<br>中華民國智慧財產局</div>
+        </div>
+        <div class="ip-item">
+          <div class="ip-label">開放標準</div>
+          <div class="ip-value"><strong>CC BY 4.0</strong><br>驗證協定規格公開<br>需署名 ChouLegal</div>
+        </div>
+        <div class="ip-item">
+          <div class="ip-label">程式碼版權</div>
+          <div class="ip-value"><strong>© 2026 ChouLegal</strong><br>核心驗證器實作<br>All rights reserved</div>
+        </div>
+        <div class="ip-item">
+          <div class="ip-label">營業秘密</div>
+          <div class="ip-value"><strong>Oracle 場景庫</strong><br>完整人工確認資料集<br>來源 pcode 對照表</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA ── -->
+<section class="cta-sec" id="contact">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="cta-tag">開始使用 AVS</div>
+      <h2 class="cta-h2">讓你的 AI 系統，<br>成為可被驗證的系統。</h2>
+      <p class="cta-sub">無論你是政府機關、AI 新創、還是企業稽核，我們提供 B2B 授權、API 接入與客製化 Oracle 場景服務。</p>
+      <div class="cta-actions">
+        <a class="btn-primary" href="mailto:businessjoechou@gmail.com?subject=AVS%20B2B%20洽詢&body=您好，我有興趣了解 AVS 自檢系統的授權合作方式。">聯繫洽詢</a>
+        <a class="btn-ghost" href="https://github.com/businessjoechou/lavs" target="_blank" rel="noopener">GitHub （Private Preview）</a>
+      </div>
+      <p class="cta-note">
+        目前提供 Private Preview · 歡迎政府機關與各領域 AI 廠商優先試用
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <span>AVS — AI Verification Standard · © 2026 ChouLegal 周全法律科技 · Patent Pending</span>
+      <div class="foot-links">
+        <a href="https://choulegal.com">ChouLegal 主站</a>
+        <a href="https://choulegal.com/avs">AVS</a>
+        <a href="mailto:businessjoechou@gmail.com">聯絡</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+if (typeof IntersectionObserver !== 'undefined') {
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -4% 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  setTimeout(function() {
+    document.querySelectorAll('.reveal:not(.is-visible)').forEach(function(el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
+    });
+  }, 1200);
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+}
+</script>
+</body>
+</html>
