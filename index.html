@@ -453,6 +453,180 @@
     text-transform: uppercase;
   }
 
+  /* ── LAVS Verification Section ── */
+  .lavs {
+    padding: 96px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .lavs::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(34,197,94,0.05), transparent 70%),
+      linear-gradient(180deg, transparent, rgba(10,12,18,0.6), transparent);
+    pointer-events: none;
+  }
+  .lavs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid rgba(34,197,94,0.3);
+    border-radius: 100px;
+    background: rgba(34,197,94,0.06);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(134,239,172,0.9);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .lavs-badge .dot-green {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+  @keyframes pulse-green {
+    0%,100% { opacity: 1; box-shadow: 0 0 6px #4ade80; }
+    50%      { opacity: 0.5; box-shadow: 0 0 2px #4ade80; }
+  }
+  .lavs-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.97);
+    max-width: 24ch;
+    margin: 0 auto 18px;
+    text-wrap: balance;
+  }
+  .lavs-title em {
+    font-style: normal;
+    font-weight: 300;
+    background: linear-gradient(110deg, #86efac 0%, #4ade80 60%, #22c55e 100%);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+  }
+  .lavs-sub {
+    font-size: clamp(15px, 1.2vw, 17px);
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    max-width: 52ch;
+    margin: 0 auto 56px;
+  }
+  /* Counter row */
+  .lavs-counters {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+  }
+  .lavs-counter {
+    flex: 0 0 auto;
+    padding: 24px 48px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .lavs-counter:last-child { border-right: none; }
+  @media (max-width: 640px) {
+    .lavs-counter { padding: 18px 28px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .lavs-counter:last-child { border-bottom: none; }
+  }
+  .lavs-counter-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 500;
+    color: #4ade80;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .lavs-counter-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.42);
+    letter-spacing: 0.06em;
+  }
+  /* Trace window */
+  .lavs-trace {
+    max-width: 760px;
+    margin: 0 auto 44px;
+    background: rgba(10,12,18,0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .lavs-trace-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .lavs-trace-bar .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .lavs-trace-bar .dot-r { background: #ef4444; opacity: 0.7; }
+  .lavs-trace-bar .dot-y { background: #eab308; opacity: 0.7; }
+  .lavs-trace-bar .dot-g { background: #22c55e; opacity: 0.7; }
+  .lavs-trace-bar .title { margin-left: 6px; font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; }
+  .lavs-trace-body { padding: 20px 22px; line-height: 1.9; }
+  .t-dim  { color: rgba(255,255,255,0.28); }
+  .t-key  { color: #93c5fd; }
+  .t-str  { color: #f9a8d4; }
+  .t-num  { color: #86efac; }
+  .t-pass { color: #4ade80; font-weight: 500; }
+  .t-gray { color: rgba(255,255,255,0.45); }
+  .lavs-phases {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 760px;
+    margin: 0 auto 44px;
+  }
+  @media (max-width: 640px) { .lavs-phases { grid-template-columns: repeat(2, 1fr); } }
+  .lavs-phase {
+    padding: 16px 18px;
+    background: rgba(34,197,94,0.05);
+    border: 1px solid rgba(34,197,94,0.15);
+    border-radius: 8px;
+  }
+  .lavs-phase-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(134,239,172,0.6);
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+  }
+  .lavs-phase-name {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .lavs-phase-desc {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.42);
+    line-height: 1.5;
+  }
+  .lavs-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.32);
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .lavs-note a { color: rgba(134,239,172,0.7); text-decoration: underline; text-underline-offset: 3px; }
+  .lavs-note a:hover { color: #86efac; }
+
   /* ── Footer ── */
   .foot {
     padding: 56px 0;
@@ -614,11 +788,12 @@
           <div class="product-eyebrow gold"><span class="dot"></span>給所有人 · 完全免費</div>
           <h3 class="product-name">周全｜民眾版</h3>
           <p class="product-tag">瀏覽器即算，不註冊、不收費、不塞廣告。</p>
-          <p class="product-desc">三個獨立站、60+ 計算工具，從加班費、特休、資遣費，到繼承、遺產稅、贈與稅，到消費爭議、定型化契約、價金返還。每筆數字都附條號、修正日期與全國法規資料庫連結。</p>
+          <p class="product-desc">四個獨立站、60+ 計算工具，從加班費、特休、資遣費，到繼承、遺產稅、贈與稅，到消費爭議、定型化契約、價金返還，再到押金返還、提前解約、修繕求償。每筆數字都附條號、修正日期與全國法規資料庫連結。</p>
           <ul class="product-meta">
             <li>LaborPro · 勞動</li>
             <li>InheritancePro · 民法財產</li>
             <li>ConsumerPro · 消費爭議</li>
+            <li>RentalPro · 租屋權益</li>
           </ul>
           <span class="product-cta">進入民眾版<span class="product-cta-arrow">›</span></span>
         </a>
@@ -662,10 +837,102 @@
 
         <article class="pillar reveal">
           <div class="pillar-num">03 / 驗證</div>
-          <h3 class="pillar-title">每一條法規都對得到 law.moj。</h3>
-          <p class="pillar-desc">資料來源全部公部門官方（全國法規資料庫、司法院判決公開資料、各機關函示）。擴 corpus 前 verify 腳本逐條打 law.moj，跑通才 ship。複雜個案會明確標示「請諮詢執業律師」。</p>
+          <h3 class="pillar-title">自研自檢系統，四階段機械驗證。</h3>
+          <p class="pillar-desc">我們自行研發 LAVS 自檢系統，每筆計算輸出均附推理軌跡，由獨立驗證器（不使用 AI）四階段查核：法源存在、SHA-256 哈希比對、公式逐步重算、人工確認標準案例比對。驗證器開源，任何人都可以獨立跑一遍，得到完全相同的結論。</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ════ LAVS 驗證 ════ -->
+  <section class="lavs">
+    <div class="wrap" style="text-align:center;">
+      <div class="reveal">
+        <div class="lavs-badge"><span class="dot-green"></span>LAVS v1.0 · 即時驗證中</div>
+        <h2 class="lavs-title">每一個數字，<em>都有辦法證明。</em></h2>
+        <p class="lavs-sub">我們自行研發 LAVS 自檢系統（法律 AI 可驗證性標準），以四階段機械驗證取代「相信 AI」。驗證器不使用任何 AI 元件，任何人都可以獨立執行並得到完全相同的結論。專利申請中。</p>
+      </div>
+
+      <!-- 數字區 -->
+      <div class="lavs-counters reveal">
+        <div class="lavs-counter">
+          <div class="lavs-counter-num">50</div>
+          <div class="lavs-counter-label">壓力測試全部通過</div>
+        </div>
+        <div class="lavs-counter">
+          <div class="lavs-counter-num">17</div>
+          <div class="lavs-counter-label">人工確認標準案例</div>
+        </div>
+        <div class="lavs-counter">
+          <div class="lavs-counter-num">33</div>
+          <div class="lavs-counter-label">法條 SHA-256 存證</div>
+        </div>
+        <div class="lavs-counter">
+          <div class="lavs-counter-num">100%</div>
+          <div class="lavs-counter-label">通過率</div>
+        </div>
+      </div>
+
+      <!-- 模擬 trace 視窗 -->
+      <div class="lavs-trace reveal">
+        <div class="lavs-trace-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="title">LAVS AUDIT TRACE · 新制資遣費 5年 月薪40,000</span>
+        </div>
+        <div class="lavs-trace-body">
+<span class="t-dim">{</span>
+  <span class="t-key">"lavs_version"</span><span class="t-dim">:</span> <span class="t-str">"1.0"</span><span class="t-dim">,</span>
+  <span class="t-key">"scenario_id"</span><span class="t-dim">:</span>   <span class="t-str">"TW-LABOR-SEVERANCE-NEW-001"</span><span class="t-dim">,</span>
+  <span class="t-key">"laws"</span><span class="t-dim">:</span>          <span class="t-dim">[{</span> <span class="t-key">"article"</span><span class="t-dim">:</span> <span class="t-str">"勞退條例§12"</span> <span class="t-dim">}],</span>
+  <span class="t-key">"steps"</span><span class="t-dim">:</span> <span class="t-dim">[</span>
+    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span> <span class="t-str">"年資換算"</span><span class="t-dim">,</span>  <span class="t-key">"formula"</span><span class="t-dim">:</span> <span class="t-gray">"60 / 12"</span><span class="t-dim">,</span>      <span class="t-key">"value"</span><span class="t-dim">:</span> <span class="t-num">5</span>      <span class="t-dim">},</span>
+    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span> <span class="t-str">"基數計算"</span><span class="t-dim">,</span>  <span class="t-key">"formula"</span><span class="t-dim">:</span> <span class="t-gray">"5 × 0.5"</span><span class="t-dim">,</span>      <span class="t-key">"value"</span><span class="t-dim">:</span> <span class="t-num">2.5</span>    <span class="t-dim">},</span>
+    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span> <span class="t-str">"資遣費"</span><span class="t-dim">,</span>    <span class="t-key">"formula"</span><span class="t-dim">:</span> <span class="t-gray">"2.5 × 40000"</span><span class="t-dim">,</span>  <span class="t-key">"value"</span><span class="t-dim">:</span> <span class="t-num">100000</span> <span class="t-dim">}</span>
+  <span class="t-dim">],</span>
+  <span class="t-key">"output"</span><span class="t-dim">:</span>       <span class="t-num">100000</span><span class="t-dim">,</span>
+  <span class="t-key">"confidence"</span><span class="t-dim">:</span>  <span class="t-str">"deterministic"</span>
+<span class="t-dim">}</span>
+&nbsp;
+<span class="t-pass">✓ Phase 1 Schema      PASS  ·  10 欄位齊全</span>
+<span class="t-pass">✓ Phase 2 Law Source  PASS  ·  勞退條例§12 → law.moj.gov.tw (SHA-256 存證)</span>
+<span class="t-pass">✓ Phase 3 Computation PASS  ·  3 步驟重算一致</span>
+<span class="t-pass">✓ Phase 4 Oracle      PASS  ·  TW-LABOR-SEVERANCE-NEW-001 預期 100,000 ✓</span>
+&nbsp;
+<span class="t-num">→ OVERALL: PASS</span>
+        </div>
+      </div>
+
+      <!-- 四階段說明 -->
+      <div class="lavs-phases reveal">
+        <div class="lavs-phase">
+          <div class="lavs-phase-num">PHASE 01</div>
+          <div class="lavs-phase-name">結構驗證</div>
+          <div class="lavs-phase-desc">格式、欄位、版本號全部到位</div>
+        </div>
+        <div class="lavs-phase">
+          <div class="lavs-phase-num">PHASE 02</div>
+          <div class="lavs-phase-name">法源查核</div>
+          <div class="lavs-phase-desc">每條法條打全國法規資料庫，SHA-256 存證</div>
+        </div>
+        <div class="lavs-phase">
+          <div class="lavs-phase-num">PHASE 03</div>
+          <div class="lavs-phase-name">計算重現</div>
+          <div class="lavs-phase-desc">逐步重算公式，確認每一個中間值</div>
+        </div>
+        <div class="lavs-phase">
+          <div class="lavs-phase-num">PHASE 04</div>
+          <div class="lavs-phase-name">Oracle 比對</div>
+          <div class="lavs-phase-desc">對照人工確認標準案例，答案在容差內</div>
+        </div>
+      </div>
+
+      <p class="lavs-note reveal">
+        © 2026 ChouLegal 周全法律科技 · LAVS 自研自檢系統 · 專利申請中 ·
+        驗證器開源 CC BY 4.0 ·
+        <a href="https://github.com/choulegal/lavs" target="_blank" rel="noopener">LAVS Standard →</a>
+      </p>
     </div>
   </section>
 
