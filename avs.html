@@ -276,6 +276,21 @@ body {
 .audience-desc { font-size: 13.5px; color: rgba(255,255,255,0.48); line-height: 1.7; margin-bottom: 14px; }
 .audience-use { font-family: var(--mono); font-size: 11.5px; color: rgba(134,239,172,0.7); }
 
+/* ── verify results ── */
+.vr-table { width:100%; border-collapse:collapse; margin-top:32px; }
+.vr-table th { font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:rgba(255,255,255,.3); text-transform:uppercase; padding:10px 14px; border-bottom:1px solid var(--line); text-align:left; font-weight:400; }
+.vr-table td { font-size:12.5px; padding:11px 14px; border-bottom:1px solid rgba(255,255,255,.04); color:rgba(255,255,255,.62); vertical-align:middle; }
+.vr-table tr:last-child td { border-bottom:none; }
+.vr-table td:first-child { font-family:var(--mono); font-size:11px; color:rgba(134,239,172,.75); }
+.vr-table td:last-child { font-family:var(--mono); font-size:11px; }
+.vr-pass { color:var(--green)!important; }
+.vr-domain { display:inline-block; padding:2px 8px; border-radius:4px; font-family:var(--mono); font-size:10px; letter-spacing:.08em; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); }
+.vr-sum { display:flex; gap:24px; flex-wrap:wrap; margin-top:28px; }
+.vr-chip { padding:12px 20px; border-radius:8px; border:1px solid var(--line); background:rgba(255,255,255,.02); font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:rgba(255,255,255,.45); }
+.vr-chip strong { color:var(--green); font-size:18px; display:block; margin-bottom:4px; }
+.vr-link { margin-top:24px; display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:6px; border:1px solid var(--green-line); background:var(--green-dim); font-family:var(--mono); font-size:12px; letter-spacing:.1em; color:rgba(134,239,172,.9); text-decoration:none; transition:all .2s; }
+.vr-link:hover { background:rgba(74,222,128,.15); }
+
 /* ── ip strip ── */
 .ip-strip {
   margin: 0; padding: 60px 0;
@@ -572,6 +587,67 @@ body {
         <div class="cert-phases">Phase 1–4 · 來源哈希全符</div>
         <div class="cert-desc">人工確認標準案例比對通過，來源版本完整釘定</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Verification Results ── -->
+<section class="sec" id="results" style="padding-top:0;">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eye">Verification Results · 2026-06-15</div>
+      <h2 class="sec-h2">ChouLegal 函式庫，<em>全數通過。</em></h2>
+      <p class="sec-sub">以 AVS 對 ChouLegal 四平台 32 個代表性計算函式執行驗算，Phase 1–4 全通過。以下為公開紀錄。</p>
+    </div>
+    <div class="vr-sum reveal">
+      <div class="vr-chip"><strong>17/17</strong>Oracle 四階段（P1–P4）</div>
+      <div class="vr-chip"><strong>15/15</strong>批次 Phase 1–3 驗算</div>
+      <div class="vr-chip"><strong>32/32</strong>函式總計全通過</div>
+      <div class="vr-chip"><strong>0</strong>計算誤差 &gt; 1 TWD</div>
+    </div>
+    <table class="vr-table reveal">
+      <thead>
+        <tr>
+          <th>結果</th><th>函式 / 場景</th><th>領域</th><th>驗算重點</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcSeveranceNew（5年/40k→100,000）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-SEVERANCE-NEW-001</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcSeveranceNew（20年/50k→300,000，觸及6月上限）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-SEVERANCE-NEW-002</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcSeveranceNew（2.5年/30k→37,500）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-SEVERANCE-NEW-003</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcSeveranceOld（10.5年/50k→525,000，無上限）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-SEVERANCE-OLD-001</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcNotice（6個月/36k→10日/12,000）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-NOTICE-001</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcNotice（2個月→無須預告）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-NOTICE-002</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcNotice（18個月/45k→20日/30,000）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-NOTICE-003</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcNotice（48個月/50k→30日/50,000）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-NOTICE-004</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcOvertimeCost（平日3hr/36k→650）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-OVERTIME-WEEKDAY-001</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcOvertimeCost（平日6hr/36k→1,400）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-OVERTIME-WEEKDAY-002</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcOvertimeCost（假日8hr/36k→2,400）</td><td><span class="vr-domain">labor</span></td><td>Oracle TW-LABOR-OVERTIME-HOLIDAY-001</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcStatutoryShare（配偶+2子女→各1/3）</td><td><span class="vr-domain">civil</span></td><td>Oracle TW-CIVIL-INHERIT-SHARE-001</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcStatutoryShare（配偶+父母→1/2, 1/4）</td><td><span class="vr-domain">civil</span></td><td>Oracle TW-CIVIL-INHERIT-SHARE-002</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcStatutoryShare（僅配偶→全部）</td><td><span class="vr-domain">civil</span></td><td>Oracle TW-CIVIL-INHERIT-SHARE-003</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcDepositCap（月租20k/押金40k→退40k）</td><td><span class="vr-domain">rental</span></td><td>Oracle TW-RENTAL-DEPOSIT-CAP-001</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcDepositCap（月租15k/押金50k→超收20k）</td><td><span class="vr-domain">rental</span></td><td>Oracle TW-RENTAL-DEPOSIT-CAP-002</td></tr>
+        <tr><td class="vr-pass">✓ P1–P4</td><td>calcDepositCap（押金40k/欠租5k→退35k）</td><td><span class="vr-domain">rental</span></td><td>Oracle TW-RENTAL-DEPOSIT-CAP-003</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>getAnnualLeaveDays（年資3年→10天）</td><td><span class="vr-domain">labor</span></td><td>勞基法§38 查表重算</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcOvertimePay（休息日4hr/36k→900）</td><td><span class="vr-domain">labor</span></td><td>§24 II 1.33/1.67倍公式</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcPensionNew（帳戶60萬/62歲→月退2,299）</td><td><span class="vr-domain">labor</span></td><td>勞退條例§24 平均餘命除式</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcMaternityPay（月薪45k/年資8月→73,500）</td><td><span class="vr-domain">labor</span></td><td>勞基法§50 全薪6週+半薪2週</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>checkMonthlyOvertime（50hr/無協議→違規4hr）</td><td><span class="vr-domain">labor</span></td><td>勞基法§32 II 上限46小時</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcEstateTax（淨遺產2000萬→稅額670,000）</td><td><span class="vr-domain">civil</span></td><td>遺贈稅法§13 累進稅率重算</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcGiftTax（年贈與300萬→稅額56,000）</td><td><span class="vr-domain">civil</span></td><td>遺贈稅法§22 免稅額244萬</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>simpleInterest（100萬/5%/365天→50,000）</td><td><span class="vr-domain">civil</span></td><td>民法§203 單利公式</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcPropertyTaxOnce（售500萬/成本300萬/6月持有→45%→900,000）</td><td><span class="vr-domain">civil</span></td><td>所得稅法§14-4 房地合一</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcCoolingOff（通訊購物收貨→7日截止）</td><td><span class="vr-domain">consumer</span></td><td>消保法§19 猶豫期規則</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcDepositClaim（訂金5萬/賣方違約→返還10萬）</td><td><span class="vr-domain">consumer</span></td><td>民法§249 加倍返還</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcLitigationFee（請求額100萬→一審11,400）</td><td><span class="vr-domain">consumer</span></td><td>民訴§77-13 裁判費計算</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcCramSchoolRefund（已用3/10→退費6,000）</td><td><span class="vr-domain">consumer</span></td><td>補習班準則§24 比例退費</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcRentCap（地價50萬+建物100萬→月租上限12,500）</td><td><span class="vr-domain">rental</span></td><td>土地法§97 年租10%上限</td></tr>
+        <tr><td class="vr-pass">✓ P1–P3</td><td>calcElectricityOvercharge（5元/度→超收1.5元/度→退300）</td><td><span class="vr-domain">rental</span></td><td>消保法§56-1 電費上限</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:20px;" class="reveal">
+      <a class="vr-link" href="avs-verify.html">自行驗算 → 貼入 trace JSON 立即執行</a>
     </div>
   </div>
 </section>
