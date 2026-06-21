@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>成大簡報 · 周全 ChouLegal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{background:#06070b;color:rgba(255,255,255,.92);font-family:"Noto Serif TC",serif;display:flex;align-items:center;justify-content:center;overflow:hidden;-webkit-font-smoothing:antialiased;}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(130px);opacity:.4;}
+.b1{top:-20vh;left:-10vw;width:60vw;height:60vw;background:radial-gradient(circle,rgba(217,119,6,.5),transparent 60%);}
+.b2{bottom:-20vh;right:-10vw;width:55vw;height:55vw;background:radial-gradient(circle,rgba(124,58,237,.45),transparent 60%);}
+.card{width:min(92vw,420px);text-align:center;padding:8px;}
+.mark{font-size:20px;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.95);margin-bottom:6px;}
+.mark small{margin-left:8px;font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.26em;color:rgba(255,255,255,.4);text-transform:uppercase;}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#fde68a;margin-bottom:26px;}
+h1{font-weight:400;font-size:clamp(26px,6vw,34px);line-height:1.3;margin-bottom:8px;color:rgba(255,255,255,.97);}
+p.sub{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:28px;}
+form{display:flex;flex-direction:column;gap:14px;}
+input{font-family:"JetBrains Mono",monospace;font-size:18px;letter-spacing:.3em;text-align:center;padding:15px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#fff;outline:none;transition:border-color .2s;}
+input:focus{border-color:rgba(253,230,138,.7);}
+button{font-family:"Noto Serif TC",serif;font-size:15px;font-weight:500;padding:14px;border:0;border-radius:12px;background:rgba(255,255,255,.95);color:#06070b;cursor:pointer;transition:background .2s,transform .2s;}
+button:hover{background:#fde68a;transform:translateY(-1px);}
+.err{min-height:18px;margin-top:14px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;color:#fca5a5;opacity:0;transition:opacity .2s;}
+.err.show{opacity:1;}
+@keyframes shake{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-7px);}40%,80%{transform:translateX(7px);}}
+.shake{animation:shake .35s;}
+</style>
+</head>
+<body>
+<div class="bg"><span class="blob b1"></span><span class="blob b2"></span></div>
+<div class="card" id="card">
+  <div class="mark">周全<small>ChouLegal</small></div>
+  <div class="eyebrow">成大交管系 · Python 課</div>
+  <h1>這場簡報需要密碼</h1>
+  <p class="sub">Enter passcode to continue</p>
+  <form id="f" autocomplete="off">
+    <input id="pw" type="password" inputmode="numeric" placeholder="••••" aria-label="密碼" autofocus>
+    <button type="submit">進入簡報</button>
+  </form>
+  <div class="err" id="err">密碼不對，再試一次</div>
+</div>
+<script>
+(function(){
+  var PASS="1002", DEST="python-ai-talk.html";
+  var f=document.getElementById("f"),pw=document.getElementById("pw"),err=document.getElementById("err"),card=document.getElementById("card");
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(pw.value.trim()===PASS){
+      try{sessionStorage.setItem("ncku_ok","1");}catch(_){}
+      location.replace(DEST);
+    }else{
+      err.classList.add("show");
+      card.classList.remove("shake");void card.offsetWidth;card.classList.add("shake");
+      pw.value="";pw.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>
