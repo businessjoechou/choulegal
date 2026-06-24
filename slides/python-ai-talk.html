@@ -216,52 +216,6 @@ blockquote.big em{font-style:italic;background:linear-gradient(110deg,var(--gold
   <p class="lead wide" style="margin-top:22px;font-size:clamp(15px,1.5vw,21px);"><strong>你們的專業加上程式，是很稀有的組合。</strong></p>
 </section>
 
-<!-- 15 demo intro -->
-<section class="slide center">
-  <span class="eyebrow dot">LIVE DEMO</span>
-  <h2 class="head" style="text-align:center;">好 - 講了這麼多概念，<br><em class="g">看個真的。</em></h2>
-  <p class="lead" style="max-width:44ch;">大概 30 行，AI 負責實作，我負責指揮跟檢查。<br>如果效果跟我說的不一樣 - <strong>你們可以當場挑戰我。</strong></p>
-</section>
-
-<!-- 16 demo code -->
-<section class="slide">
-  <div class="kicker">DEMO · AI 負責一格，其他是我</div>
-  <div class="code-wrap">
-    <div class="code-title">classify.py</div>
-<pre class="code"><span class="k">import</span> pandas <span class="k">as</span> pd
-<span class="k">from</span> anthropic <span class="k">import</span> Anthropic
-
-ai = <span class="fn">Anthropic</span>()
-df = pd.<span class="fn">read_csv</span>(<span class="s">"留言.csv"</span>)          <span class="c"># 1000 則使用者留言</span>
-
-<span class="k">def</span> <span class="fn">分類</span>(text):                       <span class="c"># ← AI 做的，就這一格</span>
-    r = ai.messages.<span class="fn">create</span>(model=<span class="s">"claude-haiku-4-5"</span>, max_tokens=<span class="s">10</span>,
-        messages=[{<span class="s">"role"</span>:<span class="s">"user"</span>,<span class="s">"content"</span>:<span class="s">f"只回 正面/負面/中立：\n{text}"</span>}])
-    <span class="k">return</span> r.content[0].text.<span class="fn">strip</span>()
-
-df[<span class="s">"情緒"</span>] = df[<span class="s">"text"</span>].<span class="hi">apply(分類)</span>      <span class="c"># 套用到 1000 則</span>
-df[<span class="s">"情緒"</span>].<span class="fn">value_counts</span>().plot.<span class="fn">bar</span>()   <span class="c"># 畫成圖</span></pre>
-    <p class="code-note">AI 只做框起來那一格 - <em>判斷一段文字的情緒</em>。讀檔、套用一千次、畫圖，還有「結果到底對不對」，都是我這邊的事。</p>
-  </div>
-</section>
-
-<!-- 17 demo result + takeaway -->
-<section class="slide">
-  <div class="kicker">DEMO · 結果與重點</div>
-  <div class="two">
-    <div>
-      <div class="result">
-        情緒<br>正面&nbsp;&nbsp;&nbsp;612<br>中立&nbsp;&nbsp;&nbsp;241<br>負面&nbsp;&nbsp;&nbsp;147<br>
-        <span style="color:rgba(255,255,255,.5)">→ 同時跳出一張長條圖</span>
-      </div>
-      <div class="badge">備援截圖 · 現場網路若不穩用這張</div>
-    </div>
-    <div>
-      <p class="lead">重點不是它跑得快。<br><br>是 - 我全程都<strong>看得懂</strong> AI 在做什麼，也<strong>判斷得出</strong>它有沒有亂來。<br><br><em>這份判斷力，來自我懂一點 Python。</em></p>
-    </div>
-  </div>
-</section>
-
 <!-- ============ III · 界線 ============ -->
 <section class="slide center divider">
   <div class="pnum">III</div>
