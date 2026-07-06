@@ -28,24 +28,24 @@ var professionalPresets = {
   legal: {
     title: "法遵整理結果",
     label: "輸入事件事實或工作需求",
-    facts: "公司準備調整排班制度，部分員工最近提出加班費與休息日出勤異議。希望先確認制度風險，並整理需要補強的文件。",
+    facts: "公司準備調整排班制度，部分員工近期提出加班費與休息日出勤異議。需判讀制度風險，並建立待補文件與回覆路徑。",
     source: "勞動基準法",
     role: "HR / 法務",
     risk: "中風險",
     riskClass: "risk-medium",
-    summary: "依目前描述，需先確認排班制度變更、加班費計算與休息日出勤紀錄。建議補齊出勤紀錄、班表公告與工資計算明細後，再評估制度調整方式。",
+    summary: "本案風險集中於排班制度變更、加班費計算與休息日出勤紀錄。處理順序為補齊出勤紀錄、班表公告與工資計算明細，再調整制度文本。",
     docs: ["最近 6 個月出勤紀錄與排班表", "工資清冊、加班費計算明細", "工作規則與排班制度公告紀錄"],
     kit: ["事實時間線", "員工異議摘要", "公司回覆草稿與談判底線"]
   },
   lawyer: {
     title: "法律研究整理結果",
     label: "輸入案件事實、爭點或研究問題",
-    facts: "客戶主張店家廣告標示不實，要求解除契約並退還價金。需要整理可能爭點、請求權基礎與可搜尋判決關鍵字。",
+    facts: "客戶主張店家廣告標示不實，要求解除契約並返還價金。需建立爭點表、請求權基礎與判決檢索關鍵字。",
     source: "消費者保護法",
     role: "律師",
     risk: "中風險",
     riskClass: "risk-medium",
-    summary: "本案可先整理三個面向：廣告表示是否構成契約內容、商品或服務是否有瑕疵、解除契約或減少價金是否有依據。後續應補齊交易頁面、廣告截圖與雙方往來紀錄。",
+    summary: "本案爭點集中於廣告表示是否納入契約內容、商品或服務是否具備瑕疵、解除契約或減少價金是否具備依據。待補資料為交易頁面、廣告截圖與雙方往來紀錄。",
     docs: ["交易頁面與廣告截圖", "訂單、付款與交付紀錄", "買賣雙方訊息與客訴紀錄"],
     kit: ["爭點表", "請求權基礎清單", "判決搜尋關鍵字：廣告不實、解除契約、價金返還"]
   },
@@ -57,19 +57,19 @@ var professionalPresets = {
     role: "企業經營者",
     risk: "高風險",
     riskClass: "risk-high",
-    summary: "此情境同時涉及出勤紀錄、延長工時、休息日出勤與工資計算。若紀錄不完整或制度公告不足，後續面對勞方異議時會提高舉證壓力。",
+    summary: "本案同時涉及出勤紀錄、延長工時、休息日出勤與工資計算。紀錄不完整或制度公告不足，將提高後續舉證壓力。",
     docs: ["逐日出勤紀錄", "排班表與調班紀錄", "加班申請或主管核准紀錄", "薪資單與加班費公式"],
     kit: ["勞方異議事件包", "補件清單", "內部訪談問題", "回覆員工草稿"]
   },
   consumer: {
     title: "消保法合規自檢結果",
     label: "輸入交易流程、退換貨規則或買方異議",
-    facts: "線上課程賣家在廣告頁強調保證成效，買方購買後要求退款並主張廣告內容誤導。店家希望整理回覆與合規缺口。",
+    facts: "線上課程賣家於廣告頁強調保證成效，買方購買後要求退款並主張廣告內容誤導。需建立回覆草稿與合規缺口清單。",
     source: "消費者保護法",
     role: "店家 / 賣家",
     risk: "高風險",
     riskClass: "risk-high",
-    summary: "需確認廣告表示、契約條款、退款規則與購買前揭露是否一致。若廣告承諾過度具體，應優先整理素材版本與消費者購買前看到的內容。",
+    summary: "風險集中於廣告表示、契約條款、退款規則與購買前揭露是否一致。廣告承諾越具體，越需要保全素材版本與購買流程紀錄。",
     docs: ["廣告頁與銷售頁歷史版本", "購買流程截圖", "服務條款與退款政策", "買方客服往來紀錄"],
     kit: ["買方異議事件包", "廣告素材盤點表", "退款回覆草稿", "合規修改清單"]
   },
@@ -81,7 +81,7 @@ var professionalPresets = {
     role: "律師",
     risk: "研究模式",
     riskClass: "risk-low",
-    summary: "可依關鍵字整理公開判決資料，先列出候選判決，再整理事實、爭點、法院見解與可引用摘要。目前畫面展示整理格式。",
+    summary: "依關鍵字定位公開裁判，建立候選判決清單，並抽取事實、爭點、法院見解與可引用摘要。",
     docs: ["搜尋關鍵字組", "法院與年度篩選", "判決候選清單", "引用摘要格式"],
     kit: ["判決事實摘要", "爭點分類", "法院見解對照", "可引用段落索引"]
   }
@@ -89,7 +89,7 @@ var professionalPresets = {
 
 var professionalExtras = {
   legal: {
-    checks: [["WATCH", "排班制度變更需確認公告與員工同意流程。"], ["WATCH", "加班費計算需回到實際出勤紀錄與薪資項目。"], ["PASS", "若文件完整，可先產出內部補強清單。"]],
+    checks: [["WATCH", "排班制度變更需檢核公告程序與員工同意紀錄。"], ["WATCH", "加班費計算需回到實際出勤紀錄與薪資項目。"], ["PASS", "文件完整時，可產出內部補強清單。"]],
     judgments: [["最高法院勞動事件示例", "依爭點列出相關判決與裁判要旨。"], ["地方勞動事件判決示例", "用來比對出勤紀錄與薪資清冊的舉證方向。"]]
   },
   lawyer: {
@@ -97,7 +97,7 @@ var professionalExtras = {
     judgments: [["消費爭議判決示例 A", "廣告內容與契約期待的關聯。"], ["民事買賣判決示例 B", "解除契約後價金返還與回復原狀。"]]
   },
   labor: {
-    checks: [["RISK", "休息日出勤與延長工時是第一優先風險。"], ["RISK", "若出勤紀錄缺漏，面對勞方異議時舉證壓力升高。"], ["WATCH", "工作規則與排班公告需確認版本與生效日。"]],
+    checks: [["RISK", "休息日出勤與延長工時列為最高優先風險。"], ["RISK", "出勤紀錄缺漏將提高勞方異議中的舉證壓力。"], ["WATCH", "工作規則與排班公告需確認版本與生效日。"]],
     judgments: [["勞動事件判決示例 A", "出勤紀錄與加班費舉證責任。"], ["勞動事件判決示例 B", "休息日出勤與薪資計算。"]]
   },
   consumer: {
@@ -114,7 +114,7 @@ var caseDeskItems = {
   "labor-shift": {
     tool: "labor",
     title: "排班與加班費異議",
-    summary: "餐飲門市採排班制，近期員工質疑休息日出勤與加班費計算方式。需要先補齊出勤與薪資資料。",
+    summary: "餐飲門市採排班制，員工質疑休息日出勤與加班費計算方式。缺口集中於出勤紀錄、薪資明細與制度公告。",
     stage: "已收到異議",
     docs: "部分缺漏",
     tasks: [["補齊 6 個月出勤紀錄", "今日"], ["整理薪資與加班費公式", "明日"], ["建立員工異議時間線", "本週"]]
@@ -122,7 +122,7 @@ var caseDeskItems = {
   "consumer-ad": {
     tool: "consumer",
     title: "線上課程退款爭議",
-    summary: "買方主張廣告保證成效未達成，要求退款。需要保存銷售頁版本並產出回覆草稿。",
+    summary: "買方主張廣告保證成效未達成，要求退款。處理重點為銷售頁版本保全與回覆草稿。",
     stage: "準備回覆或談判",
     docs: "尚未整理",
     tasks: [["保存廣告頁版本", "今日"], ["整理客服往來紀錄", "今日"], ["產出退款回覆草稿", "明日"]]
@@ -211,7 +211,7 @@ function initProfessionalWorkbench() {
     setMatrix(matrix, professionalExtras[tool].checks);
     setJudgments(judgments, professionalExtras[tool].judgments);
     actionStatus.textContent = "尚未匯出";
-    disclaimer.textContent = "這是示範頁面。實際導入仍須依資料來源、文件解析、權限控管、法源驗證與人工覆核流程規劃；本頁內容不構成法律意見。";
+    disclaimer.textContent = "本頁為產品展示。正式導入須配置資料來源、文件解析、權限控管、法源驗證與人工覆核流程；本頁內容不構成法律意見。";
     if (!keepFacts) {
       form.elements.facts.value = preset.facts;
       form.elements.source.value = preset.source;
@@ -307,8 +307,8 @@ function initProfessionalWorkbench() {
 
     risk.textContent = riskText;
     risk.className = "risk-badge " + riskClass;
-    summary.textContent = preset.summary + " 已依「" + stage + "」與「文件完整度：" + docsState + "」調整整理順序。";
-    setList(docs, preset.docs.concat(docsState === "完整" ? ["建立版本紀錄與最後更新日期"] : ["先補齊缺漏文件並標示來源"]));
+    summary.textContent = preset.summary + " 系統已依「" + stage + "」與「文件完整度：" + docsState + "」重排處理順序。";
+    setList(docs, preset.docs.concat(docsState === "完整" ? ["建立版本紀錄與最後更新日期"] : ["補齊缺漏文件並標示來源"]));
     setList(kit, preset.kit.concat(["下一步：安排人工覆核並指定責任窗口"]));
     setMatrix(matrix, professionalExtras[currentTool].checks);
     setJudgments(judgments, professionalExtras[currentTool].judgments);
@@ -378,7 +378,7 @@ var educationItems = [
     subject: "civil",
     summary: "從要約、承諾、意思表示瑕疵切入，是民法總則與債編共同的起點。",
     tags: ["民法", "總則", "契約"],
-    points: ["先分辨要約與要約引誘", "確認承諾是否到達", "再檢查錯誤、詐欺、脅迫等瑕疵"]
+    points: ["區分要約與要約引誘", "確認承諾是否到達", "檢查錯誤、詐欺、脅迫等瑕疵"]
   },
   {
     id: "rescission-refund",
@@ -396,7 +396,7 @@ var educationItems = [
     subject: "labor",
     summary: "把工時、休息日、延長工時與薪資計算分開處理，避免不同爭議混在一起。",
     tags: ["勞動法", "加班費", "工時"],
-    points: ["先確認正常工時與延長工時", "區分休息日、例假與國定假日", "回到出勤紀錄與薪資明細"]
+    points: ["確認正常工時與延長工時", "區分休息日、例假與國定假日", "回到出勤紀錄與薪資明細"]
   },
   {
     id: "labor-dispute-proof",
@@ -429,20 +429,20 @@ var educationItems = [
 
 var quizItems = [
   {
-    question: "店家廣告頁寫「保證三週內達成效果」，消費者購買後主張未達成而要求退款。第一步應先檢查什麼？",
+    question: "店家廣告頁寫「保證三週內達成效果」，消費者購買後主張未達成而要求退款。第一批檢核資料為何？",
     options: ["廣告頁與購買流程中實際揭露的內容", "店家主觀上是否想退款", "消費者購買後是否後悔"],
     answer: 0,
-    explain: "先確認消費者購買前看到的廣告與契約內容，才能判斷是否影響合理期待與契約義務。"
+    explain: "消費者購買前看到的廣告與契約內容，是判斷合理期待與契約義務的基礎。"
   },
   {
     question: "員工主張休息日出勤加班費短少，公司第一批應整理哪些資料？",
     options: ["出勤紀錄、排班表、薪資明細與加班費公式", "公司品牌手冊", "所有員工的私人聊天紀錄"],
     answer: 0,
-    explain: "勞動爭議通常要先回到出勤、排班與薪資計算資料，避免只剩口頭說法互相對立。"
+    explain: "勞動爭議須回到出勤、排班與薪資計算資料，避免主張停留在口頭對立。"
   },
   {
     question: "國考整理爭點時，最不適合的順序是哪一個？",
-    options: ["先背結論，再看題目才找法條", "先找問題意識", "再接法條、實務見解與學說"],
+    options: ["背結論後再依題目找法條", "先找問題意識", "再接法條、實務見解與學說"],
     answer: 0,
     explain: "只背結論容易失去爭點脈絡；比較穩的是從問題意識開始，接到法條與見解。"
   }
@@ -544,7 +544,7 @@ function initEducationLibrary() {
     if (!visible.length) {
       var empty = document.createElement("div");
       empty.className = "empty-state";
-      empty.textContent = "目前沒有符合條件的內容。換個關鍵字或篩選試試。";
+      empty.textContent = "未找到符合條件的內容。請調整關鍵字或篩選條件。";
       results.appendChild(empty);
     }
 
@@ -566,8 +566,8 @@ function initEducationLibrary() {
 
     var pathText = {
       all: "從「契約成立」開始，接到「解除契約」與「價金返還」，最後看消費爭議中的廣告表示問題。",
-      public: "先看生活案例，再回到民眾版工具：加班費、退款、繼承與租屋爭議都可以沿著這條路線閱讀。",
-      exam: "先建立體系，再整理爭點：概念、條文、實務見解與答題方向要一起讀。",
+      public: "生活案例連回民眾版工具：加班費、退款、繼承與租屋爭議皆可沿此路線閱讀。",
+      exam: "體系建立後連接爭點：概念、條文、實務見解與答題方向需放在同一張地圖。",
       civil: "民法路線：意思表示、契約成立、解除契約、回復原狀與損害賠償。",
       labor: "勞動法路線：工時、工資、休假、資遣與舉證資料。",
       consumer: "消保法路線：廣告表示、定型化契約、退換貨、價金返還與店家合規。"
@@ -639,7 +639,7 @@ function initPractice() {
     var quiz = quizItems[index];
     question.textContent = quiz.question;
     options.innerHTML = "";
-    feedback.textContent = "選一個答案後，這裡會顯示解析。";
+    feedback.textContent = "選擇答案後，此處顯示解析。";
     quiz.options.forEach(function (option, optionIndex) {
       var button = document.createElement("button");
       button.className = "quiz-option";
@@ -651,7 +651,7 @@ function initPractice() {
           btn.classList.toggle("is-correct", idx === quiz.answer);
           btn.classList.toggle("is-wrong", idx === optionIndex && !correct);
         });
-        feedback.textContent = (correct ? "答對。" : "先不對。") + quiz.explain;
+        feedback.textContent = (correct ? "答對。" : "尚未答對。") + quiz.explain;
         status.textContent = correct ? "已完成本題" : "已顯示解析";
         syncChouLegalEducationData(
           "course_progress",

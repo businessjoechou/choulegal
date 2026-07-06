@@ -5,12 +5,12 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>法律教育平台 — 法律科普、國考與轉學考資料庫</title>
-<meta name="description" content="周全法律教育平台整理法律科普、國考與轉學考資料，協助讀者查概念、看法條、整理爭點與安排複習順序。">
+<title>法律教育平台 — 周全 ChouLegal</title>
+<meta name="description" content="周全法律教育平台整合法律科普、國考與轉學考資料。首頁介紹學習架構與使用路線，資料庫功能集中於內層頁面。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://choulegal.com/education.html">
 <meta property="og:title" content="法律教育平台 — 周全 ChouLegal">
-<meta property="og:description" content="整理一般人法律科普，以及國考生、轉學生會用到的法律資訊資料庫。">
+<meta property="og:description" content="概念、法條、實務見解與學習路徑，整合為可查詢、可複習的法律架構。">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:url" content="https://choulegal.com/education.html">
@@ -32,7 +32,7 @@
       <a href="index.html">首頁</a>
       <a href="professional.html">專業版</a>
       <a href="education.html" aria-current="page">法律教育</a>
-      <a href="#library">資料庫</a>
+      <a href="education-library.html">資料庫</a>
       <a href="about.html">關於</a>
     </nav>
   </div>
@@ -43,146 +43,53 @@
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow">Legal Education</div>
-        <h1 class="title">法律教育平台<em>從科普到考試準備</em></h1>
-        <p class="lead">想理解法律，不必從零散文章裡慢慢拼。這裡整理法律科普、國考資料、轉學考資料與常見爭點，讓讀者先找到合適的入口。</p>
+        <h1 class="title">法律教育平台<em>先有架構。</em></h1>
+        <p class="lead">法律學習不該是碎片化的資訊堆疊。這個首頁先介紹周全如何整理概念、法條、實務見解與學習路徑；搜尋、收藏、練習與筆記則放在資料庫頁使用。</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#library">開啟資料庫</a>
-          <a class="btn btn-ghost" href="mailto:businessjoechou@gmail.com?subject=周全法律教育平台合作">合作洽詢</a>
+          <a class="btn btn-primary" href="#tracks">了解學習路線</a>
+          <a class="btn btn-ghost" href="education-library.html">進入資料庫</a>
         </div>
       </div>
       <aside class="panel" aria-label="法律教育平台定位">
         <div class="metric-grid">
           <div class="metric">
-            <div class="metric-k">Public</div>
-            <div class="metric-v">一般人看得懂的法律科普與生活法律脈絡。</div>
+            <div class="metric-k">Start</div>
+            <div class="metric-v">生活法律科普、考試準備與資料查詢分流。</div>
           </div>
           <div class="metric">
-            <div class="metric-k">Students</div>
-            <div class="metric-v">給國考生、轉學生的體系化法律資訊資料庫。</div>
+            <div class="metric-k">Structure</div>
+            <div class="metric-v">概念、條文、爭點、判決與題目放回同一架構。</div>
           </div>
           <div class="metric">
-            <div class="metric-k">Method</div>
-            <div class="metric-v">概念、法條、判決、爭點與學習順序一起呈現。</div>
+            <div class="metric-k">Workspace</div>
+            <div class="metric-v">資料庫、收藏、練習與筆記放在內層頁面形成複習路徑。</div>
           </div>
         </div>
       </aside>
     </div>
   </section>
 
-  <section class="section" id="library">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="eyebrow">Library</div>
-        <h2 class="section-title">先讓資料查得到、存得下、回得來。</h2>
-        <p class="section-sub">目前頁面展示搜尋、篩選、知識卡與複習清單。後續會逐步補上更多主題、題目、收藏與帳號同步。</p>
-      </header>
-
-      <div class="library-shell reveal" data-education-app>
-        <div class="library-top">
-          <label class="field">
-            <span>搜尋法律概念、科目或情境</span>
-            <input class="library-search" type="search" data-library-search placeholder="例如：解除契約、加班費、繼承、行政處分">
-          </label>
-          <div class="library-controls" aria-label="資料庫篩選">
-            <button class="filter-chip is-active" type="button" data-filter="all">全部</button>
-            <button class="filter-chip" type="button" data-filter="public">法律科普</button>
-            <button class="filter-chip" type="button" data-filter="exam">國考 / 轉學考</button>
-            <button class="filter-chip" type="button" data-filter="civil">民法</button>
-            <button class="filter-chip" type="button" data-filter="labor">勞動法</button>
-            <button class="filter-chip" type="button" data-filter="consumer">消保法</button>
-          </div>
-        </div>
-
-        <div class="library-layout">
-          <div class="library-results" data-library-results></div>
-          <aside class="library-side">
-            <div class="side-box">
-              <h3>閱讀進度</h3>
-              <div class="progress-track" aria-hidden="true"><span data-progress-bar></span></div>
-              <p data-progress-text>0 / 6 已加入複習</p>
-            </div>
-            <div class="side-box">
-              <h3>本週學習路線</h3>
-              <p data-learning-path>從「契約成立」開始，接到「解除契約」與「價金返還」，最後看消費爭議中的廣告表示問題。</p>
-            </div>
-            <div class="side-box detail-box" data-detail-box>
-              <h3 data-detail-title>內容詳情</h3>
-              <p data-detail-body>點選任一知識卡的「查看詳情」，這裡會顯示概念拆解、法源提示與學習順序。</p>
-              <ul class="detail-points" data-detail-points></ul>
-            </div>
-            <div class="side-box">
-              <h3>複習清單</h3>
-              <ul class="saved-list" data-saved-list>
-                <li>尚未加入內容</li>
-              </ul>
-            </div>
-            <div class="side-box">
-              <h3>周全帳號同步</h3>
-              <p data-education-sync-status>本機儲存中。登入周全帳號後可同步收藏、筆記與進度。</p>
-              <a class="small-link" href="https://etp.choulegal.com/login?next=/account">登入 / 管理帳號</a>
-            </div>
-            <div class="side-box">
-              <h3>資料狀態</h3>
-              <p>目前是示範資料。後續會逐步補上概念、法條、判決、爭點與工具入口。</p>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="practice">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="eyebrow">Practice</div>
-        <h2 class="section-title">讀完以後，<em>要能接著練習。</em></h2>
-        <p class="section-sub">法律教育平台會把知識卡接到小題、解析與筆記匯出。這裡先用示範題呈現完整回饋流程。</p>
-      </header>
-
-      <div class="practice-shell reveal" data-practice-app>
-        <div class="quiz-panel">
-          <div class="eyebrow">Question</div>
-          <h3 data-quiz-question>店家廣告頁寫「保證三週內達成效果」，消費者購買後主張未達成而要求退款。第一步應先檢查什麼？</h3>
-          <div class="quiz-options" data-quiz-options></div>
-          <div class="quiz-feedback" data-quiz-feedback aria-live="polite">選一個答案後，這裡會顯示解析。</div>
-        </div>
-        <aside class="note-panel">
-          <h3>我的複習包</h3>
-          <textarea data-note-text rows="8">今日複習：
-- 廣告表示可能影響契約內容
-- 解除契約前要先找解除權基礎
-- 事件包要保存交易頁、廣告截圖、客服紀錄</textarea>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="button" data-export-notes>下載筆記</button>
-            <button class="btn btn-ghost" type="button" data-next-question>下一題</button>
-          </div>
-          <p class="action-status" data-practice-status>尚未作答</p>
-        </aside>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="tracks">
     <div class="wrap">
       <header class="section-head reveal">
-        <div class="eyebrow">Tracks</div>
-        <h2 class="section-title">兩種讀者，<em>用不同入口閱讀。</em></h2>
-        <p class="section-sub">同一份法律知識，對一般人要轉成可理解的生活語言；對考生則要整理成可檢索、可複習、可連結爭點的學習資料庫。</p>
+        <div class="eyebrow">Audience</div>
+        <h2 class="section-title">不同讀者，使用不同資訊層級。</h2>
+        <p class="section-sub">生活法律重在權利指引；考試準備重在體系、法條、實務見解與爭點連結。</p>
       </header>
       <div class="two-col">
         <article class="lane reveal">
           <h3>法律科普</h3>
-          <p>給一般人理解生活中的法律問題。重點在於知道問題如何被法律分類、何時需要蒐證、何時需要找專業協助，而非背誦法條。</p>
+          <p>面向一般使用者，將生活中的法律問題轉為分類、蒐證與處理順序，不以背誦法條為目標。</p>
           <ul class="checklist">
             <li>生活法律主題文章</li>
             <li>常見爭議的處理順序</li>
             <li>條文白話解釋與情境範例</li>
-            <li>連回民眾版四個現有工具站</li>
+            <li>銜接民眾版免費工具</li>
           </ul>
         </article>
         <article class="lane reveal">
           <h3>考生資料庫</h3>
-          <p>給國考生與轉學生使用。把體系、概念、法條、實務見解、學說爭點與考題方向整理成可查、可讀、可複習的資料庫。</p>
+          <p>面向國考生與轉學生，將體系、概念、法條、實務見解、學說爭點與考題方向整理為資料庫。</p>
           <ul class="checklist">
             <li>科目體系與章節地圖</li>
             <li>重要概念與關鍵條文</li>
@@ -197,24 +104,25 @@
   <section class="section">
     <div class="wrap">
       <header class="section-head reveal">
-        <div class="eyebrow">Database</div>
-        <h2 class="section-title">資料庫要能呈現<em>學習路徑。</em></h2>
+        <div class="eyebrow">Method</div>
+        <h2 class="section-title">法律學習回到<em>同一架構。</em></h2>
+        <p class="section-sub">每個知識點都連回主題、法源、實務與練習，避免資料只停留在單篇文章。</p>
       </header>
       <div class="module-grid">
         <article class="module-card reveal">
-          <h3>法科地圖</h3>
-          <p>用科目、章節、概念與條文建立路徑，讓讀者知道每個知識點應該放在哪裡。</p>
+          <h3>概念地圖</h3>
+          <p>科目、章節與問題意識構成概念地圖，每個概念都有其體系位置。</p>
           <div class="tags"><span>民法</span><span>刑法</span><span>公法</span><span>商事法</span></div>
         </article>
         <article class="module-card reveal">
-          <h3>爭點整理</h3>
-          <p>把常見爭點拆成問題、法條基礎、實務見解、學說分歧與答題方向。</p>
-          <div class="tags"><span>問題整理</span><span>實務見解</span><span>答題方向</span></div>
+          <h3>法源脈絡</h3>
+          <p>把條文、判決與主管機關資料連回學習主題，避免資料只剩零散摘錄。</p>
+          <div class="tags"><span>條文</span><span>判決</span><span>函釋</span></div>
         </article>
         <article class="module-card reveal">
-          <h3>判決與法源</h3>
-          <p>把重要判決與法條連回學習主題，避免判決只剩孤立摘要，讓它回到爭點與體系中。</p>
-          <div class="tags"><span>判決摘要</span><span>法條連結</span><span>主題索引</span></div>
+          <h3>題目與複習</h3>
+          <p>概念接到小題、解析、筆記與複習清單，讓學習成果得以累積。</p>
+          <div class="tags"><span>練習</span><span>解析</span><span>筆記</span></div>
         </article>
       </div>
     </div>
@@ -223,24 +131,24 @@
   <section class="section">
     <div class="wrap">
       <header class="section-head reveal">
-        <div class="eyebrow">Roadmap</div>
-        <h2 class="section-title">先做內容骨架，<em>再做互動學習。</em></h2>
+        <div class="eyebrow">Flow</div>
+        <h2 class="section-title">從情境判斷到資料庫檢索。</h2>
       </header>
       <div class="timeline">
         <article class="timeline-card reveal">
-          <div class="timeline-num">Phase 01</div>
-          <h3>科普入口</h3>
-          <p>先整理與現有四個民眾版工具站相關的法律主題，讓工具之外也有可讀的說明內容。</p>
+          <div class="timeline-num">Step 01</div>
+          <h3>判斷使用情境</h3>
+          <p>生活法律、考試準備與概念查詢對應不同內容路線。</p>
         </article>
         <article class="timeline-card reveal">
-          <div class="timeline-num">Phase 02</div>
-          <h3>考生資料庫</h3>
-          <p>建立科目、章節、概念、法條、爭點與判決的資料結構，優先支援國考與轉學考使用情境。</p>
+          <div class="timeline-num">Step 02</div>
+          <h3>進入資料庫</h3>
+          <p>資料庫提供搜尋、篩選、知識卡與複習清單，逐步形成個人學習包。</p>
         </article>
         <article class="timeline-card reveal">
-          <div class="timeline-num">Phase 03</div>
-          <h3>學習輔助</h3>
-          <p>加入搜尋、收藏、複習清單與重點解釋，讓讀者能從查資料走向自己的學習路線。</p>
+          <div class="timeline-num">Step 03</div>
+          <h3>接到練習與筆記</h3>
+          <p>知識卡銜接題目、解析與筆記匯出，讓資料查詢轉化為可複習成果。</p>
         </article>
       </div>
     </div>
@@ -249,11 +157,11 @@
   <section class="cta-band">
     <div class="wrap">
       <header class="section-head reveal">
-        <div class="eyebrow">Next</div>
-        <h2 class="section-title">法律教育會接上既有工具。</h2>
-        <p class="section-sub">讀到生活法律主題時，可以直接回到民眾版工具；讀到考試主題時，則回到概念、法條與爭點整理。</p>
+        <div class="eyebrow">Enter</div>
+        <h2 class="section-title">進入法律教育資料庫。</h2>
+        <p class="section-sub">搜尋、篩選、知識卡、複習清單、題目與筆記功能，集中於資料庫頁。</p>
       </header>
-      <a class="btn btn-primary reveal" href="https://people.choulegal.com">前往民眾版四工具</a>
+      <a class="btn btn-primary reveal" href="education-library.html">進入法律教育資料庫</a>
     </div>
   </section>
 </main>
@@ -265,6 +173,7 @@
       <a href="index.html">首頁</a>
       <a href="professional.html">專業版</a>
       <a href="education.html">法律教育</a>
+      <a href="education-library.html">資料庫</a>
       <a href="privacy.html">隱私</a>
       <a href="terms.html">條款</a>
     </nav>
@@ -278,7 +187,7 @@
   "@type": "EducationalOrganization",
   "name": "周全法律教育平台",
   "url": "https://choulegal.com/education.html",
-  "description": "法律科普、國考生與轉學生法律資訊資料庫。",
+  "description": "法律科普、國考生與轉學生法律資訊資料庫的介紹入口。",
   "parentOrganization": {
     "@type": "Organization",
     "name": "周全 ChouLegal",
