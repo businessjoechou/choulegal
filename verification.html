@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>查證資料｜周全 ChouLegal</title>
-<meta name="description" content="周全 ChouLegal 公開三大產品線逐頁法源、裁判字號、計算資料與查證狀態，包含已查證、待確認、未查證與錯誤修正資料。">
+<meta name="description" content="周全 ChouLegal 公開三大產品線逐頁法源、裁判字號、計算資料與查證狀態，建立可追溯的公開查證台帳。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://choulegal.com/verification.html">
 <meta property="og:title" content="查證資料｜周全 ChouLegal">
-<meta property="og:description" content="公開三大產品線逐頁查證台帳、官方來源與待確認清單。">
+<meta property="og:description" content="三大產品線逐頁查證台帳、官方來源與待確認清單公開。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://choulegal.com/verification.html">
 <meta property="og:site_name" content="周全 ChouLegal">
@@ -274,14 +274,14 @@
     <div class="wrap">
       <div class="eyebrow">Public Verification Ledger</div>
       <h1>查證資料公開台帳</h1>
-      <p class="lead">周全把三大產品線中的網頁檔案、法條引用、司法院資料、計算常數與查證狀態公開。查得到的列來源；還沒查完的直接標待確認或未查證。</p>
-      <p class="notice">查核日期：2026-07-06。這不是「全部通過」聲明，而是可追溯的盤點台帳。</p>
+      <p class="lead">周全公開三大產品線中的網頁檔案、法條引用、司法院資料、計算常數與查證狀態。已查證者列明來源；待補者標示待確認或未查證。</p>
+      <p class="notice">查核日期：2026-07-06。本頁為可追溯盤點台帳，不是「全部通過」聲明。</p>
 
       <div class="stats" aria-label="查證狀態總覽">
         <div class="stat"><b>367</b><span>正式產品線網頁/路由檔案</span></div>
-        <div class="stat ok"><b>210</b><span>已查證</span></div>
+        <div class="stat ok"><b>254</b><span>已查證</span></div>
         <div class="stat pending"><b>31</b><span>待確認</span></div>
-        <div class="stat unknown"><b>126</b><span>未查證</span></div>
+        <div class="stat unknown"><b>82</b><span>未查證</span></div>
       </div>
     </div>
   </section>
@@ -289,7 +289,7 @@
   <section class="section">
     <div class="wrap">
       <h2>完整資料下載</h2>
-      <p class="section-copy">每個檔案都保留公開 URL 或本機路由、資料來源 URL、官方來源數、待補常數筆數、待修正引用筆數與查證狀態。</p>
+      <p class="section-copy">每個檔案保留公開 URL 或本機路由、資料來源 URL、官方來源數、待補常數筆數、待修正引用筆數與查證狀態。</p>
       <div class="downloads">
         <a class="download" href="verification-data/2026-07-06/all-webpage-file-verification-ledger.csv">
           <span><strong>完整逐頁台帳</strong><span>三大產品線全部 367 個網頁/路由檔案。</span></span>
@@ -301,7 +301,7 @@
         </a>
         <a class="download" href="verification-data/2026-07-06/all-webpage-verified.csv">
           <span><strong>已查證群</strong><span>已完成官方來源對照或未偵測法源資料。</span></span>
-          <code>210</code>
+          <code>254</code>
         </a>
         <a class="download" href="verification-data/2026-07-06/all-webpage-pending-confirmation.csv">
           <span><strong>待確認群</strong><span>常數、金額、比例或修正後線上複查仍待補。</span></span>
@@ -309,7 +309,7 @@
         </a>
         <a class="download" href="verification-data/2026-07-06/all-webpage-unverified.csv">
           <span><strong>未查證群</strong><span>動態頁、後台頁或公開 crawl 無正文者。</span></span>
-          <code>126</code>
+          <code>82</code>
         </a>
         <a class="download" href="verification-data/2026-07-06/all-webpage-error-or-needs-fix.csv">
           <span><strong>錯誤/需修正群</strong><span>前次公開 crawl 發現錯誤引用，需修正或需重新線上複查。</span></span>
@@ -317,6 +317,10 @@
         </a>
         <a class="download" href="verification-data/2026-07-06/manual-constant-source-overrides-2026-07-06-batch1.csv">
           <span><strong>第1批補查來源</strong><span>本輪新增的法律常數官方來源對照，共補 19 筆。</span></span>
+          <code>CSV</code>
+        </a>
+        <a class="download" href="verification-data/2026-07-06/unverified-recheck-overrides-2026-07-06-batch2.csv">
+          <span><strong>第2批未查證複查</strong><span>從未查證群移出 44 頁：補來源 7 頁、無具體法源資料 37 頁。</span></span>
           <code>CSV</code>
         </a>
       </div>
@@ -337,13 +341,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>民眾版</td><td>消費爭議權益計算平台</td><td><span class="tag ok">39</span></td><td><span class="tag pending">3</span></td><td><span class="tag unknown">1</span></td></tr>
-          <tr><td>民眾版</td><td>民法財產權／繼承贈與計算平台</td><td><span class="tag ok">29</span></td><td><span class="tag pending">15</span></td><td><span class="tag unknown">9</span></td></tr>
-          <tr><td>民眾版</td><td>勞動權益計算平台</td><td><span class="tag ok">19</span></td><td><span class="tag pending">11</span></td><td><span class="tag unknown">4</span></td></tr>
-          <tr><td>民眾版</td><td>租賃權益計算平台</td><td><span class="tag ok">23</span></td><td><span class="tag pending">1</span></td><td><span class="tag unknown">2</span></td></tr>
-          <tr><td>民眾版</td><td>周全主站／民眾入口</td><td><span class="tag ok">14</span></td><td><span class="tag pending">1</span></td><td><span class="tag unknown">8</span></td></tr>
-          <tr><td>商業版 5 AI Pro</td><td>ETP 企業工作台</td><td><span class="tag ok">86</span></td><td><span class="tag pending">0</span></td><td><span class="tag unknown">101</span></td></tr>
-          <tr><td>周全 AI</td><td>周全 AI 官網</td><td><span class="tag ok">0</span></td><td><span class="tag pending">0</span></td><td><span class="tag unknown">1</span></td></tr>
+          <tr><td>民眾版</td><td>消費爭議權益計算平台</td><td><span class="tag ok">40</span></td><td><span class="tag pending">3</span></td><td><span class="tag unknown">0</span></td></tr>
+          <tr><td>民眾版</td><td>民法財產權／繼承贈與計算平台</td><td><span class="tag ok">37</span></td><td><span class="tag pending">15</span></td><td><span class="tag unknown">1</span></td></tr>
+          <tr><td>民眾版</td><td>勞動權益計算平台</td><td><span class="tag ok">23</span></td><td><span class="tag pending">11</span></td><td><span class="tag unknown">0</span></td></tr>
+          <tr><td>民眾版</td><td>租賃權益計算平台</td><td><span class="tag ok">25</span></td><td><span class="tag pending">1</span></td><td><span class="tag unknown">0</span></td></tr>
+          <tr><td>民眾版</td><td>周全主站／民眾入口</td><td><span class="tag ok">18</span></td><td><span class="tag pending">1</span></td><td><span class="tag unknown">4</span></td></tr>
+          <tr><td>商業版 5 AI Pro</td><td>ETP 企業工作台</td><td><span class="tag ok">110</span></td><td><span class="tag pending">0</span></td><td><span class="tag unknown">77</span></td></tr>
+          <tr><td>周全 AI</td><td>周全 AI 官網</td><td><span class="tag ok">1</span></td><td><span class="tag pending">0</span></td><td><span class="tag unknown">0</span></td></tr>
         </tbody>
       </table>
     </div>

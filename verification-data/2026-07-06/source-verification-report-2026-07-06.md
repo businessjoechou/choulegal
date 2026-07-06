@@ -7,10 +7,11 @@
 本報告把正式產品線中的網頁檔案逐一列入，並依公開站查核資料、官方來源對照、本機檔案掃描結果分成「已查證／待確認／未查證」。沒有公開 crawl 或沒有官方來源對照的頁面，不列為已完成法源查核。
 
 - 逐頁檔案總數：367
-- 已查證：210
+- 已查證：254
 - 待確認：31
-- 未查證：126
+- 未查證：82
 - 第1批補查：補上 19 筆法律常數官方來源，待確認頁面由 38 降為 31，已查證頁面由 203 增為 210。
+- 第2批複查：從未查證群移出 44 頁；其中 7 頁補官方條文來源，37 頁確認沒有具體法源/裁判/法律常數資料。未查證頁面由 126 降為 82。
 - 法條引用查核：2341 筆；已驗證 2311 筆；錯誤/需修正 30 筆；待人工法條查核 0 筆。
 - 司法院/憲法法庭引用查核：27 筆；已驗證 27 筆；待確認 0 筆。
 - 法律常數/計算資料：581 筆；官方來源已對照 169 筆；待補官方來源 182 筆；例題/計算輸入 162 筆；非法律常數 68 筆。
@@ -19,7 +20,7 @@
 
 - 已查證：公開頁已進入查核流程，偵測到的法條、裁判/釋憲字號、已分類常數有官方來源對照，且該頁沒有待修正或待補來源項目；或本機頁面已盤點且未偵測法律法源資料。
 - 待確認：已有部分官方來源或已修正程式碼，但仍有法律常數/金額/比例待補官方來源，或前次公開 crawl 的錯誤引用修正後尚待重新線上複查。
-- 未查證：公開 crawl 沒有抓到正文，或本機/後台/動態頁面含法律或計算語彙但尚未建立逐筆官方來源查核。
+- 未查證：公開 crawl 沒有抓到正文，或本機/後台/動態頁面含具體法律或計算資料但尚未建立逐筆官方來源查核。
 
 ## 官方來源範圍
 
@@ -38,6 +39,7 @@
 - 未查證群：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/all_webpage_unverified.csv`
 - 錯誤/需修正群：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/all_webpage_error_or_needs_fix.csv`
 - 第1批人工補查來源：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/manual_constant_source_overrides_2026-07-06_batch1.csv`
+- 第2批未查證複查：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/unverified_recheck_overrides_2026-07-06_batch2.csv`
 
 錯誤/需修正群目前是「前次公開 crawl 曾發現錯誤引用，程式碼已修正或需修正，但尚待重新線上 crawl 複查」的頁面；我沒有把這些頁面歸入完全已查證。
 
@@ -45,14 +47,14 @@
 
 | 產品線 | 子產品/平台 | 已查證 | 待確認 | 未查證 | 小計 |
 |---|---:|---:|---:|---:|---:|
-| 周全 AI | 周全 AI 官網 | 0 | 0 | 1 | 1 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 86 | 0 | 101 | 187 |
-| 民眾版 | 勞動權益計算平台 | 19 | 11 | 4 | 34 |
-| 民眾版 | 周全主站 | 9 | 1 | 8 | 18 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 29 | 15 | 9 | 53 |
+| 周全 AI | 周全 AI 官網 | 1 | 0 | 0 | 1 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 110 | 0 | 77 | 187 |
+| 民眾版 | 勞動權益計算平台 | 23 | 11 | 0 | 34 |
+| 民眾版 | 周全主站 | 13 | 1 | 4 | 18 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 37 | 15 | 1 | 53 |
 | 民眾版 | 民眾入口 | 5 | 0 | 0 | 5 |
-| 民眾版 | 消費爭議權益計算平台 | 39 | 3 | 1 | 43 |
-| 民眾版 | 租賃權益計算平台 | 23 | 1 | 2 | 26 |
+| 民眾版 | 消費爭議權益計算平台 | 40 | 3 | 0 | 43 |
+| 民眾版 | 租賃權益計算平台 | 25 | 1 | 0 | 26 |
 
 ## 完整逐頁清單
 
@@ -64,7 +66,7 @@
 | 民眾版 | 消費爭議權益計算平台 | 有線電視訂閱爭議（有線電視服務應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/cable-tv.html | https://consumer.choulegal.com/cable-tv.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 消費爭議權益計算平台 | 條款是否構成契約檢查（消保法 §13 / §14 / §15）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/clause-binding.html | https://consumer.choulegal.com/clause-binding.html | 6 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 消費爭議申訴流程（消保法 §43）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/complaint-guide.html | https://consumer.choulegal.com/complaint-guide.html | 11 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 消費爭議權益計算平台 | 消費爭議存證信函產生器 — 訂金／鑑賞期／瑕疵／退費｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/consumer-letter.html | https://consumer.choulegal.com/consumer-letter.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 消費爭議權益計算平台 | 消費爭議存證信函產生器 — 訂金／鑑賞期／瑕疵／退費｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/consumer-letter.html | https://consumer.choulegal.com/consumer-letter.html | 6 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第2批複查：頁面具體條號已對應官方來源。 |
 | 民眾版 | 消費爭議權益計算平台 | 定型化契約總診斷（消保法 §11~§17 全流程）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/contract-master.html | https://consumer.choulegal.com/contract-master.html | 8 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 七天鑑賞期試算（消保法 §19）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/cooling-off.html | https://consumer.choulegal.com/cooling-off.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 補習班退費試算（短期補習班定型化契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/cram-school.html | https://consumer.choulegal.com/cram-school.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第1批補查已補 5 筆常數官方來源；本頁未剩待補來源或待修正引用。 |
@@ -102,10 +104,10 @@
 | 民眾版 | 消費爭議權益計算平台 | 瑕疵擔保時效查詢（民法 §365）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/warranty-period.html | https://consumer.choulegal.com/warranty-period.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 婚宴／辦桌取消退定金試算（訂席外燴定型化契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/wedding-banquet.html | https://consumer.choulegal.com/wedding-banquet.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=17 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 建立 Workspace — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/(auth)/onboarding/page.tsx | ETP_PAGE:/onboarding | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 通知中心 · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/(notifications-shell)/notifications/page.tsx | ETP_PAGE:/[workspace]/notifications | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 通知中心 · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/(notifications-shell)/notifications/page.tsx | ETP_PAGE:/[workspace]/notifications | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | AI 助手 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/ai/page.tsx | ETP_PAGE:/[workspace]/ai | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 行事曆 — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/calendar/page.tsx | ETP_PAGE:/[workspace]/calendar | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | HR 合規 checklist — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/compliance-check/page.tsx | ETP_PAGE:/[workspace]/compliance-check | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | HR 合規 checklist — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/compliance-check/page.tsx | ETP_PAGE:/[workspace]/compliance-check | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 消費爭議 AI 助理 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/consumer-dispute/ai/page.tsx | ETP_PAGE:/[workspace]/consumer-dispute/ai | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 編輯客訴 — 消費爭議 · 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/consumer-dispute/cases/[id]/page.tsx | ETP_PAGE:/[workspace]/consumer-dispute/cases/[id] | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 新增客訴 — 消費爭議 · 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/consumer-dispute/cases/new/page.tsx | ETP_PAGE:/[workspace]/consumer-dispute/cases/new | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -131,10 +133,10 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | 俸給試算 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/civil-service/payroll-calc/page.tsx | ETP_PAGE:/[workspace]/hrpro/civil-service/payroll-calc | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 退撫試算 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/civil-service/pension-calc/page.tsx | ETP_PAGE:/[workspace]/hrpro/civil-service/pension-calc | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 考績審核 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/civil-service/performance/page.tsx | ETP_PAGE:/[workspace]/hrpro/civil-service/performance | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 公部門人事令 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/civil-service/personnel-order/page.tsx | ETP_PAGE:/[workspace]/hrpro/civil-service/personnel-order | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 公部門人事令 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/civil-service/personnel-order/page.tsx | ETP_PAGE:/[workspace]/hrpro/civil-service/personnel-order | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | hrpro/employees/import | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/employees/import/page.tsx | ETP_PAGE:/[workspace]/hrpro/employees/import | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 公部門快捷 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/government-quick/page.tsx | ETP_PAGE:/[workspace]/hrpro/government-quick | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 自我健檢 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/health-check/page.tsx | ETP_PAGE:/[workspace]/hrpro/health-check | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 自我健檢 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/health-check/page.tsx | ETP_PAGE:/[workspace]/hrpro/health-check | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | HRPro 儀表板 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/page.tsx | ETP_PAGE:/[workspace]/hrpro | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 薪資月結 — HR Pro · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/payroll/page.tsx | ETP_PAGE:/[workspace]/hrpro/payroll | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 時薪工計薪 — 餐飲快捷 · 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/restaurant-quick/hourly-wage/page.tsx | ETP_PAGE:/[workspace]/hrpro/restaurant-quick/hourly-wage | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
@@ -152,7 +154,7 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | 薪資單核對 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/tools/payslip-checker/page.tsx | ETP_PAGE:/[workspace]/hrpro/tools/payslip-checker | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 工資結構分析 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/tools/wage-analysis/page.tsx | ETP_PAGE:/[workspace]/hrpro/tools/wage-analysis | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 工時合規檢查 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/hrpro/tools/work-hours/page.tsx | ETP_PAGE:/[workspace]/hrpro/tools/work-hours | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 判決整理 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/judgments/page.tsx | ETP_PAGE:/[workspace]/judgments | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 判決整理 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/judgments/page.tsx | ETP_PAGE:/[workspace]/judgments | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 勞資爭議 AI 助理 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/labor-dispute/ai/page.tsx | ETP_PAGE:/[workspace]/labor-dispute/ai | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 編輯案件 — 勞資爭議 · 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/labor-dispute/cases/[id]/page.tsx | ETP_PAGE:/[workspace]/labor-dispute/cases/[id] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 新增案件 — 勞資爭議 · 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/labor-dispute/cases/new/page.tsx | ETP_PAGE:/[workspace]/labor-dispute/cases/new | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -168,8 +170,8 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | 勞資爭議應對範本 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/labor-dispute/response-templates/page.tsx | ETP_PAGE:/[workspace]/labor-dispute/response-templates | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 資遣通知書範本 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/labor-dispute/response-templates/severance-notice/page.tsx | ETP_PAGE:/[workspace]/labor-dispute/response-templates/severance-notice | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 資遣費試算 — 勞資爭議 · 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/labor-dispute/severance-pay/page.tsx | ETP_PAGE:/[workspace]/labor-dispute/severance-pay | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 法規異動詳細 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/law-diff/[id]/page.tsx | ETP_PAGE:/[workspace]/law-diff/[id] | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 法規異動追蹤 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/law-diff/page.tsx | ETP_PAGE:/[workspace]/law-diff | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 法規異動詳細 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/law-diff/[id]/page.tsx | ETP_PAGE:/[workspace]/law-diff/[id] | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 法規異動追蹤 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/law-diff/page.tsx | ETP_PAGE:/[workspace]/law-diff | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/onboarding/welcome | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/onboarding/welcome/page.tsx | ETP_PAGE:/[workspace]/onboarding/welcome | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 工作區 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/page.tsx | ETP_PAGE:/[workspace] | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 美容美髮 行業風險試算 — 估算法定風險敞口｜周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/scenarios/beauty/page.tsx | ETP_PAGE:/[workspace]/scenarios/beauty | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -190,13 +192,13 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | MFA 裝置 — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/settings/security/devices/page.tsx | ETP_PAGE:/[workspace]/settings/security/devices | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 啟用 MFA — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/settings/security/enroll/page.tsx | ETP_PAGE:/[workspace]/settings/security/enroll | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 安全與 MFA — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/[workspace]/settings/security/page.tsx | ETP_PAGE:/[workspace]/settings/security | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 周全帳號 — ChouLegal | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/account/page.tsx | ETP_PAGE:/account | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | Admin · 法規異動候選 — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/law-candidates/page.tsx | ETP_PAGE:/admin/law-candidates | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | Admin · Law Changes — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/law-changes/page.tsx | ETP_PAGE:/admin/law-changes | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | Admin · Law Impact Detail — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/law-impact/[id]/page.tsx | ETP_PAGE:/admin/law-impact/[id] | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | Admin · 法規異動影響分析 — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/law-impact/page.tsx | ETP_PAGE:/admin/law-impact | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 周全帳號 — ChouLegal | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/account/page.tsx | ETP_PAGE:/account | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | Admin · 法規異動候選 — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/law-candidates/page.tsx | ETP_PAGE:/admin/law-candidates | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | Admin · Law Changes — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/law-changes/page.tsx | ETP_PAGE:/admin/law-changes | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | Admin · Law Impact Detail — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/law-impact/[id]/page.tsx | ETP_PAGE:/admin/law-impact/[id] | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | Admin · 法規異動影響分析 — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/law-impact/page.tsx | ETP_PAGE:/admin/law-impact | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | Admin · Demo Leads — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/leads/page.tsx | ETP_PAGE:/admin/leads | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | Admin · Waitlist — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/waitlist/page.tsx | ETP_PAGE:/admin/waitlist | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | Admin · Waitlist — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/admin/waitlist/page.tsx | ETP_PAGE:/admin/waitlist | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/audit/export | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/audit/export/route.ts | ETP_ROUTE:/api/[workspace]/audit/export | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/[workspace]/audit | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/audit/route.ts | ETP_ROUTE:/api/[workspace]/audit | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/billing/checkout | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/billing/checkout/route.ts | ETP_ROUTE:/api/[workspace]/billing/checkout | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -222,8 +224,8 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/civil-service/performance | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/civil-service/performance/route.ts | ETP_ROUTE:/api/[workspace]/civil-service/performance | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | personnel-order/[id]/pdf | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/civil-service/personnel-order/[id]/pdf/route.ts | ETP_ROUTE:/api/[workspace]/civil-service/personnel-order/[id]/pdf | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | civil-service/personnel-order/[id] | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/civil-service/personnel-order/[id]/route.ts | ETP_ROUTE:/api/[workspace]/civil-service/personnel-order/[id] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/civil-service/personnel-order | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/civil-service/personnel-order/route.ts | ETP_ROUTE:/api/[workspace]/civil-service/personnel-order | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 合規自檢：${ctx.workspace.name} | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/compliance-check/route.ts | ETP_ROUTE:/api/[workspace]/compliance-check | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/civil-service/personnel-order | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/civil-service/personnel-order/route.ts | ETP_ROUTE:/api/[workspace]/civil-service/personnel-order | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 合規自檢：${ctx.workspace.name} | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/compliance-check/route.ts | ETP_ROUTE:/api/[workspace]/compliance-check | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | employees/[id]/erasure | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/employees/[id]/erasure/route.ts | ETP_ROUTE:/api/[workspace]/employees/[id]/erasure | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | employees/[id]/export | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/employees/[id]/export/route.ts | ETP_ROUTE:/api/[workspace]/employees/[id]/export | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/employees/[id] | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/employees/[id]/route.ts | ETP_ROUTE:/api/[workspace]/employees/[id] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -232,15 +234,15 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | api/[workspace]/employees | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/employees/route.ts | ETP_ROUTE:/api/[workspace]/employees | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 人資 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/hrpro/health-check/pdf/route.ts | ETP_ROUTE:/api/[workspace]/hrpro/health-check/pdf | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | hrpro/restaurant-quick/save | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/hrpro/restaurant-quick/save/route.ts | ETP_ROUTE:/api/[workspace]/hrpro/restaurant-quick/save | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | hrpro/scenarios/simulate | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/hrpro/scenarios/simulate/route.ts | ETP_ROUTE:/api/[workspace]/hrpro/scenarios/simulate | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | hrpro/scenarios/simulate | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/hrpro/scenarios/simulate/route.ts | ETP_ROUTE:/api/[workspace]/hrpro/scenarios/simulate | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | hrpro/shifts/[id] | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/hrpro/shifts/[id]/route.ts | ETP_ROUTE:/api/[workspace]/hrpro/shifts/[id] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/hrpro/shifts | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/hrpro/shifts/route.ts | ETP_ROUTE:/api/[workspace]/hrpro/shifts | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/invitations/[token] | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/invitations/[token]/route.ts | ETP_ROUTE:/api/[workspace]/invitations/[token] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 判決整理：${query} | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/judgments/search/route.ts | ETP_ROUTE:/api/[workspace]/judgments/search | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 判決整理：${query} | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/judgments/search/route.ts | ETP_ROUTE:/api/[workspace]/judgments/search | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/[workspace]/law-subscriptions | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/law-subscriptions/route.ts | ETP_ROUTE:/api/[workspace]/law-subscriptions | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/members/[userId] | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/members/[userId]/route.ts | ETP_ROUTE:/api/[workspace]/members/[userId] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/[workspace]/members | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/members/route.ts | ETP_ROUTE:/api/[workspace]/members | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | api/[workspace]/override-rules | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/override-rules/route.ts | ETP_ROUTE:/api/[workspace]/override-rules | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | api/[workspace]/override-rules | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/override-rules/route.ts | ETP_ROUTE:/api/[workspace]/override-rules | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [employeeId]/[period]/payslip-pdf | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/payroll/[employeeId]/[period]/payslip-pdf/route.ts | ETP_ROUTE:/api/[workspace]/payroll/[employeeId]/[period]/payslip-pdf | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | [workspace]/payroll/[employeeId] | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/payroll/[employeeId]/route.ts | ETP_ROUTE:/api/[workspace]/payroll/[employeeId] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/[workspace]/payroll | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/[workspace]/payroll/route.ts | ETP_ROUTE:/api/[workspace]/payroll | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -248,7 +250,7 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | api/account/data | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/account/data/route.ts | ETP_ROUTE:/api/account/data | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | law-candidates/[id]/accept | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/admin/law-candidates/[id]/accept/route.ts | ETP_ROUTE:/api/admin/law-candidates/[id]/accept | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/admin/law-candidates | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/admin/law-candidates/route.ts | ETP_ROUTE:/api/admin/law-candidates | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | api/admin/law-changes | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/admin/law-changes/route.ts | ETP_ROUTE:/api/admin/law-changes | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | api/admin/law-changes | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/admin/law-changes/route.ts | ETP_ROUTE:/api/admin/law-changes | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/ai/chat | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/ai/chat/route.ts | ETP_ROUTE:/api/ai/chat | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/auth/install-session | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/auth/install-session/route.ts | ETP_ROUTE:/api/auth/install-session | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | auth/mfa/backup-codes | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/auth/mfa/backup-codes/route.ts | ETP_ROUTE:/api/auth/mfa/backup-codes | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -258,15 +260,15 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | auth/mfa/unenroll | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/auth/mfa/unenroll/route.ts | ETP_ROUTE:/api/auth/mfa/unenroll | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | auth/mfa/verify-enroll | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/auth/mfa/verify-enroll/route.ts | ETP_ROUTE:/api/auth/mfa/verify-enroll | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | ${days} 天後到期：${dl.title ?? kindLabel} | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/deadline-scan/route.ts | ETP_ROUTE:/api/cron/deadline-scan | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | api/cron/dispatch-law-diffs | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/dispatch-law-diffs/route.ts | ETP_ROUTE:/api/cron/dispatch-law-diffs | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | api/cron/law-changes-poll | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/law-changes-poll/route.ts | ETP_ROUTE:/api/cron/law-changes-poll | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | api/cron/dispatch-law-diffs | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/dispatch-law-diffs/route.ts | ETP_ROUTE:/api/cron/dispatch-law-diffs | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | api/cron/law-changes-poll | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/law-changes-poll/route.ts | ETP_ROUTE:/api/cron/law-changes-poll | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/cron/law-monitor-trigger | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/law-monitor-trigger/route.ts | ETP_ROUTE:/api/cron/law-monitor-trigger | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | api/cron/refresh-laws | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/refresh-laws/route.ts | ETP_ROUTE:/api/cron/refresh-laws | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | api/cron/refresh-laws | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/refresh-laws/route.ts | ETP_ROUTE:/api/cron/refresh-laws | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/cron/verify-pending-cases | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/cron/verify-pending-cases/route.ts | ETP_ROUTE:/api/cron/verify-pending-cases | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/invite/[token] | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/invite/[token]/route.ts | ETP_ROUTE:/api/invite/[token] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | invite/workspace/[token] | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/invite/workspace/[token]/route.ts | ETP_ROUTE:/api/invite/workspace/[token] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | api/law-diff/subscribe | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/law-diff/subscribe/route.ts | ETP_ROUTE:/api/law-diff/subscribe | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 商業版 5 AI Pro | ETP 企業工作台 | 取消訂閱 — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/law-diff/unsubscribe/route.ts | ETP_ROUTE:/api/law-diff/unsubscribe | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | api/law-diff/subscribe | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/law-diff/subscribe/route.ts | ETP_ROUTE:/api/law-diff/subscribe | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 商業版 5 AI Pro | ETP 企業工作台 | 取消訂閱 — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/law-diff/unsubscribe/route.ts | ETP_ROUTE:/api/law-diff/unsubscribe | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/notifications/mark-all-read | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/notifications/mark-all-read/route.ts | ETP_ROUTE:/api/notifications/mark-all-read | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | app/api/notifications | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/notifications/route.ts | ETP_ROUTE:/api/notifications | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | api/onboarding/check-slug | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/api/onboarding/check-slug/route.ts | ETP_ROUTE:/api/onboarding/check-slug | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -288,9 +290,9 @@
 | 商業版 5 AI Pro | ETP 企業工作台 | 方案 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/pricing/page.tsx | ETP_PAGE:/pricing | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | ${r.name} — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/roles/[role]/page.tsx | ETP_PAGE:/roles/[role] | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 選身份 — 周全專業版 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/roles/page.tsx | ETP_PAGE:/roles | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 找不到頁面 404｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/404.html | https://inheritance.choulegal.com/404.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 找不到頁面 404｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/404.html | https://inheritance.choulegal.com/404.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 車禍損害賠償試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/accident.html | https://inheritance.choulegal.com/accident.html | 13 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 我的帳號｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/account.html | https://inheritance.choulegal.com/account.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 我的帳號｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/account.html | https://inheritance.choulegal.com/account.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 贍養費試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/alimony.html | https://inheritance.choulegal.com/alimony.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 2 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 脫產偵測模組｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/asset-detection.html | https://inheritance.choulegal.com/asset-detection.html | 14 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 登入中…｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/auth-callback.html | https://inheritance.choulegal.com/auth-callback.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -301,14 +303,14 @@
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承期限管理儀表板｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/deadline-dashboard.html | https://inheritance.choulegal.com/deadline-dashboard.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 離婚協議書草稿產生器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/divorce-agreement.html | https://inheritance.choulegal.com/divorce-agreement.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 離婚損害賠償精算｜侵害配偶權求償｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/divorce-damages.html | https://inheritance.choulegal.com/divorce-damages.html | 15 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 遺產稅精算工作底稿｜已整合至遺產繼承計算器 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/estate-tax-detail.html | https://inheritance.choulegal.com/estate-tax-detail.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 遺產稅精算工作底稿｜已整合至遺產繼承計算器 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/estate-tax-detail.html | https://inheritance.choulegal.com/estate-tax-detail.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 特留分侵害試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/forced-share.html | https://inheritance.choulegal.com/forced-share.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 轉跳中... | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/gift-planner.html | https://inheritance.choulegal.com/gift-planner.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 轉跳中... | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/gift-planner.html | https://inheritance.choulegal.com/gift-planner.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 贈與稅試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/gift-tax.html | https://inheritance.choulegal.com/gift-tax.html | 14 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 7 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | google40bcdb71d64c63a5 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/google40bcdb71d64c63a5.html | https://inheritance.choulegal.com/google40bcdb71d64c63a5.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | InheritancePro｜民法財產權事件包與工具 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/index.html | https://inheritance.choulegal.com/ | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 轉跳中... | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/infidelity-damages.html | https://inheritance.choulegal.com/infidelity-damages.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 遺產分割協議書產生器（通用骨架）｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inheritance-agreement.html | https://inheritance.choulegal.com/inheritance-agreement.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 轉跳中... | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/infidelity-damages.html | https://inheritance.choulegal.com/infidelity-damages.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 遺產分割協議書產生器（通用骨架）｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inheritance-agreement.html | https://inheritance.choulegal.com/inheritance-agreement.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第2批複查：頁面具體條號已對應官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承流程時間軸｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inheritance-timeline.html | https://inheritance.choulegal.com/inheritance-timeline.html | 21 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承房貸陷阱試算｜賣屋前一定要知道的 146 萬｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inherited-property-trap.html | https://inheritance.choulegal.com/inherited-property-trap.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 16 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 意外事故保險金合計試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-accident-combined.html | https://inheritance.choulegal.com/insurance-accident-combined.html | 26 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 3 筆待補官方來源。 |
@@ -321,13 +323,13 @@
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 保單借款 vs 解約決策器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-loan-vs-surrender.html | https://inheritance.choulegal.com/insurance-loan-vs-surrender.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 19 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 要保人過世保單處理決策器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-policyholder-death.html | https://inheritance.choulegal.com/insurance-policyholder-death.html | 12 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 法定利率利息計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/interest-calc.html | https://inheritance.choulegal.com/interest-calc.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 11 筆待補官方來源。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | InheritancePro｜請選擇您的身份 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/landing.html | https://inheritance.choulegal.com/landing.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | InheritancePro｜請選擇您的身份 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/landing.html | https://inheritance.choulegal.com/landing.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 試算分析依據｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/legal-basis.html | https://inheritance.choulegal.com/legal-basis.html | 29 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 8 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 限定繼承債務試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/limited-inheritance.html | https://inheritance.choulegal.com/limited-inheritance.html | 8 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 訴訟強度評估｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/litigation-strength.html | https://inheritance.choulegal.com/litigation-strength.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 登入｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/login.html | https://inheritance.choulegal.com/login.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 未成年損害賠償試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/minor-damages.html | https://inheritance.choulegal.com/minor-damages.html | 8 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | InheritancePro — 募資簡報 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/pitch.html | https://inheritance.choulegal.com/pitch.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | InheritancePro — 募資簡報 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/pitch.html | https://inheritance.choulegal.com/pitch.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1030-1<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1057 | 已查證 | 第2批複查：頁面具體條號已對應官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 消滅時效計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/prescription.html | https://inheritance.choulegal.com/prescription.html | 13 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 所有用戶免費｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/pricing.html | https://inheritance.choulegal.com/pricing.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 隱私權政策｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/privacy.html | https://inheritance.choulegal.com/privacy.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
@@ -341,7 +343,7 @@
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 使用者條款｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/terms.html | https://inheritance.choulegal.com/terms.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | Core 模組測試（開發用） | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/test-core.html | https://inheritance.choulegal.com/test-core.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 遺囑效力評估｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/will-validity.html | https://inheritance.choulegal.com/will-validity.html | 19 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 勞動權益計算平台 | 找不到頁面 404｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/404.html | https://labor.choulegal.com/404.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 勞動權益計算平台 | 找不到頁面 404｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/404.html | https://labor.choulegal.com/404.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 勞動權益計算平台 | 我的帳號｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/account.html | https://labor.choulegal.com/account.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 勞動權益計算平台 | 特休未休折現計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/annual-leave.html | https://labor.choulegal.com/annual-leave.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=38 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 平均薪資精算器｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/avg-wage.html | https://labor.choulegal.com/avg-wage.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 4 筆待補官方來源。 |
@@ -352,7 +354,7 @@
 | 民眾版 | 勞動權益計算平台 | LaborPro｜勞基法事件包與權益工具 | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/index.html | https://labor.choulegal.com/ | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 勞動權益計算平台 | 我被高薪低報了嗎？投保薪資自查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/insurance-underreport.html | https://labor.choulegal.com/insurance-underreport.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0050001&flno=14 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 勞保費用與給付試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/labor-insurance.html | https://labor.choulegal.com/labor-insurance.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 22 筆待補官方來源。 |
-| 民眾版 | 勞動權益計算平台 | 勞工自保存證信函產生器 — 資遣費／工資加班費／特休／職災｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/labor-letter.html | https://labor.choulegal.com/labor-letter.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 勞動權益計算平台 | 勞工自保存證信函產生器 — 資遣費／工資加班費／特休／職災｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/labor-letter.html | https://labor.choulegal.com/labor-letter.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第2批複查：頁面具體條號已對應官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 全假別權益計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/leave-calc.html | https://labor.choulegal.com/leave-calc.html | 11 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 登入｜LaborPro — 周全法律科技 | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/login.html | https://labor.choulegal.com/login.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 勞動權益計算平台 | 最低薪資合規檢查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/min-wage.html | https://labor.choulegal.com/min-wage.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
@@ -365,12 +367,12 @@
 | 民眾版 | 勞動權益計算平台 | 勞基法違規罰鍰速查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/penalty-lookup.html | https://labor.choulegal.com/penalty-lookup.html | 29 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 退休金請領計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/pension-claim.html | https://labor.choulegal.com/pension-claim.html | 22 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 8 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 勞退提撥試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/pension.html | https://labor.choulegal.com/pension.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 4 筆待補官方來源。 |
-| 民眾版 | 勞動權益計算平台 | 隱私權政策｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/privacy.html | https://labor.choulegal.com/privacy.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 勞動權益計算平台 | 隱私權政策｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/privacy.html | https://labor.choulegal.com/privacy.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 勞動權益計算平台 | 勞動權益受損自救指南 — 遇到這些情況怎麼辦｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/self-help.html | https://labor.choulegal.com/self-help.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 離職結算檢查表｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/settlement-calc.html | https://labor.choulegal.com/settlement-calc.html | 26 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 5 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 資遣費計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/severance.html | https://labor.choulegal.com/severance.html | 11 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 解僱成本估算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/termination-cost.html | https://labor.choulegal.com/termination-cost.html | 27 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 前次公開 crawl 發現 10 筆錯誤引用；程式碼已修正者仍需重新線上 crawl 複查。 |
-| 民眾版 | 勞動權益計算平台 | 使用者條款｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/terms.html | https://labor.choulegal.com/terms.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 勞動權益計算平台 | 使用者條款｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/terms.html | https://labor.choulegal.com/terms.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 勞動權益計算平台 | 薪資認定分析器｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/wage-analysis.html | https://labor.choulegal.com/wage-analysis.html | 12 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 工時合規檢查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/work-hours.html | https://labor.choulegal.com/work-hours.html | 15 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 職災補償試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/work-injury.html | https://labor.choulegal.com/work-injury.html | 17 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 7 筆待補官方來源。 |
@@ -391,7 +393,7 @@
 | 民眾版 | 租賃權益計算平台 | RentalPro｜租屋事件包與權益工具 | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/index.html | https://rental.choulegal.com/ | 27 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 房東能否合法收回房屋判斷（土地法 §100／租賃專法 §10）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/landlord-recovery.html | https://rental.choulegal.com/landlord-recovery.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 登入周全帳號｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/login.html | https://rental.choulegal.com/login.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 民眾版 | 租賃權益計算平台 | 隱私政策｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/privacy.html | https://rental.choulegal.com/privacy.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 租賃權益計算平台 | 隱私政策｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/privacy.html | https://rental.choulegal.com/privacy.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 租賃權益計算平台 | 房東擅自進入／裝監視器／騷擾怎麼辦｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/quiet-enjoyment.html | https://rental.choulegal.com/quiet-enjoyment.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 租金爭議與租期內漲租檢核｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/rent-cap.html | https://rental.choulegal.com/rent-cap.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=97 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 房東中途漲租合法嗎？（租期內可以漲租嗎）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/rent-increase.html | https://rental.choulegal.com/rent-increase.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=421 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
@@ -399,11 +401,11 @@
 | 民眾版 | 租賃權益計算平台 | 房子被賣掉／被法拍，租約還算數嗎？（買賣不破租賃）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/sale-foreclosure.html | https://rental.choulegal.com/sale-foreclosure.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=425 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 轉租／二房東合法嗎？（民法443）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/sublease.html | https://rental.choulegal.com/sublease.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=443<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=444 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 房租報稅扣除試算 + 設籍補貼權利｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/tax-residence-subsidy.html | https://rental.choulegal.com/tax-residence-subsidy.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=17<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=17 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 租賃權益計算平台 | 使用者條款｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/terms.html | https://rental.choulegal.com/terms.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 租賃權益計算平台 | 使用者條款｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/terms.html | https://rental.choulegal.com/terms.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第2批複查：頁面具體條號已對應官方來源。 |
 | 民眾版 | 租賃權益計算平台 | 房東斷水斷電／換鎖逼遷怎麼辦（這是違法的）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/utility-cutoff.html | https://rental.choulegal.com/utility-cutoff.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=423<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0000001&flno=304 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 周全 AI | 周全 AI 官網 | 周全 ChouLegal — 已搬遷 | ai-choulegal/index.html | https://ai.choulegal.com/ | 不適用（未偵測到需查證法源） | 未查證 | 公開 crawl 可連線但未取得可查核正文，需重新部署或重新抓取後查核。 |
+| 周全 AI | 周全 AI 官網 | 周全 ChouLegal — 已搬遷 | ai-choulegal/index.html | https://ai.choulegal.com/ | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 周全主站 | 關於 — 周全 ChouLegal | choulegal-site/about.html | https://choulegal.com/about.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
-| 民眾版 | 周全主站 | App 隱私權政策｜周全法律科技 ChouLegal | choulegal-site/app/privacy.html | https://choulegal.com/app/privacy.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 周全主站 | App 隱私權政策｜周全法律科技 ChouLegal | choulegal-site/app/privacy.html | https://choulegal.com/app/privacy.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=3 | 已查證 | 第2批複查：頁面具體條號已對應官方來源。 |
 | 民眾版 | 周全主站 | App 使用條款｜周全法律科技 ChouLegal | choulegal-site/app/terms.html | https://choulegal.com/app/terms.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 周全主站 | AVS 驗證工具 — AI 推理軌跡四階段確定性驗算 | choulegal-site/avs-verify.html | https://choulegal.com/avs-verify.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 周全主站 | AVS — AI Verification Standard · AI 計算自檢系統 by ChouLegal | choulegal-site/avs.html | https://choulegal.com/avs.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
@@ -413,13 +415,13 @@
 | 民眾版 | 周全主站 | LAVS — Legal AI Verification Standard · 法律 AI 自檢系統 by ChouLegal | choulegal-site/lavs.html | https://choulegal.com/lavs.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 周全主站 | 為什麼做這件事 — 周全 ChouLegal | choulegal-site/manifesto.html | https://choulegal.com/manifesto.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 周全主站 | 方案 — 周全 ChouLegal | choulegal-site/pricing.html | https://choulegal.com/pricing.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
-| 民眾版 | 周全主站 | 隱私權政策｜周全法律科技 ChouLegal | choulegal-site/privacy.html | https://choulegal.com/privacy.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 周全主站 | 隱私權政策｜周全法律科技 ChouLegal | choulegal-site/privacy.html | https://choulegal.com/privacy.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=8 | 已查證 | 第2批複查：頁面具體條號已對應官方來源。 |
 | 民眾版 | 周全主站 | 周全專業版 — 企業合規、爭議處理與判決整理 | choulegal-site/professional.html | https://choulegal.com/professional.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 周全主站 | 如何駕馭高自主 AI 模型 — 周全 · 成大簡報 | choulegal-site/slides/high-autonomy-models.html | https://choulegal.com/slides/high-autonomy-models.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 周全主站 | 成大簡報 · 周全 ChouLegal | choulegal-site/slides/ncku.html | https://choulegal.com/slides/ncku.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 周全主站 | AI 實作與學習程式設計的互依互生 — 成大簡報 | choulegal-site/slides/python-ai-talk.html | https://choulegal.com/slides/python-ai-talk.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 民眾版 | 周全主站 | 支持周全 — ChouLegal | choulegal-site/sponsor.html | https://choulegal.com/sponsor.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 民眾版 | 周全主站 | 使用者條款｜周全法律科技 ChouLegal | choulegal-site/terms.html | https://choulegal.com/terms.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
+| 民眾版 | 周全主站 | 支持周全 — ChouLegal | choulegal-site/sponsor.html | https://choulegal.com/sponsor.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
+| 民眾版 | 周全主站 | 使用者條款｜周全法律科技 ChouLegal | choulegal-site/terms.html | https://choulegal.com/terms.html | 不適用（第2批複查：未呈現具體需查證法源） | 已查證 | 第2批複查：頁面未呈現具體條號、裁判字號、法律常數或可計算結果；屬入口/帳號/通知/導頁/政策或後台功能頁。 |
 | 民眾版 | 民眾入口 | 周全 AI 已搬遷｜ChouLegal | people-choulegal/ai-triage.html | https://people.choulegal.com/ai-triage.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 民眾入口 | 事件工具包詳情｜周全民眾版 | people-choulegal/event-kit.html | https://people.choulegal.com/event-kit.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 民眾入口 | 事件工具包｜周全民眾版 | people-choulegal/event-kits.html | https://people.choulegal.com/event-kits.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
@@ -429,8 +431,8 @@
 ## 待處理清單
 
 - 待確認：31 個檔案，多數原因是法律常數/金額/比例還缺主管機關來源，或前次錯誤引用已修但尚待重新線上複查。
-- 未查證：126 個檔案，多數是 ETP 後台/動態頁或 AI 官網公開 crawl 未取得正文。
-- 第1批補查後仍保留待確認的項目，不以推論或非官方來源轉為已查證。
+- 未查證：82 個檔案，多數是 ETP 後台/動態頁內含具體公式、法條或範本，需逐頁建立官方來源對照。
+- AVS/LAVS 與 ETP 實際試算頁保留在未查證，因為它們含大量公式、案例或 law cache，不適合只用標題判斷轉綠。
 
 ## 完整官方來源 URL 附錄
 
@@ -457,6 +459,9 @@
 - https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPSV%2c68%2c%e5%8f%b0%e4%b8%8a%2c3792%2c19791214%2c1&ot=in
 - https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPSV%2c91%2c%e5%8f%b0%e4%b8%8a%2c556%2c20020328&ot=in
 - https://law.moea.gov.tw/LawContent.aspx?id=GL000996
+- https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=B0000001
+- https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060001
+- https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060125
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=100
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1017
@@ -501,6 +506,7 @@
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1160
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1162-2
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1164
+- https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1165
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1173
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1174
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1176
@@ -728,6 +734,8 @@
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0020004&flno=2
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0020024&flno=10
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=28
+- https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=3
+- https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=8
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070001&flno=9
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080011&flno=9
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0150002&flno=21
