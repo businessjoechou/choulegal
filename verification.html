@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>查證資料｜周全 ChouLegal</title>
+<meta name="description" content="周全 ChouLegal 公開三大產品線逐頁法源、裁判字號、計算資料與查證狀態，包含已查證、待確認、未查證與錯誤修正資料。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://choulegal.com/verification.html">
+<meta property="og:title" content="查證資料｜周全 ChouLegal">
+<meta property="og:description" content="公開三大產品線逐頁查證台帳、官方來源與待確認清單。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choulegal.com/verification.html">
+<meta property="og:site_name" content="周全 ChouLegal">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://choulegal.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="查證資料｜周全 ChouLegal">
+<meta name="twitter:description" content="逐頁公開法源、裁判字號、計算資料與查證狀態。">
+<meta name="twitter:image" content="https://choulegal.com/og-image.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #081220;
+    --ink-2: #0d1a2d;
+    --paper: #fbfaf6;
+    --muted: rgba(251, 250, 246, 0.66);
+    --line: rgba(229, 196, 95, 0.18);
+    --gold: #e5c45f;
+    --green: #9bd6ae;
+    --amber: #f0c36a;
+    --red: #f1a8b2;
+  }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 78% 48% at 50% -12%, rgba(212, 175, 55, 0.14), transparent 64%),
+      linear-gradient(180deg, #081220 0%, #0b1627 52%, #081220 100%);
+    color: var(--paper);
+    font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid rgba(229, 196, 95, 0.72); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(229, 196, 95, 0.14);
+    background: rgba(8, 18, 32, 0.86);
+    backdrop-filter: blur(22px);
+  }
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .brand {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+  }
+  .brand small {
+    margin-left: 10px;
+    color: rgba(229, 196, 95, 0.74);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 13px; }
+  .nav-links a:hover { color: var(--gold); }
+  .audit-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 10px;
+    border: 1px solid rgba(229, 196, 95, 0.34);
+    border-radius: 6px;
+    color: rgba(229, 196, 95, 0.96);
+    background: rgba(229, 196, 95, 0.075);
+  }
+  .hero { padding: 92px 0 56px; }
+  .eyebrow {
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  h1 {
+    max-width: 13ch;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: clamp(42px, 7vw, 82px);
+    line-height: 1.04;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .lead {
+    max-width: 760px;
+    color: rgba(251, 250, 246, 0.7);
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: 300;
+  }
+  .notice {
+    margin-top: 30px;
+    max-width: 780px;
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    background: rgba(229, 196, 95, 0.07);
+    color: rgba(251, 250, 246, 0.82);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin: 44px 0 68px;
+  }
+  .stat {
+    border: 1px solid var(--line);
+    background: rgba(251, 250, 246, 0.045);
+    border-radius: 8px;
+    padding: 22px;
+  }
+  .stat b {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .ok b { color: var(--green); }
+  .pending b { color: var(--amber); }
+  .unknown b { color: var(--red); }
+  .section { padding: 48px 0; border-top: 1px solid rgba(229, 196, 95, 0.12); }
+  .section h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.16;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .section-copy { color: var(--muted); max-width: 760px; margin-bottom: 28px; }
+  .downloads {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .download {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 118px;
+    border: 1px solid rgba(229, 196, 95, 0.16);
+    border-radius: 8px;
+    padding: 22px;
+    background: rgba(251, 250, 246, 0.04);
+    transition: border-color .2s, background .2s, transform .2s;
+  }
+  .download:hover {
+    border-color: rgba(229, 196, 95, 0.42);
+    background: rgba(229, 196, 95, 0.075);
+    transform: translateY(-2px);
+  }
+  .download strong { display: block; margin-bottom: 6px; font-weight: 600; }
+  .download span { display: block; color: var(--muted); font-size: 14px; }
+  .download code {
+    align-self: flex-start;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .matrix {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid rgba(229, 196, 95, 0.16);
+    border-radius: 8px;
+    background: rgba(251, 250, 246, 0.035);
+  }
+  .matrix th, .matrix td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(229, 196, 95, 0.1);
+    text-align: left;
+    vertical-align: top;
+  }
+  .matrix th {
+    color: rgba(229, 196, 95, 0.9);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+  .matrix td { color: rgba(251, 250, 246, 0.78); }
+  .tag {
+    display: inline-flex;
+    min-height: 28px;
+    align-items: center;
+    border-radius: 6px;
+    padding: 3px 9px;
+    font-size: 13px;
+    border: 1px solid rgba(251, 250, 246, 0.12);
+  }
+  .tag.ok { color: var(--green); background: rgba(45, 90, 61, 0.22); }
+  .tag.pending { color: var(--amber); background: rgba(212, 175, 55, 0.12); }
+  .tag.unknown { color: var(--red); background: rgba(139, 35, 50, 0.18); }
+  .sources {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    list-style: none;
+  }
+  .sources a {
+    display: block;
+    border: 1px solid rgba(229, 196, 95, 0.16);
+    border-radius: 8px;
+    padding: 16px;
+    color: rgba(251, 250, 246, 0.82);
+    background: rgba(251, 250, 246, 0.035);
+  }
+  .sources a:hover { border-color: rgba(229, 196, 95, 0.42); color: var(--gold); }
+  .foot {
+    padding: 42px 0 58px;
+    color: rgba(251, 250, 246, 0.48);
+    border-top: 1px solid rgba(229, 196, 95, 0.12);
+    font-size: 14px;
+  }
+  .foot-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .foot a { color: rgba(229, 196, 95, 0.82); }
+  @media (max-width: 760px) {
+    .nav-inner { align-items: flex-start; flex-direction: column; }
+    .nav-links { flex-wrap: wrap; gap: 12px; }
+    .hero { padding-top: 70px; }
+    .stats, .downloads, .sources { grid-template-columns: 1fr; }
+    .matrix { display: block; overflow-x: auto; white-space: nowrap; }
+  }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">周全<small>ChouLegal</small></a>
+    <nav class="nav-links" aria-label="主選單">
+      <a href="/">首頁</a>
+      <a href="avs.html">AVS</a>
+      <a href="guide.html">指南</a>
+      <a class="audit-pill" href="verification.html" aria-current="page">查證資料</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Public Verification Ledger</div>
+      <h1>查證資料公開台帳</h1>
+      <p class="lead">周全把三大產品線中的網頁檔案、法條引用、司法院資料、計算常數與查證狀態公開。查得到的列來源；還沒查完的直接標待確認或未查證。</p>
+      <p class="notice">查核日期：2026-07-06。這不是「全部通過」聲明，而是可追溯的盤點台帳。</p>
+
+      <div class="stats" aria-label="查證狀態總覽">
+        <div class="stat"><b>367</b><span>正式產品線網頁/路由檔案</span></div>
+        <div class="stat ok"><b>203</b><span>已查證</span></div>
+        <div class="stat pending"><b>38</b><span>待確認</span></div>
+        <div class="stat unknown"><b>126</b><span>未查證</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>完整資料下載</h2>
+      <p class="section-copy">每個檔案都保留公開 URL 或本機路由、資料來源 URL、官方來源數、待補常數筆數、待修正引用筆數與查證狀態。</p>
+      <div class="downloads">
+        <a class="download" href="verification-data/2026-07-06/all-webpage-file-verification-ledger.csv">
+          <span><strong>完整逐頁台帳</strong><span>三大產品線全部 367 個網頁/路由檔案。</span></span>
+          <code>CSV</code>
+        </a>
+        <a class="download" href="verification-data/2026-07-06/source-verification-report-2026-07-06.md">
+          <span><strong>完整查核報告</strong><span>含狀態定義、總覽、逐頁表格與官方來源附錄。</span></span>
+          <code>MD</code>
+        </a>
+        <a class="download" href="verification-data/2026-07-06/all-webpage-verified.csv">
+          <span><strong>已查證群</strong><span>已完成官方來源對照或未偵測法源資料。</span></span>
+          <code>203</code>
+        </a>
+        <a class="download" href="verification-data/2026-07-06/all-webpage-pending-confirmation.csv">
+          <span><strong>待確認群</strong><span>常數、金額、比例或修正後線上複查仍待補。</span></span>
+          <code>38</code>
+        </a>
+        <a class="download" href="verification-data/2026-07-06/all-webpage-unverified.csv">
+          <span><strong>未查證群</strong><span>動態頁、後台頁或公開 crawl 無正文者。</span></span>
+          <code>126</code>
+        </a>
+        <a class="download" href="verification-data/2026-07-06/all-webpage-error-or-needs-fix.csv">
+          <span><strong>錯誤/需修正群</strong><span>前次公開 crawl 發現錯誤引用，需修正或需重新線上複查。</span></span>
+          <code>5</code>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>產品線狀態</h2>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>產品線</th>
+            <th>子產品/平台</th>
+            <th>已查證</th>
+            <th>待確認</th>
+            <th>未查證</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>民眾版</td><td>消費爭議權益計算平台</td><td><span class="tag ok">32</span></td><td><span class="tag pending">10</span></td><td><span class="tag unknown">1</span></td></tr>
+          <tr><td>民眾版</td><td>民法財產權／繼承贈與計算平台</td><td><span class="tag ok">29</span></td><td><span class="tag pending">15</span></td><td><span class="tag unknown">9</span></td></tr>
+          <tr><td>民眾版</td><td>勞動權益計算平台</td><td><span class="tag ok">19</span></td><td><span class="tag pending">11</span></td><td><span class="tag unknown">4</span></td></tr>
+          <tr><td>民眾版</td><td>租賃權益計算平台</td><td><span class="tag ok">23</span></td><td><span class="tag pending">1</span></td><td><span class="tag unknown">2</span></td></tr>
+          <tr><td>民眾版</td><td>周全主站／民眾入口</td><td><span class="tag ok">14</span></td><td><span class="tag pending">1</span></td><td><span class="tag unknown">8</span></td></tr>
+          <tr><td>商業版 5 AI Pro</td><td>ETP 企業工作台</td><td><span class="tag ok">86</span></td><td><span class="tag pending">0</span></td><td><span class="tag unknown">101</span></td></tr>
+          <tr><td>周全 AI</td><td>周全 AI 官網</td><td><span class="tag ok">0</span></td><td><span class="tag pending">0</span></td><td><span class="tag unknown">1</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>官方來源範圍</h2>
+      <p class="section-copy">逐頁台帳內保留每一個來源 URL。下列是本次查核使用的官方來源入口。</p>
+      <ul class="sources">
+        <li><a href="https://law.moj.gov.tw/" target="_blank" rel="noopener">全國法規資料庫</a></li>
+        <li><a href="https://judgment.judicial.gov.tw/FJUD/default.aspx" target="_blank" rel="noopener">司法院裁判書系統</a></li>
+        <li><a href="https://cons.judicial.gov.tw/" target="_blank" rel="noopener">憲法法庭／大法官網站</a></li>
+        <li><a href="verification-data/2026-07-06/all-webpage-file-verification-ledger.csv">逐頁官方來源 URL 台帳</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-row">
+      <span>© <span id="year">2026</span> ChouLegal · 周全法律科技</span>
+      <span><a href="/">回首頁</a> · <a href="mailto:businessjoechou@gmail.com">聯絡</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
