@@ -26,7 +26,7 @@ function syncChouLegalEducationData(dataType, title, summary, payload) {
 
 var professionalPresets = {
   legal: {
-    title: "AI 法務助理輸出",
+    title: "法遵整理結果",
     label: "輸入事件事實或工作需求",
     facts: "公司準備調整排班制度，部分員工最近提出加班費與休息日出勤異議。希望先確認制度風險，並整理需要補強的文件。",
     source: "勞動基準法",
@@ -38,7 +38,7 @@ var professionalPresets = {
     kit: ["事實時間線", "員工異議摘要", "公司回覆草稿與談判底線"]
   },
   lawyer: {
-    title: "AI 律師助理輸出",
+    title: "法律研究整理結果",
     label: "輸入案件事實、爭點或研究問題",
     facts: "客戶主張店家廣告標示不實，要求解除契約並退還價金。需要整理可能爭點、請求權基礎與可搜尋判決關鍵字。",
     source: "消費者保護法",
@@ -50,7 +50,7 @@ var professionalPresets = {
     kit: ["爭點表", "請求權基礎清單", "判決搜尋關鍵字：廣告不實、解除契約、價金返還"]
   },
   labor: {
-    title: "勞基法合規自檢輸出",
+    title: "勞基法合規自檢結果",
     label: "輸入公司制度、員工異議或工時計算情境",
     facts: "餐飲門市採排班制，假日人力不足時要求員工延長工時，近期員工質疑休息日出勤與加班費計算方式。",
     source: "勞動基準法",
@@ -62,7 +62,7 @@ var professionalPresets = {
     kit: ["勞方異議事件包", "補件清單", "內部訪談問題", "回覆員工草稿"]
   },
   consumer: {
-    title: "消保法合規自檢輸出",
+    title: "消保法合規自檢結果",
     label: "輸入交易流程、退換貨規則或買方異議",
     facts: "線上課程賣家在廣告頁強調保證成效，買方購買後要求退款並主張廣告內容誤導。店家希望整理回覆與合規缺口。",
     source: "消費者保護法",
@@ -74,14 +74,14 @@ var professionalPresets = {
     kit: ["買方異議事件包", "廣告素材盤點表", "退款回覆草稿", "合規修改清單"]
   },
   judgment: {
-    title: "判決整理輸出",
+    title: "判決整理結果",
     label: "輸入判決搜尋關鍵字",
     facts: "廣告不實 解除契約 價金返還 消費者保護法",
     source: "公開判決資料",
     role: "律師",
     risk: "研究模式",
     riskClass: "risk-low",
-    summary: "正式版會依關鍵字整合公開判決資料，先列出候選判決，再整理事實、爭點、法院見解與可引用摘要。目前畫面展示的是整理格式。",
+    summary: "可依關鍵字整理公開判決資料，先列出候選判決，再整理事實、爭點、法院見解與可引用摘要。目前畫面展示整理格式。",
     docs: ["搜尋關鍵字組", "法院與年度篩選", "判決候選清單", "引用摘要格式"],
     kit: ["判決事實摘要", "爭點分類", "法院見解對照", "可引用段落索引"]
   }
@@ -90,7 +90,7 @@ var professionalPresets = {
 var professionalExtras = {
   legal: {
     checks: [["WATCH", "排班制度變更需確認公告與員工同意流程。"], ["WATCH", "加班費計算需回到實際出勤紀錄與薪資項目。"], ["PASS", "若文件完整，可先產出內部補強清單。"]],
-    judgments: [["最高法院勞動事件示例", "正式版會依爭點列出相關判決與裁判要旨。"], ["地方勞動事件判決示例", "用來比對出勤紀錄與薪資清冊的舉證方向。"]]
+    judgments: [["最高法院勞動事件示例", "依爭點列出相關判決與裁判要旨。"], ["地方勞動事件判決示例", "用來比對出勤紀錄與薪資清冊的舉證方向。"]]
   },
   lawyer: {
     checks: [["PASS", "已拆出請求權基礎、抗辯與舉證資料。"], ["WATCH", "廣告內容是否構成契約內容需比對交易流程。"], ["WATCH", "退款請求需確認解除權或瑕疵擔保基礎。"]],
@@ -105,7 +105,7 @@ var professionalExtras = {
     judgments: [["消費者保護判決示例 A", "廣告表示與消費者合理期待。"], ["定型化契約判決示例 B", "退款條款與顯失公平審查。"]]
   },
   judgment: {
-    checks: [["PASS", "已建立搜尋關鍵字與爭點分類。"], ["WATCH", "正式版需處理司法院資料來源、頻率與引用限制。"], ["PASS", "判決摘要需保留法院、年度、字號與裁判日期。"]],
+    checks: [["PASS", "已建立搜尋關鍵字與爭點分類。"], ["WATCH", "需確認司法院資料來源、更新頻率與引用限制。"], ["PASS", "判決摘要需保留法院、年度、字號與裁判日期。"]],
     judgments: [["候選判決 001", "廣告不實、解除契約、價金返還。"], ["候選判決 002", "消保法與民法請求權競合。"], ["候選判決 003", "定型化契約與退款條款審查。"]]
   }
 };
@@ -133,7 +133,7 @@ var caseDeskItems = {
     summary: "研究廣告表示是否影響契約內容，以及解除契約、價金返還相關判決方向。",
     stage: "事前合規檢查",
     docs: "完整",
-    tasks: [["建立關鍵字組", "今日"], ["整理候選判決", "明日"], ["輸出法院見解對照", "本週"]]
+    tasks: [["建立關鍵字組", "今日"], ["整理候選判決", "明日"], ["整理法院見解對照", "本週"]]
   }
 };
 
@@ -211,7 +211,7 @@ function initProfessionalWorkbench() {
     setMatrix(matrix, professionalExtras[tool].checks);
     setJudgments(judgments, professionalExtras[tool].judgments);
     actionStatus.textContent = "尚未匯出";
-    disclaimer.textContent = "這是前端示範輸出。正式版仍須串接法源驗證、文件解析、使用者帳號與人工覆核流程；本頁內容不構成法律意見。";
+    disclaimer.textContent = "這是示範頁面。實際導入仍須依資料來源、文件解析、權限控管、法源驗證與人工覆核流程規劃；本頁內容不構成法律意見。";
     if (!keepFacts) {
       form.elements.facts.value = preset.facts;
       form.elements.source.value = preset.source;
@@ -307,7 +307,7 @@ function initProfessionalWorkbench() {
 
     risk.textContent = riskText;
     risk.className = "risk-badge " + riskClass;
-    summary.textContent = preset.summary + " 已依「" + stage + "」與「文件完整度：" + docsState + "」調整輸出順序。";
+    summary.textContent = preset.summary + " 已依「" + stage + "」與「文件完整度：" + docsState + "」調整整理順序。";
     setList(docs, preset.docs.concat(docsState === "完整" ? ["建立版本紀錄與最後更新日期"] : ["先補齊缺漏文件並標示來源"]));
     setList(kit, preset.kit.concat(["下一步：安排人工覆核並指定責任窗口"]));
     setMatrix(matrix, professionalExtras[currentTool].checks);
@@ -525,7 +525,7 @@ function initEducationLibrary() {
 
   function showDetail(item) {
     detailTitle.textContent = item.title;
-    detailBody.textContent = item.summary + " 這張卡會在正式版連到完整條文、判決、題目與相關工具。";
+    detailBody.textContent = item.summary + " 這張卡可連到完整條文、判決、題目與相關工具。";
     detailPoints.innerHTML = "";
     item.points.forEach(function (point) {
       var li = document.createElement("li");
@@ -567,7 +567,7 @@ function initEducationLibrary() {
     var pathText = {
       all: "從「契約成立」開始，接到「解除契約」與「價金返還」，最後看消費爭議中的廣告表示問題。",
       public: "先看生活案例，再回到民眾版工具：加班費、退款、繼承與租屋爭議都可以沿著這條路線閱讀。",
-      exam: "先建立體系，再整理爭點：概念、條文、實務見解與答題架構要一起讀。",
+      exam: "先建立體系，再整理爭點：概念、條文、實務見解與答題方向要一起讀。",
       civil: "民法路線：意思表示、契約成立、解除契約、回復原狀與損害賠償。",
       labor: "勞動法路線：工時、工資、休假、資遣與舉證資料。",
       consumer: "消保法路線：廣告表示、定型化契約、退換貨、價金返還與店家合規。"
@@ -690,7 +690,7 @@ function initPractice() {
     syncChouLegalEducationData(
       "education_note",
       "法律教育平台複習筆記",
-      "使用者從教育平台匯出的複習筆記",
+      "讀者從教育平台匯出的複習筆記",
       { text: note.value, exportedAt: new Date().toISOString() }
     ).then(function (result) {
       status.textContent = result.ok ? "已下載並同步筆記" : "已下載筆記；登入後可同步";

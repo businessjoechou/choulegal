@@ -1,718 +1,144 @@
 <!DOCTYPE html>
-<html lang="zh-Hant" class="js">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>一個人 + AI，能做到什麼？ — 成大交管系 Python 課</title>
+<meta name="theme-color" content="#0b1020">
+<title>AI 實作與學習程式設計的互依互生 — 成大簡報</title>
 <script>
 if(location.protocol!=="file:"){try{if(sessionStorage.getItem("ncku_ok")!=="1")location.replace("ncku.html");}catch(e){}}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="ncku-v2/slide-01.webp">
 <style>
-:root{--ink:#1e2740;--ink-deep:#182035;--paper:#edf0f7;--gold:#e8a838;--gold-light:#fde68a;--amber:#d97706;--red-text:#c0392b;--green-bg:#d5f5e3;--green-text:#1e8449;--red-bg:#fadbd8;--red-light:#e74c3c;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;}
-body{background:var(--paper);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow:hidden;}
-
-/* Slide engine */
-.deck{position:fixed;inset:0;}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:7vh 8vw;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .4s ease,transform .4s cubic-bezier(.16,1,.3,1),visibility .4s;}
-.slide.active{opacity:1;visibility:visible;transform:translateY(0);}
-.slide.center{align-items:center;text-align:center;}
-
-/* Dark slide variant */
-.slide.dark{background:var(--ink-deep);color:rgba(255,255,255,.92);}
-.slide.dark-gradient{background:linear-gradient(135deg,var(--ink-deep) 0%,#243050 100%);color:rgba(255,255,255,.92);}
-.slide.dark-bar{background:var(--ink-deep);color:rgba(255,255,255,.92);border-left:6px solid var(--gold);}
-
-/* Section dot (■) */
-.sec-dot{display:inline-block;width:18px;height:18px;background:var(--gold);border-radius:3px;margin-right:14px;vertical-align:middle;}
-
-/* Typography */
-h1.title{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:clamp(34px,5.2vw,76px);line-height:1.15;color:var(--ink);}
-.slide.dark h1.title,.slide.dark-gradient h1.title,.slide.dark-bar h1.title{color:rgba(255,255,255,.97);}
-h1.title .gold{color:var(--gold);}
-
-h2.head{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:clamp(26px,3.8vw,52px);line-height:1.2;color:var(--ink);margin-bottom:.4em;}
-.slide.dark h2.head,.slide.dark-gradient h2.head,.slide.dark-bar h2.head{color:rgba(255,255,255,.97);}
-h2.head .gold{color:var(--gold);}
-
-.subtitle{font-family:"Noto Sans TC",sans-serif;font-size:clamp(18px,2.2vw,30px);color:var(--gold);font-weight:500;margin-top:12px;}
-.lead{font-size:clamp(16px,1.6vw,24px);line-height:1.7;color:rgba(30,39,64,.7);max-width:50ch;}
-.slide.dark .lead,.slide.dark-gradient .lead,.slide.dark-bar .lead{color:rgba(255,255,255,.7);}
-.lead strong{color:var(--ink);font-weight:600;}
-.slide.dark .lead strong,.slide.dark-gradient .lead strong{color:rgba(255,255,255,.95);}
-.lead .gold{color:var(--gold);}
-
-.meta{font-size:clamp(14px,1.2vw,18px);color:rgba(30,39,64,.5);margin-top:auto;padding-top:40px;line-height:1.6;}
-.slide.dark .meta{color:rgba(255,255,255,.5);}
-
-/* Cards grid */
-.cards{display:grid;gap:18px;margin-top:20px;width:100%;}
-.cards.c2{grid-template-columns:1fr 1fr;}
-.cards.c3{grid-template-columns:repeat(3,1fr);}
-.cards.c2x3{grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;}
-.card{padding:28px 26px;background:#fff;border-radius:14px;border-top:4px solid var(--gold);box-shadow:0 2px 12px rgba(0,0,0,.06);}
-.card h3{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:clamp(16px,1.6vw,22px);color:var(--ink);margin-bottom:8px;line-height:1.3;}
-.card p{font-size:clamp(13px,1.1vw,16px);line-height:1.6;color:rgba(30,39,64,.6);}
-.card .n{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--gold);margin-bottom:8px;text-transform:uppercase;}
-.card.side-bar{border-top:none;border-left:4px solid var(--gold);}
-
-/* Python capability rows */
-.py-rows{display:flex;flex-direction:column;gap:14px;margin-top:18px;width:100%;max-width:900px;}
-.py-row{display:flex;align-items:center;gap:18px;}
-.py-label{flex:0 0 auto;padding:10px 22px;background:var(--ink-deep);color:#fff;border-radius:8px;font-weight:600;font-size:clamp(13px,1.1vw,16px);min-width:100px;text-align:center;}
-.py-desc{font-size:clamp(14px,1.2vw,18px);color:rgba(30,39,64,.7);}
-
-/* Code block */
-pre.code{font-family:"JetBrains Mono",monospace;font-size:clamp(12px,1.1vw,16px);line-height:1.65;background:var(--ink-deep);border-radius:12px;padding:22px 26px;overflow-x:auto;color:rgba(255,255,255,.88);max-width:1000px;width:100%;}
-pre.code .c{color:rgba(255,255,255,.4);font-style:italic;}
-pre.code .k{color:#c4b5fd;}
-pre.code .s{color:#fde68a;}
-pre.code .fn{color:#7dd3fc;}
-.code-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
-.code-bar .dot{width:10px;height:10px;border-radius:50%;}
-.code-bar .d-r{background:#f87171;}
-.code-bar .d-y{background:#fbbf24;}
-.code-bar .d-g{background:#34d399;}
-.code-bar .fname{margin-left:14px;font-family:"JetBrains Mono",monospace;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.08em;}
-
-/* Chat mockup */
-.chat-box{background:var(--ink-deep);border-radius:12px;padding:26px 30px;max-width:900px;width:100%;color:rgba(255,255,255,.88);}
-.chat-bar{display:flex;align-items:center;gap:8px;margin-bottom:18px;font-family:"JetBrains Mono",monospace;font-size:12px;color:rgba(255,255,255,.4);}
-.chat-bar .dot{width:10px;height:10px;border-radius:50%;}
-.chat-bar .d-r{background:#f87171;}
-.chat-bar .d-y{background:#fbbf24;}
-.chat-bar .d-g{background:#34d399;}
-.chat-msg{font-size:clamp(14px,1.3vw,19px);line-height:1.7;color:rgba(255,255,255,.8);}
-.chat-msg .you{color:var(--gold);}
-
-/* Callout (dark bottom bar) */
-.callout{margin-top:auto;padding:18px 28px;background:var(--ink-deep);border-radius:10px;width:100%;max-width:1000px;text-align:center;font-size:clamp(14px,1.3vw,19px);color:rgba(255,255,255,.85);font-weight:500;}
-
-/* Bar chart (CSS-only horizontal) */
-.bar-chart{display:flex;flex-direction:column;gap:6px;width:100%;max-width:700px;margin-top:14px;}
-.bar-row{display:flex;align-items:center;gap:10px;font-size:clamp(11px,1vw,14px);}
-.bar-label{flex:0 0 140px;text-align:right;color:var(--ink);font-weight:500;font-size:clamp(11px,.9vw,13px);}
-.bar-fill{height:22px;border-radius:4px;transition:width .6s ease;}
-.bar-fill.top{background:var(--gold);}
-.bar-fill.normal{background:var(--ink-deep);}
-.bar-val{font-family:"JetBrains Mono",monospace;font-size:clamp(11px,.9vw,13px);color:rgba(30,39,64,.6);}
-
-/* Comparison boxes */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:18px;width:100%;max-width:1000px;}
-.cmp-box{padding:28px;border-radius:14px;text-align:center;}
-.cmp-box.wrong{background:var(--red-bg);border:2px solid rgba(231,76,60,.3);}
-.cmp-box.right{background:var(--green-bg);border:2px solid rgba(30,132,73,.3);}
-.cmp-box .cmp-label{font-size:clamp(13px,1.1vw,16px);font-weight:600;margin-bottom:8px;}
-.cmp-box.wrong .cmp-label{color:var(--red-light);}
-.cmp-box.right .cmp-label{color:var(--green-text);}
-.cmp-box .cmp-formula{font-family:"JetBrains Mono",monospace;font-size:clamp(12px,1vw,15px);color:rgba(30,39,64,.6);margin-bottom:8px;}
-.cmp-box .cmp-result{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:clamp(32px,4vw,56px);line-height:1.1;}
-.cmp-box.wrong .cmp-result{color:var(--red-light);}
-.cmp-box.right .cmp-result{color:var(--green-text);}
-.cmp-box .cmp-note{font-size:clamp(12px,1vw,14px);color:rgba(30,39,64,.5);margin-top:8px;}
-
-/* Stat big number */
-.stat-big{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:clamp(80px,16vw,200px);line-height:1;color:var(--gold);}
-
-/* Two-col layout */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;width:100%;max-width:1100px;}
-.two.v-center{align-items:center;}
-
-/* Step list (numbered circles) */
-.steps{display:flex;flex-direction:column;gap:28px;margin-top:16px;max-width:900px;}
-.step{display:flex;gap:20px;align-items:flex-start;}
-.step-num{flex:0 0 48px;height:48px;border-radius:50%;background:var(--ink-deep);color:#fff;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;}
-.step-body h4{font-weight:700;font-size:clamp(16px,1.5vw,22px);color:var(--ink);margin-bottom:4px;}
-.step-body p{font-size:clamp(13px,1.1vw,16px);color:rgba(30,39,64,.55);line-height:1.6;}
-
-/* Badge inline */
-.ai-badge{display:inline-block;padding:8px 22px;background:var(--ink-deep);color:#fff;border-radius:8px;font-weight:700;font-size:clamp(14px,1.2vw,18px);margin-right:14px;vertical-align:middle;}
-
-/* Error highlight */
-.err-box{padding:18px 24px;border:2px solid rgba(231,76,60,.35);background:rgba(231,76,60,.06);border-radius:10px;margin-top:14px;max-width:900px;}
-.err-box .x{color:var(--red-light);font-weight:700;font-size:clamp(16px,1.4vw,20px);margin-right:8px;}
-
-/* Info highlight box */
-.info-box{padding:18px 24px;background:rgba(232,168,56,.08);border-radius:10px;margin-top:14px;max-width:900px;}
-
-/* Divider slide */
-.divider .pnum{font-family:"JetBrains Mono",monospace;font-size:clamp(80px,18vw,240px);font-weight:600;line-height:.85;color:rgba(255,255,255,.12);letter-spacing:-.04em;position:absolute;left:5vw;top:50%;transform:translateY(-50%);}
-.divider .pcontent{position:relative;margin-left:clamp(80px,16vw,200px);}
-.divider .plabel-kicker{font-family:"JetBrains Mono",monospace;font-size:clamp(11px,1vw,14px);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-.divider .plabel{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:clamp(32px,5vw,72px);color:rgba(255,255,255,.97);line-height:1.1;}
-.divider .psub{margin-top:18px;font-size:clamp(14px,1.3vw,20px);color:rgba(255,255,255,.55);font-weight:300;}
-
-/* Product intro */
-.product-row{display:flex;align-items:center;gap:36px;margin-top:20px;}
-.product-logo{width:clamp(120px,14vw,200px);height:clamp(120px,14vw,200px);background:var(--ink-deep);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
-.product-logo .logo-small{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;}
-.product-logo .logo-text{font-family:"Noto Serif TC",serif;font-size:clamp(28px,3.6vw,48px);font-weight:500;color:rgba(255,255,255,.95);}
-.product-logo .logo-sub{font-family:"Noto Sans TC",sans-serif;font-size:clamp(11px,1vw,14px);color:rgba(255,255,255,.5);margin-top:2px;}
-.product-info h2{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:clamp(28px,4vw,52px);color:var(--ink);margin-bottom:6px;}
-.product-info .tag{font-size:clamp(14px,1.3vw,19px);color:rgba(30,39,64,.5);}
-.product-info .slogan{font-size:clamp(16px,1.6vw,24px);color:var(--gold);margin-top:10px;font-weight:500;}
-
-/* Strikethrough text */
-.strike{text-decoration:line-through;color:rgba(30,39,64,.35);}
-.slide.dark .strike{color:rgba(255,255,255,.35);}
-
-/* Footer chrome */
-.chrome{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:14px 26px;pointer-events:none;}
-.brandmark{font-family:"Noto Serif TC",serif;font-size:14px;letter-spacing:.04em;color:rgba(30,39,64,.4);}
-.brandmark small{margin-left:8px;font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(30,39,64,.25);}
-.counter{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;color:rgba(30,39,64,.35);}
-.bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--amber));z-index:11;transition:width .4s cubic-bezier(.16,1,.3,1);width:0;}
-.hint{position:fixed;bottom:50px;right:26px;z-index:10;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;color:rgba(30,39,64,.25);text-transform:uppercase;animation:fade 6s ease forwards;}
-@keyframes fade{0%,70%{opacity:1;}100%{opacity:0;}}
-@media(max-width:820px){.two{grid-template-columns:1fr;}.cards.c3,.cards.c2,.cards.c2x3{grid-template-columns:1fr;}.compare{grid-template-columns:1fr;}.product-row{flex-direction:column;text-align:center;}.py-row{flex-direction:column;gap:6px;align-items:flex-start;}.bar-label{flex:0 0 auto;text-align:left;}}
-@media(prefers-reduced-motion:reduce){.slide{transition:opacity .15s,visibility .15s;transform:none!important;}}
+:root{color-scheme:dark;}
+*,*::before,*::after{box-sizing:border-box;}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#0b1020;}
+body{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;color:#fff;-webkit-font-smoothing:antialiased;}
+button{font:inherit;}
+.deck{position:fixed;inset:0;display:grid;place-items:center;background:#0b1020;touch-action:pan-y;}
+.slide{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;}
+.progress{position:fixed;z-index:4;top:0;left:0;width:100%;height:3px;background:rgba(255,255,255,.12);}
+.progress-bar{height:100%;width:0;background:#f5a719;transition:width .22s ease;}
+.chrome{position:fixed;z-index:5;inset:auto 0 0;display:flex;align-items:center;justify-content:space-between;padding:28px max(28px,env(safe-area-inset-right)) max(22px,env(safe-area-inset-bottom)) max(28px,env(safe-area-inset-left));pointer-events:none;background:linear-gradient(transparent,rgba(0,0,0,.5));opacity:0;transition:opacity .2s ease;}
+body:hover .chrome,.chrome:focus-within,.chrome.visible{opacity:1;}
+.counter{font-size:12px;letter-spacing:.16em;color:rgba(255,255,255,.8);text-shadow:0 1px 8px rgba(0,0,0,.7);}
+.actions{display:flex;gap:8px;pointer-events:auto;}
+.control{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.24);border-radius:50%;background:rgba(11,16,32,.72);color:#fff;cursor:pointer;backdrop-filter:blur(10px);transition:background .2s,border-color .2s,transform .2s;}
+.control:hover{background:rgba(245,167,25,.9);border-color:#f5a719;transform:translateY(-1px);}
+.control:focus-visible{outline:3px solid #fff;outline-offset:3px;}
+.control[disabled]{opacity:.35;cursor:default;transform:none;}
+.hit{position:fixed;z-index:2;top:0;bottom:0;width:34%;border:0;background:transparent;cursor:pointer;}
+.hit.prev{left:0;cursor:w-resize;}
+.hit.next{right:0;cursor:e-resize;}
+.hint{position:fixed;z-index:5;left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:8px 13px;border-radius:999px;background:rgba(11,16,32,.72);color:rgba(255,255,255,.72);font-size:11px;letter-spacing:.08em;white-space:nowrap;pointer-events:none;backdrop-filter:blur(10px);animation:hideHint .5s ease 4s forwards;}
+@keyframes hideHint{to{opacity:0;visibility:hidden;}}
+@media (hover:none){
+  .chrome{opacity:1;padding-top:18px;}
+  .hint{display:none;}
+  .hit{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .progress-bar,.chrome,.control{transition:none;}
+  .hint{animation:none;}
+}
 </style>
 </head>
 <body>
-
-<div class="bar" id="bar"></div>
-
-<main class="deck" id="deck">
-
-<!-- 1 ─ Cover -->
-<section class="slide dark-bar" style="border-left-width:8px;">
-  <h1 class="title" style="font-size:clamp(36px,5.6vw,80px);margin-bottom:16px;">一個人 + AI，能做到什麼？</h1>
-  <div class="subtitle">為什麼交管人更該學 Python</div>
-  <div class="meta">
-    成功大學 交通管理科學系｜客座分享<br>
-    周全法律科技 ChouLegal
-  </div>
-</section>
-
-<!-- 2 ─ 我是誰 -->
-<section class="slide">
-  <h2 class="head"><span class="sec-dot"></span>我是誰</h2>
-  <p class="lead" style="margin-bottom:28px;">一個人獨立用 AI，做出三條法律科技產品線。</p>
-  <div class="cards c3">
-    <div class="card"><h3>民眾版</h3><p>免費法律工具站<br>勞資、繼承、消費試算</p></div>
-    <div class="card"><h3>專業版</h3><p>資方合規系統<br>HR、勞資、消費等產品</p></div>
-    <div class="card"><h3>法規異動引擎</h3><p>自動偵測法條修改<br>比對新舊、影響分析</p></div>
-  </div>
-  <p class="lead" style="margin-top:28px;">沒有團隊，沒有外包。寫程式、架網站、串 AI，全是一個人加 AI 完成。</p>
-</section>
-
-<!-- 3 ─ 我不是工程師 -->
-<section class="slide dark">
-  <h1 class="title" style="font-size:clamp(30px,4.8vw,64px);line-height:1.25;">我不是工程師，<br>也不是律師。<span class="gold">（雖然將來可能會是）</span></h1>
-  <p class="lead" style="margin-top:28px;color:var(--gold);">我只是學會了「讓 Python 和 AI 幫我做事」。</p>
-</section>
-
-<!-- 4 ─ 四件事 Agenda -->
-<section class="slide">
-  <p class="lead" style="margin-bottom:28px;color:rgba(30,39,64,.55);">從我小學以來到高中都有的一個問題</p>
-  <div style="background:var(--ink-deep);border-radius:14px;padding:32px 38px;max-width:900px;margin-bottom:32px;">
-    <p style="font-size:clamp(22px,3.2vw,44px);font-weight:700;color:rgba(255,255,255,.97);line-height:1.3;">「我又不要當工程師，<br><span style="color:var(--gold);">　學 Python 到底要幹嘛？」</span></p>
-  </div>
-  <p style="font-weight:700;font-size:clamp(16px,1.5vw,22px);margin-bottom:18px;">我想跟你們聊四件事：</p>
-  <div class="cards c2" style="max-width:800px;">
-    <div class="card side-bar"><h3>1　為什麼 Python 是一張「門票」</h3></div>
-    <div class="card side-bar"><h3>2　動手看：我怎麼用 AI 做分析</h3></div>
-    <div class="card side-bar"><h3>3　那 – 全部丟給 AI 不就好了？</h3></div>
-    <div class="card side-bar"><h3>4　想跟你們分享的幾個經驗</h3></div>
-  </div>
-</section>
-
-<!-- 5 ─ PART 1 divider -->
-<section class="slide dark-gradient divider">
-  <div class="pnum">1</div>
-  <div class="pcontent">
-    <div class="plabel-kicker">PART 1</div>
-    <div class="plabel">為什麼是 Python、為什麼是現在</div>
-    <div class="psub">它不是『一種程式語言』，它是進入 AI 世界的門票。</div>
-  </div>
-</section>
-
-<!-- 6 ─ Python = 離 AI 最近的語言 -->
-<section class="slide">
-  <h2 class="head"><span class="sec-dot"></span>Python = 離 AI 最近的語言</h2>
-  <p class="lead" style="margin-bottom:22px;">你想用的幾乎每一個 AI 工具，入口都是 Python。</p>
-  <div class="py-rows">
-    <div class="py-row"><div class="py-label">資料分析</div><div class="py-desc">pandas / numpy — 處理 Excel、CSV、感測器資料</div></div>
-    <div class="py-row"><div class="py-label">畫圖表</div><div class="py-desc">matplotlib / seaborn / plotly — 一行畫出視覺化</div></div>
-    <div class="py-row"><div class="py-label">機器學習</div><div class="py-desc">scikit-learn / PyTorch — 預測、分類、模型訓練</div></div>
-    <div class="py-row"><div class="py-label">串接 AI</div><div class="py-desc">openai / anthropic — 把大型語言模型接進你的程式</div></div>
-    <div class="py-row"><div class="py-label">自動化</div><div class="py-desc">把每天重複的整理、計算、報表全部交給程式跑</div></div>
-  </div>
-</section>
-
-<!-- 7 ─ 交管的世界，全是 Python 的主場 -->
-<section class="slide">
-  <h2 class="head"><span class="sec-dot"></span>巧的是 – 交管的世界，全是 Python 的主場</h2>
-  <div class="cards c3">
-    <div class="card"><h3>車流預測</h3><p>用歷史資料預測尖峰流量</p></div>
-    <div class="card"><h3>路網最佳化</h3><p>找最短路徑、號誌配時</p></div>
-    <div class="card"><h3>班次 / 排班排程</h3><p>公車、捷運、人力班表</p></div>
-    <div class="card"><h3>物流配送</h3><p>車輛途程、最後一哩路</p></div>
-    <div class="card"><h3>事故與安全分析</h3><p>找出危險路段與時段</p></div>
-    <div class="card"><h3>交通模擬</h3><p>模擬政策上路前的影響</p></div>
-  </div>
-</section>
-
-<!-- 8 ─ 重點不是成為工程師 -->
-<section class="slide dark">
-  <p class="lead" style="color:rgba(255,255,255,.5);margin-bottom:14px;">所以重點不是</p>
-  <h1 class="title strike" style="font-size:clamp(30px,4.6vw,60px);margin-bottom:28px;">成為工程師</h1>
-  <p class="lead" style="color:rgba(255,255,255,.5);margin-bottom:14px;">而是</p>
-  <h1 class="title" style="font-size:clamp(30px,4.6vw,60px);color:var(--gold);">懂得運用程式在自己的領域中</h1>
-</section>
-
-<!-- 9 ─ PART 2 divider -->
-<section class="slide dark-gradient divider">
-  <div class="pnum">2</div>
-  <div class="pcontent">
-    <div class="plabel-kicker">PART 2</div>
-    <div class="plabel">動手看：AI 怎麼幫你做分析</div>
-    <div class="psub">我不會寫程式，但我可以做出一份交通資料分析 – 現在示範給你看。</div>
-  </div>
-</section>
-
-<!-- 10 ─ 情境：台南哪個路口最危險 -->
-<section class="slide">
-  <h2 class="head"><span class="sec-dot"></span>情境：台南哪個路口最危險？</h2>
-  <div style="background:#fff;border-radius:12px;padding:22px 28px;max-width:900px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:18px;">
-    <p style="font-size:clamp(15px,1.3vw,19px);line-height:1.7;"><strong>手上有什麼：</strong>　政府開放資料的一份交通事故 CSV（地點、日期、時間、傷亡）。<br><strong>想知道什麼：</strong>　哪些路口事故最多？哪個時段最危險？</p>
-  </div>
-  <div style="background:rgba(253,230,138,.15);border-radius:10px;padding:16px 24px;max-width:900px;margin-bottom:22px;">
-    <p style="font-size:clamp(14px,1.2vw,18px);color:var(--amber);font-weight:500;">問題：我不會寫程式，也不想開 Excel 一筆一筆數。</p>
-  </div>
-  <p class="lead">接下來六步，全程沒打一行程式碼 – 只是「用中文講需求」。</p>
-</section>
-
-<!-- 11 ─ Step 1：用中文跟 AI 講 -->
-<section class="slide">
-  <h2 class="head" style="margin-bottom:20px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:18px;margin-right:14px;">1</span>我用「中文」跟 AI 講我要什麼</h2>
-  <div class="chat-box">
-    <div class="chat-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span style="margin-left:12px;">AI 助手 — 對話</span></div>
-    <div class="chat-msg">
-      <p><span class="you">你：我有一份台南市的交通事故資料 CSV，</span></p>
-      <p style="padding-left:2em;"><span class="you">欄位有：地點、日期、時間、傷亡人數。</span></p>
-      <br>
-      <p>我不會寫程式。請用 Python (pandas)</p>
-      <p>幫我找出「事故件數最多的前 10 個路口」，</p>
-      <p>並畫成長條圖。</p>
-    </div>
-  </div>
-  <div class="callout">重點：這不是程式，是人話。任何人都打得出來。</div>
-</section>
-
-<!-- 12 ─ Step 2：AI 寫程式碼 -->
-<section class="slide">
-  <h2 class="head" style="margin-bottom:16px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:18px;margin-right:14px;">2</span>AI 幫我把程式碼寫好</h2>
-  <pre class="code"><div class="code-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="fname">accident_analysis.py</span></div><span class="k">import</span> pandas <span class="k">as</span> pd
-<span class="k">import</span> matplotlib.pyplot <span class="k">as</span> plt
-
-df = pd.<span class="fn">read_csv</span>(<span class="s">'tainan_accidents.csv'</span>)
-top10 = (df.<span class="fn">groupby</span>(<span class="s">'地點'</span>)
-        .<span class="fn">size</span>()
-        .<span class="fn">sort_values</span>(ascending=<span class="k">False</span>)
-        .<span class="fn">head</span>(10))
-
-top10.<span class="fn">plot.barh</span>()
-plt.<span class="fn">title</span>(<span class="s">'事故最多的前 10 個路口'</span>)
-plt.<span class="fn">show</span>()</pre>
-  <div class="callout">不用會寫，但要「看得懂在做什麼」 – 這就是學 Python 的用處。</div>
-</section>
-
-<!-- 13 ─ Step 3：結果出來了 (bar chart) -->
-<section class="slide">
-  <h2 class="head" style="margin-bottom:16px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:18px;margin-right:14px;">3</span>貼上去跑 – 結果出來了</h2>
-  <p style="text-align:center;font-weight:600;font-size:clamp(13px,1.1vw,16px);color:var(--ink);margin-bottom:10px;">台南市事故件數最多的前 10 個路口</p>
-  <div class="bar-chart">
-    <div class="bar-row"><div class="bar-label">東門路/林森路口</div><div class="bar-fill top" style="width:100%;"></div><div class="bar-val">218</div></div>
-    <div class="bar-row"><div class="bar-label">小東路/勝利路口</div><div class="bar-fill top" style="width:90%;"></div><div class="bar-val">196</div></div>
-    <div class="bar-row"><div class="bar-label">中華東路/崇善路口</div><div class="bar-fill normal" style="width:83%;"></div><div class="bar-val">181</div></div>
-    <div class="bar-row"><div class="bar-label">西門路/府前路口</div><div class="bar-fill normal" style="width:77%;"></div><div class="bar-val">167</div></div>
-    <div class="bar-row"><div class="bar-label">中山路/民族路口</div><div class="bar-fill normal" style="width:70%;"></div><div class="bar-val">153</div></div>
-    <div class="bar-row"><div class="bar-label">永華路/中華西路口</div><div class="bar-fill normal" style="width:65%;"></div><div class="bar-val">142</div></div>
-    <div class="bar-row"><div class="bar-label">大同路/健康路口</div><div class="bar-fill normal" style="width:60%;"></div><div class="bar-val">131</div></div>
-    <div class="bar-row"><div class="bar-label">北門路/成功路口</div><div class="bar-fill normal" style="width:55%;"></div><div class="bar-val">119</div></div>
-    <div class="bar-row"><div class="bar-label">公園路/成功路口</div><div class="bar-fill normal" style="width:50%;"></div><div class="bar-val">108</div></div>
-    <div class="bar-row"><div class="bar-label">海安路/民權路口</div><div class="bar-fill normal" style="width:45%;"></div><div class="bar-val">97</div></div>
-  </div>
-  <div class="callout">從一份原始 CSV 到這張圖，全程大約一分鐘。</div>
-</section>
-
-<!-- 14 ─ Step 4：追問一句 -->
-<section class="slide">
-  <h2 class="head" style="margin-bottom:16px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:18px;margin-right:14px;">4</span>再追問一句，分析就升級</h2>
-  <div class="chat-box">
-    <div class="chat-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span style="margin-left:12px;">AI 助手 — 對話</span></div>
-    <div class="chat-msg">
-      <p><span class="you">你：很好。我還想知道「一週裡哪個時段最危險」。</span></p>
-      <br>
-      <p>請改成：以星期幾 × 24 小時 統計事故件數，</p>
-      <p>畫成熱力圖 (heatmap)。</p>
-    </div>
-  </div>
-  <div class="callout">想法可以「對話式」地疊上去，不用重做。</div>
-</section>
-
-<!-- 15 ─ Step 5：AI 改寫程式 -->
-<section class="slide">
-  <h2 class="head" style="margin-bottom:16px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:18px;margin-right:14px;">5</span>AI 改寫程式（一樣不用我動手）</h2>
-  <pre class="code"><div class="code-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="fname">accident_analysis.py</span></div>df[<span class="s">'星期'</span>] = pd.<span class="fn">to_datetime</span>(df[<span class="s">'日期'</span>]).dt.dayofweek
-df[<span class="s">'小時'</span>] = pd.<span class="fn">to_datetime</span>(df[<span class="s">'時間'</span>]).dt.hour
-
-pivot = df.<span class="fn">pivot_table</span>(index=<span class="s">'星期'</span>, columns=<span class="s">'小時'</span>,
-                values=<span class="s">'地點'</span>, aggfunc=<span class="s">'count'</span>)
-
-<span class="k">import</span> seaborn <span class="k">as</span> sns
-sns.<span class="fn">heatmap</span>(pivot, cmap=<span class="s">'YlOrRd'</span>)
-plt.<span class="fn">title</span>(<span class="s">'事故熱點：哪個時段最危險？'</span>)
-plt.<span class="fn">show</span>()</pre>
-  <div class="callout">改需求 = 再講一句話。迭代速度，就是你的優勢。</div>
-</section>
-
-<!-- 16 ─ Step 6：熱力圖結果（描述） -->
-<section class="slide">
-  <h2 class="head" style="margin-bottom:16px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:18px;margin-right:14px;">6</span>第二張圖：危險時段一目了然</h2>
-  <p style="text-align:center;font-weight:600;font-size:clamp(13px,1.1vw,16px);margin-bottom:14px;">事故熱點：哪個時段最危險？</p>
-  <div style="background:#fff;border-radius:12px;padding:28px;max-width:800px;width:100%;box-shadow:0 2px 8px rgba(0,0,0,.06);text-align:center;">
-    <div style="display:grid;grid-template-columns:60px repeat(12,1fr);gap:3px;font-size:clamp(9px,.8vw,12px);">
-      <div></div><div>00</div><div>02</div><div>04</div><div>06</div><div>08</div><div>10</div><div>12</div><div>14</div><div>16</div><div>18</div><div>20</div><div>22</div>
-      <div style="text-align:right;padding-right:6px;">星期一</div><div style="background:#fee2e2;border-radius:3px;padding:6px 0;">　</div><div style="background:#fef9c3;padding:6px 0;border-radius:3px;">　</div><div style="background:#fef9c3;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#f87171;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#f87171;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fef9c3;padding:6px 0;border-radius:3px;">　</div>
-      <div style="text-align:right;padding-right:6px;">星期五</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fef9c3;padding:6px 0;border-radius:3px;">　</div><div style="background:#fef9c3;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#f87171;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#ef4444;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div>
-      <div style="text-align:right;padding-right:6px;">星期六</div><div style="background:#ef4444;padding:6px 0;border-radius:3px;">　</div><div style="background:#f87171;padding:6px 0;border-radius:3px;">　</div><div style="background:#f87171;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#f87171;padding:6px 0;border-radius:3px;">　</div><div style="background:#dc2626;padding:6px 0;border-radius:3px;">　</div>
-      <div style="text-align:right;padding-right:6px;">星期日</div><div style="background:#dc2626;padding:6px 0;border-radius:3px;">　</div><div style="background:#ef4444;padding:6px 0;border-radius:3px;">　</div><div style="background:#f87171;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fde68a;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#fbbf24;padding:6px 0;border-radius:3px;">　</div><div style="background:#f87171;padding:6px 0;border-radius:3px;">　</div><div style="background:#dc2626;padding:6px 0;border-radius:3px;">　</div>
-    </div>
-    <p style="margin-top:10px;font-size:12px;color:rgba(30,39,64,.4);">← 淺色＝安全　深紅＝高危 →</p>
-  </div>
-  <div class="callout">早晚尖峰、週末深夜最紅 – 資料說話，不是憑感覺。</div>
-</section>
-
-<!-- 17 ─ 零行程式碼 -->
-<section class="slide dark">
-  <h2 class="head" style="color:rgba(255,255,255,.95);">剛剛這六步，我沒有打到程式碼</h2>
-  <div class="two v-center" style="margin-top:20px;">
-    <div class="stat-big" style="text-align:center;">0</div>
-    <div>
-      <p class="lead" style="font-size:clamp(17px,1.8vw,26px);"><strong>但我全程都「看得懂」AI 在做什麼，<br>也「判斷得出」它有沒有亂來。</strong></p>
-      <p class="lead" style="margin-top:18px;">這份判斷力，來自我懂一點 Python。<br>這就是你該學它的真正理由。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 18 ─ PART 3 divider -->
-<section class="slide dark-gradient divider">
-  <div class="pnum">3</div>
-  <div class="pcontent">
-    <div class="plabel-kicker">PART 3</div>
-    <div class="plabel">那 – 全部丟給 AI 就好啦？</div>
-    <div class="psub">這是我猜你們現在心裡的 OS。我們認真看一下。</div>
-  </div>
-</section>
-
-<!-- 19 ─ 反正 AI 都會寫 -->
-<section class="slide dark">
-  <p class="lead" style="color:rgba(255,255,255,.5);margin-bottom:20px;">你可能正在想</p>
-  <h1 class="title" style="font-size:clamp(28px,4.4vw,60px);line-height:1.25;">「反正 AI 都會寫，<br><span class="gold">　我幹嘛還要學程式？」</span></h1>
-  <p class="lead" style="margin-top:28px;">這問題很合理。我展示兩個「真的發生過」的狀況</p>
-</section>
-
-<!-- 20 ─ 真實案例 ① 全線平均誤點 -->
-<section class="slide">
-  <div style="display:flex;align-items:center;gap:18px;margin-bottom:20px;">
-    <span style="display:inline-block;padding:10px 24px;background:var(--ink-deep);color:#fff;border-radius:10px;font-weight:700;font-size:clamp(14px,1.2vw,18px);">真實案例 ①</span>
-    <h2 class="head" style="margin-bottom:0;">我請 AI 算「全線平均誤點」</h2>
-  </div>
-  <pre class="code"><div class="code-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="fname">delay_analysis.py</span></div><span class="c">  # 想算「全線平均每班誤點幾分鐘」</span>
-
-avg = (df.<span class="fn">groupby</span>(<span class="s">'路線'</span>)[<span class="s">'誤點分鐘'</span>]
-      .<span class="fn">mean</span>()     <span class="c"># 先算每條路線的平均</span>
-      .<span class="fn">mean</span>())    <span class="c"># 再把各路線平均起來</span>
-
-<span class="fn">print</span>(<span class="s">f'全線平均誤點：{avg:.1f} 分鐘'</span>)
-
-&gt;&gt;&gt; 全線平均誤點：31.0 分鐘</pre>
-  <div class="callout">程式跑得很順、答案也吐出來了：「31 分鐘」。看起來完全正常 – 對吧？</div>
-</section>
-
-<!-- 21 ─ 但這個數字，錯了 -->
-<section class="slide">
-  <h2 class="head" style="color:var(--red-text);"><span class="sec-dot" style="background:var(--red-light);"></span>但這個數字，錯了。</h2>
-  <div style="background:#fff;border-radius:12px;padding:18px 24px;max-width:900px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:20px;">
-    <p style="font-weight:700;margin-bottom:6px;">原始資料其實是：</p>
-    <p>快速線 — 100 班，平均誤點 2 分　｜　普通線 — 4 班，平均誤點 60 分</p>
-  </div>
-  <div class="compare">
-    <div class="cmp-box wrong">
-      <div class="cmp-label">AI 的算法（錯）</div>
-      <div class="cmp-formula">( 2 + 60 ) ÷ 2</div>
-      <div class="cmp-result">= 31 分</div>
-      <div class="cmp-note">把兩條線「當成一樣重」</div>
-    </div>
-    <div class="cmp-box right">
-      <div class="cmp-label">正確（依班次加權）</div>
-      <div class="cmp-formula">(100×2 + 4×60) ÷ 104</div>
-      <div class="cmp-result">≈ 4.2 分</div>
-      <div class="cmp-note">99% 的班次其實只誤點 2 分</div>
-    </div>
-  </div>
-  <p class="lead" style="margin-top:22px;">差了 7 倍。「平均的平均 ≠ 平均」是經典陷阱 – 學過的人一眼看出來，AI 不會主動提醒你。</p>
-</section>
-
-<!-- 22 ─ 真實案例 ② dayfirst -->
-<section class="slide">
-  <div style="display:flex;align-items:center;gap:18px;margin-bottom:20px;">
-    <span style="display:inline-block;padding:10px 24px;background:var(--ink-deep);color:#fff;border-radius:10px;font-weight:700;font-size:clamp(14px,1.2vw,18px);">真實案例 ②</span>
-    <h2 class="head" style="margin-bottom:0;">還記得剛剛那張「最危險時段」熱力圖嗎？</h2>
-  </div>
-  <pre class="code"><div class="code-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="fname">fix_date.py</span></div><span class="c">  # AI 一開始給的寫法</span>
-df[<span class="s">'星期'</span>] = pd.<span class="fn">to_datetime</span>(df[<span class="s">'日期'</span>]).dt.dayofweek
-
-<span class="c">  # 問題：台灣日期寫成「日/月/年」(03/06/2026)，</span>
-<span class="c">  #　　但 pandas 預設當成「月/日/年」→ 全錯</span>
-
-<span class="c">  # 懂格式的人會改成 ↓</span>
-df[<span class="s">'星期'</span>] = pd.<span class="fn">to_datetime</span>(df[<span class="s">'日期'</span>],
-                <span class="k">dayfirst</span>=<span class="k">True</span>).dt.dayofweek</pre>
-  <p class="lead" style="margin-top:20px;">整段差別，只在「一個參數」。但結論會不會變，全看你有沒有發現它。</p>
-</section>
-
-<!-- 23 ─ 同一份資料，結論翻盤 -->
-<section class="slide">
-  <h2 class="head" style="color:var(--red-text);">同一份資料，結論翻盤</h2>
-  <div class="compare" style="max-width:1000px;">
-    <div style="text-align:center;">
-      <p style="font-weight:700;font-size:clamp(14px,1.2vw,18px);margin-bottom:12px;">AI 直接解析（當成 月/日）</p>
-      <div style="display:flex;gap:4px;align-items:flex-end;justify-content:center;height:160px;">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:75px;"></div><div style="font-size:10px;">一</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:90px;"></div><div style="font-size:10px;">二</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--red-light);border-radius:4px 4px 0 0;height:120px;"></div><div style="font-size:10px;">三</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:85px;"></div><div style="font-size:10px;">四</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:108px;"></div><div style="font-size:10px;">五</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:100px;"></div><div style="font-size:10px;">六</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:88px;"></div><div style="font-size:10px;">日</div></div>
-      </div>
-      <p style="color:var(--red-light);font-weight:600;margin-top:10px;font-size:clamp(13px,1.1vw,16px);">結論：星期三最危險</p>
-    </div>
-    <div style="text-align:center;">
-      <p style="font-weight:700;font-size:clamp(14px,1.2vw,18px);margin-bottom:12px;">懂格式的人修正後（日/月）</p>
-      <div style="display:flex;gap:4px;align-items:flex-end;justify-content:center;height:160px;">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:68px;"></div><div style="font-size:10px;">一</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:82px;"></div><div style="font-size:10px;">二</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:96px;"></div><div style="font-size:10px;">三</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:78px;"></div><div style="font-size:10px;">四</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:110px;"></div><div style="font-size:10px;">五</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--red-light);border-radius:4px 4px 0 0;height:140px;"></div><div style="font-size:10px;">六</div></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:36px;background:var(--ink-deep);border-radius:4px 4px 0 0;height:100px;"></div><div style="font-size:10px;">日</div></div>
-      </div>
-      <p style="color:var(--red-light);font-weight:600;margin-top:10px;font-size:clamp(13px,1.1vw,16px);">結論：星期六最危險</p>
-    </div>
-  </div>
-  <div class="callout">左邊叫交通局星期三加派警力，右邊是星期六 – 兩張圖都「很專業」，但一張是錯的。</div>
-</section>
-
-<!-- 24 ─ 講個我自己的經驗（法條幻覺） -->
-<section class="slide">
-  <h2 class="head">講個我自己的經驗</h2>
-  <p class="lead" style="margin-bottom:18px;">我做法律 AI，請它幫我寫一段內容，它很自信地引用了這條：</p>
-  <div style="background:#fff;border-radius:12px;padding:20px 28px;max-width:900px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:14px;display:flex;align-items:center;gap:16px;">
-    <span class="ai-badge">AI</span>
-    <p style="font-size:clamp(15px,1.4vw,20px);">「依《勞動基準法》第 84 條之 3 規定，雇主應......」</p>
-  </div>
-  <p style="font-size:clamp(13px,1.1vw,16px);color:rgba(30,39,64,.5);margin-bottom:16px;">語氣超肯定、條號格式完全正確、看起來毫無破綻。</p>
-  <div class="err-box">
-    <p><span class="x">✗</span> 勞基法只有 §84-1、§84-2 –　<strong style="color:var(--red-light);">「第 84 條之 3」根本不存在。</strong>AI 自己編的。</p>
-  </div>
-  <div class="info-box" style="margin-top:18px;">
-    <p style="font-weight:700;color:var(--amber);">我有沒有中招？差點。</p>
-    <p>但我建立了一套 AVS 系統 專門驗證正確度以及資料來源<br>這個系統的邏輯 是源自於程式碼的計算邏輯</p>
-  </div>
-</section>
-
-<!-- 25 ─ 所以，誰能駕馭 AI？ -->
-<section class="slide dark">
-  <h2 class="head" style="color:rgba(255,255,255,.97);margin-bottom:20px;">所以，誰能駕馭 AI？</h2>
-  <div style="background:rgba(255,255,255,.08);border-radius:14px;padding:28px 34px;max-width:700px;margin-bottom:28px;">
-    <p style="font-size:clamp(18px,2vw,28px);line-height:1.5;color:rgba(255,255,255,.9);">
-      <span style="color:var(--gold);font-weight:700;">懂一點 Python</span>（看得懂、抓得出錯）<br>
-      ＋<br>
-      <span style="color:var(--gold);font-weight:700;">熟稔於專業領域</span>（知道答案合不合理）<br>
-      ＝「指揮」AI
-    </p>
-  </div>
-  <p style="font-size:clamp(14px,1.2vw,18px);color:rgba(255,255,255,.5);margin-bottom:10px;">結論很簡單：</p>
-  <h2 class="head" style="color:var(--gold);font-size:clamp(22px,3vw,42px);">AI 不是讓我可以「不懂」，是讓我更需要「看得懂」。</h2>
-  <p class="lead">它幫我做得更快 – 但能不能用，還是我說了算。</p>
-</section>
-
-<!-- 26 ─ PART 4 divider -->
-<section class="slide dark-gradient divider">
-  <div class="pnum">4</div>
-  <div class="pcontent">
-    <div class="plabel-kicker">PART 4</div>
-    <div class="plabel">如果你也想開始</div>
-    <div class="psub">不是建議，是分享幾個我自己會用的笨方法。</div>
-  </div>
-</section>
-
-<!-- 27 ─ 如果是我，我會這樣開始 -->
-<section class="slide">
-  <h2 class="head"><span class="sec-dot"></span>如果是我，我會這樣開始</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <h4>挑一份「有資料的作業」真的跑一次</h4>
-        <p>與其把 Python 當成要考過的科目，我會找下次有資料的作業，自己用 pandas 跑、畫張圖出來。</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <h4>找一個「自己會好奇」的小題目</h4>
-        <p>像我會想知道：常騎的那條路到底多塞？拿真實資料做，比起照課本，我比較學得進去。</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <h4>把 AI 當助教，但我會「追問它」</h4>
-        <p>卡住我會問 AI，但會逼它解釋「為什麼這樣寫」。只複製貼上，我發現自己其實沒學到東西。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 28 ─ 學到什麼程度夠用？用什麼工具？ -->
-<section class="slide">
-  <h2 class="head"><span class="sec-dot"></span>學到什麼程度夠用？用什麼工具？</h2>
-  <div class="cards c2" style="max-width:1000px;">
-    <div class="card">
-      <h3>程度：先求「夠用」</h3>
-      <ul style="list-style:none;margin-top:14px;line-height:2;font-size:clamp(13px,1.1vw,16px);color:rgba(30,39,64,.7);">
-        <li>• 變數、迴圈、函式（基本功）</li>
-        <li>pandas 讀檔、篩選、分組統計</li>
-        <li>matplotlib 畫基本圖表</li>
-        <li>看得懂別人 / AI 寫的程式</li>
-        <li style="color:rgba(30,39,64,.45);margin-top:8px;">– 到這裡，你已經能做很多事了。</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>工具：免費就很夠</h3>
-      <ul style="list-style:none;margin-top:14px;line-height:2;font-size:clamp(13px,1.1vw,16px);color:rgba(30,39,64,.7);">
-        <li>• Google Colab — 免安裝、開瀏覽器就能寫</li>
-        <li>ChatGPT / Claude — 你的隨身助教</li>
-        <li>政府資料開放平台 — 免費交通資料</li>
-        <li>Kaggle — 練習資料集與範例</li>
-        <li style="color:rgba(30,39,64,.45);margin-top:8px;">– 全部免費，今天就能開始。</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- 29 ─ 番外：周全法律科技介紹 -->
-<section class="slide">
-  <p style="color:rgba(30,39,64,.45);font-size:clamp(14px,1.2vw,18px);margin-bottom:20px;">番外 – 順便聊聊我在做的東西</p>
-  <div class="product-row">
-    <div class="product-logo">
-      <div class="logo-small">CHOULEGAL</div>
-      <div class="logo-text">周 全</div>
-      <div class="logo-sub">法律科技</div>
-    </div>
-    <div class="product-info">
-      <h2>周全法律科技</h2>
-      <div class="tag">ChouLegal · 台灣法律科技</div>
-      <div class="slogan">一個人 + AI，把「搞懂法律」這件事，變成「算得出來」。</div>
-    </div>
-  </div>
-  <div class="cards c2" style="margin-top:28px;max-width:900px;">
-    <div class="card"><h3>民眾版 <span style="color:var(--gold);font-size:14px;font-weight:500;">免費</span></h3><p>給一般人 – 算清楚自己的法律權益</p></div>
-    <div class="card"><h3>專業版 <span style="color:rgba(30,39,64,.4);font-size:14px;font-weight:500;">給企業</span></h3><p>雇主合規系統 – 在出事前就把風險算出來</p></div>
-  </div>
-</section>
-
-<!-- 30 ─ 民眾版：其實你們現在就用得到 -->
-<section class="slide">
-  <h2 class="head"><span class="sec-dot"></span>民眾版：其實你們現在就用得到</h2>
-  <p class="lead" style="margin-bottom:22px;">完全免費、不用註冊。輸入幾個數字，就知道自己的權益值多少。</p>
-  <div class="cards c3" style="max-width:1000px;">
-    <div class="card">
-      <h3>打工 / 兼職</h3>
-      <p>被臨時砍班、加班費少給、離職資遣費算不算得對？</p>
-      <div style="margin-top:14px;text-align:center;"><span style="display:inline-block;padding:8px 24px;background:var(--ink-deep);color:#fff;border-radius:8px;font-size:14px;font-weight:500;">勞資權益</span></div>
-    </div>
-    <div class="card">
-      <h3>在外租屋</h3>
-      <p>押金被多扣、想提前解約 – 違約金到底該付多少？</p>
-      <div style="margin-top:14px;text-align:center;"><span style="display:inline-block;padding:8px 24px;background:var(--ink-deep);color:#fff;border-radius:8px;font-size:14px;font-weight:500;">租屋權益</span></div>
-    </div>
-    <div class="card">
-      <h3>網購 / 合約</h3>
-      <p>七天能不能退、健身房手機綁約想解約、被多收錢？</p>
-      <div style="margin-top:14px;text-align:center;"><span style="display:inline-block;padding:8px 24px;background:var(--ink-deep);color:#fff;border-radius:8px;font-size:14px;font-weight:500;">消費權益</span></div>
-    </div>
-  </div>
-  <div class="callout">choulegal.com　·　100% 免費，我不靠這個賺錢 – 只是覺得這些事不該只有付得起律師費的人才搞得懂。</div>
-</section>
-
-<!-- 31 ─ 專業版：給企業的法規合規系統 -->
-<section class="slide">
-  <h2 class="head"><span class="sec-dot"></span>專業版：給企業的「法規合規系統」</h2>
-  <p class="lead" style="margin-bottom:22px;">老闆、HR 最怕的不是不懂法，是「不知道自己已經違法」。</p>
-  <div class="cards c2" style="max-width:900px;">
-    <div class="card side-bar"><h3>投保薪資 / 高薪低報</h3><p>少報級距，背後是罰鍰甚至刑責</p></div>
-    <div class="card side-bar"><h3>加班費 / 工時</h3><p>排班超時、加班費沒給足的風險</p></div>
-    <div class="card side-bar"><h3>特休 / 資遣</h3><p>天數、結算金額一鍵試算</p></div>
-    <div class="card side-bar"><h3>法規異動偵測</h3><p>法條一改，系統主動提醒受影響的地方</p></div>
-  </div>
-  <p class="lead" style="margin-top:22px;">一樣 – 全部是 Python 算的、AI 幫忙寫的。沒有一個法務團隊，只有我一個人。</p>
-</section>
-
-<!-- 32 ─ 最後一句話 -->
-<section class="slide dark-bar" style="border-left-width:8px;">
-  <p class="lead" style="color:rgba(255,255,255,.45);margin-bottom:24px;">最後一句話</p>
-  <h1 class="title" style="font-size:clamp(30px,5vw,72px);color:var(--gold);">領域知識　×　Python　×　AI</h1>
-</section>
-
-<!-- 33 ─ 謝謝 & Q&A -->
-<section class="slide center">
-  <h1 class="title" style="font-size:clamp(48px,8vw,96px);margin-bottom:18px;">謝謝！</h1>
-  <p style="font-size:clamp(22px,3vw,40px);color:var(--gold);font-weight:500;margin-bottom:22px;">Q & A</p>
-  <p class="lead" style="text-align:center;max-width:40ch;">有什麼想問的 – 程式、AI、創業、踩過的坑，都可以。</p>
-</section>
-
+<main class="deck" id="deck" aria-label="成大簡報">
+  <img class="slide" id="slide" src="ncku-v2/slide-01.webp" alt="第 1 頁投影片">
 </main>
 
-<div class="hint">← → / 空白鍵翻頁 · F 全螢幕</div>
-<div class="chrome">
-  <div class="brandmark">周全 <small>ChouLegal</small></div>
+<div class="progress" aria-hidden="true"><div class="progress-bar" id="bar"></div></div>
+<button class="hit prev" id="prevHit" type="button" aria-label="上一頁"></button>
+<button class="hit next" id="nextHit" type="button" aria-label="下一頁"></button>
+
+<div class="chrome" id="chrome">
   <div class="counter"><span id="cur">01</span> / <span id="total">33</span></div>
+  <div class="actions">
+    <button class="control" id="prev" type="button" aria-label="上一頁">←</button>
+    <button class="control" id="next" type="button" aria-label="下一頁">→</button>
+    <button class="control" id="fullscreen" type="button" aria-label="切換全螢幕">⛶</button>
+  </div>
 </div>
+<div class="hint">← → / 空白鍵翻頁 · F 全螢幕</div>
 
 <script>
 (function(){
-  var slides=[].slice.call(document.querySelectorAll('.slide'));
-  var bar=document.getElementById('bar'),cur=document.getElementById('cur'),total=document.getElementById('total'),i=0;
-  total.textContent=String(slides.length).padStart(2,'0');
-  function pad(n){return String(n+1).padStart(2,'0');}
-  function go(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach(function(s,idx){s.classList.toggle('active',idx===i);});bar.style.width=(i/(slides.length-1)*100)+'%';cur.textContent=pad(i);location.hash=i?('#'+(i+1)):'';}
-  function next(){go(i+1);} function prev(){go(i-1);}
-  document.addEventListener('keydown',function(e){
-    switch(e.key){
-      case 'ArrowRight':case 'ArrowDown':case ' ':case 'PageDown':e.preventDefault();next();break;
-      case 'ArrowLeft':case 'ArrowUp':case 'PageUp':e.preventDefault();prev();break;
-      case 'Home':go(0);break; case 'End':go(slides.length-1);break;
-      case 'f':case 'F':if(!document.fullscreenElement){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();}else{document.exitFullscreen&&document.exitFullscreen();}break;
+  var total=33;
+  var slide=document.getElementById("slide");
+  var bar=document.getElementById("bar");
+  var cur=document.getElementById("cur");
+  var chrome=document.getElementById("chrome");
+  var prevButton=document.getElementById("prev");
+  var nextButton=document.getElementById("next");
+  var current=0;
+  var hideTimer;
+
+  function pad(value){return String(value).padStart(2,"0");}
+  function source(index){return "ncku-v2/slide-"+pad(index+1)+".webp";}
+  function preload(index){
+    if(index<0||index>=total)return;
+    var image=new Image();
+    image.src=source(index);
+  }
+  function showChrome(){
+    chrome.classList.add("visible");
+    clearTimeout(hideTimer);
+    hideTimer=setTimeout(function(){chrome.classList.remove("visible");},1800);
+  }
+  function go(index){
+    current=Math.max(0,Math.min(total-1,index));
+    slide.src=source(current);
+    slide.alt="第 "+(current+1)+" 頁投影片";
+    cur.textContent=pad(current+1);
+    bar.style.width=((current+1)/total*100)+"%";
+    prevButton.disabled=current===0;
+    nextButton.disabled=current===total-1;
+    history.replaceState(null,"",current?"#"+(current+1):location.pathname+location.search);
+    preload(current-1);
+    preload(current+1);
+    showChrome();
+  }
+  function next(){go(current+1);}
+  function prev(){go(current-1);}
+  function toggleFullscreen(){
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();
+    }else{
+      document.exitFullscreen&&document.exitFullscreen();
+    }
+  }
+
+  document.getElementById("prevHit").addEventListener("click",prev);
+  document.getElementById("nextHit").addEventListener("click",next);
+  prevButton.addEventListener("click",prev);
+  nextButton.addEventListener("click",next);
+  document.getElementById("fullscreen").addEventListener("click",toggleFullscreen);
+  document.addEventListener("mousemove",showChrome,{passive:true});
+  document.addEventListener("keydown",function(event){
+    switch(event.key){
+      case "ArrowRight":case "ArrowDown":case " ":case "PageDown":
+        event.preventDefault();next();break;
+      case "ArrowLeft":case "ArrowUp":case "PageUp":
+        event.preventDefault();prev();break;
+      case "Home":go(0);break;
+      case "End":go(total-1);break;
+      case "f":case "F":toggleFullscreen();break;
     }
   });
-  document.getElementById('deck').addEventListener('click',function(e){if(e.target.closest('pre,a'))return;e.shiftKey?prev():next();});
-  var x0=null;
-  addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
-  addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50){dx<0?next():prev();}x0=null;},{passive:true});
-  var start=parseInt((location.hash||'').replace('#',''),10);
-  go(isNaN(start)?0:start-1);
+
+  var startX=null;
+  addEventListener("touchstart",function(event){startX=event.touches[0].clientX;},{passive:true});
+  addEventListener("touchend",function(event){
+    if(startX===null)return;
+    var delta=event.changedTouches[0].clientX-startX;
+    if(Math.abs(delta)>50){delta<0?next():prev();}
+    startX=null;
+  },{passive:true});
+
+  var requested=parseInt((location.hash||"").slice(1),10);
+  go(Number.isFinite(requested)?requested-1:0);
 })();
 </script>
 </body>
