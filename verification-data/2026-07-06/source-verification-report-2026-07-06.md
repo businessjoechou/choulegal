@@ -4,16 +4,16 @@
 
 ## 查核結論
 
-本報告把正式產品線中的網頁檔案逐一列入，並依既有公開站查核資料、官方來源對照、本機檔案掃描結果分成「已查證／待確認／未查證」。沒有公開 crawl 或沒有官方來源對照的頁面，不列為已完成法源查核。
+本報告把正式產品線中的網頁檔案逐一列入，並依公開站查核資料、官方來源對照、本機檔案掃描結果分成「已查證／待確認／未查證」。沒有公開 crawl 或沒有官方來源對照的頁面，不列為已完成法源查核。
 
 - 逐頁檔案總數：367
-- 已查證：203
-- 待確認：38
+- 已查證：210
+- 待確認：31
 - 未查證：126
-- 公開站 crawl 頁數：141
+- 第1批補查：補上 19 筆法律常數官方來源，待確認頁面由 38 降為 31，已查證頁面由 203 增為 210。
 - 法條引用查核：2341 筆；已驗證 2311 筆；錯誤/需修正 30 筆；待人工法條查核 0 筆。
 - 司法院/憲法法庭引用查核：27 筆；已驗證 27 筆；待確認 0 筆。
-- 法律常數/計算資料：581 筆；官方來源已對照 150 筆；待補官方來源 201 筆；例題/計算輸入 162 筆；非法律常數 68 筆。
+- 法律常數/計算資料：581 筆；官方來源已對照 169 筆；待補官方來源 182 筆；例題/計算輸入 162 筆；非法律常數 68 筆。
 
 ## 狀態定義
 
@@ -26,7 +26,7 @@
 - 全國法規資料庫：法條原文與整部法規索引。
 - 司法院裁判書系統：判決、裁定、裁判字號。
 - 憲法法庭／大法官網站：憲判、釋字、憲法法庭資料。
-- 財政部、勞動部、健保署等主管機關公告：稅額、最低工資、投保級距、費率等計算常數。
+- 財政部、勞動部、健保署、教育部、交通部民航局、運動部、經濟部、衛福部食藥署等主管機關公告：稅額、最低工資、投保級距、費率、定型化契約應記載事項等計算常數。
 - 本機官方法規快取：`法律AI自檢系統/law-registry-cache/`，作為全國法規資料庫內容的離線比對資料。
 
 完整逐頁來源 URL 已放在 CSV 台帳：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/all_webpage_file_verification_ledger.csv`。
@@ -37,6 +37,7 @@
 - 待確認群：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/all_webpage_pending_confirmation.csv`
 - 未查證群：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/all_webpage_unverified.csv`
 - 錯誤/需修正群：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/all_webpage_error_or_needs_fix.csv`
+- 第1批人工補查來源：`/Users/chouchunyeh/Desktop/周全法律科技-ChouLegal/audit/public-source-audit-2026-07-06/manual_constant_source_overrides_2026-07-06_batch1.csv`
 
 錯誤/需修正群目前是「前次公開 crawl 曾發現錯誤引用，程式碼已修正或需修正，但尚待重新線上 crawl 複查」的頁面；我沒有把這些頁面歸入完全已查證。
 
@@ -50,7 +51,7 @@
 | 民眾版 | 周全主站 | 9 | 1 | 8 | 18 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 29 | 15 | 9 | 53 |
 | 民眾版 | 民眾入口 | 5 | 0 | 0 | 5 |
-| 民眾版 | 消費爭議權益計算平台 | 32 | 10 | 1 | 43 |
+| 民眾版 | 消費爭議權益計算平台 | 39 | 3 | 1 | 43 |
 | 民眾版 | 租賃權益計算平台 | 23 | 1 | 2 | 26 |
 
 ## 完整逐頁清單
@@ -66,27 +67,27 @@
 | 民眾版 | 消費爭議權益計算平台 | 消費爭議存證信函產生器 — 訂金／鑑賞期／瑕疵／退費｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/consumer-letter.html | https://consumer.choulegal.com/consumer-letter.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 消費爭議權益計算平台 | 定型化契約總診斷（消保法 §11~§17 全流程）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/contract-master.html | https://consumer.choulegal.com/contract-master.html | 8 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 七天鑑賞期試算（消保法 §19）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/cooling-off.html | https://consumer.choulegal.com/cooling-off.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 消費爭議權益計算平台 | 補習班退費試算（短期補習班定型化契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/cram-school.html | https://consumer.choulegal.com/cram-school.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=24<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=252 | 待確認 | 法律常數/金額/比例有 10 筆尚待補官方來源。 |
+| 民眾版 | 消費爭議權益計算平台 | 補習班退費試算（短期補習班定型化契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/cram-school.html | https://consumer.choulegal.com/cram-school.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第1批補查已補 5 筆常數官方來源；本頁未剩待補來源或待修正引用。 |
 | 民眾版 | 消費爭議權益計算平台 | 信用卡盜刷免責試算（24 小時黃金期）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/credit-card-fraud.html | https://consumer.choulegal.com/credit-card-fraud.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 消費爭議權益計算平台 | 跨境網購爭議處理（信用卡爭議款）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/cross-border-purchase.html | https://consumer.choulegal.com/cross-border-purchase.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=19 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 解約 vs 減價 vs 換貨 決策（民法 §359）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/defect-remedy.html | https://consumer.choulegal.com/defect-remedy.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 訂金退還主張（民法 §249）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/deposit.html | https://consumer.choulegal.com/deposit.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 消費爭議權益計算平台 | 健身房終止契約退費（健身中心契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/fitness.html | https://consumer.choulegal.com/fitness.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=17 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
-| 民眾版 | 消費爭議權益計算平台 | 航班延誤／取消求償（國內線應記載事項 / 民航法 §47）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/flight-delay.html | https://consumer.choulegal.com/flight-delay.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=4<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=47 | 待確認 | 法律常數/金額/比例有 10 筆尚待補官方來源。 |
+| 民眾版 | 消費爭議權益計算平台 | 健身房終止契約退費（健身中心契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/fitness.html | https://consumer.choulegal.com/fitness.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=17<br>https://law.sports.gov.tw/LawContent.aspx?id=FL042360 | 已查證 | 第1批補查已補 1 筆常數官方來源；本頁未剩待補來源或待修正引用。 |
+| 民眾版 | 消費爭議權益計算平台 | 航班延誤／取消求償（國內線應記載事項 / 民航法 §47）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/flight-delay.html | https://consumer.choulegal.com/flight-delay.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第1批補查已補 5 筆常數官方來源；本頁未剩待補來源或待修正引用。 |
 | 民眾版 | 消費爭議權益計算平台 | 食品安全求償（食安法 §56）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/food-safety.html | https://consumer.choulegal.com/food-safety.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 不得記載事項黑名單檢查（消保法 §17 II）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/forbidden-clauses.html | https://consumer.choulegal.com/forbidden-clauses.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=12<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=17 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 網路詐騙退費路徑｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/fraud-refund.html | https://consumer.choulegal.com/fraud-refund.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
-| 民眾版 | 消費爭議權益計算平台 | 生前殯葬契約退費（生前殯葬服務契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/funeral.html | https://consumer.choulegal.com/funeral.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=51 | 待確認 | 法律常數/金額/比例有 4 筆尚待補官方來源。 |
+| 民眾版 | 消費爭議權益計算平台 | 生前殯葬契約退費（生前殯葬服務契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/funeral.html | https://consumer.choulegal.com/funeral.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=51<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0020040&flno=51 | 待確認 | 第1批補查已補 1 筆常數官方來源；剩餘待補 1 筆。 |
 | 民眾版 | 消費爭議權益計算平台 | ConsumerPro｜消費爭議事件包與權益工具 | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/index.html | https://consumer.choulegal.com/ | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 消費爭議權益計算平台 | 商品／食品標示不實求償（消保法 §22 / 食安法 §28）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/label-misrepresentation.html | https://consumer.choulegal.com/label-misrepresentation.html | 10 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 消費爭議權益計算平台 | 民事訴訟裁判費試算（民訴 §77-13）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/litigation-fee.html | https://consumer.choulegal.com/litigation-fee.html | 6 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 8 筆尚待補官方來源。 |
+| 民眾版 | 消費爭議權益計算平台 | 民事訴訟裁判費試算（民訴 §77-13）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/litigation-fee.html | https://consumer.choulegal.com/litigation-fee.html | 6 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第1批補查已補 4 筆常數官方來源；本頁未剩待補來源或待修正引用。 |
 | 民眾版 | 消費爭議權益計算平台 | 登入周全帳號｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/login.html | https://consumer.choulegal.com/login.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 民眾版 | 消費爭議權益計算平台 | 美容／醫美療程退費爭議（美容與瘦身美容定型化契約）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/medical-beauty.html | https://consumer.choulegal.com/medical-beauty.html | 8 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
-| 民眾版 | 消費爭議權益計算平台 | 手機綁約解約違約金試算（行動通信定型化契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/mobile-contract.html | https://consumer.choulegal.com/mobile-contract.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=11 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
+| 民眾版 | 消費爭議權益計算平台 | 美容／醫美療程退費爭議（美容與瘦身美容定型化契約）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/medical-beauty.html | https://consumer.choulegal.com/medical-beauty.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第1批補查已補 1 筆常數官方來源；本頁未剩待補來源或待修正引用。 |
+| 民眾版 | 消費爭議權益計算平台 | 手機綁約解約違約金試算（行動通信定型化契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/mobile-contract.html | https://consumer.choulegal.com/mobile-contract.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=11 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
 | 民眾版 | 消費爭議權益計算平台 | 線上遊戲爭議（線上遊戲定型化契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/online-game.html | https://consumer.choulegal.com/online-game.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 消費爭議權益計算平台 | 個資外洩求償（個資法 §29）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/pdpa-breach.html | https://consumer.choulegal.com/pdpa-breach.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
+| 民眾版 | 消費爭議權益計算平台 | 個資外洩求償（個資法 §29）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/pdpa-breach.html | https://consumer.choulegal.com/pdpa-breach.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第1批補查已補 1 筆常數官方來源；本頁未剩待補來源或待修正引用。 |
 | 民眾版 | 消費爭議權益計算平台 | 預售屋糾紛權益（預售屋買賣應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/presale-house.html | https://consumer.choulegal.com/presale-house.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=17 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 消費爭議權益計算平台 | 網路標錯價爭議（民法 §86 / §88 / §153）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/price-mistake.html | https://consumer.choulegal.com/price-mistake.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 6 筆尚待補官方來源。 |
+| 民眾版 | 消費爭議權益計算平台 | 網路標錯價爭議（民法 §86 / §88 / §153）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/price-mistake.html | https://consumer.choulegal.com/price-mistake.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 3 筆待補官方來源。 |
 | 民眾版 | 消費爭議權益計算平台 | 隱私權政策｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/privacy.html | https://consumer.choulegal.com/privacy.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 消費爭議權益計算平台 | 懲罰性賠償試算（消保法 §51）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/punitive.html | https://consumer.choulegal.com/punitive.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=51 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 修繕承攬瑕疵主張（民法 §492–§499）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/repair-defect.html | https://consumer.choulegal.com/repair-defect.html | 12 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
@@ -97,7 +98,7 @@
 | 民眾版 | 消費爭議權益計算平台 | 使用者條款｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/terms.html | https://consumer.choulegal.com/terms.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=365<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=51 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 旅遊契約取消手續費（國外旅遊契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/tour.html | https://consumer.choulegal.com/tour.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=17 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 中古車買賣糾紛（中古汽車買賣應記載事項 + 民法 §354）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/used-car.html | https://consumer.choulegal.com/used-car.html | 6 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 消費爭議權益計算平台 | 禮券／儲值 業者倒閉求償（履約保證／信託）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/voucher-insolvency.html | https://consumer.choulegal.com/voucher-insolvency.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
+| 民眾版 | 消費爭議權益計算平台 | 禮券／儲值 業者倒閉求償（履約保證／信託）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/voucher-insolvency.html | https://consumer.choulegal.com/voucher-insolvency.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 第1批補查已補 1 筆常數官方來源；本頁未剩待補來源或待修正引用。 |
 | 民眾版 | 消費爭議權益計算平台 | 瑕疵擔保時效查詢（民法 §365）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/warranty-period.html | https://consumer.choulegal.com/warranty-period.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 消費爭議權益計算平台 | 婚宴／辦桌取消退定金試算（訂席外燴定型化契約應記載事項）｜ConsumerPro | /Users/chouchunyeh/Desktop/choulegal/apps/consumerpro/wedding-banquet.html | https://consumer.choulegal.com/wedding-banquet.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=17 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 商業版 5 AI Pro | ETP 企業工作台 | 建立 Workspace — 周全 | /Users/chouchunyeh/Desktop/choulegal/apps/etp/app/(auth)/onboarding/page.tsx | ETP_PAGE:/onboarding | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
@@ -290,38 +291,38 @@
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 找不到頁面 404｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/404.html | https://inheritance.choulegal.com/404.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 車禍損害賠償試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/accident.html | https://inheritance.choulegal.com/accident.html | 13 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 我的帳號｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/account.html | https://inheritance.choulegal.com/account.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 贍養費試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/alimony.html | https://inheritance.choulegal.com/alimony.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 4 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 贍養費試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/alimony.html | https://inheritance.choulegal.com/alimony.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 2 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 脫產偵測模組｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/asset-detection.html | https://inheritance.choulegal.com/asset-detection.html | 14 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 登入中…｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/auth-callback.html | https://inheritance.choulegal.com/auth-callback.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 中華民國遺產計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/calculator.html | https://inheritance.choulegal.com/calculator.html | 23 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 前次公開 crawl 發現 10 筆錯誤引用；程式碼已修正者仍需重新線上 crawl 複查。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 照顧者繼承特別貢獻試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/caregiver.html | https://inheritance.choulegal.com/caregiver.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 中華民國遺產計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/calculator.html | https://inheritance.choulegal.com/calculator.html | 23 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 照顧者繼承特別貢獻試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/caregiver.html | https://inheritance.choulegal.com/caregiver.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 客戶案件管理｜InheritancePro — 已整合至期限管理儀表板 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/case-manager.html | https://inheritance.choulegal.com/case-manager.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 子女扶養費計算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/child-support.html | https://inheritance.choulegal.com/child-support.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承期限管理儀表板｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/deadline-dashboard.html | https://inheritance.choulegal.com/deadline-dashboard.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 離婚協議書草稿產生器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/divorce-agreement.html | https://inheritance.choulegal.com/divorce-agreement.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 離婚損害賠償精算｜侵害配偶權求償｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/divorce-damages.html | https://inheritance.choulegal.com/divorce-damages.html | 15 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 離婚損害賠償精算｜侵害配偶權求償｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/divorce-damages.html | https://inheritance.choulegal.com/divorce-damages.html | 15 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 遺產稅精算工作底稿｜已整合至遺產繼承計算器 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/estate-tax-detail.html | https://inheritance.choulegal.com/estate-tax-detail.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 特留分侵害試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/forced-share.html | https://inheritance.choulegal.com/forced-share.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 轉跳中... | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/gift-planner.html | https://inheritance.choulegal.com/gift-planner.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 贈與稅試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/gift-tax.html | https://inheritance.choulegal.com/gift-tax.html | 14 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 14 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 贈與稅試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/gift-tax.html | https://inheritance.choulegal.com/gift-tax.html | 14 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 7 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | google40bcdb71d64c63a5 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/google40bcdb71d64c63a5.html | https://inheritance.choulegal.com/google40bcdb71d64c63a5.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | InheritancePro｜民法財產權事件包與工具 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/index.html | https://inheritance.choulegal.com/ | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 轉跳中... | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/infidelity-damages.html | https://inheritance.choulegal.com/infidelity-damages.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 遺產分割協議書產生器（通用骨架）｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inheritance-agreement.html | https://inheritance.choulegal.com/inheritance-agreement.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承流程時間軸｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inheritance-timeline.html | https://inheritance.choulegal.com/inheritance-timeline.html | 21 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承房貸陷阱試算｜賣屋前一定要知道的 146 萬｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inherited-property-trap.html | https://inheritance.choulegal.com/inherited-property-trap.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 32 筆尚待補官方來源。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 意外事故保險金合計試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-accident-combined.html | https://inheritance.choulegal.com/insurance-accident-combined.html | 26 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 6 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承流程時間軸｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inheritance-timeline.html | https://inheritance.choulegal.com/inheritance-timeline.html | 21 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承房貸陷阱試算｜賣屋前一定要知道的 146 萬｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/inherited-property-trap.html | https://inheritance.choulegal.com/inherited-property-trap.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 16 筆待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 意外事故保險金合計試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-accident-combined.html | https://inheritance.choulegal.com/insurance-accident-combined.html | 26 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 3 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 轉跳中... | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-amt.html | https://inheritance.choulegal.com/insurance-amt.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 保單受益人順位分配試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-beneficiary-order.html | https://inheritance.choulegal.com/insurance-beneficiary-order.html | 10 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 保單受益人順位分配試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-beneficiary-order.html | https://inheritance.choulegal.com/insurance-beneficiary-order.html | 10 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 保單價值準備金離婚財產分配計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-divorce.html | https://inheritance.choulegal.com/insurance-divorce.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 壽險保單稅務風險評估｜AMT + 遺產稅 + 特留分｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-estate-risk.html | https://inheritance.choulegal.com/insurance-estate-risk.html | 17 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 16 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 壽險保單稅務風險評估｜AMT + 遺產稅 + 特留分｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-estate-risk.html | https://inheritance.choulegal.com/insurance-estate-risk.html | 17 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 8 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 轉跳中... | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-forced-share.html | https://inheritance.choulegal.com/insurance-forced-share.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 保單要保人變更贈與稅計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-gift-tax.html | https://inheritance.choulegal.com/insurance-gift-tax.html | 16 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 前次公開 crawl 發現 2 筆錯誤引用；程式碼已修正者仍需重新線上 crawl 複查。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 保單借款 vs 解約決策器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-loan-vs-surrender.html | https://inheritance.choulegal.com/insurance-loan-vs-surrender.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 38 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 保單要保人變更贈與稅計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-gift-tax.html | https://inheritance.choulegal.com/insurance-gift-tax.html | 16 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 5 筆待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 保單借款 vs 解約決策器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-loan-vs-surrender.html | https://inheritance.choulegal.com/insurance-loan-vs-surrender.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 19 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 要保人過世保單處理決策器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/insurance-policyholder-death.html | https://inheritance.choulegal.com/insurance-policyholder-death.html | 12 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 法定利率利息計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/interest-calc.html | https://inheritance.choulegal.com/interest-calc.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 22 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 法定利率利息計算器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/interest-calc.html | https://inheritance.choulegal.com/interest-calc.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 11 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | InheritancePro｜請選擇您的身份 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/landing.html | https://inheritance.choulegal.com/landing.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 試算分析依據｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/legal-basis.html | https://inheritance.choulegal.com/legal-basis.html | 29 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 16 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 試算分析依據｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/legal-basis.html | https://inheritance.choulegal.com/legal-basis.html | 29 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 8 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 限定繼承債務試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/limited-inheritance.html | https://inheritance.choulegal.com/limited-inheritance.html | 8 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 訴訟強度評估｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/litigation-strength.html | https://inheritance.choulegal.com/litigation-strength.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 登入｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/login.html | https://inheritance.choulegal.com/login.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
@@ -333,7 +334,7 @@
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 婚後財產判斷器｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/property-check.html | https://inheritance.choulegal.com/property-check.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 房地合一稅試算（繼承後出售）｜InheritancePro — 已整合至不動產繼承稅務試算 | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/property-sale-tax.html | https://inheritance.choulegal.com/property-sale-tax.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 剩餘財產差額分配請求權｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/property-split.html | https://inheritance.choulegal.com/property-split.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 民法財產權／繼承贈與計算平台 | 不動產繼承稅務試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/real-estate.html | https://inheritance.choulegal.com/real-estate.html | 18 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 26 筆尚待補官方來源。 |
+| 民眾版 | 民法財產權／繼承贈與計算平台 | 不動產繼承稅務試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/real-estate.html | https://inheritance.choulegal.com/real-estate.html | 18 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 13 筆待補官方來源。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 繼承與財產權自救指南 — 遇到這些情況怎麼辦｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/self-help.html | https://inheritance.choulegal.com/self-help.html | 6 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 和解金額試算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/settlement-calc.html | https://inheritance.choulegal.com/settlement-calc.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 民法財產權／繼承贈與計算平台 | 股票繼承估算｜InheritancePro | /Users/chouchunyeh/Desktop/choulegal/apps/inheritancepro/stock-inheritance.html | https://inheritance.choulegal.com/stock-inheritance.html | 6 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
@@ -343,43 +344,43 @@
 | 民眾版 | 勞動權益計算平台 | 找不到頁面 404｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/404.html | https://labor.choulegal.com/404.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 勞動權益計算平台 | 我的帳號｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/account.html | https://labor.choulegal.com/account.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 勞動權益計算平台 | 特休未休折現計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/annual-leave.html | https://labor.choulegal.com/annual-leave.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=38 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 勞動權益計算平台 | 平均薪資精算器｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/avg-wage.html | https://labor.choulegal.com/avg-wage.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 8 筆尚待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 平均薪資精算器｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/avg-wage.html | https://labor.choulegal.com/avg-wage.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 4 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 勞基法合規自檢｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/compliance-audit.html | https://labor.choulegal.com/compliance-audit.html | 19 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 資遣合法性檢查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/dismissal-checklist.html | https://labor.choulegal.com/dismissal-checklist.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 勞資爭議調解流程導引｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/dispute-guide.html | https://labor.choulegal.com/dispute-guide.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 勞動權益計算平台 | 人事成本計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/hr-cost.html | https://labor.choulegal.com/hr-cost.html | 17 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 20 筆尚待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 人事成本計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/hr-cost.html | https://labor.choulegal.com/hr-cost.html | 17 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 10 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | LaborPro｜勞基法事件包與權益工具 | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/index.html | https://labor.choulegal.com/ | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
 | 民眾版 | 勞動權益計算平台 | 我被高薪低報了嗎？投保薪資自查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/insurance-underreport.html | https://labor.choulegal.com/insurance-underreport.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0050001&flno=14 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 勞動權益計算平台 | 勞保費用與給付試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/labor-insurance.html | https://labor.choulegal.com/labor-insurance.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 44 筆尚待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 勞保費用與給付試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/labor-insurance.html | https://labor.choulegal.com/labor-insurance.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 22 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 勞工自保存證信函產生器 — 資遣費／工資加班費／特休／職災｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/labor-letter.html | https://labor.choulegal.com/labor-letter.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 勞動權益計算平台 | 全假別權益計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/leave-calc.html | https://labor.choulegal.com/leave-calc.html | 11 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 登入｜LaborPro — 周全法律科技 | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/login.html | https://labor.choulegal.com/login.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
-| 民眾版 | 勞動權益計算平台 | 最低薪資合規檢查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/min-wage.html | https://labor.choulegal.com/min-wage.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 最低薪資合規檢查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/min-wage.html | https://labor.choulegal.com/min-wage.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 競業禁止合法性分析｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/non-compete.html | https://labor.choulegal.com/non-compete.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 離職預告期計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/notice-calc.html | https://labor.choulegal.com/notice-calc.html | 7 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 加班費逐筆結算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/overtime-detail.html | https://labor.choulegal.com/overtime-detail.html | 13 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 加班費計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/overtime.html | https://labor.choulegal.com/overtime.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 勞動權益計算平台 | 育嬰假與津貼試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/parental-leave.html | https://labor.choulegal.com/parental-leave.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 14 筆尚待補官方來源。 |
-| 民眾版 | 勞動權益計算平台 | 薪資單檢查器｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/payslip-checker.html | https://labor.choulegal.com/payslip-checker.html | 12 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 14 筆尚待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 育嬰假與津貼試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/parental-leave.html | https://labor.choulegal.com/parental-leave.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 7 筆待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 薪資單檢查器｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/payslip-checker.html | https://labor.choulegal.com/payslip-checker.html | 12 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 7 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 勞基法違規罰鍰速查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/penalty-lookup.html | https://labor.choulegal.com/penalty-lookup.html | 29 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 勞動權益計算平台 | 退休金請領計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/pension-claim.html | https://labor.choulegal.com/pension-claim.html | 22 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 前次公開 crawl 發現 2 筆錯誤引用；程式碼已修正者仍需重新線上 crawl 複查。 |
-| 民眾版 | 勞動權益計算平台 | 勞退提撥試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/pension.html | https://labor.choulegal.com/pension.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 8 筆尚待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 退休金請領計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/pension-claim.html | https://labor.choulegal.com/pension-claim.html | 22 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 8 筆待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 勞退提撥試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/pension.html | https://labor.choulegal.com/pension.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 4 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 隱私權政策｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/privacy.html | https://labor.choulegal.com/privacy.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 勞動權益計算平台 | 勞動權益受損自救指南 — 遇到這些情況怎麼辦｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/self-help.html | https://labor.choulegal.com/self-help.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 勞動權益計算平台 | 離職結算檢查表｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/settlement-calc.html | https://labor.choulegal.com/settlement-calc.html | 26 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 10 筆尚待補官方來源。 |
+| 民眾版 | 勞動權益計算平台 | 離職結算檢查表｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/settlement-calc.html | https://labor.choulegal.com/settlement-calc.html | 26 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 5 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 資遣費計算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/severance.html | https://labor.choulegal.com/severance.html | 11 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 解僱成本估算機｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/termination-cost.html | https://labor.choulegal.com/termination-cost.html | 27 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 前次公開 crawl 發現 10 筆錯誤引用；程式碼已修正者仍需重新線上 crawl 複查。 |
 | 民眾版 | 勞動權益計算平台 | 使用者條款｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/terms.html | https://labor.choulegal.com/terms.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 勞動權益計算平台 | 薪資認定分析器｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/wage-analysis.html | https://labor.choulegal.com/wage-analysis.html | 12 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 勞動權益計算平台 | 工時合規檢查｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/work-hours.html | https://labor.choulegal.com/work-hours.html | 15 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 勞動權益計算平台 | 職災補償試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/work-injury.html | https://labor.choulegal.com/work-injury.html | 17 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 前次公開 crawl 發現 36 筆錯誤引用；程式碼已修正者仍需重新線上 crawl 複查。 |
+| 民眾版 | 勞動權益計算平台 | 職災補償試算｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/work-injury.html | https://labor.choulegal.com/work-injury.html | 17 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 7 筆待補官方來源。 |
 | 民眾版 | 勞動權益計算平台 | 不當解雇分析｜LaborPro | /Users/chouchunyeh/Desktop/choulegal/apps/laborpro/wrongful-dismissal.html | https://labor.choulegal.com/wrongful-dismissal.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 周全帳號與資料｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/account.html | https://rental.choulegal.com/account.html | 不適用（未偵測到需查證法源） | 已查證 | 本機檔案已盤點，未偵測法律法源、裁判字號或法律計算資料。 |
 | 民眾版 | 租賃權益計算平台 | 租約違法條款體檢（這些條款其實無效）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/contract-clause-check.html | https://rental.choulegal.com/contract-clause-check.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 漏水／壁癌／凶宅未告知，房客能主張什麼？｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/defect.html | https://rental.choulegal.com/defect.html | 5 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 押金上限與退租返還試算（土地法 §99／租賃專法 §7）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/deposit-cap.html | https://rental.choulegal.com/deposit-cap.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=99<br>https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060125&flno=7 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 退租押金扣抵界線檢查（押金被亂扣？）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/deposit-deduction.html | https://rental.choulegal.com/deposit-deduction.html | 3 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
-| 民眾版 | 租賃權益計算平台 | 租屋糾紛自救指南 — 遇到這些情況怎麼辦｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/dispute-guide.html | https://rental.choulegal.com/dispute-guide.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 2 筆尚待補官方來源。 |
+| 民眾版 | 租賃權益計算平台 | 租屋糾紛自救指南 — 遇到這些情況怎麼辦｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/dispute-guide.html | https://rental.choulegal.com/dispute-guide.html | 9 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 1 筆待補官方來源。 |
 | 民眾版 | 租賃權益計算平台 | 租屋爭議該走哪條路？（調解/小額訴訟/支付命令）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/dispute-router.html | https://rental.choulegal.com/dispute-router.html | 4 個官方來源；完整 URL 見 CSV 台帳 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 提前解約違約金試算（定型化契約／租賃專法 §11）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/early-termination.html | https://rental.choulegal.com/early-termination.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060125&flno=11 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 租賃權益計算平台 | 房東超收電費退費試算（電費新制）｜RentalPro | /Users/chouchunyeh/Desktop/choulegal/apps/rentalpro/electricity-overcharge.html | https://rental.choulegal.com/electricity-overcharge.html | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=56-1 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
@@ -407,7 +408,7 @@
 | 民眾版 | 周全主站 | AVS 驗證工具 — AI 推理軌跡四階段確定性驗算 | choulegal-site/avs-verify.html | https://choulegal.com/avs-verify.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 周全主站 | AVS — AI Verification Standard · AI 計算自檢系統 by ChouLegal | choulegal-site/avs.html | https://choulegal.com/avs.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 周全主站 | 法律教育平台 — 法律科普、國考與轉學考資料庫 | choulegal-site/education.html | https://choulegal.com/education.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
-| 民眾版 | 周全主站 | 法律指南｜周全法律科技 — 看得懂的中華民國法律 | choulegal-site/guide.html | https://choulegal.com/guide.html | 23 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例有 8 筆尚待補官方來源。 |
+| 民眾版 | 周全主站 | 法律指南｜周全法律科技 — 看得懂的中華民國法律 | choulegal-site/guide.html | https://choulegal.com/guide.html | 23 個官方來源；完整 URL 見 CSV 台帳 | 待確認 | 法律常數/金額/比例尚有 4 筆待補官方來源。 |
 | 民眾版 | 周全主站 | 周全 ChouLegal — 免費法律工具與企業合規服務 | choulegal-site/index.html | https://choulegal.com/ | https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030020&flno=12 | 已查證 | 公開頁已納入官方來源查核；未見待修正或待補來源項目。 |
 | 民眾版 | 周全主站 | LAVS — Legal AI Verification Standard · 法律 AI 自檢系統 by ChouLegal | choulegal-site/lavs.html | https://choulegal.com/lavs.html | 未建立官方來源對照 | 未查證 | 本機檔案含法律/權益/計算語彙，但未納入本次公開來源查核。 |
 | 民眾版 | 周全主站 | 為什麼做這件事 — 周全 ChouLegal | choulegal-site/manifesto.html | https://choulegal.com/manifesto.html | 不適用（未偵測到需查證法源） | 已查證 | 公開頁已掃描，未偵測需引用官方法源的法條、裁判或法律常數。 |
@@ -427,11 +428,9 @@
 
 ## 待處理清單
 
-以下是下一輪最該處理的分類：
-
-- 待確認：38 個檔案，多數原因是法律常數/金額/比例還缺主管機關來源，或前次錯誤引用已修但尚待重新線上複查。
+- 待確認：31 個檔案，多數原因是法律常數/金額/比例還缺主管機關來源，或前次錯誤引用已修但尚待重新線上複查。
 - 未查證：126 個檔案，多數是 ETP 後台/動態頁或 AI 官網公開 crawl 未取得正文。
-- 封存/備份 HTML 未列入正式產品線小計：101 個；若要查歷史版本，應另開「封存版查核」。
+- 第1批補查後仍保留待確認的項目，不以推論或非官方來源轉為已查證。
 
 ## 完整官方來源 URL 附錄
 
@@ -441,6 +440,7 @@
 - https://cons.judicial.gov.tw/docdata.aspx?fid=100&id=310972
 - https://cons.judicial.gov.tw/docdata.aspx?fid=38&id=310013
 - https://cons.judicial.gov.tw/docdata.aspx?fid=38&id=349244
+- https://edu.law.moe.gov.tw/LawContent.aspx?id=GL001234
 - https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPAA%2c100%2c%e5%88%a4%2c574%2c20110421%2c1&ot=in
 - https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPHV%2c107%2c%e5%ae%b6%e4%b8%8a%2c186%2c20181217%2c2&ot=in
 - https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPSM%2c99%2c%e5%8f%b0%e4%b8%8a%2c1892%2c20100331&ot=in
@@ -456,6 +456,7 @@
 - https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPSV%2c55%2c%e5%8f%b0%e4%b8%8a%2c2053%2c19660811%2c1&ot=in
 - https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPSV%2c68%2c%e5%8f%b0%e4%b8%8a%2c3792%2c19791214%2c1&ot=in
 - https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPSV%2c91%2c%e5%8f%b0%e4%b8%8a%2c556%2c20020328&ot=in
+- https://law.moea.gov.tw/LawContent.aspx?id=GL000996
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=100
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1017
@@ -646,6 +647,7 @@
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0000001&flno=315-1
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0000001&flno=356
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0000001&flno=80
+- https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0020040&flno=51
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0030006&flno=48
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=100
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=26
@@ -725,6 +727,7 @@
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0390067&flno=2
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0020004&flno=2
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0020024&flno=10
+- https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=28
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070001&flno=9
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080011&flno=9
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0150002&flno=21
@@ -896,7 +899,10 @@
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0050001&flno=59
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0050001&flno=65-1
 - https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0050001&flno=72
+- https://law.sports.gov.tw/LawContent.aspx?id=FL042360
 - https://laws.mol.gov.tw/news.aspx?msgid=6726
+- https://www.caa.gov.tw/Article.aspx?a=1395&lang=1
+- https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f637418305121255264&type=1
 - https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=e4170c62974c4c7c9fa78c24c9fcb130
 - https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=f2a148bdd1614850be9fa56df8cc9d5c
 - https://www.mol.gov.tw/1607/1632/1633/84947/post
