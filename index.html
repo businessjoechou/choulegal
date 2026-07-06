@@ -9,12 +9,12 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周全 ChouLegal — 周全法律科技</title>
-<meta name="description" content="周全法律科技。民眾版（免費法律工具）＋ 周全專業版（HR 合規、勞資爭議、消費爭議三系統，內建 AI 助手）。每一筆數字都附法源。">
+<title>周全 ChouLegal — 法律科技、合規自檢與法律教育平台</title>
+<meta name="description" content="周全法律科技整理民眾法律工具、專業版 AI 法務與合規作業、法律教育資料庫。生活法律、企業合規與法律學習，都回到法源、計算式與可追溯依據。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://choulegal.com/">
-<meta property="og:title" content="周全 ChouLegal — 周全法律科技">
-<meta property="og:description" content="民眾版 + 周全專業版。HR 合規、勞資爭議、消費爭議三系統內建 AI 助手。每一筆數字都附法源。">
+<meta property="og:title" content="周全 ChouLegal — 法律科技、合規自檢與法律教育平台">
+<meta property="og:description" content="周全法律科技整理民眾版、專業版與法律教育資料庫。生活法律、企業合規與法律學習，都回到法源、計算式與可追溯依據。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choulegal.com/">
 <meta property="og:site_name" content="周全 ChouLegal">
@@ -26,7 +26,7 @@
 <meta property="og:image:alt" content="周全 ChouLegal">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="周全 ChouLegal">
-<meta name="twitter:description" content="民眾版 + 周全專業版。HR 合規、勞資爭議、消費爭議三系統內建 AI 助手。">
+<meta name="twitter:description" content="民眾版、專業版與法律教育資料庫，整理生活法律、企業合規與法律學習的可追溯依據。">
 <meta name="twitter:image" content="https://choulegal.com/og-image.png">
 <script type="application/ld+json">
 {
@@ -36,7 +36,7 @@
   "alternateName": "ChouLegal",
   "url": "https://choulegal.com/",
   "logo": "https://choulegal.com/icon-512.png",
-  "description": "周全法律科技。周全｜民眾版（給所有台灣人免費使用的法律工具）；周全專業版（HR 系統、勞資爭議處理系統、消費爭議處理系統三大產品，內建 AI 助手；每一筆數字都附法源）。"
+  "description": "周全法律科技整理民眾法律工具、專業版 AI 法務與合規作業、法律教育資料庫。生活法律、企業合規與法律學習，都回到法源、計算式與可追溯依據。"
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -258,16 +258,16 @@
   /* ── Product grid (Apple cards, 2-col) ── */
   .grid-products {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
-  @media (max-width: 820px) { .grid-products { grid-template-columns: 1fr; gap: 18px; } }
+  @media (max-width: 1040px) { .grid-products { grid-template-columns: 1fr; gap: 18px; } }
 
   .product {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 460px;
+    min-height: 500px;
     padding: 44px 40px 36px;
     border-radius: 24px;
     overflow: hidden;
@@ -302,6 +302,9 @@
   .product:hover::before { opacity: 1; }
   .product:nth-child(2)::before {
     background: radial-gradient(120% 70% at 50% 0%, rgba(125,211,252,0.10), transparent 60%);
+  }
+  .product:nth-child(3)::before {
+    background: radial-gradient(120% 70% at 50% 0%, rgba(134,239,172,0.10), transparent 60%);
   }
 
   .product-eyebrow {
@@ -351,6 +354,10 @@
     line-height: 1.8;
     margin-bottom: 24px;
   }
+  .product-desc strong {
+    color: rgba(255,255,255,0.86);
+    font-weight: 500;
+  }
   .product-meta {
     position: relative;
     display: flex;
@@ -390,6 +397,99 @@
   }
   .product:hover .product-cta { color: #fef3c7; }
   .product:hover .product-cta-arrow { transform: translateX(5px); }
+
+  /* ── Professional suite ── */
+  .suite-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .suite-layout { grid-template-columns: 1fr; gap: 28px; } }
+  .suite-rail {
+    position: sticky;
+    top: 96px;
+    padding-top: 8px;
+  }
+  @media (max-width: 920px) { .suite-rail { position: static; } }
+  .suite-map {
+    display: grid;
+    gap: 14px;
+  }
+  .suite-module {
+    position: relative;
+    padding: 24px 24px 22px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.025);
+    overflow: hidden;
+  }
+  .suite-module::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: linear-gradient(180deg, rgba(253,230,138,0.9), rgba(125,211,252,0.4));
+    opacity: 0.78;
+  }
+  .suite-module h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 9px;
+    color: rgba(255,255,255,0.96);
+  }
+  .suite-module p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.62);
+  }
+  .suite-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .suite-tags span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: rgba(253,230,138,0.82);
+    padding: 5px 9px;
+    border: 1px solid rgba(253,230,138,0.18);
+    border-radius: 999px;
+    background: rgba(253,230,138,0.045);
+  }
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 38px;
+  }
+  @media (max-width: 940px) { .flow { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .flow { grid-template-columns: 1fr; } }
+  .flow-step {
+    min-height: 118px;
+    padding: 16px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.09);
+    background: rgba(255,255,255,0.022);
+  }
+  .flow-step b {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.16em;
+    margin-bottom: 10px;
+  }
+  .flow-step span {
+    display: block;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.7);
+  }
 
   /* ── Pillars (technical principles) ── */
   .pillars {
@@ -713,6 +813,8 @@
     .section { padding: 80px 0; }
     .quote { padding: 80px 0; }
     .product { padding: 34px 28px 28px; min-height: 420px; }
+    .nav-logo small { display: none; }
+    .nav-links { flex-wrap: nowrap; justify-content: flex-end; gap: 12px; font-size: 11px; }
   }
 
   /* ── Background (near-black with subtle top spotlight, Linear/Vercel style) ── */
@@ -740,6 +842,8 @@
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
   }
 </style>
+<link rel="stylesheet" href="css/choulegal-unified.css">
+<link rel="stylesheet" href="css/executive-polish.css">
 </head>
 <body>
 
@@ -752,11 +856,11 @@
   <div class="nav-inner">
     <a href="/" class="nav-logo">周全<small>ChouLegal</small></a>
     <nav class="nav-links" aria-label="主選單">
-      <a href="#products">產品</a>
+      <a href="#products">三大產品線</a>
+      <a href="professional.html">專業版</a>
+      <a href="education.html">法律教育</a>
       <a href="manifesto.html">理念</a>
       <a href="about.html">關於</a>
-      <a href="pricing.html">方案</a>
-      <a href="avs.html" style="color:rgba(134,239,172,0.85);">AVS</a>
     </nav>
   </div>
 </header>
@@ -767,10 +871,10 @@
     <div class="wrap">
       <div class="hero-eyebrow">ChouLegal</div>
       <h1 class="hero-title">周全<em>法律科技</em></h1>
-      <p class="hero-sub">民眾版與專業版雙平台，讓法律不再遙不可及。</p>
+      <p class="hero-sub">把生活法律、企業合規與法律學習整理成可以查、可以算、可以追溯的系統。一般人看得懂，專業者查得到依據，學習者能建立自己的知識路徑。</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://people.choulegal.com">進入民眾版</a>
-        <a class="btn btn-ghost" href="https://etp.choulegal.com">周全專業版</a>
+        <a class="btn btn-primary" href="#products">看三大產品線</a>
+        <a class="btn btn-ghost" href="professional.html">專業版模組</a>
       </div>
     </div>
   </section>
@@ -779,39 +883,107 @@
     <div class="wrap">
       <header class="section-head reveal">
         <div class="section-eyebrow">Products</div>
-        <h2 class="section-title">給所有人，<em>給專業人士。</em></h2>
-        <p class="section-sub">同一個結構化法源底層，兩種使用者立場。免費的計算工具給民眾，完整的合規與爭議處理系統給企業。</p>
+        <h2 class="section-title">一個母品牌，<em>三條產品線。</em></h2>
+        <p class="section-sub">周全法律科技從三個場景出發：一般人的法律問題、企業與專業者的合規作業，以及法律學習需要的資料整理。</p>
       </header>
 
       <div class="grid-products">
 
         <a class="product reveal" href="https://people.choulegal.com">
-          <div class="product-eyebrow gold"><span class="dot"></span>給所有人 · 完全免費</div>
+          <div class="product-eyebrow gold"><span class="dot"></span>Product 01 · 民眾版</div>
           <h3 class="product-name">周全｜民眾版</h3>
-          <p class="product-tag">瀏覽器即算，不註冊、不收費、不塞廣告。</p>
-          <p class="product-desc">四個獨立站、60+ 計算工具，從加班費、特休、資遣費，到繼承、遺產稅、贈與稅，到消費爭議、定型化契約、價金返還，再到押金返還、提前解約、修繕求償。每筆數字都附條號、修正日期與全國法規資料庫連結。</p>
+          <p class="product-tag">從事件與工具出發，協助一般人先判斷自己面臨的問題。</p>
+          <p class="product-desc">民眾版保留四條工具線：勞動、繼承與民法財產、消費爭議、租屋權益。使用者先整理事實、金額、期限與可行路徑，再決定是否試算、補文件或尋求專業協助。</p>
           <ul class="product-meta">
             <li>LaborPro · 勞動</li>
-            <li>InheritancePro · 民法財產</li>
-            <li>ConsumerPro · 消費爭議</li>
-            <li>RentalPro · 租屋權益</li>
+            <li>InheritancePro · 繼承</li>
+            <li>ConsumerPro · 消費</li>
+            <li>RentalPro · 租屋</li>
           </ul>
           <span class="product-cta">進入民眾版<span class="product-cta-arrow">›</span></span>
         </a>
 
-        <a class="product reveal" href="https://etp.choulegal.com">
-          <div class="product-eyebrow"><span class="dot"></span>給專業人士 · 企業洽詢</div>
+        <a class="product reveal" href="professional.html">
+          <div class="product-eyebrow"><span class="dot"></span>Product 02 · 專業版</div>
           <h3 class="product-name">周全專業版</h3>
-          <p class="product-tag">三大系統並行，內建 AI 助手三 mode 切換。</p>
-          <p class="product-desc">HR 系統（個人化福利政策、排班合規）、勞資爭議處理（資方角度）、消費爭議處理（賣家角度）。AI 助手依當下系統自動切 mode，回答附條文、計算附公式、流程可追溯。</p>
+          <p class="product-tag">給企業、店家、法務與律師的 AI 法律工作台。</p>
+          <p class="product-desc"><strong>AI 法務助理、AI 律師助理、合規自檢、事件包、判決整理</strong>放在同一個流程中。勞基法與消保法共用檢核架構，再依不同法源、角色與事件情境調整輸出。</p>
           <ul class="product-meta">
-            <li>HR · 合規</li>
-            <li>勞資爭議 · 資方</li>
-            <li>消費爭議 · 賣家</li>
+            <li>AI 法務助理</li>
+            <li>AI 律師助理</li>
+            <li>合規自檢</li>
+            <li>判決整理</li>
           </ul>
-          <span class="product-cta">進入周全專業版<span class="product-cta-arrow">›</span></span>
+          <span class="product-cta">查看專業版模組<span class="product-cta-arrow">›</span></span>
         </a>
 
+        <a class="product reveal" href="education.html" id="education">
+          <div class="product-eyebrow"><span class="dot"></span>Product 03 · 法律教育</div>
+          <h3 class="product-name">法律教育平台</h3>
+          <p class="product-tag">從生活法律到考試準備，讓法律知識有可走的路徑。</p>
+          <p class="product-desc">提供一般人需要的法律科普，也整理國考生、轉學生會用到的法律資訊。概念、法條、實務見解、爭點與學習順序都以可查、可讀、可複習的方式呈現。</p>
+          <ul class="product-meta">
+            <li>法律科普</li>
+            <li>國考資料庫</li>
+            <li>轉學考資料庫</li>
+            <li>爭點整理</li>
+          </ul>
+          <span class="product-cta">規劃法律教育平台<span class="product-cta-arrow">›</span></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="professional">
+    <div class="wrap">
+      <div class="suite-layout">
+        <header class="section-head suite-rail reveal">
+          <div class="section-eyebrow">Professional Suite</div>
+          <h2 class="section-title">專業版以法律工作流程為中心。</h2>
+          <p class="section-sub">專業版以同一套合規自檢流程處理使用者情境、文件與問卷，再依不同法源與角色輸出風險分級、改善建議、必備文件與事件包。</p>
+        </header>
+
+        <div class="suite-map">
+          <article class="suite-module reveal">
+            <h3>AI 法務助理</h3>
+            <p>協助企業、店家與內部法務處理日常法遵檢查、風險說明、文件初稿與處理流程。輸出重點放在現場可執行的下一步。</p>
+            <div class="suite-tags"><span>企業內部</span><span>合規流程</span><span>文件整理</span></div>
+          </article>
+
+          <article class="suite-module reveal">
+            <h3>AI 律師助理</h3>
+            <p>面向法律工作者，協助整理事實、爭點、法源、判決與初步分析。定位是研究與整理輔助，不取代律師判斷。</p>
+            <div class="suite-tags"><span>爭點整理</span><span>法源追溯</span><span>研究輔助</span></div>
+          </article>
+
+          <article class="suite-module reveal">
+            <h3>勞基法合規自檢</h3>
+            <p>以資方視角檢查工時、工資、休假、資遣、解僱、職場制度等風險。面對勞方提出異議時，產出事件包與應對清單。</p>
+            <div class="suite-tags"><span>資方自檢</span><span>勞方異議事件包</span><span>勞基法</span></div>
+          </article>
+
+          <article class="suite-module reveal">
+            <h3>消保法合規自檢</h3>
+            <p>以賣家、店家、平台經營者角度檢查交易流程、定型化契約、退換貨、廣告標示與客訴風險。買方異議發生時，整理事件包。</p>
+            <div class="suite-tags"><span>賣家自檢</span><span>買方異議事件包</span><span>消保法</span></div>
+          </article>
+
+          <article class="suite-module reveal">
+            <h3>判決整理</h3>
+            <p>使用者輸入關鍵字後，系統整合公開判決資料，列出相關判決並整理事實、爭點、法院見解與可引用摘要。</p>
+            <div class="suite-tags"><span>關鍵字搜尋</span><span>判決摘要</span><span>法院見解</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="flow reveal" aria-label="合規自檢共同流程">
+        <div class="flow-step"><b>01</b><span>選擇法源與角色</span></div>
+        <div class="flow-step"><b>02</b><span>問卷與文件上傳</span></div>
+        <div class="flow-step"><b>03</b><span>法源與事實檢核</span></div>
+        <div class="flow-step"><b>04</b><span>風險分級與原因</span></div>
+        <div class="flow-step"><b>05</b><span>改善建議與文件</span></div>
+        <div class="flow-step"><b>06</b><span>異議發生事件包</span></div>
       </div>
     </div>
   </section>
@@ -820,26 +992,26 @@
     <div class="wrap">
       <header class="section-head reveal">
         <div class="section-eyebrow">Principles</div>
-        <h2 class="section-title">這些理由告訴你<em>為什麼該相信我們。</em></h2>
+        <h2 class="section-title">三條產品線，<em>共用同一個信任底層。</em></h2>
       </header>
 
       <div class="pillars">
         <article class="pillar reveal">
           <div class="pillar-num">01 / 法源</div>
-          <h3 class="pillar-title">每一個數字都追得到條文。</h3>
-          <p class="pillar-desc">回答附條號、修正日期、全國法規資料庫連結；計算附公式與依據。沒有黑盒子，沒有「系統算的」。</p>
+          <h3 class="pillar-title">每一個輸出都要追得到依據。</h3>
+          <p class="pillar-desc">不論是民眾版、專業版或教育平台，核心輸出都要附條文、修正日期、公式、判決或整理來源。法律科技不能只給答案，也要說明答案從哪裡來。</p>
         </article>
 
         <article class="pillar reveal">
           <div class="pillar-num">02 / 範圍</div>
-          <h3 class="pillar-title">不確定的事，不裝懂。</h3>
-          <p class="pillar-desc">超出明文規定或實務見解的灰色地帶，AI 不會自己填空；直接告訴你「請諮詢律師」，並附最近的轉介路徑。寧可少答一題，不要答錯一題。</p>
+          <h3 class="pillar-title">不同使用者，要有不同語言。</h3>
+          <p class="pillar-desc">民眾需要看得懂，企業需要可執行，法律工作者需要可追溯，學生需要可學習。周全的產品邏輯不是把同一句話丟給所有人。</p>
         </article>
 
         <article class="pillar reveal">
           <div class="pillar-num">03 / 驗證</div>
-          <h3 class="pillar-title">自研自檢系統，四階段機械驗證。</h3>
-          <p class="pillar-desc">我們自行研發 AVS 自檢系統，每筆計算輸出均附推理軌跡，由獨立驗證器（不使用 AI）四階段查核：法源存在、SHA-256 哈希比對、公式逐步重算、人工確認標準案例比對。驗證器開源，任何人都可以獨立跑一遍，得到完全相同的結論。</p>
+          <h3 class="pillar-title">能自動化的部分，要能驗證。</h3>
+          <p class="pillar-desc">計算、檢核與自動整理都要留下可追溯軌跡。周全的 AVS 自檢系統，就是把「AI 說的」轉成「可以被檢查的」。</p>
         </article>
       </div>
     </div>
@@ -850,8 +1022,8 @@
     <div class="wrap" style="text-align:center;">
       <div class="reveal">
         <div class="lavs-badge"><span class="dot-green"></span>AVS v1.0 · 即時驗證中</div>
-        <h2 class="lavs-title">每一個數字，<em>都有辦法證明。</em></h2>
-        <p class="lavs-sub">我們自行研發 AVS 自檢系統（法律 AI 可驗證性標準），以四階段機械驗證取代「相信 AI」。驗證器不使用任何 AI 元件，任何人都可以獨立執行並得到完全相同的結論。專利申請中。</p>
+        <h2 class="lavs-title">每一個數字，<em>都要留下依據。</em></h2>
+        <p class="lavs-sub">AVS 自檢系統以四階段機械驗證檢查 AI 輸出。驗證器不使用任何 AI 元件，第三方可以獨立執行，並得到相同結論。專利申請中。</p>
       </div>
 
       <!-- 數字區 -->
@@ -930,7 +1102,7 @@
       </div>
 
       <div class="reveal" style="margin-bottom:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-        <a href="avs-verify.html" style="display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border:1px solid rgba(74,222,128,0.55);border-radius:999px;background:rgba(74,222,128,0.12);font-family:'Noto Sans TC',sans-serif;font-size:15px;font-weight:500;color:rgba(134,239,172,0.95);transition:background 0.25s,border-color 0.25s,transform 0.3s cubic-bezier(0.2,0.8,0.2,1);" onmouseover="this.style.background='rgba(74,222,128,0.2)';this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(74,222,128,0.12)';this.style.transform='translateY(0)';">立即驗算 →</a>
+        <a href="avs-verify.html" style="display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border:1px solid rgba(74,222,128,0.55);border-radius:999px;background:rgba(74,222,128,0.12);font-family:'Noto Sans TC',sans-serif;font-size:15px;font-weight:500;color:rgba(134,239,172,0.95);transition:background 0.25s,border-color 0.25s,transform 0.3s cubic-bezier(0.2,0.8,0.2,1);" onmouseover="this.style.background='rgba(74,222,128,0.2)';this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(74,222,128,0.12)';this.style.transform='translateY(0)';">試跑驗證 →</a>
         <a href="avs.html" style="display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border:1px solid rgba(74,222,128,0.25);border-radius:999px;background:rgba(34,197,94,0.05);font-family:'Noto Sans TC',sans-serif;font-size:15px;font-weight:500;color:rgba(134,239,172,0.7);transition:background 0.25s,border-color 0.25s,transform 0.3s cubic-bezier(0.2,0.8,0.2,1);" onmouseover="this.style.background='rgba(34,197,94,0.1)';this.style.borderColor='rgba(74,222,128,0.4)';this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(34,197,94,0.05)';this.style.borderColor='rgba(74,222,128,0.25)';this.style.transform='translateY(0)';">深入了解 AVS <span style="font-size:18px;line-height:1;">›</span></a>
       </div>
       <p class="lavs-note reveal">
@@ -954,7 +1126,8 @@
       <div class="foot-col">
         <h4>產品</h4>
         <a href="https://people.choulegal.com">周全｜民眾版</a>
-        <a href="https://etp.choulegal.com">周全專業版</a>
+        <a href="professional.html">周全專業版</a>
+        <a href="education.html">法律教育平台</a>
         <a href="avs.html" style="color:rgba(134,239,172,0.75);">AVS 自檢系統</a>
       </div>
       <div class="foot-col">

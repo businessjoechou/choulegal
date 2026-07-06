@@ -1,0 +1,243 @@
+/*
+  ChouLegal Unified Brand Layer
+  讓母品牌、專業版、教育平台使用同一套墨藍 / 暖紙 / 暗金語彙。
+  本檔放在頁面既有 CSS 後方，只做品牌收斂，不重寫功能版面。
+*/
+
+:root {
+  --cl-ink-950: #081220;
+  --cl-ink-900: #0e1e35;
+  --cl-ink-800: #142a4a;
+  --cl-paper-50: #fbfaf6;
+  --cl-paper-100: #f7f5f0;
+  --cl-gold-400: #e5c45f;
+  --cl-gold-500: #d4af37;
+  --cl-gold-600: #b8941f;
+  --cl-success: #2d5a3d;
+  --cl-danger: #8b2332;
+  --cl-line: rgba(251, 250, 246, 0.12);
+  --cl-line-strong: rgba(229, 196, 95, 0.34);
+  --cl-dark-text: rgba(251, 250, 246, 0.92);
+  --cl-dark-muted: rgba(251, 250, 246, 0.62);
+  --cl-panel: rgba(251, 250, 246, 0.045);
+  --cl-panel-strong: rgba(251, 250, 246, 0.075);
+}
+
+body {
+  background:
+    radial-gradient(ellipse 82% 54% at 50% -18%, rgba(212, 175, 55, 0.14), transparent 64%),
+    radial-gradient(ellipse 68% 52% at 96% 22%, rgba(26, 54, 93, 0.34), transparent 58%),
+    var(--cl-ink-950);
+  color: var(--cl-dark-text);
+}
+
+.nav,
+.site-nav {
+  background: rgba(8, 18, 32, 0.82);
+  border-bottom: 1px solid rgba(229, 196, 95, 0.14);
+  box-shadow: 0 1px 0 rgba(251, 250, 246, 0.03), 0 18px 48px rgba(8, 18, 32, 0.34);
+}
+
+.nav-logo,
+.site-logo,
+.logo {
+  color: var(--cl-paper-50);
+}
+
+.nav-logo small,
+.site-logo small {
+  color: rgba(229, 196, 95, 0.72);
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"],
+.site-nav-links a:hover,
+.site-nav-links a[aria-current="page"] {
+  color: var(--cl-gold-400);
+}
+
+.eyebrow,
+.section-eyebrow,
+.hero-eyebrow,
+.metric-k,
+.timeline-num {
+  color: var(--cl-gold-400);
+}
+
+.title,
+.hero-title,
+.section-title,
+.product-name,
+.module-card h3,
+.lane h3,
+.timeline-card h3,
+.result-card h4,
+.side-box h3 {
+  color: var(--cl-paper-50);
+}
+
+.lead,
+.hero-sub,
+.section-sub,
+.product-desc,
+.module-card p,
+.lane p,
+.timeline-card p,
+.result-card p,
+.result-card li,
+.side-box p,
+.side-box li,
+.knowledge-card p {
+  color: var(--cl-dark-muted);
+}
+
+.btn {
+  border-radius: 6px;
+  letter-spacing: 0;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--cl-gold-400), var(--cl-gold-500) 56%, var(--cl-gold-600));
+  color: var(--cl-ink-900);
+  box-shadow: 0 8px 22px -12px rgba(212, 175, 55, 0.78), inset 0 1px 0 rgba(255, 255, 255, 0.34);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #f1d982, var(--cl-gold-500) 58%, var(--cl-gold-600));
+}
+
+.btn-ghost {
+  border-color: var(--cl-line);
+  background: rgba(251, 250, 246, 0.035);
+  color: rgba(251, 250, 246, 0.86);
+}
+
+.btn-ghost:hover {
+  border-color: var(--cl-line-strong);
+  color: var(--cl-gold-400);
+}
+
+.panel,
+.product,
+.suite-module,
+.module-card,
+.lane,
+.timeline-card,
+.workbench-shell,
+.library-shell,
+.case-card,
+.case-detail,
+.quiz-panel,
+.note-panel,
+.result-card,
+.knowledge-card,
+.side-box,
+.flow-step,
+.matrix-row,
+.judgment-item,
+.metric {
+  border-color: var(--cl-line);
+  background: var(--cl-panel);
+  box-shadow: 0 1px 0 rgba(251, 250, 246, 0.035), 0 18px 58px rgba(8, 18, 32, 0.24);
+}
+
+.product:hover,
+.case-card:hover,
+.case-card.is-active,
+.tool-tab:hover,
+.filter-chip:hover,
+.tool-tab.is-active,
+.filter-chip.is-active {
+  border-color: var(--cl-line-strong);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.product::before,
+.product:nth-child(2)::before,
+.product:nth-child(3)::before,
+.panel::before {
+  background: radial-gradient(120% 72% at 50% 0%, rgba(212, 175, 55, 0.12), transparent 60%);
+}
+
+.tags span,
+.suite-tags span,
+.card-meta span,
+.product-meta li {
+  border-color: rgba(212, 175, 55, 0.22);
+  background: rgba(212, 175, 55, 0.055);
+  color: rgba(229, 196, 95, 0.9);
+}
+
+.field input,
+.field select,
+.field textarea,
+.library-search,
+.note-panel textarea,
+.quiz-option,
+.tool-tab,
+.filter-chip,
+.file-list li {
+  border-color: var(--cl-line);
+  background: rgba(8, 18, 32, 0.58);
+  color: rgba(251, 250, 246, 0.9);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.library-search:focus,
+.note-panel textarea:focus {
+  border-color: var(--cl-line-strong);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+.risk-medium,
+.status-watch {
+  color: var(--cl-gold-400);
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.28);
+}
+
+.status-pass,
+.risk-low {
+  color: #9bd6ae;
+  background: rgba(45, 90, 61, 0.18);
+}
+
+.status-risk,
+.risk-high {
+  color: #f1a8b2;
+  background: rgba(139, 35, 50, 0.18);
+}
+
+.progress-track span {
+  background: linear-gradient(90deg, var(--cl-gold-500), #8fbf9f);
+}
+
+.small-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  margin-top: 10px;
+  color: var(--cl-gold-400);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.small-link:hover {
+  text-decoration: underline;
+}
+
+.footer,
+.foot {
+  border-top-color: rgba(229, 196, 95, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
