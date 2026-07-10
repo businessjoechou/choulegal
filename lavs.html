@@ -5,7 +5,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LAVS — Legal AI Verification Standard · 法律 AI 自檢系統 by ChouLegal</title>
-<meta name="description" content="LAVS 是法律 AI 計算輸出的四階段自動化驗證協定。法源 SHA-256 存證、Oracle 人工標準案例比對、驗證器不使用 AI 元件。專利申請中。by ChouLegal 周全法律科技。">
+<meta name="description" content="LAVS 是針對法律 AI 演算輸出的四階段自動化驗證協定。整合法源安全存證、標準案例比對與確定性驗證器，建立可重複運算、可稽核的法律數據驗證架構。發明專利申請中。">
 <link rel="canonical" href="https://choulegal.com/lavs">
 <meta property="og:title" content="LAVS — Legal AI Verification Standard">
 <meta property="og:description" content="Prove your legal AI is correct. Four-phase deterministic verification for any legal AI system. Patent Pending by ChouLegal.">
@@ -358,7 +358,7 @@ body {
       <div class="hero-tag"><span class="dot"></span>Legal AI Verification Standard · v1.0</div>
       <p class="hero-en">Prove your legal AI is correct.</p>
       <h1 class="hero-h1">AI 算的，<em>可以被驗證。</em></h1>
-      <p class="hero-sub">法律 AI 計算輸出的四階段自動化驗證協定。法源 SHA-256 存證、Oracle 人工標準案例比對、驗證器不使用 AI 元件。</p>
+      <p class="hero-sub">法律 AI 演算輸出的四階段自動化驗證協定。整合法源安全存證、標準案例比對與確定性驗證器，排除生成式 AI 的不確定性，建立可重複運算、可稽核的法律邏輯鏈。</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#how">了解如何運作</a>
         <a class="btn-ghost" href="#contact">洽詢 B2B 授權</a>
@@ -393,7 +393,7 @@ body {
       </div>
       <div class="stat">
         <div class="stat-num">0</div>
-        <div class="stat-label">驗證使用 AI 元件</div>
+        <div class="stat-label">生成式 AI 不確定性元件</div>
       </div>
     </div>
   </div>
@@ -405,7 +405,7 @@ body {
     <div class="reveal">
       <div class="sec-eye">Problem</div>
       <h2 class="sec-h2">AI 法律輸出，<em>需要可驗證的依據。</em></h2>
-      <p class="sec-sub">大型語言模型能協助法律整理與推論，但涉及法條引用與計算時，仍有三個需要處理的風險。</p>
+      <p class="sec-sub">大型語言模型雖能輔助法律整理與推論，但涉及精密計算或法規引用時，仍面臨三大核心風險：</p>
     </div>
     <div class="problems reveal">
       <div class="problem">
@@ -433,7 +433,7 @@ body {
     <div class="reveal">
       <div class="sec-eye">How it works</div>
       <h2 class="sec-h2">四階段，<em>每一步都可追溯。</em></h2>
-      <p class="sec-sub">LAVS 驗證器不使用任何 AI 元件，採確定性邏輯執行。同一份 trace 由第三方獨立執行，應得到相同結論。</p>
+      <p class="sec-sub">LAVS 驗證器排除生成式 AI 的不確定性，採確定性邏輯進行演算。相同的演算軌跡由第三方獨立執行，均能獲得一致的結論。</p>
     </div>
 
     <div class="phases reveal">
@@ -444,7 +444,7 @@ body {
           <div class="phase-en">Schema Validation</div>
         </div>
         <div class="phase-right">
-          <p class="phase-desc">確認 AI 輸出的推理軌跡（Trace JSON）包含必要欄位：版本號、法條引用、計算步驟、輸出值、信心等級宣告。格式不符即終止，不進行後續驗證。</p>
+          <p class="phase-desc">檢核演算軌跡（Trace JSON）是否包含版本號、來源引用、計算步驟、輸出值與信心等級宣告等必要欄位。格式不符即行終止。</p>
           <div class="phase-tags">
             <span class="phase-tag">必要欄位查核</span>
             <span class="phase-tag">信心等級格式</span>
@@ -460,7 +460,7 @@ body {
           <div class="phase-en">Law Source Verification</div>
         </div>
         <div class="phase-right">
-          <p class="phase-desc">對每條引用法律，向官方資料庫（台灣：law.moj.gov.tw）取得現行條文，計算 SHA-256 哈希值。哈希與推理軌跡預存值不符，代表法規已更新，自動產生異動警告。法條不存在即 FAIL。</p>
+          <p class="phase-desc">針對演算軌跡所引用的法源，與官方資料庫之現行條文核對，比對 SHA-256 哈希值。若哈希值不符，代表來源法規已更新，系統將發出異動警告。</p>
           <div class="phase-tags">
             <span class="phase-tag">官方資料庫查核</span>
             <span class="phase-tag">SHA-256 哈希比對</span>
@@ -477,7 +477,7 @@ body {
           <div class="phase-en">Step Re-computation</div>
         </div>
         <div class="phase-right">
-          <p class="phase-desc">對每個含公式的計算步驟，使用安全求值引擎（不允許任意程式碼執行）重新計算，並與推理軌跡中預存的數值比對。允許 1 TWD 容差（處理浮點四捨五入）。超出即 FAIL。</p>
+          <p class="phase-desc">針對包含公式的計算步驟，使用沙盒求值引擎重新運算，並與演算軌跡中預存的數值進行比對。僅允許 1 單位的浮點數容差，超出範圍即判定未通過。</p>
           <div class="phase-tags">
             <span class="phase-tag">安全公式求值</span>
             <span class="phase-tag">逐步數值比對</span>
@@ -493,7 +493,7 @@ body {
           <div class="phase-en">Oracle Matching</div>
         </div>
         <div class="phase-right">
-          <p class="phase-desc">AI 系統在推理軌跡中宣告對應場景（scenario_id），驗證器查找人工確認參考案例，比對答案值、必須引用的法條、計算步驟數量與信心等級，全部符合才通過。</p>
+          <p class="phase-desc">演算軌跡宣告對應場景（scenario_id）後，驗證器將檢索標準參考案例，比對計算結果、必備法源、計算步驟與信心等級，確認完全符合。</p>
           <div class="phase-tags">
             <span class="phase-tag">場景識別碼查找</span>
             <span class="phase-tag">人工確認案例比對</span>
