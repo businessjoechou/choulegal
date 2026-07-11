@@ -211,7 +211,7 @@ function initProfessionalWorkbench() {
     setMatrix(matrix, professionalExtras[tool].checks);
     setJudgments(judgments, professionalExtras[tool].judgments);
     actionStatus.textContent = "尚未匯出";
-    disclaimer.textContent = "本頁為產品展示。正式導入須配置資料來源、文件解析、權限控管、法源驗證與人工覆核流程；本頁內容不構成法律意見。";
+    disclaimer.textContent = "本頁為產品展示。進階功能包含資料來源配置、權限控管與人工覆核流程；本頁內容不構成法律意見。";
     if (!keepFacts) {
       form.elements.facts.value = preset.facts;
       form.elements.source.value = preset.source;
