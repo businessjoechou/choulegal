@@ -1,7 +1,7 @@
 var y = document.getElementById("year");
 if (y) y.textContent = new Date().getFullYear();
 
-var CHOULEGAL_ACCOUNT_DATA_API = "https://choulegaledu.com/api/account/data";
+var CHOULEGAL_ACCOUNT_DATA_API = "https://learn.choulegal.com/api/account/data";
 
 function syncChouLegalEducationData(dataType, title, summary, payload) {
   return fetch(CHOULEGAL_ACCOUNT_DATA_API, {
