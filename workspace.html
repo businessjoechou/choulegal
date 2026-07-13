@@ -2,440 +2,89 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>工作台 — 周全 ChouLegal 專業版</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/product-pages.css">
-<link rel="stylesheet" href="css/choulegal-unified.css">
-<link rel="stylesheet" href="css/executive-polish.css">
+<meta http-equiv="refresh" content="6; url=https://choureg.com/">
+<title>舊工作台已遷移至 ChouReg 周全企業與合規</title>
+<meta name="description" content="舊 ChouLegal 工作台已停止作為獨立入口，企業合規 SaaS 工作台請前往 ChouReg 周全企業與合規。">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://choureg.com/">
 <style>
-  /* SaaS App Custom Workspace Layout Styles */
+  :root {
+    --paper: #fbfbf8;
+    --ink: #17201b;
+    --muted: #626c66;
+    --line: #d7ddd6;
+    --panel: #ffffff;
+    --green: #2d7460;
+  }
+  * { box-sizing: border-box; }
   body {
-    background: #080d16;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  .app-header {
-    height: 64px;
-    background: rgba(11, 23, 40, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    flex-shrink: 0;
-  }
-  .app-logo-area {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .app-title-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    background: rgba(253, 230, 138, 0.1);
-    color: #fde68a;
-    border: 1px solid rgba(253, 230, 138, 0.25);
-    padding: 2px 8px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .app-user-area {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-  }
-  .plan-quota-badge {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.65);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .plan-quota-badge strong {
-    color: #fde68a;
-  }
-  .btn-upgrade {
-    background: linear-gradient(135deg, #fde68a, #fcd34d);
-    color: #06080d;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: transform 0.2s, filter 0.2s;
-  }
-  .btn-upgrade:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.05);
-  }
-  .user-profile {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    position: relative;
-    padding: 4px 8px;
-    border-radius: 6px;
-    transition: background 0.2s;
-  }
-  .user-profile:hover {
-    background: rgba(255, 255, 255, 0.05);
-  }
-  .avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #e2c267;
-    color: #07101d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 13px;
-  }
-  .username {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.85);
-  }
-  
-  /* App container spanning left cases and right workbench */
-  .app-viewport {
-    flex-grow: 1;
+    margin: 0;
+    min-height: 100vh;
     display: grid;
-    grid-template-columns: 280px 1fr;
-    overflow: hidden;
-  }
-  
-  .app-sidebar {
-    background: rgba(7, 16, 29, 0.45);
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding: 20px 16px;
-  }
-  
-  .sidebar-section-title {
-    font-size: 11px;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    padding-left: 8px;
-  }
-  
-  .app-main {
+    place-items: center;
     padding: 24px;
-    overflow-y: auto;
-    background: #080d16;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans TC", system-ui, sans-serif;
+    line-height: 1.7;
   }
-  
-  /* Override styles inside the workspace to stretch full width and fit nicely */
-  .workbench-shell {
-    border: none;
-    box-shadow: none;
-    background: transparent;
+  main {
+    width: min(780px, 100%);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: clamp(28px, 5vw, 56px);
+    background: var(--panel);
+    box-shadow: 0 18px 44px rgba(23, 32, 27, 0.1);
   }
-  
-  .case-desk {
+  a { color: inherit; text-decoration: none; }
+  .eyebrow {
+    margin: 0 0 12px;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  h1 {
+    margin: 0 0 18px;
+    font-family: Georgia, "Noto Serif TC", serif;
+    font-size: clamp(36px, 7vw, 64px);
+    line-height: 1.08;
+  }
+  p {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 18px;
+  }
+  .actions {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 12px;
   }
-  
-  .case-card {
-    border-radius: 10px;
-    padding: 14px;
-  }
-  .case-card strong {
-    font-size: 16px;
-  }
-  
-  /* Modal simulation for Upgrade to Pro */
-  .upgrade-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 100;
+  .btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
+    min-height: 46px;
+    border: 1px solid var(--ink);
+    border-radius: 8px;
+    padding: 0 18px;
+    font-weight: 700;
   }
-  .modal-card {
-    background: #0c121e;
-    border: 1px solid rgba(253, 230, 138, 0.3);
-    border-radius: 20px;
-    max-width: 440px;
-    width: 90%;
-    padding: 32px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  }
-  .modal-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
-  }
-  .modal-card h3 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 22px;
-    margin-bottom: 12px;
-    color: rgba(255,255,255,0.95);
-  }
-  .modal-card p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.6;
-    margin-bottom: 24px;
-  }
-  .modal-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .modal-actions .btn {
-    justify-content: center;
-  }
-  
-  /* Adjustment to workbench grid inside main area */
-  .workbench-grid {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: 24px;
-  }
-  
-  @media (max-width: 1080px) {
-    .app-viewport {
-      grid-template-columns: 1fr;
-    }
-    .app-sidebar {
-      display: none; /* Hide sidebar list on small screens or wrap differently */
-    }
-    .workbench-grid {
-      grid-template-columns: 1fr;
-    }
+  .btn.primary {
+    background: var(--ink);
+    color: var(--paper);
   }
 </style>
 </head>
 <body>
-
-<header class="app-header">
-  <div class="app-logo-area">
-    <a href="index.html" class="nav-logo" style="margin-right:8px;">周全<small>ChouLegal</small></a>
-    <span class="app-title-badge">Workspace</span>
+<main>
+  <p class="eyebrow">Workspace moved to ChouReg</p>
+  <h1>舊工作台已遷移至 ChouReg。</h1>
+  <p>企業合規、文件中心、HR、店家與營運者工作台，接下來統一由 ChouReg 周全企業與合規承接。ChouLegal 將專注於一般民眾的權益試算與查詢。</p>
+  <div class="actions">
+    <a class="btn primary" href="https://choureg.com/">前往 ChouReg</a>
+    <a class="btn" href="index.html">回 ChouLegal 權益試算與查詢</a>
   </div>
-  <div class="app-user-area">
-    <div class="plan-quota-badge" aria-label="本日可用額度">
-      <span>試用額度: <strong>3 / 5 次</strong></span>
-    </div>
-    <a href="#upgrade" class="btn-upgrade" onclick="openUpgradeModal(event)">升級 Pro 方案</a>
-    <div class="user-profile" id="userMenuBtn" onclick="toggleUserMenu()">
-      <div class="avatar">周</div>
-      <span class="username">測試用戶</span>
-    </div>
-  </div>
-</header>
-
-<div class="app-viewport">
-  <!-- Left Side: Case Directory -->
-  <aside class="app-sidebar">
-    <div class="sidebar-section-title">我的案件 (My Cases)</div>
-    <div class="case-desk" data-case-desk>
-      <div class="case-list" aria-label="案件列表">
-        <button class="case-card is-active" type="button" data-case="labor-shift">
-          <span class="case-status status-risk">高風險</span>
-          <strong>排班與加班費異議</strong>
-          <small>勞基法自檢 · 已收到異議</small>
-        </button>
-        <button class="case-card" type="button" data-case="consumer-ad">
-          <span class="case-status status-risk">高風險</span>
-          <strong>線上課程退款爭議</strong>
-          <small>消保法自檢 · 準備回覆</small>
-        </button>
-        <button class="case-card" type="button" data-case="judgment-research">
-          <span class="case-status status-pass">研究中</span>
-          <strong>廣告不實判決整理</strong>
-          <small>判決整理 · 法律研究</small>
-        </button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Right Side: Active Workspace Form and Analysis Outputs -->
-  <main class="app-main">
-    <div class="workbench-shell" data-professional-app>
-      <div class="tool-tabs" role="tablist" aria-label="工作台工具">
-        <button class="tool-tab is-active" type="button" data-tool="legal">法遵整理</button>
-        <button class="tool-tab" type="button" data-tool="lawyer">法律研究</button>
-        <button class="tool-tab" type="button" data-tool="labor">勞基法自檢</button>
-        <button class="tool-tab" type="button" data-tool="consumer">消保法自檢</button>
-        <button class="tool-tab" type="button" data-tool="judgment">判決整理</button>
-      </div>
-
-      <div class="workbench-grid">
-        <form class="input-panel" data-professional-form>
-          <div class="field-grid">
-            <label class="field">
-              <span>使用情境</span>
-              <select name="role">
-                <option value="企業經營者">企業經營者</option>
-                <option value="HR / 法務">HR / 法務</option>
-                <option value="律師">律師</option>
-                <option value="店家 / 賣家">店家 / 賣家</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>主要法源</span>
-              <select name="source">
-                <option value="勞動基準法">勞動基準法</option>
-                <option value="消費者保護法">消費者保護法</option>
-                <option value="民法">民法</option>
-                <option value="公開判決資料">公開判決資料</option>
-              </select>
-            </label>
-          </div>
-
-          <label class="field">
-            <span data-facts-label>輸入事件事實或工作需求</span>
-            <textarea name="facts" rows="7">公司準備調整排班制度，部分員工近期提出加班費與休息日出勤異議。需判讀制度風險，並建立待補文件與回覆路徑。</textarea>
-          </label>
-
-          <label class="file-drop">
-            <span>上傳文件清單</span>
-            <input type="file" multiple data-file-input>
-            <strong>拖放或選擇契約、薪資、廣告、往來紀錄</strong>
-            <small>上傳後建立文件索引。進階功能包含解析規則、權限控管與保留期限。</small>
-          </label>
-          <ul class="file-list" data-file-list>
-            <li>尚未選擇文件</li>
-          </ul>
-
-          <div class="field-grid">
-            <label class="field">
-              <span>事件狀態</span>
-              <select name="stage">
-                <option value="事前合規檢查">事前合規檢查</option>
-                <option value="已收到異議">已收到異議</option>
-                <option value="準備回覆或談判">準備回覆或談判</option>
-                <option value="進入訴訟或調解">進入訴訟或調解</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>文件完整度</span>
-              <select name="docs">
-                <option value="完整">完整</option>
-                <option value="部分缺漏">部分缺漏</option>
-                <option value="尚未整理">尚未整理</option>
-              </select>
-            </label>
-          </div>
-
-          <fieldset class="check-field">
-            <legend>需要產出</legend>
-            <label><input type="checkbox" name="output" value="風險分級" checked> 風險分級</label>
-            <label><input type="checkbox" name="output" value="改善清單" checked> 改善清單</label>
-            <label><input type="checkbox" name="output" value="事件包" checked> 事件包</label>
-            <label><input type="checkbox" name="output" value="判決摘要"> 判決摘要</label>
-          </fieldset>
-
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">產出整理結果</button>
-            <button class="btn btn-ghost" type="button" data-load-sample>套用範例</button>
-          </div>
-        </form>
-
-        <section class="output-panel" aria-live="polite" data-professional-output>
-          <div class="output-head">
-            <div>
-              <div class="eyebrow">Analysis Output</div>
-              <h3>工作台分析結果</h3>
-            </div>
-            <span class="risk-badge risk-medium" data-risk-label>中風險</span>
-          </div>
-          <div class="result-stack">
-            <article class="result-card">
-              <h4>初步結論</h4>
-              <p data-summary>本案風險集中於排班制度變更、加班費計算與休息日出勤紀錄。處理順序為補齊出勤紀錄、班表公告與工資計算明細，再調整制度文本。</p>
-            </article>
-            <article class="result-card">
-              <h4>待補文件</h4>
-              <ul data-doc-list>
-                <li>最近 6 個月出勤紀錄與排班表</li>
-                <li>工資清冊、加班費計算明細</li>
-                <li>工作規則與排班制度公告紀錄</li>
-              </ul>
-            </article>
-            <article class="result-card">
-              <h4>事件包</h4>
-              <ul data-kit-list>
-                <li>事實時間線</li>
-                <li>員工異議摘要</li>
-                <li>公司回覆草稿與談判底線</li>
-              </ul>
-            </article>
-            <article class="result-card">
-              <h4>檢核矩陣</h4>
-              <div class="matrix" data-check-matrix></div>
-            </article>
-            <article class="result-card">
-              <h4>判決候選</h4>
-              <div class="judgment-list" data-judgment-list></div>
-            </article>
-            <div class="output-actions">
-              <button class="btn btn-ghost" type="button" data-copy-output>複製摘要</button>
-              <button class="btn btn-ghost" type="button" data-download-output>下載事件包 JSON</button>
-              <span class="action-status" data-action-status>尚未匯出</span>
-            </div>
-            <article class="result-card result-note">
-              <h4>提醒</h4>
-              <p data-disclaimer>本頁為產品展示。進階功能包含資料來源配置、權限控管與人工覆核流程；本頁內容不構成法律意見。</p>
-            </article>
-          </div>
-        </section>
-      </div>
-    </div>
-  </main>
-</div>
-
-<!-- Modal simulation for Upgrade to Pro -->
-<div class="upgrade-modal" id="upgradeModal">
-  <div class="modal-card">
-    <div class="modal-icon">👑</div>
-    <h3>升級 Pro 專業版帳戶</h3>
-    <p>每天 5 次的試用額度已用完？升級至 Pro 專業版，解鎖無限制的 AI 助理次數、完整的文件缺口掃描、自動生成答辯與談判回覆草稿、以及判決分析下載功能。</p>
-    <div class="modal-actions">
-      <a href="pricing.html" class="btn btn-primary">查看方案與定價</a>
-      <button class="btn btn-ghost" onclick="closeUpgradeModal()">先不用，謝謝</button>
-    </div>
-  </div>
-</div>
-
-<script src="js/product-pages.js"></script>
-<script>
-  function openUpgradeModal(e) {
-    if (e) e.preventDefault();
-    document.getElementById('upgradeModal').style.display = 'flex';
-  }
-  function closeUpgradeModal() {
-    document.getElementById('upgradeModal').style.display = 'none';
-  }
-  function toggleUserMenu() {
-    alert("用戶選單：已整合 Supabase / Auth。點擊可進入帳號設定與方案變更。");
-  }
-</script>
+</main>
 </body>
 </html>

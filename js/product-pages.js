@@ -1,7 +1,7 @@
 var y = document.getElementById("year");
 if (y) y.textContent = new Date().getFullYear();
 
-var CHOULEGAL_ACCOUNT_DATA_API = "https://etp.choulegal.com/api/account/data";
+var CHOULEGAL_ACCOUNT_DATA_API = "https://choulegaledu.com/api/account/data";
 
 function syncChouLegalEducationData(dataType, title, summary, payload) {
   return fetch(CHOULEGAL_ACCOUNT_DATA_API, {
@@ -566,7 +566,7 @@ function initEducationLibrary() {
 
     var pathText = {
       all: "從「契約成立」開始，接到「解除契約」與「價金返還」，最後看消費爭議中的廣告表示問題。",
-      public: "生活案例連回民眾版工具：加班費、退款、繼承與租屋爭議皆可沿此路線閱讀。",
+      public: "生活案例連回權益試算與查詢工具：加班費、退款、繼承與租屋爭議皆可沿此路線閱讀。",
       exam: "體系建立後連接爭點：概念、條文、實務見解與答題方向需放在同一張地圖。",
       civil: "民法路線：意思表示、契約成立、解除契約、回復原狀與損害賠償。",
       labor: "勞動法路線：工時、工資、休假、資遣與舉證資料。",

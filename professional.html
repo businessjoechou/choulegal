@@ -2,610 +2,89 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周全專業版 — 你的法律合規工作台</title>
-<meta name="description" content="輸入案件事實，自動產出風險評級、改善清單與判決摘要。個人律師、HR、店家與法務皆可免費試用。">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://choulegal.com/professional.html">
-<meta property="og:title" content="周全專業版 — 你的法律合規工作台">
-<meta property="og:description" content="輸入案件事實，自動產出風險評級、改善清單與判決摘要。免費試用。">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="zh_TW">
-<meta property="og:url" content="https://choulegal.com/professional.html">
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/product-pages.css">
-<link rel="stylesheet" href="css/choulegal-unified.css">
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"__CF_TOKEN_CHOULEGAL__"}'></script>
-<link rel="stylesheet" href="css/executive-polish.css">
+<meta http-equiv="refresh" content="6; url=https://choureg.com/">
+<title>舊專業版已遷移至 ChouReg 周全企業與合規</title>
+<meta name="description" content="舊周全法律科技專業版已退役，企業、店家、HR 與合規工作台功能遷移至 ChouReg 周全企業與合規。">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://choureg.com/">
 <style>
-  /* Premium SaaS Mockup Styles for marketing page */
-  .mock-window {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    background: #0b121e;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    margin-top: 40px;
+  :root {
+    --paper: #fbfbf8;
+    --ink: #17201b;
+    --muted: #626c66;
+    --line: #d7ddd6;
+    --panel: #ffffff;
+    --green: #2d7460;
   }
-  .mock-window-header {
-    height: 40px;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    gap: 8px;
-  }
-  .mock-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-  .mock-dot.red { background: #ff5f56; }
-  .mock-dot.yellow { background: #ffbd2e; }
-  .mock-dot.green { background: #27c93f; }
-  .mock-window-title {
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 11px;
-    font-family: 'JetBrains Mono', monospace;
-    color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 0.05em;
-  }
-  .mock-app-viewport {
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
     display: grid;
-    grid-template-columns: 240px 1fr;
-    height: 520px;
+    place-items: center;
+    padding: 24px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans TC", system-ui, sans-serif;
+    line-height: 1.7;
   }
-  .mock-sidebar {
-    background: rgba(255, 255, 255, 0.01);
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 20px 14px;
+  main {
+    width: min(780px, 100%);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: clamp(28px, 5vw, 56px);
+    background: var(--panel);
+    box-shadow: 0 18px 44px rgba(23, 32, 27, 0.1);
+  }
+  a { color: inherit; text-decoration: none; }
+  .eyebrow {
+    margin: 0 0 12px;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  h1 {
+    margin: 0 0 18px;
+    font-family: Georgia, "Noto Serif TC", serif;
+    font-size: clamp(36px, 7vw, 64px);
+    line-height: 1.08;
+  }
+  p {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 18px;
+  }
+  .actions {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 12px;
   }
-  .mock-sidebar-title {
-    font-size: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    color: rgba(255, 255, 255, 0.35);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    padding-left: 6px;
-  }
-  .mock-case-item {
-    padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    text-align: left;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .mock-case-item.active {
-    background: rgba(253, 230, 138, 0.05);
-    border-color: rgba(253, 230, 138, 0.2);
-  }
-  .mock-case-item strong {
-    display: block;
-    font-size: 13.5px;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 3px;
-  }
-  .mock-case-item span {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.45);
-  }
-  .mock-main {
-    padding: 24px;
-    overflow-y: auto;
-    background: #080d16;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .mock-tabs {
-    display: flex;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    gap: 4px;
-    margin-bottom: 10px;
-  }
-  .mock-tab {
-    padding: 10px 16px;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.55);
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .mock-tab.active {
-    color: #fde68a;
-    border-bottom-color: #fde68a;
-  }
-  .mock-preview-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 260px;
-    gap: 20px;
-  }
-  .mock-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .mock-card h4 {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 10px;
-    font-family: 'Noto Serif TC', serif;
-  }
-  .mock-card p {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.65);
-    line-height: 1.6;
-  }
-  .mock-card ul {
-    list-style: none;
-    padding: 0;
-  }
-  .mock-card li {
-    font-size: 12.5px;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  }
-  .mock-card li:last-child {
-    border-bottom: none;
-  }
-  .mock-risk-meter {
-    display: flex;
-    flex-direction: column;
+  .btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 24px;
+    min-height: 46px;
+    border: 1px solid var(--ink);
+    border-radius: 8px;
+    padding: 0 18px;
+    font-weight: 700;
   }
-  .mock-risk-badge {
-    background: rgba(239, 139, 143, 0.1);
-    color: #df8b8f;
-    border: 1px solid rgba(239, 139, 143, 0.25);
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 500;
-    margin-top: 10px;
-  }
-  .mock-risk-badge.medium {
-    background: rgba(253, 230, 138, 0.1);
-    color: #fde68a;
-    border-color: rgba(253, 230, 138, 0.25);
-  }
-  
-  /* App showcase bottom call to action banner */
-  .mock-showcase-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 32px;
+  .btn.primary {
+    background: var(--ink);
+    color: var(--paper);
   }
 </style>
 </head>
 <body>
-<div class="ambient" aria-hidden="true"></div>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">周全<small>ChouLegal</small></a>
-    <nav class="nav-links" aria-label="主選單">
-      <a href="index.html">首頁</a>
-      <a href="professional.html" aria-current="page">專業版</a>
-      <a href="education.html">法律教育</a>
-      <a href="about.html">關於</a>
-      <a href="workspace.html" style="border: 1px solid rgba(253, 230, 138, 0.35); border-radius: 6px; padding: 4px 10px; color: #fde68a; background: rgba(253, 230, 138, 0.08); margin-left: 8px;">登入工作台</a>
-    </nav>
-  </div>
-</header>
-
 <main>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow">Professional</div>
-        <h1 class="title">周全專業版<em>你的法律合規工作台</em></h1>
-        <p class="lead">輸入案件事實，自動產出風險評級、缺口清單與判決摘要。個人律師、HR、小店家到企業法務，都可以直接開始使用。</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="workspace.html?source=choulegal_professional_hero">免費試用</a>
-          <a class="btn btn-ghost" href="#modules">看功能介紹</a>
-        </div>
-      </div>
-      <aside class="panel" aria-label="專業版定位">
-        <div class="metric-grid">
-          <div class="metric">
-            <div class="metric-k">Input</div>
-            <div class="metric-v">案件事實、制度文件、合約、薪資、客訴紀錄。</div>
-          </div>
-          <div class="metric">
-            <div class="metric-k">Review</div>
-            <div class="metric-v">風險評級、缺口識別、爭點定位與法源追溯。</div>
-          </div>
-          <div class="metric">
-            <div class="metric-k">Output</div>
-            <div class="metric-v">合規路徑、回覆草稿、事件時間線與判決摘要。</div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section" id="modules">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="eyebrow">Use Cases</div>
-        <h2 class="section-title">五分鐘內拿到第一份合規報告</h2>
-        <p class="section-sub">選擇工具、輸入事實、取得風險評級與改善建議。不需要簽約，不需要等業務回覆。</p>
-      </header>
-      <div class="module-grid">
-        <article class="module-card reveal">
-          <h3>合規管理與文件檢核</h3>
-          <p>評估公司規章與合約條款，識別法規風險與合約缺口，提供具體的改善補強建議。</p>
-          <div class="tags"><span>內部法遵</span><span>文件初稿</span><span>流程建議</span></div>
-        </article>
-        <article class="module-card reveal">
-          <h3>法律爭點與實務研究</h3>
-          <p>梳理案件事實、爭點、適用法條與判決見解，整理為可供覆核與延伸的研究底稿。</p>
-          <div class="tags"><span>爭點整理</span><span>法源追溯</span><span>研究輔助</span></div>
-        </article>
-        <article class="module-card reveal">
-          <h3>實務判決檢索</h3>
-          <p>以關鍵字精確定位關聯裁判，快速提取事實、爭點與法院見解，作為決策研判之佐證。</p>
-          <div class="tags"><span>關鍵字搜尋</span><span>判決摘要</span><span>法院見解</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="workbench-preview">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="eyebrow">Workspace</div>
-        <h2 class="section-title">打開即用的專業工作台</h2>
-        <p class="section-sub">告別冗長的顧問訪談與專案對接。登入即刻啟用 AI 法律助理、法規自檢與判決分析，直覺管理合規風險。</p>
-      </header>
-
-      <!-- Premium SaaS App Window Preview -->
-      <div class="mock-window reveal">
-        <div class="mock-window-header">
-          <span class="mock-dot red"></span>
-          <span class="mock-dot yellow"></span>
-          <span class="mock-dot green"></span>
-          <span class="mock-window-title">ChouLegal Workspace (Demo Mode)</span>
-        </div>
-        <div class="mock-app-viewport">
-          <!-- Left Mock Sidebar -->
-          <aside class="mock-sidebar">
-            <div class="mock-sidebar-title">我的案件 (My Cases)</div>
-            <div class="mock-case-item active" id="mockCaseBtn1" onclick="switchMockCase('labor-shift')">
-              <strong>排班與加班費異議</strong>
-              <span>勞基法自檢 · 已收到異議</span>
-            </div>
-            <div class="mock-case-item" id="mockCaseBtn2" onclick="switchMockCase('consumer-ad')">
-              <strong>線上課程退款爭議</strong>
-              <span>消保法自檢 · 準備回覆</span>
-            </div>
-            <div class="mock-case-item" id="mockCaseBtn3" onclick="switchMockCase('judgment-research')">
-              <strong>廣告不實判決整理</strong>
-              <span>判決整理 · 法律研究</span>
-            </div>
-          </aside>
-
-          <!-- Right Mock Main Area -->
-          <main class="mock-main">
-            <div class="mock-tabs">
-              <button class="mock-tab active" id="mockTabBtn-legal" onclick="switchMockTab('legal')">法遵整理</button>
-              <button class="mock-tab" id="mockTabBtn-lawyer" onclick="switchMockTab('lawyer')">法律研究</button>
-              <button class="mock-tab" id="mockTabBtn-labor" onclick="switchMockTab('labor')">勞基法自檢</button>
-              <button class="mock-tab" id="mockTabBtn-consumer" onclick="switchMockTab('consumer')">消保法自檢</button>
-              <button class="mock-tab" id="mockTabBtn-judgment" onclick="switchMockTab('judgment')">判決整理</button>
-            </div>
-
-            <div class="mock-preview-grid">
-              <!-- Left panel: AI outputs -->
-              <div style="display:flex; flex-direction:column; gap:16px;">
-                <div class="mock-card">
-                  <h4 id="mockCardTitle">初步結論</h4>
-                  <p id="mockCardDesc">本案風險集中於排班制度變更、加班費計算與休息日出勤紀錄。處理順序為補齊出勤紀錄、班表公告與工資計算明細，再調整制度文本。</p>
-                </div>
-                <div class="mock-card">
-                  <h4>待辦與待補文件清單</h4>
-                  <ul id="mockCardList">
-                    <li>最近 6 個月出勤紀錄與排班表</li>
-                    <li>工資清冊、加班費計算明細</li>
-                    <li>工作規則與排班制度公告紀錄</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Right panel: Risk meter -->
-              <div class="mock-card mock-risk-meter">
-                <div class="eyebrow" style="font-size:10px; margin-bottom:8px;">Risk Assessment</div>
-                <div style="font-size: 32px; font-weight: 500; font-family: 'JetBrains Mono', monospace;" id="mockRiskScore">65</div>
-                <span class="mock-risk-badge medium" id="mockRiskBadge">中風險</span>
-                <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 14px; line-height: 1.4;">
-                  主要風險源：工時紀錄不完整與排班公告程序瑕疵。
-                </p>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-
-      <!-- Action Button underneath window preview -->
-      <div class="mock-showcase-actions reveal">
-        <a class="btn btn-primary" href="workspace.html" style="padding: 14px 32px; font-size: 16px;">免費進入工作台，開始自檢 →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Script for Mock Showcase Interactions -->
-  <script>
-    var mockData = {
-      'labor-shift': {
-        title: '排班與加班費異議',
-        tab: 'labor',
-        risk: '65',
-        riskText: '中風險',
-        riskClass: 'medium',
-        conclusion: '本案風險集中於排班制度變更、加班費計算與休息日出勤紀錄。處理順序為補齊出勤紀錄、班表公告與工資計算明細，再調整制度文本。',
-        list: [
-          '最近 6 個月出勤紀錄與排班表',
-          '工資清冊、加班費計算明細',
-          '工作規則與排班制度公告紀錄'
-        ]
-      },
-      'consumer-ad': {
-        title: '線上課程退款爭議',
-        tab: 'consumer',
-        risk: '82',
-        riskText: '高風險',
-        riskClass: '',
-        conclusion: '買方主張定型化契約退款條款不合理且涉及廣告不實。主要法源為消保法第 19 條。應盤點退費網頁說明、購買流程與契約條款。',
-        list: [
-          '線上課程定型化契約條款文本',
-          '購買流程截圖與廣告頁面存檔',
-          '與消費者之對話紀錄與退費政策說明'
-        ]
-      },
-      'judgment-research': {
-        title: '廣告不實判決整理',
-        tab: 'judgment',
-        risk: '35',
-        riskText: '低風險',
-        riskClass: 'medium',
-        conclusion: '檢索近三年公平交易法第 21 條相關判決。多數法院著重於「廣告是否引人錯誤」，應建立廣告合規之內部審核清單。',
-        list: [
-          '法院歷審廣告不實判決書全文及案號',
-          '歷審爭點彙整與實務見解整理',
-          '內部行銷合規守則與簽核紀錄'
-        ]
-      }
-    };
-
-    var mockToolData = {
-      'legal': {
-        title: '初步結論 (法遵整理)',
-        risk: '45',
-        riskText: '低風險',
-        riskClass: 'medium',
-        conclusion: '整體法遵狀況良好，合約有少數缺漏條款。建議增補保密與爭議管轄條款，防止潛在訴訟風險。',
-        list: [
-          '公司標準合約範本與保密協議',
-          '外包合作契約及智財歸屬條文',
-          '最近一期法遵覆核報告書'
-        ]
-      },
-      'lawyer': {
-        title: '法律研究分析',
-        risk: '50',
-        riskText: '中風險',
-        riskClass: 'medium',
-        conclusion: '研究爭點在於履行輔助人之過失責任歸屬。需對照民法第 224 條與實務判決見解，規劃答辯策略。',
-        list: [
-          '案件事實摘要與關係人時間線',
-          '適用法規條文與主管機關函釋',
-          '實務界與學說爭點對照表'
-        ]
-      },
-      'labor': {
-        title: '勞基法合規自檢結論',
-        risk: '65',
-        riskText: '中風險',
-        riskClass: 'medium',
-        conclusion: '排班表未依法提前公告且部分出勤紀錄缺漏。應於七日前公告班表並確實保存簽到退紀錄。',
-        list: [
-          '勞方出勤簽到退明細與請假單',
-          '加班費計算表與匯款證明明細',
-          '勞資會議同意延長工時會議紀錄'
-        ]
-      },
-      'consumer': {
-        title: '消保法合規自檢結論',
-        risk: '82',
-        riskText: '高風險',
-        riskClass: '',
-        conclusion: '服務契約條款限制七天猶豫期，違反消保法第 19 條。應立即修正退費政策，明列法定例外情形。',
-        list: [
-          '定型化契約條款及線上點選同意流程',
-          '鑑賞期退換貨流程及客服客訴紀錄',
-          '商品/服務網頁廣告描述之合規聲明'
-        ]
-      },
-      'judgment': {
-        title: '判決整理摘要',
-        risk: '35',
-        riskText: '低風險',
-        riskClass: 'medium',
-        conclusion: '公平交易法判決檢索完成。實務見解認為，宣傳用語雖有誇大但若未達引人錯誤之程度，不構成違法。',
-        list: [
-          '歷年公平交易委員會處分書與訴願決定',
-          '行政法院相關撤銷訴訟判決摘要',
-          '公平交易法廣告實務見解研析報告'
-        ]
-      }
-    };
-
-    function switchMockCase(caseKey) {
-      document.querySelectorAll('.mock-case-item').forEach(function(el) {
-        el.classList.remove('active');
-      });
-      var btnId = caseKey === 'labor-shift' ? 'mockCaseBtn1' : (caseKey === 'consumer-ad' ? 'mockCaseBtn2' : 'mockCaseBtn3');
-      var btn = document.getElementById(btnId);
-      if (btn) btn.classList.add('active');
-
-      var data = mockData[caseKey];
-      if (!data) return;
-
-      document.getElementById('mockCardTitle').textContent = '初步結論 (' + data.title + ')';
-      document.getElementById('mockCardDesc').textContent = data.conclusion;
-      document.getElementById('mockRiskScore').textContent = data.risk;
-      
-      var badge = document.getElementById('mockRiskBadge');
-      badge.textContent = data.riskText;
-      badge.className = 'mock-risk-badge ' + data.riskClass;
-
-      var listContainer = document.getElementById('mockCardList');
-      listContainer.innerHTML = '';
-      data.list.forEach(function(item) {
-        var li = document.createElement('li');
-        li.textContent = item;
-        listContainer.appendChild(li);
-      });
-
-      document.querySelectorAll('.mock-tab').forEach(function(el) {
-        el.classList.remove('active');
-      });
-      var tabBtn = document.getElementById('mockTabBtn-' + data.tab);
-      if (tabBtn) tabBtn.classList.add('active');
-    }
-
-    function switchMockTab(tabKey) {
-      document.querySelectorAll('.mock-tab').forEach(function(el) {
-        el.classList.remove('active');
-      });
-      var btn = document.getElementById('mockTabBtn-' + tabKey);
-      if (btn) btn.classList.add('active');
-
-      var data = mockToolData[tabKey];
-      if (!data) return;
-
-      document.getElementById('mockCardTitle').textContent = data.title;
-      document.getElementById('mockCardDesc').textContent = data.conclusion;
-      document.getElementById('mockRiskScore').textContent = data.risk;
-      
-      var badge = document.getElementById('mockRiskBadge');
-      badge.textContent = data.riskText;
-      badge.className = 'mock-risk-badge ' + data.riskClass;
-
-      var listContainer = document.getElementById('mockCardList');
-      listContainer.innerHTML = '';
-      data.list.forEach(function(item) {
-        var li = document.createElement('li');
-        li.textContent = item;
-        listContainer.appendChild(li);
-      });
-    }
-  </script>
-
-  <section class="section">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="eyebrow">Compliance</div>
-        <h2 class="section-title">兩類高頻風險：<em>勞基法與消保法。</em></h2>
-        <p class="section-sub">工時、薪資、休假、資遣與解僱，對應廣告、退款、定型化契約與客訴。處理重點在文件完整性、事實時間線與回覆順序。</p>
-      </header>
-      <div class="two-col">
-        <article class="lane reveal">
-          <h3>勞基法合規自檢</h3>
-        <p>面向資方、HR 與企業經營者，檢核工時、工資、休假、資遣、解僱與職場制度風險；員工提出異議時，形成事件包。</p>
-          <ul class="checklist">
-            <li>資方視角的制度自檢</li>
-            <li>工時、薪資、休假、資遣風險提示</li>
-            <li>勞方異議事件包與應對清單</li>
-            <li>條文、計算公式與文件清單追溯</li>
-          </ul>
-        </article>
-        <article class="lane reveal">
-          <h3>消保法合規自檢</h3>
-          <p>面向賣家、店家與平台經營者，檢核交易流程、定型化契約、退換貨、廣告標示與客訴風險；買方提出異議時，形成事件包。</p>
-          <ul class="checklist">
-            <li>賣家與店家視角的交易流程自檢</li>
-            <li>定型化契約、廣告、退換貨風險提示</li>
-            <li>買方異議事件包與客訴處理清單</li>
-            <li>合規缺口、補強文件與對外回覆草稿</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="eyebrow">Workflow</div>
-        <h2 class="section-title">六步驟，從事實到合規路徑。</h2>
-      </header>
-      <div class="flow reveal" aria-label="合規自檢共同流程">
-        <div class="flow-step"><b>01</b><span>選擇問題類型與處理角度</span></div>
-        <div class="flow-step"><b>02</b><span>補上文件與事件事實</span></div>
-        <div class="flow-step"><b>03</b><span>檢查法源與事實落差</span></div>
-        <div class="flow-step"><b>04</b><span>風險分級與原因</span></div>
-        <div class="flow-step"><b>05</b><span>改善建議與文件</span></div>
-        <div class="flow-step"><b>06</b><span>整理事件包與回覆草稿</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="eyebrow">Get Started</div>
-        <h2 class="section-title">現在就開始使用。</h2>
-        <p class="section-sub">免費試用所有工具。需要團隊協作、SSO 或客製整合？<a href="https://etp.choulegal.com/consult?source=choulegal_professional_bottom&utm_source=choulegal_site&utm_medium=referral&utm_campaign=professional_page" style="color:#fde68a;">聯繫我們</a>規劃企業方案。</p>
-      </header>
-      <a class="btn btn-primary reveal" href="workspace.html?source=choulegal_professional_bottom">免費試用</a>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="wrap footer-inner">
-    <span>© <span id="year">2026</span> ChouLegal · 周全法律科技</span>
-    <nav class="footer-links" aria-label="頁尾">
-      <a href="index.html">首頁</a>
-      <a href="professional.html">專業版</a>
-      <a href="education.html">法律教育</a>
-      <a href="privacy.html">隱私</a>
-      <a href="terms.html">條款</a>
-    </nav>
+  <p class="eyebrow">Professional moved to ChouReg</p>
+  <h1>舊專業版已遷移至 ChouReg。</h1>
+  <p>周全法律科技不再保留專業版產品線。企業、店家、HR、文件中心與合規工作台功能，統一移至 ChouReg 周全企業與合規。</p>
+  <div class="actions">
+    <a class="btn primary" href="https://choureg.com/">前往 ChouReg</a>
+    <a class="btn" href="index.html">回 ChouLegal 權益試算與查詢</a>
   </div>
-</footer>
-
-<script src="js/product-pages.js"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "周全專業版",
-  "brand": { "@type": "Brand", "name": "周全 ChouLegal" },
-  "description": "給律師、HR、店家與法務使用的法律合規工作台，輸入案件事實即產出風險評級、改善清單與判決摘要。免費試用。",
-  "url": "https://choulegal.com/professional.html"
-}
-</script>
+</main>
 </body>
 </html>

@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://choulegal.com/sitemap.xml
+Sitemap: https://people.choulegal.com/sitemap.xml
 Sitemap: https://inheritance.choulegal.com/sitemap.xml
 Sitemap: https://labor.choulegal.com/sitemap.xml

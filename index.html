@@ -2,1197 +2,649 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周全 ChouLegal — 免費法律工具與專業合規工作台</title>
-<meta name="description" content="周全法律科技提供從免費法律工具、企業法律基建到教育資料的完整路徑，讓法源、計算、案件與學習架構皆可追溯。">
+<title>ChouLegal 周全法律科技｜權益試算與查詢</title>
+<meta name="description" content="ChouLegal 周全法律科技提供一般民眾使用的權益試算與查詢工具，協助整理勞動、消費、租屋與民法財產權事件路徑，必要時銜接律師媒合。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://choulegal.com/">
-<meta property="og:title" content="周全 ChouLegal — 免費法律工具與專業合規工作台">
-<meta property="og:description" content="從入門到專業，建立法律問題的處理路徑：免費工具、專業服務、教育資料與 AVS 自檢。">
+<meta property="og:title" content="ChouLegal 周全法律科技｜權益試算與查詢">
+<meta property="og:description" content="一般民眾使用的權益試算與查詢入口，整理事件路徑，必要時銜接律師媒合。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choulegal.com/">
-<meta property="og:site_name" content="周全 ChouLegal">
+<meta property="og:site_name" content="ChouLegal 周全法律科技">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://choulegal.com/og-image.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="周全 ChouLegal">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="周全 ChouLegal">
-<meta name="twitter:description" content="免費工具、企業法律基建、教育資料與 AVS 自檢，建立可追溯的法律處理路徑。">
-<meta name="twitter:image" content="https://choulegal.com/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "周全",
-  "alternateName": "ChouLegal",
+  "@type": "WebSite",
+  "name": "ChouLegal 周全法律科技",
   "url": "https://choulegal.com/",
-  "logo": "https://choulegal.com/icon-512.png",
-  "description": "周全法律科技提供免費法律工具、企業法律基建、教育資料與 AVS 自檢，建立可追溯的法律問題處理路徑。"
+  "description": "ChouLegal 周全法律科技提供一般民眾使用的權益試算與查詢工具。"
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"__CF_TOKEN_CHOULEGAL__"}'></script>
-<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 <style>
-  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    background: #06080d;
-    color: rgba(255,255,255,0.92);
-    font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
-  *:focus-visible { outline: 2px solid rgba(253,230,138,0.7); outline-offset: 3px; border-radius: 2px; }
-  a { color: inherit; text-decoration: none; }
-  img, svg { display: block; max-width: 100%; }
+:root {
+  --paper: #fbfbf8;
+  --ink: #17201b;
+  --muted: #626c66;
+  --line: #d7ddd6;
+  --soft: #eef3ed;
+  --panel: #ffffff;
+  --green: #2f6b56;
+  --blue: #315d79;
+  --red: #8b4a3b;
+  --shadow: 0 18px 44px rgba(23, 32, 27, 0.1);
+}
 
-  /* ── Tokens ── */
-  :root {
-    --ink: #06080d;
-    --ink-2: #0c1018;
-    --paper: rgba(255,255,255,0.96);
-    --gold: #fde68a;
-    --gold-2: #fcd34d;
-    --line: rgba(255,255,255,0.08);
-    --line-strong: rgba(255,255,255,0.16);
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans TC", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(47, 107, 86, 0.5);
+  outline-offset: 3px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px clamp(18px, 4vw, 54px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(251, 251, 248, 0.96);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: max-content;
+}
+
+.brand img {
+  width: 38px;
+  height: 38px;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.brand small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+.nav-links .parent-link {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.shell {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 470px);
+  gap: clamp(32px, 6vw, 76px);
+  align-items: center;
+  padding: clamp(58px, 8vw, 112px) 0 48px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 12ch;
+  margin-bottom: 22px;
+  font-family: "Noto Serif TC", serif;
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: 660px;
+  margin-bottom: 30px;
+  color: var(--muted);
+  font-size: clamp(18px, 2vw, 21px);
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+
+.hero-actions,
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 160ms ease-out, background-color 160ms ease-out, color 160ms ease-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn.secondary {
+  background: var(--panel);
+}
+
+.case-panel {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.case-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--soft);
+}
+
+.case-panel-header strong {
+  font-size: 19px;
+}
+
+.status-pill {
+  border: 1px solid rgba(47, 107, 86, 0.28);
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.case-list {
+  display: grid;
+}
+
+.case-row {
+  display: grid;
+  grid-template-columns: 98px 1fr;
+  gap: 18px;
+  padding: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.case-row:last-child {
+  border-bottom: 0;
+}
+
+.case-tag {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.case-row strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.case-row p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.section {
+  padding: 82px 0;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 30px;
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+}
+
+.section-head h2,
+.match-copy h2,
+.trust-copy h2,
+.final-cta h2 {
+  margin-bottom: 0;
+  font-family: "Noto Serif TC", serif;
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tool-card {
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  padding: 20px;
+  box-shadow: 0 14px 32px rgba(23, 32, 27, 0.06);
+}
+
+.tool-card:nth-child(2) {
+  border-top: 6px solid var(--blue);
+}
+
+.tool-card:nth-child(3) {
+  border-top: 6px solid var(--red);
+}
+
+.tool-card:nth-child(4) {
+  border-top: 6px solid var(--green);
+}
+
+.tool-domain {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tool-card h3 {
+  margin: 36px 0 12px;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.tool-card p {
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.tool-card a {
+  margin-top: auto;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  font-weight: 700;
+}
+
+.match-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1fr);
+  gap: 34px;
+  align-items: stretch;
+}
+
+.match-copy,
+.trust-copy,
+.match-board,
+.final-cta {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.match-copy p,
+.trust-copy p,
+.final-cta p {
+  color: var(--muted);
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+
+.match-board {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.match-board-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  padding: 14px 0;
+}
+
+.match-board-row span {
+  color: rgba(251,251,248,0.68);
+}
+
+.trust-section {
+  display: grid;
+  grid-template-columns: minmax(340px, 0.8fr) minmax(0, 1fr);
+  gap: 34px;
+  align-items: stretch;
+}
+
+.trust-list {
+  display: grid;
+  gap: 14px;
+}
+
+.trust-item {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  padding: 20px;
+}
+
+.trust-item strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 19px;
+}
+
+.trust-item p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.final-cta {
+  margin-bottom: 64px;
+}
+
+.final-cta p {
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px clamp(18px, 4vw, 54px);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .tools-grid,
+  .match-section,
+  .trust-section,
+  .section-head {
+    grid-template-columns: 1fr;
   }
 
-  /* ── Container ── */
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
-  @media (max-width: 640px) { .wrap { padding: 0 22px; } }
-
-  /* ── Sticky nav (Linear/Vercel style — frosted, deep) ── */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    backdrop-filter: saturate(180%) blur(24px);
-    -webkit-backdrop-filter: saturate(180%) blur(24px);
-    background: rgba(10,12,18,0.72);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.32);
-  }
-  .nav-inner {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .nav-logo {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.97);
-  }
-  .nav-logo small {
-    margin-left: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.26em;
-    color: rgba(255,255,255,0.45);
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 13px;
-    color: rgba(255,255,255,0.72);
-    font-weight: 400;
-  }
-  .nav-links a { transition: color 0.2s; }
-  .nav-links a:hover { color: rgba(255,255,255,0.97); }
-  .nav-links .nav-audit {
-    padding: 4px 10px;
-    border: 1px solid rgba(253,230,138,0.26);
-    border-radius: 6px;
-    color: rgba(253,230,138,0.88);
-    background: rgba(253,230,138,0.065);
-  }
-  .nav-links .nav-audit:hover {
-    border-color: rgba(253,230,138,0.48);
-    color: #fef3c7;
-  }
-  @media (max-width: 720px) {
-    .nav-inner { padding: 14px 22px; }
-    .nav-links { gap: 18px; font-size: 12px; }
-  }
-
-  /* ── Hero (Apple-grade quiet hero) ── */
   .hero {
-    padding: 96px 0 88px;
-    text-align: center;
-    position: relative;
+    padding-top: 54px;
   }
-  .hero-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.32em;
-    color: rgba(253,230,138,0.85);
-    text-transform: uppercase;
-    margin-bottom: 26px;
-    font-weight: 500;
-  }
-  .hero-eyebrow .sep {
-    display: inline-block;
-    width: 18px;
-    height: 1px;
-    background: rgba(253,230,138,0.45);
-    vertical-align: middle;
-    margin: 0 10px 3px;
-  }
-  .hero-title {
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 500;
-    font-size: clamp(40px, 6.4vw, 72px);
-    line-height: 1.08;
-    letter-spacing: -0.022em;
-    color: rgba(255,255,255,0.98);
-    max-width: 22ch;
-    margin: 0 auto 24px;
-    text-wrap: balance;
-  }
-  .hero-title em {
-    font-style: normal;
-    font-weight: 300;
-    background: linear-gradient(110deg, var(--gold) 10%, #fbbf24 60%, #f59e0b 100%);
-    -webkit-background-clip: text;
-            background-clip: text;
-    color: transparent;
-  }
-  .hero-sub {
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: clamp(16px, 1.4vw, 19px);
-    color: rgba(255,255,255,0.65);
-    line-height: 1.65;
-    max-width: 560px;
-    margin: 0 auto 36px;
-    font-weight: 300;
-  }
-  .hero-actions {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 13px 26px;
-    border-radius: 999px;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    transition: transform 0.3s cubic-bezier(0.2,0.8,0.2,1), background 0.25s, color 0.25s, border-color 0.25s;
-    cursor: pointer;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--ink);
-  }
-  .btn-primary:hover {
-    background: #fef3c7;
-    transform: translateY(-1px);
-  }
-  .btn-ghost {
-    background: transparent;
-    color: rgba(255,255,255,0.92);
-  }
-  .btn-ghost::after { content: '›'; margin-left: 4px; transition: transform 0.3s; color: var(--gold); font-size: 18px; line-height: 1; }
-  .btn-ghost:hover { color: var(--gold); }
-  .btn-ghost:hover::after { transform: translateX(4px); }
 
-  /* ── Section ── */
-  section { position: relative; }
-  .section {
-    padding: 120px 0;
+  .tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .section-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 18px;
-    font-weight: 500;
-  }
-  .section-title {
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 500;
-    font-size: clamp(34px, 4.6vw, 56px);
-    line-height: 1.08;
-    letter-spacing: -0.018em;
-    color: rgba(255,255,255,0.98);
-    max-width: 22ch;
-    margin-bottom: 22px;
-  }
-  .section-title em {
-    font-style: normal;
-    font-weight: 300;
-    color: rgba(255,255,255,0.55);
-  }
-  .section-sub {
-    font-size: 19px;
-    line-height: 1.65;
-    color: rgba(255,255,255,0.62);
-    max-width: 60ch;
-    font-weight: 300;
-  }
-  .section-head { margin-bottom: 64px; }
-  .section-head.center { text-align: center; }
-  .section-head.center .section-title,
-  .section-head.center .section-sub { margin-left: auto; margin-right: auto; }
+}
 
-  /* ── Product grid (Apple cards, 2-col) ── */
-  .grid-products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 1040px) { .grid-products { grid-template-columns: 1fr; gap: 18px; } }
-
-  .product {
-    position: relative;
-    display: flex;
+@media (max-width: 680px) {
+  .site-header,
+  .site-footer {
+    align-items: flex-start;
     flex-direction: column;
-    min-height: 500px;
-    padding: 44px 40px 36px;
-    border-radius: 24px;
-    overflow: hidden;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015) 60%, rgba(255,255,255,0.01)),
-      rgba(255,255,255,0.015);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.05),
-      0 12px 40px rgba(0,0,0,0.32);
-    transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1), border-color 0.4s, box-shadow 0.4s;
-  }
-  .product:hover {
-    transform: translateY(-4px);
-    border-color: rgba(253,230,138,0.28);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.07),
-      0 18px 56px rgba(0,0,0,0.4),
-      0 0 0 1px rgba(253,230,138,0.06);
-  }
-  .product::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(120% 70% at 50% 0%, rgba(253,230,138,0.10), transparent 60%);
-    pointer-events: none;
-    opacity: 0.6;
-    transition: opacity 0.5s;
-  }
-  .product:hover::before { opacity: 1; }
-  .product:nth-child(2)::before {
-    background: radial-gradient(120% 70% at 50% 0%, rgba(125,211,252,0.10), transparent 60%);
-  }
-  .product:nth-child(3)::before {
-    background: radial-gradient(120% 70% at 50% 0%, rgba(134,239,172,0.10), transparent 60%);
   }
 
-  .product-eyebrow {
-    position: relative;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.24em;
-    color: rgba(255,255,255,0.55);
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .product-eyebrow.gold { color: var(--gold); }
-  .product-eyebrow .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: currentColor;
-    opacity: 0.7;
-  }
-  .product-name {
-    position: relative;
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(34px, 4vw, 48px);
-    font-weight: 500;
-    color: rgba(255,255,255,0.98);
-    line-height: 1.06;
-    letter-spacing: -0.012em;
-    margin-bottom: 14px;
-  }
-  .product-tag {
-    position: relative;
-    font-family: 'Noto Serif TC', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: clamp(18px, 1.6vw, 22px);
-    color: rgba(255,255,255,0.86);
-    line-height: 1.45;
-    margin-bottom: 18px;
-    max-width: 26ch;
-  }
-  .product-desc {
-    position: relative;
-    font-size: 15px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.8;
-    margin-bottom: 24px;
-  }
-  .product-desc strong {
-    color: rgba(255,255,255,0.86);
-    font-weight: 500;
-  }
-  .product-meta {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 28px;
-    flex-grow: 1;
-    align-content: flex-start;
-  }
-  .product-meta li {
-    list-style: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.66);
-    padding: 6px 12px;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 999px;
-    background: rgba(255,255,255,0.025);
-  }
-  .product-cta {
-    position: relative;
-    margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--gold);
-    transition: color 0.2s;
-  }
-  .product-cta-arrow {
-    font-size: 18px;
-    line-height: 1;
-    transition: transform 0.3s cubic-bezier(0.2,0.8,0.2,1);
-  }
-  .product:hover .product-cta { color: #fef3c7; }
-  .product:hover .product-cta-arrow { transform: translateX(5px); }
-
-  /* ── Professional suite ── */
-  .suite-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-    gap: 48px;
-    align-items: start;
-  }
-  @media (max-width: 920px) { .suite-layout { grid-template-columns: 1fr; gap: 28px; } }
-  .suite-rail {
-    position: sticky;
-    top: 96px;
-    padding-top: 8px;
-  }
-  @media (max-width: 920px) { .suite-rail { position: static; } }
-  .suite-map {
-    display: grid;
-    gap: 14px;
-  }
-  .suite-module {
-    position: relative;
-    padding: 24px 24px 22px;
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 18px;
-    background: rgba(255,255,255,0.025);
-    overflow: hidden;
-  }
-  .suite-module::before {
-    content: '';
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 3px;
-    background: linear-gradient(180deg, rgba(253,230,138,0.9), rgba(125,211,252,0.4));
-    opacity: 0.78;
-  }
-  .suite-module h3 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.3;
-    margin-bottom: 9px;
-    color: rgba(255,255,255,0.96);
-  }
-  .suite-module p {
-    font-size: 14.5px;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.62);
-  }
-  .suite-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 14px;
-  }
-  .suite-tags span {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    letter-spacing: 0.08em;
-    color: rgba(253,230,138,0.82);
-    padding: 5px 9px;
-    border: 1px solid rgba(253,230,138,0.18);
-    border-radius: 999px;
-    background: rgba(253,230,138,0.045);
-  }
-  .flow {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    margin-top: 38px;
-  }
-  @media (max-width: 940px) { .flow { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 560px) { .flow { grid-template-columns: 1fr; } }
-  .flow-step {
-    min-height: 118px;
-    padding: 16px 14px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.09);
-    background: rgba(255,255,255,0.022);
-  }
-  .flow-step b {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.16em;
-    margin-bottom: 10px;
-  }
-  .flow-step span {
-    display: block;
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: rgba(255,255,255,0.7);
-  }
-
-  /* ── Pillars (technical principles) ── */
-  .pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-  @media (max-width: 880px) { .pillars { grid-template-columns: 1fr; gap: 24px; } }
-  .pillar {
-    padding: 32px 0 0;
-    border-top: 1px solid rgba(255,255,255,0.12);
-  }
-  .pillar-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.24em;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-  .pillar-title {
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 500;
-    font-size: 22px;
-    color: rgba(255,255,255,0.97);
-    line-height: 1.4;
-    margin-bottom: 14px;
-    letter-spacing: -0.005em;
-  }
-  .pillar-desc {
-    font-size: 15px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.85;
-  }
-
-  /* ── Quote ── */
-  .quote {
-    text-align: center;
-    padding: 140px 0;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .quote-text {
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 300;
-    font-size: clamp(26px, 3.4vw, 42px);
-    line-height: 1.42;
-    letter-spacing: -0.012em;
-    color: rgba(255,255,255,0.92);
-    max-width: 22ch;
-    margin: 0 auto 28px;
-  }
-  .quote-text em {
-    font-style: normal;
-    color: var(--gold);
-    font-weight: 400;
-  }
-  .quote-attr {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-  }
-
-  /* ── LAVS Verification Section ── */
-  .lavs {
-    padding: 96px 0 100px;
-    position: relative;
-    overflow: hidden;
-  }
-  .lavs::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(34,197,94,0.05), transparent 70%),
-      linear-gradient(180deg, transparent, rgba(10,12,18,0.6), transparent);
-    pointer-events: none;
-  }
-  .lavs-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    border: 1px solid rgba(34,197,94,0.3);
-    border-radius: 100px;
-    background: rgba(34,197,94,0.06);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: rgba(134,239,172,0.9);
-    text-transform: uppercase;
-    margin-bottom: 32px;
-  }
-  .lavs-badge .dot-green {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 6px #4ade80;
-    animation: pulse-green 2s ease-in-out infinite;
-  }
-  @keyframes pulse-green {
-    0%,100% { opacity: 1; box-shadow: 0 0 6px #4ade80; }
-    50%      { opacity: 0.5; box-shadow: 0 0 2px #4ade80; }
-  }
-  .lavs-title {
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 500;
-    font-size: clamp(30px, 4vw, 52px);
-    line-height: 1.12;
-    letter-spacing: -0.02em;
-    color: rgba(255,255,255,0.97);
-    max-width: 24ch;
-    margin: 0 auto 18px;
-    text-wrap: balance;
-  }
-  .lavs-title em {
-    font-style: normal;
-    font-weight: 300;
-    background: linear-gradient(110deg, #86efac 0%, #4ade80 60%, #22c55e 100%);
-    -webkit-background-clip: text;
-            background-clip: text;
-    color: transparent;
-  }
-  .lavs-sub {
-    font-size: clamp(15px, 1.2vw, 17px);
-    color: rgba(255,255,255,0.55);
-    line-height: 1.65;
-    max-width: 52ch;
-    margin: 0 auto 56px;
-  }
-  /* Counter row */
-  .lavs-counters {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    margin-bottom: 56px;
-    flex-wrap: wrap;
-  }
-  .lavs-counter {
-    flex: 0 0 auto;
-    padding: 24px 48px;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.06);
-  }
-  .lavs-counter:last-child { border-right: none; }
-  @media (max-width: 640px) {
-    .lavs-counter { padding: 18px 28px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .lavs-counter:last-child { border-bottom: none; }
-  }
-  .lavs-counter-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 500;
-    color: #4ade80;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .lavs-counter-label {
-    font-size: 12px;
-    color: rgba(255,255,255,0.42);
-    letter-spacing: 0.06em;
-  }
-  /* Trace window */
-  .lavs-trace {
-    max-width: 760px;
-    margin: 0 auto 44px;
-    background: rgba(10,12,18,0.9);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    overflow: hidden;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    box-shadow: 0 0 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
-  }
-  .lavs-trace-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 18px;
-    background: rgba(255,255,255,0.03);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .lavs-trace-bar .dot { width: 10px; height: 10px; border-radius: 50%; }
-  .lavs-trace-bar .dot-r { background: #ef4444; opacity: 0.7; }
-  .lavs-trace-bar .dot-y { background: #eab308; opacity: 0.7; }
-  .lavs-trace-bar .dot-g { background: #22c55e; opacity: 0.7; }
-  .lavs-trace-bar .title { margin-left: 6px; font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; }
-  .lavs-trace-body { padding: 20px 22px; line-height: 1.9; }
-  .t-dim  { color: rgba(255,255,255,0.28); }
-  .t-key  { color: #93c5fd; }
-  .t-str  { color: #f9a8d4; }
-  .t-num  { color: #86efac; }
-  .t-pass { color: #4ade80; font-weight: 500; }
-  .t-gray { color: rgba(255,255,255,0.45); }
-  .lavs-phases {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    max-width: 760px;
-    margin: 0 auto 44px;
-  }
-  @media (max-width: 640px) { .lavs-phases { grid-template-columns: repeat(2, 1fr); } }
-  .lavs-phase {
-    padding: 16px 18px;
-    background: rgba(34,197,94,0.05);
-    border: 1px solid rgba(34,197,94,0.15);
-    border-radius: 8px;
-  }
-  .lavs-phase-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: rgba(134,239,172,0.6);
-    letter-spacing: 0.18em;
-    margin-bottom: 6px;
-  }
-  .lavs-phase-name {
-    font-size: 13px;
-    color: rgba(255,255,255,0.85);
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-  .lavs-phase-desc {
-    font-size: 11.5px;
-    color: rgba(255,255,255,0.42);
-    line-height: 1.5;
-  }
-  .lavs-note {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11.5px;
-    color: rgba(255,255,255,0.32);
-    letter-spacing: 0.06em;
-    text-align: center;
-  }
-  .lavs-note a { color: rgba(134,239,172,0.7); text-decoration: underline; text-underline-offset: 3px; }
-  .lavs-note a:hover { color: #86efac; }
-
-  /* ── Footer ── */
-  .foot {
-    padding: 56px 0;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .foot-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-  }
-  @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
-  .foot-col h4 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-    font-weight: 400;
-    margin-bottom: 16px;
-  }
-  .foot-col a {
-    display: block;
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 10px;
-    transition: color 0.2s;
-  }
-  .foot-col a:hover { color: rgba(255,255,255,0.97); }
-  .foot-brand {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 18px;
-    color: rgba(255,255,255,0.92);
-    margin-bottom: 12px;
-  }
-  .foot-brand small {
-    margin-left: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.24em;
-    color: rgba(255,255,255,0.35);
-    text-transform: uppercase;
-  }
-  .foot-mark {
-    display: block;
-    width: 96px;
-    height: 96px;
-    margin-bottom: 14px;
-    opacity: 0.92;
-  }
-  .foot-tag {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.65;
-    max-width: 30ch;
-  }
-  .foot-base {
-    padding-top: 28px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
+  .nav-links {
+    width: 100%;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.4);
+    gap: 10px;
+    font-size: 13px;
   }
 
-  /* ── Reveal ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1);
-  }
-  .reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  }
-  @media (max-width: 640px) {
-    .hero { padding: 100px 0 80px; }
-    .section { padding: 80px 0; }
-    .quote { padding: 80px 0; }
-    .product { padding: 34px 28px 28px; min-height: 420px; }
-    .nav-logo small { display: none; }
-    .nav-links { flex-wrap: nowrap; justify-content: flex-end; gap: 12px; font-size: 11px; }
+  .shell {
+    width: min(100% - 28px, 1180px);
   }
 
-  /* ── Background (near-black with subtle top spotlight, Linear/Vercel style) ── */
-  body {
-    background:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(253,230,138,0.10), transparent 60%),
-      radial-gradient(ellipse 90% 60% at 50% 110%, rgba(56,189,248,0.06), transparent 60%),
-      #0a0c12;
-    background-attachment: fixed;
+  h1 {
+    max-width: 9ch;
+    font-size: 44px;
   }
-  .ambient { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-  .ambient-grain {
-    position: absolute; inset: 0;
-    opacity: 0.06;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+
+  .tools-grid {
+    grid-template-columns: 1fr;
   }
-  .ambient-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
+
+  .case-row {
+    grid-template-columns: 1fr;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+}
 </style>
-<link rel="stylesheet" href="css/choulegal-unified.css">
-<link rel="stylesheet" href="css/executive-polish.css">
 </head>
 <body>
-
-<div class="ambient" aria-hidden="true">
-  <div class="ambient-grid"></div>
-  <div class="ambient-grain"></div>
-</div>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">周全<small>ChouLegal</small></a>
-    <nav class="nav-links" aria-label="主選單">
-      <a href="#products">服務入口</a>
-      <a href="professional.html">專業版</a>
-      <a href="education.html">法律教育</a>
-      <a href="manifesto.html">理念</a>
-      <a href="about.html">關於</a>
-      <a class="nav-audit" href="verification.html">查證資料</a>
-    </nav>
-  </div>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="ChouLegal 首頁">
+    <img src="logo-icon.svg" alt="">
+    <span>
+      <strong>ChouLegal</strong>
+      <small>周全法律科技</small>
+    </span>
+  </a>
+  <nav class="nav-links" aria-label="主要導覽">
+    <a href="#tools">權益試算</a>
+    <a href="#lawyers">律師媒合</a>
+    <a href="#trust">法源驗證</a>
+    <a class="parent-link" href="https://choutech.com">ChouTech</a>
+  </nav>
 </header>
 
 <main>
-
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-eyebrow">ChouLegal</div>
-      <h1 class="hero-title">周全<em>法律科技</em></h1>
-      <p class="hero-sub">面對法律爭議，您需要清晰的應對脈絡，而非無法驗證的預測結果。周全提供直觀的免費工具、專業合規工作台與系統化教育資源，建立可追溯、可稽核的處理程序。</p>
+  <section class="hero shell">
+    <div>
+      <p class="eyebrow">choulegal.com</p>
+      <h1>ChouLegal 周全法律科技</h1>
+      <p class="lead">一般民眾使用的權益試算與查詢入口。先整理事件、法源與可能路徑，再依需求銜接律師媒合。</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#products">選擇服務</a>
-        <a class="btn btn-ghost" href="workspace.html">專業版工作台</a>
+        <a class="btn primary" href="#tools">開始查詢</a>
+        <a class="btn secondary" href="#lawyers">了解律師媒合</a>
       </div>
+    </div>
+
+    <aside class="case-panel" aria-label="權益查詢流程摘要">
+      <div class="case-panel-header">
+        <strong>事件先定位，再決定下一步</strong>
+        <span class="status-pill">B2C 權益入口</span>
+      </div>
+      <div class="case-list">
+        <div class="case-row">
+          <span class="case-tag">Step 01</span>
+          <div><strong>選擇事件類型</strong><p>勞動、消費、租屋、繼承與財產權。</p></div>
+        </div>
+        <div class="case-row">
+          <span class="case-tag">Step 02</span>
+          <div><strong>取得試算與路徑</strong><p>以官方法源與可驗證計算整理初步範圍。</p></div>
+        </div>
+        <div class="case-row">
+          <span class="case-tag">Step 03</span>
+          <div><strong>需要時媒合律師</strong><p>具體法律意見交由執業律師處理。</p></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section shell" id="tools">
+    <div class="section-head">
+      <p class="eyebrow">Rights Tools</p>
+      <h2>權益試算與查詢。</h2>
+    </div>
+
+    <div class="tools-grid">
+      <article class="tool-card">
+        <span class="tool-domain">inheritance.choulegal.com</span>
+        <h3>民法財產權</h3>
+        <p>繼承、親屬財產、物權、遺產稅與贈與稅相關事件的初步查詢。</p>
+        <a href="https://inheritance.choulegal.com">進入查詢</a>
+      </article>
+
+      <article class="tool-card">
+        <span class="tool-domain">labor.choulegal.com</span>
+        <h3>勞基法權益</h3>
+        <p>薪資、加班、資遣、職災、請假與職場權益試算。</p>
+        <a href="https://labor.choulegal.com">進入查詢</a>
+      </article>
+
+      <article class="tool-card">
+        <span class="tool-domain">consumer.choulegal.com</span>
+        <h3>消費爭議</h3>
+        <p>退費、瑕疵、廣告不實、定型化契約與客訴路徑整理。</p>
+        <a href="https://consumer.choulegal.com">進入查詢</a>
+      </article>
+
+      <article class="tool-card">
+        <span class="tool-domain">rental.choulegal.com</span>
+        <h3>租屋權益</h3>
+        <p>押金、修繕、提前解約、租賃爭議與租約條款檢查。</p>
+        <a href="https://rental.choulegal.com">進入查詢</a>
+      </article>
     </div>
   </section>
 
-  <section class="section" id="products">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="section-eyebrow">Start Here</div>
-        <h2 class="section-title">從日常定位到專業合規，理清法律脈絡</h2>
-        <p class="section-sub">
-          <strong>日常定位：</strong>面臨爭議時，先透過民眾版免費工具掌握關鍵爭點與法源依據。<br>
-          <strong>專業合規：</strong>針對企業規章、合約審閱與勞資爭議，建立完整的合規管理架構。<br>
-          <strong>學術研習：</strong>匯聚法條體系、實務判例與考試資源，構建系統化的法律認知。
-        </p>
-      </header>
-
-      <div class="grid-products">
-
-        <a class="product reveal" href="https://people.choulegal.com">
-          <div class="product-eyebrow gold"><span class="dot"></span>免費工具</div>
-          <h3 class="product-name">民眾版：權益自檢與即時指引</h3>
-          <p class="product-tag">在採取行動前，首要步驟是釐清事實與主張。</p>
-          <p class="product-desc">本站工具完全免費且無需註冊。您可以從「事件包」著手，盤點關鍵時效、必備證據與程序文件；亦可直接進行數額或期限試算。所有結果皆公開算法並追溯至法規原文，確保公開透明。</p>
-          <ul class="product-meta">
-            <li>LaborPro · 勞動</li>
-            <li>InheritancePro · 繼承</li>
-            <li>ConsumerPro · 消費</li>
-            <li>RentalPro · 租屋</li>
-          </ul>
-          <span class="product-cta">進入民眾版<span class="product-cta-arrow">›</span></span>
-        </a>
-
-        <a class="product reveal" href="professional.html">
-          <div class="product-eyebrow"><span class="dot"></span>專業版</div>
-          <h3 class="product-name">專業版：你的法律合規工作台</h3>
-          <p class="product-tag">將規章、文檔與繁雜爭議轉化為可執行的管理清單。</p>
-          <p class="product-desc">給律師、HR、店家與法務使用的合規工作台。輸入案件事實，自動產出風險評級、改善清單與判決摘要。免費試用，不需要簽約。</p>
-          <ul class="product-meta">
-            <li>AI 法務助理</li>
-            <li>AI 律師助理</li>
-            <li>合規自檢</li>
-            <li>判決整理</li>
-          </ul>
-          <span class="product-cta">免費試用專業版<span class="product-cta-arrow">›</span></span>
-        </a>
-
-        <a class="product reveal" href="education.html" id="education">
-          <div class="product-eyebrow"><span class="dot"></span>學習資料</div>
-          <h3 class="product-name">教育資料：系統化的法律學習架構</h3>
-          <p class="product-tag">法律學習不該是碎片化的資訊堆疊。</p>
-          <p class="product-desc">我們將概念、法條、實務見解與學習路徑整合於同一架構下，無論是生活法律科普、國考準備或轉學考攻堅，都能在此進行高效率的查詢與複習。</p>
-          <ul class="product-meta">
-            <li>法律科普</li>
-            <li>國考資料庫</li>
-            <li>轉學考資料庫</li>
-          </ul>
-          <span class="product-cta">查看法律教育<span class="product-cta-arrow">›</span></span>
-        </a>
-
+  <section class="section shell match-section" id="lawyers">
+    <div class="match-copy">
+      <p class="eyebrow">Lawyer Matching</p>
+      <h2>律師媒合，不混同法律諮詢。</h2>
+      <p>ChouLegal 先協助一般人把事件類型、金額範圍、時程與可能路徑整理好。若需要個案法律意見、談判、訴訟或文件審閱，再轉向合作律師。</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://people.choulegal.com/lawyers.html">進入律師媒合</a>
+        <a class="btn secondary" href="mailto:businessjoechou@gmail.com?subject=ChouLegal%20律師合作與廣告版位">律師合作洽詢</a>
       </div>
+    </div>
+    <div class="match-board" aria-label="律師媒合資訊欄位">
+      <div class="match-board-row"><strong>事件類型</strong><span>勞動 / 消費 / 租屋 / 財產</span></div>
+      <div class="match-board-row"><strong>地區</strong><span>以使用者選擇為準</span></div>
+      <div class="match-board-row"><strong>需求</strong><span>諮詢 / 審閱 / 訴訟 / 談判</span></div>
+      <div class="match-board-row"><strong>資料</strong><span>由使用者自行提供給律師</span></div>
+      <div class="match-board-row"><strong>版位</strong><span>事件包 / 地區 / 專長 / 內容贊助</span></div>
     </div>
   </section>
 
-  <section class="section" id="professional">
-    <div class="wrap">
-      <div class="suite-layout">
-        <header class="section-head suite-rail reveal">
-          <div class="section-eyebrow">Professional</div>
-          <h2 class="section-title">專業版：輸入事實，產出合規報告</h2>
-          <p class="section-sub">AI 法務助理、合規自檢、判決整理——所有工具免費試用。個人律師、HR、小店家到企業法務，都可以直接開始使用。</p>
-        </header>
-
-        <div class="suite-map">
-          <article class="suite-module reveal">
-            <h3>AI 法務助理</h3>
-            <p>評估公司規章與合約風險，辨識文件缺漏並規劃改善路徑，提供可供審核的合規依據。</p>
-            <div class="suite-tags"><span>企業內部</span><span>合規流程</span><span>文件整理</span></div>
-          </article>
-
-          <article class="suite-module reveal">
-            <h3>AI 律師助理</h3>
-            <p>釐清案件事實、法律爭點、適用法源與實務判決，整理為可供覆核與延伸的研究底稿。</p>
-            <div class="suite-tags"><span>爭點整理</span><span>法源追溯</span><span>研究輔助</span></div>
-          </article>
-
-          <article class="suite-module reveal">
-            <h3>勞基法合規自檢</h3>
-            <p>檢視工時、工資、休假、資遣與解雇等職場制度風險。於爭議發生時，快速產出對應的事件包與因應清單。</p>
-            <div class="suite-tags"><span>資方自檢</span><span>勞方異議事件包</span><span>勞基法</span></div>
-          </article>
-
-          <article class="suite-module reveal">
-            <h3>消保法合規自檢</h3>
-            <p>檢視交易流程、定型化契約、退換貨及廣告標示等經營風險。於消費糾紛發生時，自動整理應對事件包。</p>
-            <div class="suite-tags"><span>賣家自檢</span><span>買方異議事件包</span><span>消保法</span></div>
-          </article>
-
-          <article class="suite-module reveal">
-            <h3>判決整理</h3>
-            <p>輸入關鍵字即自動彙整相關判決之事實、爭點與法院見解，大幅提升實務檢索效率。</p>
-            <div class="suite-tags"><span>關鍵字搜尋</span><span>判決摘要</span><span>法院見解</span></div>
-          </article>
-        </div>
-      </div>
-
-      <div class="flow reveal" aria-label="合規自檢共同流程">
-        <div class="flow-step"><b>01</b><span>選擇法源與角色</span></div>
-        <div class="flow-step"><b>02</b><span>問卷與文件上傳</span></div>
-        <div class="flow-step"><b>03</b><span>法源與事實檢核</span></div>
-        <div class="flow-step"><b>04</b><span>風險分級與原因</span></div>
-        <div class="flow-step"><b>05</b><span>改善建議與文件</span></div>
-        <div class="flow-step"><b>06</b><span>異議發生事件包</span></div>
-      </div>
+  <section class="section shell trust-section" id="trust">
+    <div class="trust-copy">
+      <p class="eyebrow">Verification</p>
+      <h2>法源、公式與 AI 輸出要分開處理。</h2>
+      <p>可計算的數字交由規則引擎，法律資料以官方來源為準，AI 只負責整理與導覽。這是 ChouLegal 跟一般聊天式法律工具的分界。</p>
+    </div>
+    <div class="trust-list">
+      <div class="trust-item"><strong>官方法源</strong><p>法條、常數與版本變動應回到官方來源確認。</p></div>
+      <div class="trust-item"><strong>純函式計算</strong><p>試算結果應可重跑、可測試、可檢查。</p></div>
+      <div class="trust-item"><strong>法律邊界</strong><p>本站內容不構成法律意見；個案請洽執業律師。</p></div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <div class="section-eyebrow">Trust</div>
-        <h2 class="section-title">法源透明，論證可溯。</h2>
-      </header>
-
-      <div class="pillars">
-        <article class="pillar reveal">
-          <div class="pillar-num">01 /</div>
-          <h3 class="pillar-title">法律底層，源自法源</h3>
-          <p class="pillar-desc">法律工具不應只是產出結論的黑盒子。周全揭露計算邏輯、引用條文、修正日期與司法判例，讓每一項輸出都能回到法律依據。</p>
-        </article>
-
-        <article class="pillar reveal">
-          <div class="pillar-num">02 /</div>
-          <h3 class="pillar-title">角色分層，資訊有序</h3>
-          <p class="pillar-desc">法律資訊的價值取決於受眾。<br><br><strong>大眾使用者：</strong>轉化為直觀的權利指引。<br><strong>企業管理層：</strong>聚焦於風險識別與文件補強。<br><strong>法律從業人員：</strong>提供實務判例與法條引用。</p>
-        </article>
-
-        <article class="pillar reveal">
-          <div class="pillar-num">03 /</div>
-          <h3 class="pillar-title">可稽核的邏輯架構</h3>
-          <p class="pillar-desc">自動化不代表黑箱。周全開發的 AVS (Automated Verification System) 自檢系統，建立可重算、可稽核的邏輯鏈。從計算過程到檢核重點，每一項產出都保留法學上的驗證依據。</p>
-        </article>
-      </div>
+  <section class="final-cta shell">
+    <p class="eyebrow">ChouTech Portfolio</p>
+    <h2>法律教育與企業合規已拆出獨立品牌。</h2>
+    <p>法律學習請前往 ChouLegal Edu 周全法律大學堂；企業與店家合規請前往 ChouReg 周全企業與合規。ChouLegal 專注一般民眾的權益試算、查詢與律師媒合。</p>
+    <div class="cta-row">
+      <a class="btn secondary" href="https://choulegaledu.com">ChouLegal Edu</a>
+      <a class="btn secondary" href="https://choureg.com">ChouReg</a>
+      <a class="btn secondary" href="https://choutech.com">ChouTech</a>
     </div>
   </section>
-
-  <!-- ════ LAVS 驗證 ════ -->
-  <section class="lavs">
-    <div class="wrap" style="text-align:center;">
-      <div class="reveal">
-        <div class="lavs-badge"><span class="dot-green"></span>AVS v1.0 · 即時驗證中</div>
-        <h2 class="lavs-title">AVS 自檢：<em>基於確定性邏輯的法律演算驗證</em></h2>
-        <p class="lavs-sub">法律論證講求嚴謹，數據計算更需有據可查。AVS 系統透過四階段驗證程序，將法律邏輯轉化為可重算的演算結果。本驗證程序排除生成式 AI 的不確定性，確保運算過程完全透明、可獨立稽核，且結果穩定一致。</p>
-      </div>
-
-      <!-- 數字區 -->
-      <div class="lavs-counters reveal">
-        <div class="lavs-counter">
-          <div class="lavs-counter-num">32</div>
-          <div class="lavs-counter-label">函式跨領域驗算通過</div>
-        </div>
-        <div class="lavs-counter">
-          <div class="lavs-counter-num">17</div>
-          <div class="lavs-counter-label">人工確認標準案例</div>
-        </div>
-        <div class="lavs-counter">
-          <div class="lavs-counter-num">33</div>
-          <div class="lavs-counter-label">法條 SHA-256 存證</div>
-        </div>
-        <div class="lavs-counter">
-          <div class="lavs-counter-num">100%</div>
-          <div class="lavs-counter-label">通過率</div>
-        </div>
-      </div>
-
-      <!-- 模擬 trace 視窗 -->
-      <div class="lavs-trace reveal">
-        <div class="lavs-trace-bar">
-          <span class="dot dot-r"></span>
-          <span class="dot dot-y"></span>
-          <span class="dot dot-g"></span>
-          <span class="title">AVS AUDIT TRACE · 新制資遣費 5年 月薪40,000</span>
-        </div>
-        <div class="lavs-trace-body">
-<span class="t-dim">{</span>
-  <span class="t-key">"avs_version"</span><span class="t-dim">:</span>  <span class="t-str">"1.0"</span><span class="t-dim">,</span>
-  <span class="t-key">"scenario_id"</span><span class="t-dim">:</span>   <span class="t-str">"TW-LABOR-SEVERANCE-NEW-001"</span><span class="t-dim">,</span>
-  <span class="t-key">"laws"</span><span class="t-dim">:</span>          <span class="t-dim">[{</span> <span class="t-key">"article"</span><span class="t-dim">:</span> <span class="t-str">"勞退條例§12"</span> <span class="t-dim">}],</span>
-  <span class="t-key">"steps"</span><span class="t-dim">:</span> <span class="t-dim">[</span>
-    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span> <span class="t-str">"年資換算"</span><span class="t-dim">,</span>  <span class="t-key">"formula"</span><span class="t-dim">:</span> <span class="t-gray">"60 / 12"</span><span class="t-dim">,</span>      <span class="t-key">"value"</span><span class="t-dim">:</span> <span class="t-num">5</span>      <span class="t-dim">},</span>
-    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span> <span class="t-str">"基數計算"</span><span class="t-dim">,</span>  <span class="t-key">"formula"</span><span class="t-dim">:</span> <span class="t-gray">"5 × 0.5"</span><span class="t-dim">,</span>      <span class="t-key">"value"</span><span class="t-dim">:</span> <span class="t-num">2.5</span>    <span class="t-dim">},</span>
-    <span class="t-dim">{</span> <span class="t-key">"label"</span><span class="t-dim">:</span> <span class="t-str">"資遣費"</span><span class="t-dim">,</span>    <span class="t-key">"formula"</span><span class="t-dim">:</span> <span class="t-gray">"2.5 × 40000"</span><span class="t-dim">,</span>  <span class="t-key">"value"</span><span class="t-dim">:</span> <span class="t-num">100000</span> <span class="t-dim">}</span>
-  <span class="t-dim">],</span>
-  <span class="t-key">"output"</span><span class="t-dim">:</span>       <span class="t-num">100000</span><span class="t-dim">,</span>
-  <span class="t-key">"confidence"</span><span class="t-dim">:</span>  <span class="t-str">"deterministic"</span>
-<span class="t-dim">}</span>
-&nbsp;
-<span class="t-pass">✓ Phase 1 Schema      PASS  ·  10 欄位齊全</span>
-<span class="t-pass">✓ Phase 2 Law Source  PASS  ·  勞退條例§12 → law.moj.gov.tw (SHA-256 存證)</span>
-<span class="t-pass">✓ Phase 3 Computation PASS  ·  3 步驟重算一致</span>
-<span class="t-pass">✓ Phase 4 Oracle      PASS  ·  TW-LABOR-SEVERANCE-NEW-001 預期 100,000 ✓</span>
-&nbsp;
-<span class="t-num">→ OVERALL: PASS</span>
-        </div>
-      </div>
-
-      <!-- 四階段說明 -->
-      <div class="lavs-phases reveal">
-        <div class="lavs-phase">
-          <div class="lavs-phase-num">PHASE 01</div>
-          <div class="lavs-phase-name">結構驗證</div>
-          <div class="lavs-phase-desc">格式、欄位、版本號全部到位</div>
-        </div>
-        <div class="lavs-phase">
-          <div class="lavs-phase-num">PHASE 02</div>
-          <div class="lavs-phase-name">法源查核</div>
-          <div class="lavs-phase-desc">每條法條打全國法規資料庫，SHA-256 存證</div>
-        </div>
-        <div class="lavs-phase">
-          <div class="lavs-phase-num">PHASE 03</div>
-          <div class="lavs-phase-name">計算重現</div>
-          <div class="lavs-phase-desc">逐步重算公式，確認每一個中間值</div>
-        </div>
-        <div class="lavs-phase">
-          <div class="lavs-phase-num">PHASE 04</div>
-          <div class="lavs-phase-name">Oracle 比對</div>
-          <div class="lavs-phase-desc">對照人工確認標準案例，答案在容差內</div>
-        </div>
-      </div>
-
-      <div class="reveal" style="margin-bottom:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-        <a href="avs-verify.html" style="display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border:1px solid rgba(74,222,128,0.55);border-radius:999px;background:rgba(74,222,128,0.12);font-family:'Noto Sans TC',sans-serif;font-size:15px;font-weight:500;color:rgba(134,239,172,0.95);transition:background 0.25s,border-color 0.25s,transform 0.3s cubic-bezier(0.2,0.8,0.2,1);" onmouseover="this.style.background='rgba(74,222,128,0.2)';this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(74,222,128,0.12)';this.style.transform='translateY(0)';">試跑驗證 →</a>
-        <a href="avs.html" style="display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border:1px solid rgba(74,222,128,0.25);border-radius:999px;background:rgba(34,197,94,0.05);font-family:'Noto Sans TC',sans-serif;font-size:15px;font-weight:500;color:rgba(134,239,172,0.7);transition:background 0.25s,border-color 0.25s,transform 0.3s cubic-bezier(0.2,0.8,0.2,1);" onmouseover="this.style.background='rgba(34,197,94,0.1)';this.style.borderColor='rgba(74,222,128,0.4)';this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(34,197,94,0.05)';this.style.borderColor='rgba(74,222,128,0.25)';this.style.transform='translateY(0)';">深入了解 AVS <span style="font-size:18px;line-height:1;">›</span></a>
-      </div>
-      <p class="lavs-note reveal">
-        © 2026 ChouLegal 周全法律科技 · AVS 自研自檢系統 · 專利申請中 ·
-        驗證器開源 CC BY 4.0 ·
-        <a href="https://github.com/businessjoechou/lavs" target="_blank" rel="noopener">AVS Standard →</a>
-      </p>
-    </div>
-  </section>
-
 </main>
 
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-col">
-        <img class="foot-mark" src="brand/logo-mark.png" alt="周全 ChouLegal 法律科技" width="96" height="96">
-        <div class="foot-brand">周全<small>ChouLegal</small></div>
-        <p class="foot-tag">周全 ChouLegal · 周全法律科技。</p>
-      </div>
-      <div class="foot-col">
-        <h4>產品</h4>
-        <a href="https://people.choulegal.com">周全｜民眾版</a>
-        <a href="professional.html">周全專業版</a>
-        <a href="education.html">法律教育平台</a>
-        <a href="avs.html" style="color:rgba(134,239,172,0.75);">AVS 自檢系統</a>
-        <a href="verification.html" style="color:rgba(253,230,138,0.82);">查證資料</a>
-      </div>
-      <div class="foot-col">
-        <h4>公司</h4>
-        <a href="about.html">關於</a>
-        <a href="manifesto.html">理念</a>
-        <a href="guide.html">指南</a>
-        <a href="pricing.html">方案</a>
-      </div>
-      <div class="foot-col">
-        <h4>條款</h4>
-        <a href="privacy.html">隱私權</a>
-        <a href="terms.html">使用條款</a>
-        <a href="mailto:businessjoechou@gmail.com">聯絡</a>
-        <a href="sponsor.html">請我們喝咖啡</a>
-      </div>
-    </div>
-    <div class="foot-base">
-      <span>© <span id="year">2026</span> ChouLegal · 周全法律科技</span>
-      <span>Taipei, Taiwan</span>
-      <a href="slides/ncku.html" style="color:rgba(255,255,255,0.22);transition:color .2s;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.22)'">成大簡報</a>
-    </div>
-  </div>
+<footer class="site-footer">
+  <span>© 2026 ChouLegal 周全法律科技</span>
+  <span>ChouTech 周全科技旗下品牌</span>
 </footer>
-
-<script>
-  var y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
-  if (typeof IntersectionObserver !== 'undefined') {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-    setTimeout(function () {
-      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight) el.classList.add('is-visible');
-      });
-    }, 1600);
-  } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
-  }
-</script>
-
 </body>
 </html>
