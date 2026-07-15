@@ -853,12 +853,30 @@ https://choulegal.com/avs-verify`;
 // ═══════════════════════════════════════════════════════════════════════
 // INPUT HELPERS
 // ═══════════════════════════════════════════════════════════════════════
+function resetVerificationOutput() {
+  const badge=document.getElementById('overall-badge');
+  const idle=document.getElementById('output-idle');
+  const phases=document.getElementById('phases-wrap');
+  const cert=document.getElementById('cert-section');
+  const btn=document.getElementById('btn-verify');
+
+  if(badge){badge.textContent='—';badge.style.color='rgba(255,255,255,.28)';}
+  if(idle)idle.style.display='';
+  if(phases){phases.innerHTML='';phases.style.display='none';}
+  if(cert){cert.innerHTML='';cert.style.display='none';}
+  if(btn&&!btn.disabled){
+    btn.classList.remove('running');
+    btn.querySelector('.btn-text').textContent='開始驗證 →';
+  }
+}
+
 function loadExample(type) {
   const ex=type==='pass'?EXAMPLE_PASS:EXAMPLE_FAIL;
   document.getElementById('trace-input').value=JSON.stringify(ex,null,2);
+  resetVerificationOutput();
   validateJSON();
 }
-function clearInput(){document.getElementById('trace-input').value='';document.getElementById('json-status').className='json-status idle';document.getElementById('json-status').textContent='等待輸入…';}
+function clearInput(){document.getElementById('trace-input').value='';document.getElementById('json-status').className='json-status idle';document.getElementById('json-status').textContent='等待輸入…';resetVerificationOutput();}
 function validateJSON(){
   const v=document.getElementById('trace-input').value.trim();
   const el=document.getElementById('json-status');
@@ -866,7 +884,7 @@ function validateJSON(){
   try{const t=JSON.parse(v);el.className='json-status ok';el.textContent='✓ 有效 JSON · avs_version: '+(t.avs_version||'未指定')+' · domain: '+(t.domain||'未指定')+' · steps: '+(t.steps?.length||0)+' 步';}
   catch(e){el.className='json-status err';el.textContent='✗ JSON 格式錯誤: '+e.message;}
 }
-document.getElementById('trace-input').addEventListener('input',validateJSON);
+document.getElementById('trace-input').addEventListener('input',()=>{resetVerificationOutput();validateJSON();});
 </script>
 </body>
 </html>
