@@ -10,7 +10,13 @@
 <meta property="og:description" content="四階段確定性驗算，不使用任何 AI。同一份 trace 由第三方獨立執行，應得到相同結論。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choulegal.com/avs-verify">
-<meta property="og:image" content="https://choulegal.com/og-image.png">
+<meta property="og:image" content="https://choulegal.com/og-image-20260716.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ChouLegal 周全法律權益試算與查詢">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://choulegal.com/og-image-20260716.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -212,6 +218,17 @@ a{color:inherit;text-decoration:none;}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:2px;}
 </style>
 <link rel="stylesheet" href="css/executive-polish.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RT23BD12BD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-RT23BD12BD', {
+      anonymize_ip: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
 </head>
 <body>
 
@@ -320,7 +337,7 @@ a{color:inherit;text-decoration:none;}
 <footer class="foot">
   <div class="wrap">
     <div class="foot-inner">
-      <span>AVS — AI Verification Standard · © 2026 ChouLegal 周全法律科技 · Patent Pending</span>
+      <span>AVS — AI Verification Standard · © 2026 ChouLegal 周全法律權益 · Patent Pending</span>
       <div class="foot-links">
         <a href="avs.html">AVS 說明</a>
         <a href="index.html">ChouLegal 主站</a>
@@ -842,7 +859,7 @@ confidence：${parsed.confidence||'—'}
 
 驗算由 AVS — AI Verification Standard 執行
 不使用任何 AI 元件 · 確定性結果
-© 2026 ChouLegal 周全法律科技 · Patent Pending
+© 2026 ChouLegal 周全法律權益 · Patent Pending
 https://choulegal.com/avs-verify`;
   navigator.clipboard?.writeText(text).then(()=>{
     const btn=event.target;btn.textContent='已複製！';

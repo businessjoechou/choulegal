@@ -20,7 +20,13 @@
 <meta property="og:url" content="https://choulegal.com/sponsor.html">
 <meta property="og:site_name" content="周全 ChouLegal">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://choulegal.com/og-image.png">
+<meta property="og:image" content="https://choulegal.com/og-image-20260716.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ChouLegal 周全法律權益試算與查詢">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://choulegal.com/og-image-20260716.png">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -171,10 +177,19 @@
     -webkit-appearance: none;
     appearance: none;
   }
+  button.tier:disabled {
+    cursor: not-allowed;
+    opacity: 0.72;
+  }
   .tier:hover {
     border-color: rgba(253,230,138,0.55);
     background: rgba(253,230,138,0.03);
     transform: translateY(-2px);
+  }
+  button.tier:disabled:hover {
+    border-color: var(--line);
+    background: rgba(255,255,255,0.025);
+    transform: none;
   }
   .tier.featured {
     border-color: rgba(253,230,138,0.4);
@@ -232,6 +247,11 @@
   }
   .tier:hover .tier-cta {
     background: #fef3c7;
+  }
+  button.tier:disabled .tier-cta,
+  button.tier:disabled:hover .tier-cta {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
   }
 
   /* 收款端維修中：點贊助按鈕跳出的感謝訊息 */
@@ -416,6 +436,17 @@
   }
 </style>
 <link rel="stylesheet" href="css/executive-polish.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RT23BD12BD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-RT23BD12BD', {
+      anonymize_ip: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
 </head>
 <body>
 
@@ -445,7 +476,7 @@
 
   <section class="wrap">
     <div class="tiers">
-      <button type="button" class="tier" data-sponsor-tier="cup" aria-label="贊助一杯咖啡 NT$ 90">
+      <button type="button" class="tier" data-sponsor-tier="cup" aria-label="贊助一杯咖啡 NT$ 90，暫停開放" disabled>
         <svg class="tier-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M10 2v2"/><path d="M14 2v2"/>
           <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/>
@@ -454,10 +485,10 @@
         <p class="tier-name">一杯咖啡</p>
         <p class="tier-price">NT$ 90</p>
         <p class="tier-price-sub">≈ USD 3</p>
-        <span class="tier-cta">請我喝一杯 ›</span>
+        <span class="tier-cta">暫停開放</span>
       </button>
 
-      <button type="button" class="tier featured" data-sponsor-tier="pot" aria-label="贊助一壺咖啡 NT$ 300">
+      <button type="button" class="tier featured" data-sponsor-tier="pot" aria-label="贊助一壺咖啡 NT$ 300，暫停開放" disabled>
         <span class="tier-badge">×3</span>
         <svg class="tier-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M10 2v2"/><path d="M14 2v2"/>
@@ -467,7 +498,7 @@
         <p class="tier-name">一壺咖啡</p>
         <p class="tier-price">NT$ 300</p>
         <p class="tier-price-sub">≈ USD 10</p>
-        <span class="tier-cta">請我喝一壺 ›</span>
+        <span class="tier-cta">暫停開放</span>
       </button>
     </div>
 
@@ -586,7 +617,7 @@
   <section class="footnote">
     <div class="wrap">
       <p>權益試算與查詢工具永久免費，贊助與否完全不影響任何功能使用。</p>
-      <p class="footnote-meta">© 2026 ChouLegal · 周全法律科技 · Taipei, Taiwan</p>
+      <p class="footnote-meta">© 2026 ChouLegal · 周全法律權益 · Taipei, Taiwan</p>
     </div>
   </section>
 </main>
