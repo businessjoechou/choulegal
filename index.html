@@ -128,6 +128,7 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
   color: var(--muted);
   font-size: 14px;
@@ -371,9 +372,18 @@ h1 {
   align-items: stretch;
 }
 
+.counsel-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1fr);
+  gap: 34px;
+  align-items: stretch;
+}
+
 .match-copy,
+.counsel-copy,
 .trust-copy,
 .match-board,
+.counsel-board,
 .final-cta {
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -382,6 +392,7 @@ h1 {
 }
 
 .match-copy p,
+.counsel-copy p,
 .trust-copy p,
 .final-cta p {
   color: var(--muted);
@@ -397,6 +408,11 @@ h1 {
   color: var(--paper);
 }
 
+.counsel-board {
+  display: grid;
+  gap: 14px;
+}
+
 .match-board-row {
   display: flex;
   justify-content: space-between;
@@ -407,6 +423,20 @@ h1 {
 
 .match-board-row span {
   color: rgba(251,251,248,0.68);
+}
+
+.counsel-board-row {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--soft);
+}
+
+.counsel-board-row span {
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .trust-section {
@@ -462,6 +492,7 @@ h1 {
   .hero,
   .tools-grid,
   .match-section,
+  .counsel-section,
   .trust-section,
   .section-head {
     grid-template-columns: 1fr;
@@ -542,6 +573,7 @@ h1 {
   <nav class="nav-links" aria-label="主要導覽">
     <a href="#tools">權益試算</a>
     <a href="#lawyers">律師媒合</a>
+    <a href="#counsel">律師工作台</a>
     <a href="#trust">法源驗證</a>
     <a class="parent-link" href="https://choutechnology.com">ChouTech</a>
   </nav>
@@ -556,6 +588,7 @@ h1 {
       <div class="hero-actions">
         <a class="btn primary" href="#tools">開始查詢</a>
         <a class="btn secondary" href="#lawyers">了解律師媒合</a>
+        <a class="btn secondary" href="choucounsel-site/">開啟 ChouCounsel</a>
       </div>
     </div>
 
@@ -637,6 +670,25 @@ h1 {
     </div>
   </section>
 
+  <section class="section shell counsel-section" id="counsel">
+    <div class="counsel-copy">
+      <p class="eyebrow">ChouCounsel</p>
+      <h2>律師案件工作台 PaaS。</h2>
+      <p>ChouCounsel 是 ChouLegal 旗下給律師、律所與法務團隊使用的案件工作台入口。它把案件、期限、文件、卷證、利益衝突提示、關係人、時數、帳務與可匯出的工作底稿集中在同一個工作區。</p>
+      <p>目前版本是可操作的本機工作台原型；資料保存在瀏覽器本機，尚未宣稱具備正式雲端多租戶、登入權限、伺服器端資料庫或正式資安稽核。</p>
+      <div class="cta-row">
+        <a class="btn primary" href="choucounsel-site/">開啟 ChouCounsel</a>
+        <a class="btn secondary" href="mailto:businessjoechou@gmail.com?subject=ChouCounsel%20律師案件工作台合作洽詢">律所合作洽詢</a>
+      </div>
+    </div>
+    <div class="counsel-board" aria-label="ChouCounsel 工作台能力">
+      <div class="counsel-board-row"><strong>案件工作區</strong><span>案件、任務、期限、庭期與活動紀錄集中管理。</span></div>
+      <div class="counsel-board-row"><strong>文件與卷證</strong><span>文件草稿、版本紀錄、證據清單與模板輸出。</span></div>
+      <div class="counsel-board-row"><strong>律所營運</strong><span>時數帳務、CSV 明細、關係人名冊與行事曆匯出。</span></div>
+      <div class="counsel-board-row"><strong>誠實邊界</strong><span>利益衝突與 AI 摘要只作提示，正式結論仍需律師人工確認。</span></div>
+    </div>
+  </section>
+
   <section class="section shell trust-section" id="trust">
     <div class="trust-copy">
       <p class="eyebrow">Verification</p>
@@ -653,8 +705,9 @@ h1 {
   <section class="final-cta shell">
     <p class="eyebrow">ChouTech Portfolio</p>
     <h2>法律教育與企業合規已拆出獨立品牌。</h2>
-    <p>法律學習請前往 ChouLegal Learn 周全法律教育；企業與店家合規請前往 ChouReg 周全合規平台。ChouLegal 專注一般民眾的權益試算、查詢與律師媒合。</p>
+    <p>法律學習請前往 ChouLegal Learn 周全法律教育；企業與店家合規請前往 ChouReg 周全合規平台。ChouLegal 專注一般民眾的權益試算、查詢與律師媒合，並以 ChouCounsel 承接律師與律所案件工作台需求。</p>
     <div class="cta-row">
+      <a class="btn secondary" href="choucounsel-site/">ChouCounsel</a>
       <a class="btn secondary" href="https://learn.choulegal.com">ChouLegal Learn</a>
       <a class="btn secondary" href="https://choureg.com">ChouReg</a>
       <a class="btn secondary" href="https://choutechnology.com">ChouTech</a>
