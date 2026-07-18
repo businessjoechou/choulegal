@@ -2,8 +2,3 @@
 /education-library.html https://learn.choulegal.com/#library 301
 /professional.html https://choureg.com/ 301
 /workspace.html https://choureg.com/ 301
-/sales-kit/ https://choutechnology.com/sales-kit/ 301
-/sales-kit/:path https://choutechnology.com/sales-kit/:path 301
-/products.html https://choutechnology.com/sales-kit/ 301
-/products/ads/:asset https://choutechnology.com/sales-kit/ads/:asset 301
-/products/:page https://choutechnology.com/sales-kit/:page 301
