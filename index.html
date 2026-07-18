@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ChouLegal 周全法律權益｜權益試算與查詢</title>
-<meta name="description" content="ChouLegal 周全法律權益提供一般民眾使用的權益試算與查詢工具，協助整理勞動、消費、租屋與民法財產權事件路徑，必要時銜接律師媒合。">
+<meta name="description" content="ChouLegal 周全法律權益提供一般民眾使用的權益試算與查詢工具，協助整理勞動、消費、租屋、民法財產權與公務員權益事件路徑，必要時銜接律師媒合；並提供 ChouCounsel 律師案件工作台入口。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://choulegal.com/">
 <meta property="og:title" content="ChouLegal 周全法律權益｜權益試算與查詢">
-<meta property="og:description" content="ChouLegal 周全法律權益提供一般民眾使用的權益試算與查詢工具，協助整理勞動、消費、租屋與民法財產權事件路徑，必要時銜接律師媒合。">
+<meta property="og:description" content="ChouLegal 周全法律權益提供一般民眾使用的權益試算與查詢工具，協助整理勞動、消費、租屋、民法財產權與公務員權益事件路徑，必要時銜接律師媒合；並提供 ChouCounsel 律師案件工作台入口。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choulegal.com/">
 <meta property="og:site_name" content="ChouLegal 周全法律權益">
@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="ChouTech 周全科技與 ChouLegal 周全法律權益預覽圖">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ChouLegal 周全法律權益｜權益試算與查詢">
-<meta name="twitter:description" content="ChouLegal 周全法律權益提供一般民眾使用的權益試算與查詢工具，協助整理勞動、消費、租屋與民法財產權事件路徑，必要時銜接律師媒合。">
+<meta name="twitter:description" content="ChouLegal 周全法律權益提供一般民眾使用的權益試算與查詢工具，協助整理勞動、消費、租屋、民法財產權與公務員權益事件路徑，必要時銜接律師媒合；並提供 ChouCounsel 律師案件工作台入口。">
 <meta name="twitter:image" content="https://choulegal.com/og-image-20260716-choutech.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -33,7 +33,7 @@
   "@type": "WebSite",
   "name": "ChouLegal 周全法律權益",
   "url": "https://choulegal.com/",
-  "description": "ChouLegal 周全法律權益提供一般民眾使用的權益試算與查詢工具。"
+  "description": "ChouLegal 周全法律權益提供一般民眾使用的權益試算與查詢工具，涵蓋勞動、消費、租屋、民法財產權與公務員權益，並提供 ChouCounsel 律師案件工作台入口。"
 }
 </script>
 <style>
@@ -314,7 +314,7 @@ h1 {
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -339,6 +339,10 @@ h1 {
 
 .tool-card:nth-child(4) {
   border-top: 6px solid var(--green);
+}
+
+.tool-card:nth-child(5) {
+  border-top: 6px solid var(--ink);
 }
 
 .tool-domain {
@@ -600,7 +604,7 @@ h1 {
       <div class="case-list">
         <div class="case-row">
           <span class="case-tag">Step 01</span>
-          <div><strong>選擇事件類型</strong><p>勞動、消費、租屋、繼承與財產權。</p></div>
+          <div><strong>選擇事件類型</strong><p>勞動、消費、租屋、繼承財產與公務員權益。</p></div>
         </div>
         <div class="case-row">
           <span class="case-tag">Step 02</span>
@@ -643,10 +647,17 @@ h1 {
       </article>
 
       <article class="tool-card">
-        <span class="tool-domain">rentalpro.vercel.app</span>
+        <span class="tool-domain">rental.choulegal.com</span>
         <h3>租屋權益</h3>
         <p>押金、修繕、提前解約、租賃爭議與租約條款檢查。</p>
-        <a href="https://rentalpro.vercel.app">進入查詢</a>
+        <a href="https://rental.choulegal.com">進入查詢</a>
+      </article>
+
+      <article class="tool-card">
+        <span class="tool-domain">people.choulegal.com</span>
+        <h3>公務員權益</h3>
+        <p>復審申訴、職場安全、因公涉訟、教師與校園現場權益整理。</p>
+        <a href="https://people.choulegal.com/public-servant.html">進入查詢</a>
       </article>
     </div>
   </section>
@@ -662,7 +673,7 @@ h1 {
       </div>
     </div>
     <div class="match-board" aria-label="律師媒合資訊欄位">
-      <div class="match-board-row"><strong>事件類型</strong><span>勞動 / 消費 / 租屋 / 財產</span></div>
+      <div class="match-board-row"><strong>事件類型</strong><span>勞動 / 消費 / 租屋 / 財產 / 公務員</span></div>
       <div class="match-board-row"><strong>地區</strong><span>以使用者選擇為準</span></div>
       <div class="match-board-row"><strong>需求</strong><span>諮詢 / 審閱 / 訴訟 / 談判</span></div>
       <div class="match-board-row"><strong>資料</strong><span>由使用者自行提供給律師</span></div>
@@ -693,10 +704,12 @@ h1 {
     <div class="trust-copy">
       <p class="eyebrow">Verification</p>
       <h2>法源、公式與 AI 輸出要分開處理。</h2>
-      <p>可計算的數字交由規則引擎，法律資料以官方來源為準，AI 只負責整理與導覽。這是 ChouLegal 跟一般聊天式法律工具的分界。</p>
+      <p>可計算的數字交由規則引擎，法律資料以官方來源為準，AI 只負責整理與導覽。ChouLegal 會先把法條、判決與主管機關來源拆成核驗清單；尚未核對官方原文前，不把候選資料包裝成已驗證法律答案。</p>
     </div>
     <div class="trust-list">
       <div class="trust-item"><strong>官方法源</strong><p>法條、常數與版本變動應回到官方來源確認。</p></div>
+      <div class="trust-item"><strong>來源核驗工作台</strong><p>使用者可先整理候選法條、判決字號與主管機關見解；正式引用前仍需逐筆核對官方或明確可信來源。</p></div>
+      <div class="trust-item"><strong>AVS 法律結論驗證</strong><p>周全正在把法源、判決、公式、事實涵攝與實務區間拆成可稽核的驗證階段。通過檢查只代表該項 trace 通過指定 gate，不等於保證個案法律結論。</p></div>
       <div class="trust-item"><strong>純函式計算</strong><p>試算結果應可重跑、可測試、可檢查。</p></div>
       <div class="trust-item"><strong>法律邊界</strong><p>本站內容不構成法律意見；個案請洽執業律師。</p></div>
     </div>
