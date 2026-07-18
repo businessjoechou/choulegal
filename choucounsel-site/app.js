@@ -654,7 +654,7 @@ function renderMetrics() {
   $("[data-settings-plan]").textContent = state.workspace.plan;
   $("[data-settings-capacity]").textContent = `${state.workspace.seats} 席次、${state.workspace.capacity}`;
   $("[data-firm-name]").textContent = state.workspace.firmName;
-  $("[data-firm-meta]").textContent = `${state.workspace.plan} Workspace · ${state.workspace.seats} seats`;
+  $("[data-firm-meta]").textContent = `${state.workspace.plan} 工作區 · ${state.workspace.seats} 席次`;
   $("[data-today-date]").textContent = TODAY.replaceAll("-", ".");
 }
 
