@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChouCounsel｜律師案件工作台 PaaS</title>
+  <meta name="description" content="ChouCounsel 是 ChouLegal 周全法律科技底下給律師、律所與法務團隊使用的案件工作台 PaaS，集中管理案件、期限、文件、卷證、任務、AI 摘要與團隊協作。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="ChouCounsel">
+      <img src="../logo-icon.svg" alt="" aria-hidden="true">
+      <span>
+        <strong>ChouCounsel</strong>
+        <small>by ChouLegal 周全法律科技</small>
+      </span>
+    </a>
+
+    <form class="global-search" role="search" data-search-form>
+      <label for="globalSearch">搜尋案件、當事人、文件</label>
+      <input id="globalSearch" type="search" placeholder="搜尋案件、當事人、文件" data-global-search>
+    </form>
+
+    <div class="top-actions" aria-label="全域操作">
+      <button class="icon-button" type="button" aria-label="同步狀態" title="同步狀態" data-sync>
+        <span aria-hidden="true">↻</span>
+      </button>
+      <button class="icon-button" type="button" aria-label="通知" title="通知" data-show-notifications>
+        <span aria-hidden="true">•</span>
+      </button>
+      <button class="btn secondary" type="button" data-open-intake>建立委任</button>
+      <button class="btn primary" type="button" data-open-intake>新增案件</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="sidebar" aria-label="工作台導覽">
+      <section class="firm-card">
+        <span class="firm-seal" aria-hidden="true">全</span>
+        <div>
+          <strong data-firm-name>周全聯合法律事務所</strong>
+          <small data-firm-meta>Team Workspace · 12 seats</small>
+        </div>
+      </section>
+
+      <nav class="nav-list" aria-label="主選單">
+        <button class="is-active" type="button" data-section="matters"><span aria-hidden="true">▦</span>案件總覽</button>
+        <button type="button" data-section="deadlines"><span aria-hidden="true">◷</span>期限與庭期</button>
+        <button type="button" data-section="documents"><span aria-hidden="true">□</span>文件中心</button>
+        <button type="button" data-section="conflicts"><span aria-hidden="true">◇</span>利益衝突檢查</button>
+        <button type="button" data-section="clients"><span aria-hidden="true">◌</span>客戶與關係人</button>
+        <button type="button" data-section="billing"><span aria-hidden="true">◎</span>時數與帳務</button>
+        <button type="button" data-section="templates"><span aria-hidden="true">▤</span>書狀與模板庫</button>
+        <button type="button" data-section="settings"><span aria-hidden="true">⚙</span>工作區設定</button>
+      </nav>
+
+      <section class="assistant-card">
+        <span>AI Case Partner</span>
+        <p data-ai-brief>已整理 3 件高優先案件，今天先處理答辯狀期限與證據補件。</p>
+      </section>
+
+      <section class="usage-strip" aria-label="本月用量">
+        <div><strong>84%</strong><span>任務準時率</span></div>
+        <div><strong>38</strong><span>本月文件</span></div>
+        <div><strong>12</strong><span>席次</span></div>
+        <div><strong>Team</strong><span>方案</span></div>
+      </section>
+    </aside>
+
+    <section class="workspace" aria-labelledby="workspaceTitle">
+      <div class="workspace-head">
+        <div>
+          <p class="eyebrow">ChouLegal Platform / ChouCounsel</p>
+          <h1 id="workspaceTitle">律師案件工作台</h1>
+        </div>
+        <div class="date-pill">
+          <span>今天</span>
+          <strong data-today-date>2026.07.18</strong>
+        </div>
+      </div>
+
+      <section class="metric-row" aria-label="案件狀態摘要">
+        <article>
+          <span>進行中案件</span>
+          <strong data-total-cases>0</strong>
+          <p>含訴訟、非訟、顧問案</p>
+        </article>
+        <article>
+          <span>7 日內期限</span>
+          <strong data-deadline-count>0</strong>
+          <p>答辯、補件、開庭與陳報</p>
+        </article>
+        <article>
+          <span>待審文件</span>
+          <strong data-review-count>0</strong>
+          <p>草稿、附件與證據清單</p>
+        </article>
+        <article>
+          <span>高風險提醒</span>
+          <strong data-risk-count>0</strong>
+          <p>利益衝突、時效、證據缺口</p>
+        </article>
+      </section>
+
+      <section class="platform-strip" aria-label="ChouCounsel 平台能力">
+        <article>
+          <span>Workspace</span>
+          <strong>律所多租戶工作區</strong>
+          <p>案件、客戶、承辦團隊與權限分開管理。</p>
+        </article>
+        <article>
+          <span>Conflict</span>
+          <strong data-conflict-summary>2 件待檢查</strong>
+          <p>同名當事人、關係企業與前案資料先標示，不自動下法律結論。</p>
+        </article>
+        <article>
+          <span>Template</span>
+          <strong>書狀與流程模板</strong>
+          <p>答辯、陳報、調解與契約審閱可逐步模組化。</p>
+        </article>
+      </section>
+
+      <section class="command-layout module-view is-active" data-section-view="matters">
+        <section class="case-panel" aria-labelledby="caseQueueTitle">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Queue</p>
+              <h2 id="caseQueueTitle">案件佇列</h2>
+            </div>
+            <div class="segmented" role="tablist" aria-label="案件篩選">
+              <button class="is-active" type="button" data-filter="all">全部</button>
+              <button type="button" data-filter="urgent">急件</button>
+              <button type="button" data-filter="litigation">訴訟</button>
+              <button type="button" data-filter="archived">封存</button>
+            </div>
+          </div>
+          <div class="case-list" data-case-list></div>
+        </section>
+
+        <section class="matter-panel" aria-labelledby="matterTitle">
+          <div class="matter-toolbar">
+            <div>
+              <p class="eyebrow" data-selected-code>CL-000</p>
+              <h2 id="matterTitle" data-selected-title>案件名稱</h2>
+            </div>
+            <div class="toolbar-actions">
+              <button class="icon-button" type="button" aria-label="上一件" title="上一件" data-prev-case><span aria-hidden="true">↑</span></button>
+              <button class="icon-button" type="button" aria-label="下一件" title="下一件" data-next-case><span aria-hidden="true">↓</span></button>
+              <button class="btn secondary" type="button" title="編輯案件" data-edit-case>編輯</button>
+              <button class="btn secondary" type="button" title="標記已審" data-mark-reviewed>已審</button>
+              <button class="btn secondary" type="button" title="輸出今日工作包" data-export-daily-brief>工作包</button>
+              <button class="btn secondary" type="button" title="產生客戶更新稿" data-export-client-update>客戶稿</button>
+              <button class="btn secondary" type="button" title="產生庭期或會議準備稿" data-export-prep-brief>準備稿</button>
+              <button class="btn secondary" type="button" title="輸出案件交接包" data-export-case-packet>交接包</button>
+              <button class="btn secondary" type="button" title="封存案件" data-archive-case>封存</button>
+              <button class="btn secondary danger-btn" type="button" title="刪除案件" data-delete-case>刪除</button>
+            </div>
+          </div>
+
+          <div class="matter-grid">
+            <article class="summary-band">
+              <span data-selected-type>類型</span>
+              <strong data-selected-client>當事人</strong>
+              <p data-selected-summary></p>
+            </article>
+            <article class="risk-card">
+              <span>風險等級</span>
+              <strong data-selected-risk>中</strong>
+              <p data-selected-risk-note></p>
+            </article>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="案件詳情">
+            <button class="is-active" type="button" data-tab="timeline">時間軸</button>
+            <button type="button" data-tab="tasks">任務</button>
+            <button type="button" data-tab="evidence">證據</button>
+            <button type="button" data-tab="ai">AI 摘要</button>
+            <button type="button" data-tab="activity">活動</button>
+          </div>
+
+          <div class="detail-area">
+            <div class="tab-panel is-active" data-tab-panel="timeline">
+              <div class="timeline" data-timeline></div>
+            </div>
+            <div class="tab-panel" data-tab-panel="tasks">
+              <div class="task-list" data-task-list></div>
+            </div>
+            <div class="tab-panel" data-tab-panel="evidence">
+              <div class="evidence-grid" data-evidence-grid></div>
+            </div>
+            <div class="tab-panel" data-tab-panel="ai">
+              <div class="ai-dossier" data-ai-dossier></div>
+            </div>
+            <div class="tab-panel" data-tab-panel="activity">
+              <div class="activity-list" data-activity-list></div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="insight-panel" aria-label="案件文件與洞察">
+          <section class="document-preview">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Draft</p>
+                <h2>文件預覽</h2>
+              </div>
+              <button class="icon-button" type="button" aria-label="開啟文件" title="開啟文件" data-open-current-document>
+                <span aria-hidden="true">⇩</span>
+              </button>
+            </div>
+            <div class="paper-preview">
+              <span data-doc-type>民事答辯狀</span>
+              <strong data-doc-title>文件標題</strong>
+              <i></i><i></i><i></i><i></i><i></i>
+              <p data-doc-note></p>
+            </div>
+          </section>
+
+          <section class="next-actions">
+            <div class="panel-head">
+              <h2>下一步</h2>
+              <button class="text-button" type="button" data-add-task>加入任務</button>
+            </div>
+            <div class="action-stack" data-next-actions></div>
+          </section>
+
+          <section class="integrity-panel">
+            <span>引用狀態</span>
+            <strong data-citation-status>待核對</strong>
+            <p>未經官方來源或卷證核對前，不把 AI 摘要當成正式法律意見。</p>
+          </section>
+
+          <section class="conflict-panel">
+            <div class="panel-head">
+              <h2>利益衝突檢查</h2>
+              <button class="text-button" type="button" data-run-conflict>重新檢查</button>
+            </div>
+            <strong data-conflict-status>待檢查</strong>
+            <p data-conflict-note>以當事人與關係企業名稱比對前案；結果只作提示，仍需律師確認。</p>
+          </section>
+        </aside>
+      </section>
+
+      <section class="module-view" data-section-view="deadlines" hidden>
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">Calendar</p>
+            <h2>期限與庭期</h2>
+          </div>
+          <div class="mini-actions">
+            <button class="btn secondary" type="button" data-export-calendar>匯出行事曆</button>
+            <button class="btn primary" type="button" data-create-deadline>新增期限</button>
+          </div>
+        </div>
+        <div class="module-grid timeline-board" data-deadline-board></div>
+      </section>
+
+      <section class="module-view" data-section-view="documents" hidden>
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">Document Vault</p>
+            <h2>文件中心</h2>
+          </div>
+          <button class="btn primary" type="button" data-create-document>新增文件</button>
+        </div>
+        <div class="document-table" data-document-table></div>
+      </section>
+
+      <section class="module-view" data-section-view="conflicts" hidden>
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">Conflict Review</p>
+            <h2>利益衝突檢查</h2>
+          </div>
+          <div class="mini-actions">
+            <button class="btn secondary" type="button" data-export-conflict-report>匯出報告</button>
+            <button class="btn primary" type="button" data-run-all-conflicts>重新檢查</button>
+          </div>
+        </div>
+        <div class="module-grid conflict-board" data-conflict-board></div>
+      </section>
+
+      <section class="module-view" data-section-view="clients" hidden>
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">Parties</p>
+            <h2>客戶與關係人</h2>
+          </div>
+          <div class="mini-actions">
+            <button class="btn secondary" type="button" data-export-parties-csv>CSV 名冊</button>
+            <button class="btn primary" type="button" data-create-party>新增關係人</button>
+          </div>
+        </div>
+        <div class="module-grid party-board" data-party-board></div>
+      </section>
+
+      <section class="module-view" data-section-view="billing" hidden>
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">Billing</p>
+            <h2>時數與帳務</h2>
+          </div>
+          <div class="mini-actions">
+            <button class="btn secondary" type="button" data-export-billing-csv>CSV 明細</button>
+            <button class="btn primary" type="button" data-export-billing>請款草稿</button>
+          </div>
+        </div>
+        <div class="billing-layout">
+          <section class="billing-ledger" data-billing-ledger></section>
+          <aside class="billing-summary">
+            <span>本月可請款</span>
+            <strong>NT$ 286,000</strong>
+            <p>示範金額尚未接正式計費規則；實際請款需由律所確認。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="module-view" data-section-view="templates" hidden>
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">Template Library</p>
+            <h2>書狀與模板庫</h2>
+          </div>
+          <button class="btn primary" type="button" data-create-template>建立模板</button>
+        </div>
+        <div class="module-grid template-board" data-template-board></div>
+      </section>
+
+      <section class="module-view" data-section-view="settings" hidden>
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">Workspace Settings</p>
+            <h2>工作區設定</h2>
+          </div>
+          <button class="btn primary" type="button" data-save-settings>儲存設定</button>
+        </div>
+        <div class="settings-grid">
+          <article><span>方案</span><strong data-settings-plan>Team</strong><p data-settings-capacity>12 席次、200 件進行中案件、每月 1,000 份文件處理量。</p></article>
+          <article><span>備份</span><strong>匯入 / 匯出</strong><p>可匯出工作區 JSON 備份，也可從備份還原到本機瀏覽器。</p><div class="mini-actions"><button class="btn secondary" type="button" data-export-workspace>匯出備份</button><button class="btn secondary" type="button" data-import-workspace>匯入備份</button></div></article>
+          <article><span>操作紀錄</span><strong>Audit log</strong><p>保留最近 40 筆本機操作紀錄，方便回看新增、修改、匯入與封存動作。</p><button class="btn secondary" type="button" data-show-audit-log>查看紀錄</button></article>
+          <article><span>資料邊界</span><strong>案件資料隔離</strong><p>ChouCounsel 案件與卷證資料不得與民眾權益查詢資料混用；目前為本機版保存。</p><button class="text-button danger" type="button" data-reset-workspace>重置示範資料</button></article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog class="intake-dialog" data-intake-dialog>
+    <form method="dialog" data-intake-form>
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">New Matter</p>
+          <h2>建立案件草稿</h2>
+        </div>
+        <button class="icon-button" value="close" aria-label="關閉" title="關閉"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="intake-grid">
+        <label>案件名稱
+          <input name="title" type="text" value="新委任案件初步評估" required>
+        </label>
+        <label>客戶 / 當事人
+          <input name="client" type="text" value="新客戶有限公司" required>
+        </label>
+        <label>案件類型
+          <select name="type">
+            <option>民事訴訟</option>
+            <option>契約審查</option>
+            <option>家事事件</option>
+            <option>企業顧問</option>
+          </select>
+        </label>
+        <label>風險等級
+          <select name="risk">
+            <option>中</option>
+            <option>高</option>
+            <option>低</option>
+          </select>
+        </label>
+        <label>下一個期限
+          <input name="deadlineDate" type="date" value="2026-07-24" required>
+        </label>
+        <label>期限事項
+          <input name="deadlineLabel" type="text" value="委任資料確認" required>
+        </label>
+      </div>
+      <label>初步說明
+        <textarea name="summary" rows="4">請輸入爭點、期限、當事人與已收到文件。</textarea>
+      </label>
+      <div class="dialog-actions">
+        <button class="btn secondary" value="close">取消</button>
+        <button class="btn primary" type="button" data-create-matter>建立草稿</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="intake-dialog action-dialog" data-action-dialog>
+    <form method="dialog" data-action-form>
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow" data-action-kicker>Action</p>
+          <h2 data-action-title>新增項目</h2>
+        </div>
+        <button class="icon-button" value="close" aria-label="關閉" title="關閉"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="dynamic-form" data-action-fields></div>
+      <div class="dialog-actions">
+        <button class="btn secondary" value="close">取消</button>
+        <button class="btn primary" type="submit" data-action-submit>儲存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="intake-dialog document-dialog" data-document-dialog>
+    <form method="dialog">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">Generated Draft</p>
+          <h2 data-document-dialog-title>文件草稿</h2>
+        </div>
+        <button class="icon-button" value="close" aria-label="關閉" title="關閉"><span aria-hidden="true">×</span></button>
+      </div>
+      <textarea class="document-output" rows="16" data-document-output></textarea>
+      <div class="dialog-actions">
+        <button class="btn secondary" value="close">關閉</button>
+        <button class="btn secondary" type="button" data-show-document-versions>版本紀錄</button>
+        <button class="btn secondary" type="button" data-save-document>保存內容</button>
+        <button class="btn primary" type="button" data-copy-document>複製內容</button>
+      </div>
+    </form>
+  </dialog>
+
+  <input type="file" accept="application/json" data-import-file hidden>
+  <div class="toast" role="status" data-toast>已更新</div>
+</body>
+</html>
