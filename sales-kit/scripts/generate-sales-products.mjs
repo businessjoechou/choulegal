@@ -7,9 +7,10 @@ const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, "..");
-const productDir = path.join(root, "products");
-const adDir = path.join(productDir, "ads");
+const kitRoot = path.resolve(__dirname, "..");
+const siteRoot = path.resolve(kitRoot, "..");
+const productDir = kitRoot;
+const adDir = path.join(kitRoot, "ads");
 
 const products = [
   {
@@ -250,12 +251,9 @@ function esc(value) {
     .replaceAll('"', "&quot;");
 }
 
-function relToRoot(filePath) {
-  return path.relative(path.dirname(filePath), root).replaceAll(path.sep, "/") || ".";
-}
-
 function renderHead(product, filePath, title, description) {
-  const rootRel = relToRoot(filePath);
+  const siteRel = path.relative(path.dirname(filePath), siteRoot).replaceAll(path.sep, "/") || ".";
+  const adImage = product ? `ads/${product.id}.png` : "ads/choureg.png";
   return `<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -267,22 +265,21 @@ function renderHead(product, filePath, title, description) {
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="../products/ads/${product ? product.id : "portfolio"}.png">
+<meta property="og:image" content="${adImage}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
-<link rel="icon" type="image/svg+xml" href="${rootRel}/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="${siteRel}/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${rootRel}/css/sales-products.css">
+<link rel="stylesheet" href="assets/sales-products.css">
 </head>`;
 }
 
 function renderTopbar(currentId = "") {
-  const isPortfolio = currentId === "portfolio";
-  const homeHref = isPortfolio ? "products.html" : "../products.html";
-  const productHref = (id) => isPortfolio ? `products/${id}.html` : `${id}.html`;
+  const homeHref = "index.html";
+  const productHref = (id) => `${id}.html`;
   return `<header class="topbar">
   <a class="brand" href="${homeHref}" aria-label="銷售產品總覽">
     <span class="brand-mark">周</span>
@@ -295,7 +292,7 @@ function renderTopbar(currentId = "") {
 </header>`;
 }
 
-function cardLink(item, prefix = "products/") {
+function cardLink(item, prefix = "") {
   return `<article class="product-card">
   <span class="kicker">${esc(item.label)}</span>
   <h3>${esc(item.shortTitle)}</h3>
@@ -308,7 +305,7 @@ function cardLink(item, prefix = "products/") {
 }
 
 function renderPortfolio() {
-  const filePath = path.join(root, "products.html");
+  const filePath = path.join(kitRoot, "index.html");
   return `${renderHead(null, filePath, "ChouTech 可銷售產品總覽｜PaaS 產品頁與廣告素材", "ChouTech 旗下 ChouLegal、ChouCounsel、ChouReg、ChouRoster、AVS 與 ChouLegal Learn 的可銷售 PaaS 產品總覽。")}
 <body>
 ${renderTopbar("portfolio")}
@@ -320,7 +317,7 @@ ${renderTopbar("portfolio")}
       <p class="lead">這份目錄把 ChouTech 旗下產品拆成可推銷的 PaaS 產品線。每一個都有產品頁、主張、客群、銷售方向與廣告圖；成熟度也寫清楚，不把原型說成已完成的正式企業雲。</p>
       <div class="actions">
         <a class="btn primary" href="#products">看全部產品</a>
-        <a class="btn secondary" href="products/ads/">看廣告素材</a>
+        <a class="btn secondary" href="ads/">看廣告素材</a>
       </div>
     </div>
     <aside class="hero-board" aria-label="產品線摘要">
@@ -353,7 +350,7 @@ ${renderTopbar("portfolio")}
         <p class="section-sub">每張 1200x628 PNG，適合放社群、簡報、訊息推銷與網站 OG 圖。</p>
       </div>
       <div class="asset-grid">
-        ${products.map((item) => `<article class="asset-card"><strong>${esc(item.shortTitle)}</strong><p>${esc(item.adSubtitle)}</p><img src="products/ads/${item.id}.png" alt="${esc(item.shortTitle)} 廣告圖"></article>`).join("\n")}
+        ${products.map((item) => `<article class="asset-card"><strong>${esc(item.shortTitle)}</strong><p>${esc(item.adSubtitle)}</p><img src="ads/${item.id}.png" alt="${esc(item.shortTitle)} 廣告圖"></article>`).join("\n")}
       </div>
     </div>
   </section>
@@ -461,7 +458,7 @@ function renderAd(product) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../css/sales-products.css">
+<link rel="stylesheet" href="../assets/sales-products.css">
 </head>
 <body class="ad-body">
   <section class="ad-card" style="--accent:${product.accent}">
@@ -500,7 +497,7 @@ async function writeAds() {
 async function main() {
   ensureDir(productDir);
   ensureDir(adDir);
-  fs.writeFileSync(path.join(root, "products.html"), renderPortfolio());
+  fs.writeFileSync(path.join(kitRoot, "index.html"), renderPortfolio());
   for (const product of products) {
     fs.writeFileSync(path.join(productDir, `${product.id}.html`), renderProductPage(product));
   }
