@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/products.html",
+      "destination": "/sales-kit/",
+      "permanent": true
+    },
+    {
+      "source": "/products/ads/:asset",
+      "destination": "/sales-kit/ads/:asset",
+      "permanent": true
+    },
+    {
+      "source": "/products/:page",
+      "destination": "/sales-kit/:page",
+      "permanent": true
+    }
+  ]
+}
