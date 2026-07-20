@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -69,8 +69,6 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    backdrop-filter: saturate(180%) blur(24px);
-    -webkit-backdrop-filter: saturate(180%) blur(24px);
     background: rgba(10,12,18,0.72);
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
@@ -127,9 +125,9 @@
   .hero-title {
     font-family: 'Noto Serif TC', serif;
     font-weight: 500;
-    font-size: clamp(34px, 5.4vw, 56px);
+    font-size: 56px;
     line-height: 1.18;
-    letter-spacing: -0.012em;
+    letter-spacing: 0;
     color: rgba(255,255,255,0.98);
     max-width: 22ch;
     margin: 0 auto 24px;
@@ -159,12 +157,13 @@
     gap: 16px;
   }
   @media (max-width: 640px) {
+    .hero-title { font-size: 36px; }
     .tiers { grid-template-columns: 1fr; }
   }
   .tier {
     background: rgba(255,255,255,0.025);
     border: 1px solid var(--line);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 32px 28px;
     text-align: center;
     transition: border-color 0.25s, background 0.25s, transform 0.25s;
@@ -265,14 +264,13 @@
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: rgba(10,12,16,0.72);
-    backdrop-filter: blur(4px);
+    background: rgba(10,12,16,0.82);
   }
   .sponsor-modal.is-open { display: flex; }
   .sponsor-modal-card {
     background: #151821;
     border: 1px solid rgba(253,230,138,0.35);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 36px 32px 30px;
     max-width: 420px;
     width: 100%;
@@ -342,7 +340,7 @@
   }
   .wall-empty {
     border: 1px dashed rgba(255,255,255,0.12);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 50px 24px;
     text-align: center;
     color: rgba(255,255,255,0.5);
@@ -357,7 +355,7 @@
   .supporter {
     background: rgba(255,255,255,0.025);
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 16px 18px;
     display: flex;
     align-items: flex-start;

@@ -16,10 +16,7 @@
 }
 
 body {
-  background:
-    linear-gradient(180deg, rgba(226, 194, 103, 0.08), transparent 420px),
-    linear-gradient(135deg, rgba(118, 199, 183, 0.07), transparent 34%),
-    var(--exec-ink);
+  background: var(--exec-ink);
   color: var(--exec-text);
   letter-spacing: 0;
 }
@@ -49,8 +46,6 @@ body {
   padding: 0;
   border-bottom: 1px solid var(--exec-line);
   background: rgba(7, 16, 29, 0.86);
-  -webkit-backdrop-filter: saturate(150%) blur(22px);
-          backdrop-filter: saturate(150%) blur(22px);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.035), 0 18px 48px rgba(0, 0, 0, 0.26);
 }
 
@@ -201,7 +196,7 @@ textarea {
 .start-link,
 .next-link {
   border: 1px solid rgba(226, 194, 103, 0.52);
-  background: linear-gradient(180deg, #f0d889, var(--exec-gold));
+  background: var(--exec-gold);
   color: #07101d;
   box-shadow: 0 12px 30px rgba(226, 194, 103, 0.14);
 }
@@ -393,5 +388,57 @@ article {
   .sec-title,
   h2 {
     font-size: 2rem;
+  }
+}
+
+/* ===== ChouTech company UI baseline, deep pages, 2026-07 ===== */
+.hero-title,
+.h-display,
+.title,
+.hero-h1,
+h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.section-title,
+.sec-title,
+h2 {
+  font-size: 42px;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+@media (max-width: 980px) {
+  .hero-title,
+  .h-display,
+  .title,
+  .hero-h1,
+  h1 {
+    font-size: 44px;
+  }
+
+  .section-title,
+  .sec-title,
+  h2 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-title,
+  .h-display,
+  .title,
+  .hero-h1,
+  h1 {
+    font-size: 36px;
+    line-height: 1.14;
+  }
+
+  .section-title,
+  .sec-title,
+  h2 {
+    font-size: 28px;
   }
 }

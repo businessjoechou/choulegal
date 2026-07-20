@@ -24,10 +24,7 @@
 }
 
 body {
-  background:
-    radial-gradient(ellipse 82% 54% at 50% -18%, rgba(212, 175, 55, 0.14), transparent 64%),
-    radial-gradient(ellipse 68% 52% at 96% 22%, rgba(26, 54, 93, 0.34), transparent 58%),
-    var(--cl-ink-950);
+  background: var(--cl-ink-950);
   color: var(--cl-dark-text);
 }
 
@@ -97,13 +94,13 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--cl-gold-400), var(--cl-gold-500) 56%, var(--cl-gold-600));
+  background: var(--cl-gold-500);
   color: var(--cl-ink-900);
   box-shadow: 0 8px 22px -12px rgba(212, 175, 55, 0.78), inset 0 1px 0 rgba(255, 255, 255, 0.34);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #f1d982, var(--cl-gold-500) 58%, var(--cl-gold-600));
+  background: #f1d982;
 }
 
 .btn-ghost {
@@ -156,7 +153,7 @@ body {
 .product:nth-child(2)::before,
 .product:nth-child(3)::before,
 .panel::before {
-  background: radial-gradient(120% 72% at 50% 0%, rgba(212, 175, 55, 0.12), transparent 60%);
+  background: rgba(212, 175, 55, 0.055);
 }
 
 .tags span,
@@ -211,7 +208,7 @@ body {
 }
 
 .progress-track span {
-  background: linear-gradient(90deg, var(--cl-gold-500), #8fbf9f);
+  background: var(--cl-gold-500);
 }
 
 .small-link {

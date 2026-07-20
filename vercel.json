@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/education.html",
+      "destination": "https://learn.choulegal.com/",
+      "permanent": true
+    },
+    {
+      "source": "/education-library.html",
+      "destination": "https://learn.choulegal.com/#library",
+      "permanent": true
+    },
+    {
+      "source": "/professional.html",
+      "destination": "https://choureg.com/",
+      "permanent": true
+    },
+    {
+      "source": "/workspace.html",
+      "destination": "https://choureg.com/",
+      "permanent": true
+    }
+  ]
+}

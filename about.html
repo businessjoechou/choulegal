@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,8 +48,6 @@
 
   .nav {
     position: sticky; top: 0; z-index: 50;
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
     background: rgba(6,8,13,0.72);
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
@@ -90,9 +88,9 @@
   h1.title {
     font-family: 'Noto Serif TC', serif;
     font-weight: 500;
-    font-size: clamp(40px, 6vw, 68px);
+    font-size: 58px;
     line-height: 1.06;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
     color: rgba(255,255,255,0.98);
     margin-bottom: 24px;
   }
@@ -120,10 +118,10 @@
   .section-title {
     font-family: 'Noto Serif TC', serif;
     font-weight: 500;
-    font-size: clamp(28px, 3.6vw, 40px);
+    font-size: 40px;
     line-height: 1.12;
     color: rgba(255,255,255,0.98);
-    letter-spacing: -0.012em;
+    letter-spacing: 0;
     margin-bottom: 28px;
   }
 
@@ -142,7 +140,7 @@
     color: rgba(255,255,255,0.97);
     margin: 36px 0 14px;
     line-height: 1.4;
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
   }
 
   .founder-card {
@@ -153,7 +151,7 @@
     margin: 36px 0 8px;
     border: 1px solid rgba(255,255,255,0.1);
     background: #0c1018;
-    border-radius: 22px;
+    border-radius: 8px;
   }
   .founder-initial {
     flex-shrink: 0;
@@ -195,14 +193,14 @@
     padding: 26px 28px;
     border: 1px solid rgba(255,255,255,0.1);
     background: #0c1018;
-    border-radius: 18px;
+    border-radius: 8px;
   }
   .pillar-title {
     font-family: 'Noto Serif TC', serif;
     font-size: 17px; font-weight: 500;
     color: rgba(255,255,255,0.97);
     margin-bottom: 10px;
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
   }
   .pillar-title::before {
     content: '';
@@ -232,7 +230,7 @@
     padding: 22px 24px;
     border: 1px solid rgba(255,255,255,0.1);
     background: #0c1018;
-    border-radius: 16px;
+    border-radius: 8px;
     transition: border-color 0.25s, transform 0.3s;
   }
   .mini-card:hover { border-color: rgba(253,230,138,0.5); transform: translateY(-2px); }
@@ -248,7 +246,7 @@
     font-size: 18px; font-weight: 500;
     color: rgba(255,255,255,0.97);
     margin-bottom: 8px;
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
   }
   .mini-card-desc {
     font-size: 13px;
@@ -304,6 +302,8 @@
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
   @media (max-width: 640px) {
+    h1.title { font-size: 36px; line-height: 1.14; }
+    .section-title { font-size: 30px; }
     .hero { padding: 80px 0 40px; }
     .section { padding: 60px 0; }
     .founder-card { padding: 24px; gap: 16px; }
@@ -337,6 +337,8 @@
 </header>
 
 <div class="wrap-narrow">
+
+<main>
 
   <section class="hero">
     <div class="eyebrow">About</div>
@@ -432,6 +434,8 @@
     <a class="btn" href="index.html">回首頁看所有產品</a>
     <a class="btn-link" href="https://people.choulegal.com/lawyers.html">查看律師媒合 ›</a>
   </section>
+
+  </main>
 
   <footer class="foot">
     <span>© <span id="year">2026</span> ChouLegal · 周全</span>

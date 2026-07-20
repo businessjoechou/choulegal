@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChouCounsel｜律師案件工作台</title>
-  <meta name="description" content="ChouCounsel 是 ChouLegal 周全法律科技底下給律師、律所與法務團隊使用的案件工作台，集中管理案件、期限、文件、卷證、任務、AI 摘要與團隊協作。">
+  <title>ChouCounsel｜法律服務案件管理</title>
+  <meta name="description" content="ChouCounsel 是 ChouLegal 周全法律科技的法律服務案件管理介面，集中整理案件、期限、文件、卷證、任務、AI 摘要、備份與交接資料。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141418'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='serif' fill='%23d7b56d'%3E全%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260719c">
   <script defer src="app.js"></script>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="./" aria-label="ChouCounsel">
-      <img src="../logo-icon.svg" alt="" aria-hidden="true">
+      <span class="brand-mark" aria-hidden="true">全</span>
       <span>
         <strong>ChouCounsel</strong>
         <small>by ChouLegal 周全法律科技</small>
@@ -28,12 +28,10 @@
     </form>
 
     <div class="top-actions" aria-label="全域操作">
-      <button class="icon-button" type="button" aria-label="同步狀態" title="同步狀態" data-sync>
-        <span aria-hidden="true">↻</span>
-      </button>
-      <button class="icon-button" type="button" aria-label="通知" title="通知" data-show-notifications>
-        <span aria-hidden="true">•</span>
-      </button>
+      <button class="btn secondary compact-action" type="button" data-sync>同步</button>
+      <button class="btn secondary" type="button" data-open-cloud>雲端</button>
+      <button class="btn secondary compact-action" type="button" data-show-notifications>提醒</button>
+      <a class="btn secondary" href="terms.html">資料保存</a>
       <button class="btn secondary" type="button" data-open-intake>建立委任</button>
       <button class="btn primary" type="button" data-open-intake>新增案件</button>
     </div>
@@ -45,7 +43,7 @@
         <span class="firm-seal" aria-hidden="true">全</span>
         <div>
           <strong data-firm-name>周全聯合法律事務所</strong>
-          <small data-firm-meta>Team 工作區 · 12 席次</small>
+          <small data-firm-meta>本機案件設定 · 12 席</small>
         </div>
       </section>
 
@@ -57,27 +55,27 @@
         <button type="button" data-section="clients"><span aria-hidden="true">◌</span>客戶與關係人</button>
         <button type="button" data-section="billing"><span aria-hidden="true">◎</span>時數與帳務</button>
         <button type="button" data-section="templates"><span aria-hidden="true">▤</span>書狀與模板庫</button>
-        <button type="button" data-section="settings"><span aria-hidden="true">⚙</span>工作區設定</button>
+        <button type="button" data-section="settings"><span aria-hidden="true">⚙</span>基本設定</button>
       </nav>
 
       <section class="assistant-card">
-        <span>AI Case Partner</span>
+          <span>AI 案件助手</span>
         <p data-ai-brief>已整理 3 件高優先案件，今天先處理答辯狀期限與證據補件。</p>
       </section>
 
       <section class="usage-strip" aria-label="本月用量">
         <div><strong>84%</strong><span>任務準時率</span></div>
         <div><strong>38</strong><span>本月文件</span></div>
-        <div><strong>12</strong><span>席次</span></div>
-        <div><strong>Team</strong><span>方案</span></div>
+        <div><strong>12</strong><span>本機席次設定</span></div>
+        <div><strong>團隊</strong><span>使用模式</span></div>
       </section>
     </aside>
 
     <section class="workspace" aria-labelledby="workspaceTitle">
       <div class="workspace-head">
         <div>
-          <p class="eyebrow">ChouLegal Platform / ChouCounsel</p>
-          <h1 id="workspaceTitle">律師案件工作台</h1>
+          <p class="eyebrow">ChouLegal｜ChouCounsel</p>
+          <h1 id="workspaceTitle">法律服務案件管理</h1>
         </div>
         <div class="date-pill">
           <span>今天</span>
@@ -108,19 +106,19 @@
         </article>
       </section>
 
-      <section class="platform-strip" aria-label="ChouCounsel 平台能力">
+      <section class="platform-strip" aria-label="ChouCounsel 工作台能力">
         <article>
-          <span>工作區</span>
-          <strong>律所多租戶工作區</strong>
-          <p>案件、客戶、承辦團隊與權限分開管理。</p>
+          <span>案件資料</span>
+          <strong>本機案件資料</strong>
+          <p>案件、客戶、承辦團隊與交接資料在此瀏覽器分區整理。</p>
         </article>
         <article>
-          <span>Conflict</span>
+          <span>利衝</span>
           <strong data-conflict-summary>2 件待檢查</strong>
           <p>同名當事人、關係企業與前案資料先標示，不自動下法律結論。</p>
         </article>
         <article>
-          <span>Template</span>
+          <span>模板</span>
           <strong>書狀與流程模板</strong>
           <p>答辯、陳報、調解與契約審閱可逐步模組化。</p>
         </article>
@@ -130,7 +128,7 @@
         <section class="case-panel" aria-labelledby="caseQueueTitle">
           <div class="panel-head">
             <div>
-              <p class="eyebrow">Queue</p>
+              <p class="eyebrow">案件佇列</p>
               <h2 id="caseQueueTitle">案件佇列</h2>
             </div>
             <div class="segmented" role="tablist" aria-label="案件篩選">
@@ -207,7 +205,7 @@
           <section class="document-preview">
             <div class="panel-head">
               <div>
-                <p class="eyebrow">Draft</p>
+                <p class="eyebrow">底稿</p>
                 <h2>文件預覽</h2>
               </div>
               <button class="icon-button" type="button" aria-label="開啟文件" title="開啟文件" data-open-current-document>
@@ -250,7 +248,7 @@
       <section class="module-view" data-section-view="deadlines" hidden>
         <div class="module-head">
           <div>
-            <p class="eyebrow">Calendar</p>
+            <p class="eyebrow">期限</p>
             <h2>期限與庭期</h2>
           </div>
           <div class="mini-actions">
@@ -264,7 +262,7 @@
       <section class="module-view" data-section-view="documents" hidden>
         <div class="module-head">
           <div>
-            <p class="eyebrow">Document Vault</p>
+            <p class="eyebrow">文件庫</p>
             <h2>文件中心</h2>
           </div>
           <button class="btn primary" type="button" data-create-document>新增文件</button>
@@ -275,7 +273,7 @@
       <section class="module-view" data-section-view="conflicts" hidden>
         <div class="module-head">
           <div>
-            <p class="eyebrow">Conflict Review</p>
+            <p class="eyebrow">利衝檢查</p>
             <h2>利益衝突檢查</h2>
           </div>
           <div class="mini-actions">
@@ -289,7 +287,7 @@
       <section class="module-view" data-section-view="clients" hidden>
         <div class="module-head">
           <div>
-            <p class="eyebrow">Parties</p>
+            <p class="eyebrow">關係人</p>
             <h2>客戶與關係人</h2>
           </div>
           <div class="mini-actions">
@@ -303,7 +301,7 @@
       <section class="module-view" data-section-view="billing" hidden>
         <div class="module-head">
           <div>
-            <p class="eyebrow">Billing</p>
+            <p class="eyebrow">帳務</p>
             <h2>時數與帳務</h2>
           </div>
           <div class="mini-actions">
@@ -316,7 +314,7 @@
           <aside class="billing-summary">
             <span>本月可請款</span>
             <strong>NT$ 286,000</strong>
-            <p>示範金額尚未接正式計費規則；實際請款需由律所確認。</p>
+            <p>預估金額尚未接正式計費規則；實際請款需由律所確認。</p>
           </aside>
         </div>
       </section>
@@ -324,7 +322,7 @@
       <section class="module-view" data-section-view="templates" hidden>
         <div class="module-head">
           <div>
-            <p class="eyebrow">Template Library</p>
+            <p class="eyebrow">模板庫</p>
             <h2>書狀與模板庫</h2>
           </div>
           <button class="btn primary" type="button" data-create-template>建立模板</button>
@@ -335,16 +333,16 @@
       <section class="module-view" data-section-view="settings" hidden>
         <div class="module-head">
           <div>
-            <p class="eyebrow">工作區設定</p>
-            <h2>工作區設定</h2>
+            <p class="eyebrow">基本設定</p>
+            <h2>基本設定</h2>
           </div>
           <button class="btn primary" type="button" data-save-settings>儲存設定</button>
         </div>
         <div class="settings-grid">
-          <article><span>方案</span><strong data-settings-plan>Team</strong><p data-settings-capacity>12 席次、200 件進行中案件、每月 1,000 份文件處理量。</p></article>
-          <article><span>備份</span><strong>匯入 / 匯出</strong><p>可匯出工作區 JSON 備份，也可從備份還原到本機瀏覽器。</p><div class="mini-actions"><button class="btn secondary" type="button" data-export-workspace>匯出備份</button><button class="btn secondary" type="button" data-import-workspace>匯入備份</button></div></article>
-          <article><span>操作紀錄</span><strong>Audit log</strong><p>保留最近 40 筆本機操作紀錄，方便回看新增、修改、匯入與封存動作。</p><button class="btn secondary" type="button" data-show-audit-log>查看紀錄</button></article>
-          <article><span>資料邊界</span><strong>案件資料隔離</strong><p>ChouCounsel 案件與卷證資料不得與民眾權益查詢資料混用；目前為本機版保存。</p><button class="text-button danger" type="button" data-reset-workspace>重置示範資料</button></article>
+          <article><span>使用模式</span><strong data-settings-plan>團隊</strong><p data-settings-capacity>本機席次設定 12；容量備註：200 件進行中案件、每月 1,000 份文件處理量。</p></article>
+          <article><span>備份</span><strong data-backup-status>尚未匯出備份</strong><p data-backup-detail>可匯出工作區 JSON 備份，也可從備份還原到本機瀏覽器。</p><div class="mini-actions"><button class="btn secondary" type="button" data-export-workspace>匯出備份</button><button class="btn secondary" type="button" data-export-handoff>交接清單</button><button class="btn secondary" type="button" data-import-workspace>匯入備份</button></div></article>
+          <article><span>操作紀錄</span><strong>操作紀錄</strong><p>保留最近 40 筆本機操作紀錄，方便回看新增、修改、匯入與封存動作。</p><button class="btn secondary" type="button" data-show-audit-log>查看紀錄</button></article>
+          <article><span>資料邊界</span><strong>案件資料隔離</strong><p>ChouCounsel 案件與卷證資料不得與民眾權益查詢資料混用；目前保存在此瀏覽器。</p><div class="mini-actions"><a class="btn secondary" href="terms.html">資料保存條款</a><button class="text-button danger" type="button" data-reset-workspace>重置範例資料</button></div></article>
         </div>
       </section>
     </section>
@@ -354,7 +352,7 @@
     <form method="dialog" data-intake-form>
       <div class="dialog-head">
         <div>
-          <p class="eyebrow">New Matter</p>
+          <p class="eyebrow">新增案件</p>
           <h2>建立案件草稿</h2>
         </div>
         <button class="icon-button" value="close" aria-label="關閉" title="關閉"><span aria-hidden="true">×</span></button>
@@ -402,7 +400,7 @@
     <form method="dialog" data-action-form>
       <div class="dialog-head">
         <div>
-          <p class="eyebrow" data-action-kicker>Action</p>
+          <p class="eyebrow" data-action-kicker>操作</p>
           <h2 data-action-title>新增項目</h2>
         </div>
         <button class="icon-button" value="close" aria-label="關閉" title="關閉"><span aria-hidden="true">×</span></button>
@@ -419,7 +417,7 @@
     <form method="dialog">
       <div class="dialog-head">
         <div>
-          <p class="eyebrow">Generated Draft</p>
+          <p class="eyebrow">產生底稿</p>
           <h2 data-document-dialog-title>文件草稿</h2>
         </div>
         <button class="icon-button" value="close" aria-label="關閉" title="關閉"><span aria-hidden="true">×</span></button>
@@ -430,6 +428,53 @@
         <button class="btn secondary" type="button" data-show-document-versions>版本紀錄</button>
         <button class="btn secondary" type="button" data-save-document>保存內容</button>
         <button class="btn primary" type="button" data-copy-document>複製內容</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="intake-dialog cloud-dialog" data-cloud-dialog>
+    <form method="dialog" data-cloud-form>
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">雲端保存</p>
+          <h2>雲端快照</h2>
+        </div>
+        <button class="icon-button" value="close" aria-label="關閉" title="關閉"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="cloud-panel">
+        <article>
+          <span>狀態</span>
+          <strong data-cloud-status>檢查中</strong>
+          <p data-cloud-detail>正在確認是否已啟用雲端服務設定。</p>
+        </article>
+        <article>
+          <span>帳號</span>
+          <strong data-cloud-user>未登入</strong>
+          <p>雲端保存需先啟用帳號權限與資料庫設定；未啟用時仍可使用本機備份。</p>
+        </article>
+      </div>
+      <div class="intake-grid" data-cloud-auth-fields>
+        <label>Email
+          <input name="email" type="email" autocomplete="email" placeholder="lawyer@example.com">
+        </label>
+        <label>密碼
+          <input name="password" type="password" autocomplete="current-password" minlength="8">
+        </label>
+      </div>
+      <div class="cloud-workspace-picker" data-cloud-workspaces hidden>
+        <label>雲端工作區
+          <select data-cloud-workspace-select>
+            <option value="">選擇雲端工作區</option>
+          </select>
+        </label>
+        <p data-cloud-workspace-detail>登入後可選擇雲端工作區。</p>
+      </div>
+      <p class="form-note">雲端快照會保存目前工作台 JSON、manifest 與完整性碼；正式案件使用前仍需確認律所資料保存與保密流程。</p>
+      <div class="dialog-actions">
+        <button class="btn secondary" type="button" data-cloud-sign-out>登出</button>
+        <button class="btn secondary" type="button" data-cloud-load>載入最新</button>
+        <button class="btn secondary" type="button" data-cloud-save>保存快照</button>
+        <button class="btn primary" type="submit" data-cloud-sign-in>登入</button>
       </div>
     </form>
   </dialog>

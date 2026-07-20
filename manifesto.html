@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,8 +50,6 @@
 
   .nav {
     position: sticky; top: 0; z-index: 50;
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
     background: rgba(6,8,13,0.72);
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
@@ -91,9 +89,9 @@
   h1.title {
     font-family: 'Noto Serif TC', serif;
     font-weight: 500;
-    font-size: clamp(34px, 5vw, 52px);
+    font-size: 52px;
     line-height: 1.18;
-    letter-spacing: -0.018em;
+    letter-spacing: 0;
     color: rgba(255,255,255,0.98);
     margin-bottom: 0;
   }
@@ -113,7 +111,7 @@
     font-weight: 500;
     font-size: 22px;
     line-height: 1.4;
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
     color: rgba(255,255,255,0.97);
     margin: 44px 0 18px;
   }
@@ -152,6 +150,7 @@
 
   @media (max-width: 640px) {
     .hero { padding: 70px 0 20px; }
+    h1.title { font-size: 36px; }
     .essay { padding: 20px 0 40px; }
     .essay p { font-size: 16px; line-height: 1.9; }
   }
@@ -184,6 +183,8 @@
 </header>
 
 <div class="wrap-narrow">
+
+<main>
 
   <section class="hero">
     <div class="eyebrow">Manifesto</div>
@@ -231,6 +232,8 @@
   <section class="end">
     <a class="btn" href="index.html">回首頁看所有產品</a>
   </section>
+
+  </main>
 
   <footer class="foot">
     <span>© <span id="year">2026</span> ChouLegal · 周全</span>

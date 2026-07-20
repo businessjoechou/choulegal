@@ -1,5 +1,11 @@
 const STORAGE_KEY = "choucounselWorkspaceV1";
 const LEGACY_MATTER_KEY = "choucounselDraftMatters";
+const MAX_IMPORT_BYTES = 2 * 1024 * 1024;
+const MAX_IMPORT_CASES = 500;
+const MAX_IMPORT_TEXT_LENGTH = 20000;
+const CLOUD_CONFIG_ENDPOINT = "/api/choucounsel-public-config";
+const CLOUD_SNAPSHOT_ENDPOINT = "/api/choucounsel-snapshot";
+const CLOUD_WORKSPACES_ENDPOINT = "/api/choucounsel-workspaces";
 
 function taipeiTodayISO() {
   const date = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei" }));
@@ -36,6 +42,35 @@ function parseNumber(value, fallback = 0) {
   return Number.isFinite(number) ? number : fallback;
 }
 
+function parsePositiveNumber(value, label, fallback) {
+  const raw = String(value ?? "").trim();
+  const number = raw ? Number.parseFloat(raw.replaceAll(",", "")) : fallback;
+  if (!Number.isFinite(number) || number <= 0) throw new Error(`${label}必須大於 0。`);
+  return number;
+}
+
+function parseNonNegativeNumber(value, label, fallback = 0) {
+  const raw = String(value ?? "").trim();
+  const number = raw ? Number.parseFloat(raw.replaceAll(",", "")) : fallback;
+  if (!Number.isFinite(number) || number < 0) throw new Error(`${label}不得為負數或非數字。`);
+  return number;
+}
+
+function assertISODate(value, label = "日期") {
+  const text = String(value || "").trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) throw new Error(`${label}格式不正確。`);
+  const [year, month, day] = text.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (
+    date.getUTCFullYear() !== year ||
+    date.getUTCMonth() !== month - 1 ||
+    date.getUTCDate() !== day
+  ) {
+    throw new Error(`${label}不是有效日期。`);
+  }
+  return text;
+}
+
 function formatMoney(value) {
   return `NT$ ${Math.round(value).toLocaleString("zh-TW")}`;
 }
@@ -52,6 +87,43 @@ function dateText(value, label = "") {
 
 function timestampText() {
   return new Date().toLocaleString("zh-TW", { hour12: false });
+}
+
+function stableStringify(value) {
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`).join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+async function sha256Hex(value) {
+  if (!window.crypto?.subtle) throw new Error("瀏覽器不支援備份完整性驗證。");
+  const bytes = new TextEncoder().encode(value);
+  const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function backupPayloadForHash(backup) {
+  const { backupManifest, ...payload } = backup;
+  return payload;
+}
+
+async function buildWorkspaceBackup() {
+  const backup = clone(state);
+  backup.backupManifest = {
+    schema: "choucounsel-workspace-backup",
+    schemaVersion: 2,
+    exportedAt: new Date().toISOString(),
+    caseCount: backup.cases.length,
+    documentCount: allDocuments().length,
+    billingCount: allBillings().length,
+    templateCount: backup.templates.length,
+    auditLogCount: backup.auditLog.length,
+    integritySha256: ""
+  };
+  backup.backupManifest.integritySha256 = await sha256Hex(stableStringify(backupPayloadForHash(backup)));
+  return backup;
 }
 
 function daysUntil(value) {
@@ -71,11 +143,13 @@ function defaultWorkspace() {
   return {
     workspace: {
       firmName: "周全聯合法律事務所",
-      plan: "Team",
+      plan: "團隊",
       seats: 12,
-      capacity: "200 件進行中案件、每月 1,000 份文件處理量",
+      capacity: "容量備註：200 件進行中案件、每月 1,000 份文件處理量",
       defaultRate: 7200,
       invoicePrefix: "CC",
+      lastBackupAt: "",
+      lastHandoffAt: "",
       dataBoundary: "ChouCounsel 案件與卷證資料不得與民眾權益查詢資料混用。"
     },
     cases: demoCases(),
@@ -291,7 +365,7 @@ function makeCase(input) {
     conflictNote: input.conflictNote || "需補齊對造、關係企業與前案名稱後才可完成利益衝突判斷。",
     parties: (input.parties || []).map(([name, role, side, notes]) => ({ id: makeId("pty"), name, role, side, notes })),
     timeline: [
-      { id: makeId("evt"), date: TODAY, title: "建立案件工作區", owner: "工作台" },
+      { id: makeId("evt"), date: TODAY, title: "建立案件管理空間", owner: "工作台" },
       { id: makeId("evt"), date: input.deadlineDate || TODAY, title: input.deadlineLabel || "下一個期限", owner: "承辦律師" }
     ],
     tasks: (input.tasks || []).map(([title, due, status, priority]) => ({ id: makeId("tsk"), title, due, status, priority })),
@@ -349,7 +423,7 @@ function loadState() {
     const saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "null");
     if (saved?.cases?.length) return normalizeState(saved);
   } catch {
-    // Ignore invalid local data and fall back to demo state.
+    // Ignore invalid local data and fall back to sample state.
   }
   const state = defaultWorkspace();
   const existingIds = new Set(state.cases.map((item) => item.id));
@@ -407,6 +481,103 @@ function normalizeState(value) {
   return state;
 }
 
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function assertImportDate(value, label) {
+  if (value === undefined || value === null || value === "") return;
+  assertISODate(value, label);
+}
+
+function assertImportPositiveNumber(value, label) {
+  if (value === undefined || value === null || value === "") return;
+  const number = Number.parseFloat(String(value).replaceAll(",", ""));
+  if (!Number.isFinite(number) || number <= 0) throw new Error(`${label}必須大於 0。`);
+}
+
+function assertImportTextLength(value, label, limit = MAX_IMPORT_TEXT_LENGTH) {
+  if (value === undefined || value === null) return;
+  if (String(value).length > limit) throw new Error(`${label}過長。`);
+}
+
+function assertImportCase(item, index) {
+  if (!isPlainObject(item)) throw new Error(`第 ${index + 1} 筆案件格式不正確。`);
+  ["id", "title", "client"].forEach((key) => {
+    if (!String(item[key] || "").trim()) throw new Error(`第 ${index + 1} 筆案件缺少 ${key}。`);
+    assertImportTextLength(item[key], `第 ${index + 1} 筆案件 ${key}`, 300);
+  });
+  ["summary", "riskNote", "docNote", "conflictNote"].forEach((key) => {
+    assertImportTextLength(item[key], `第 ${index + 1} 筆案件 ${key}`);
+  });
+  assertImportDate(item.deadlineDate, `第 ${index + 1} 筆案件期限`);
+
+  if (item.tasks !== undefined && !Array.isArray(item.tasks)) throw new Error(`第 ${index + 1} 筆案件任務格式不正確。`);
+  (item.tasks || []).forEach((task, taskIndex) => {
+    if (Array.isArray(task)) assertImportDate(task[1], `第 ${index + 1} 筆案件第 ${taskIndex + 1} 筆任務期限`);
+    else if (isPlainObject(task)) assertImportDate(task.due, `第 ${index + 1} 筆案件第 ${taskIndex + 1} 筆任務期限`);
+    else throw new Error(`第 ${index + 1} 筆案件第 ${taskIndex + 1} 筆任務格式不正確。`);
+  });
+
+  if (item.billing !== undefined && !Array.isArray(item.billing)) throw new Error(`第 ${index + 1} 筆案件帳務格式不正確。`);
+  (item.billing || []).forEach((row, rowIndex) => {
+    if (Array.isArray(row)) {
+      assertImportDate(row[0], `第 ${index + 1} 筆案件第 ${rowIndex + 1} 筆帳務日期`);
+      assertImportPositiveNumber(row[3], `第 ${index + 1} 筆案件第 ${rowIndex + 1} 筆帳務時數`);
+      assertImportPositiveNumber(row[4], `第 ${index + 1} 筆案件第 ${rowIndex + 1} 筆帳務費率`);
+      return;
+    }
+    if (!isPlainObject(row)) throw new Error(`第 ${index + 1} 筆案件第 ${rowIndex + 1} 筆帳務格式不正確。`);
+    assertImportDate(row.date, `第 ${index + 1} 筆案件第 ${rowIndex + 1} 筆帳務日期`);
+    assertImportPositiveNumber(row.hours, `第 ${index + 1} 筆案件第 ${rowIndex + 1} 筆帳務時數`);
+    assertImportPositiveNumber(row.rate, `第 ${index + 1} 筆案件第 ${rowIndex + 1} 筆帳務費率`);
+  });
+}
+
+function normalizeWorkspaceImport(imported) {
+  if (Array.isArray(imported)) {
+    return {
+      workspace: { firmName: "匯入的舊版案件草稿" },
+      cases: imported.map(convertLegacyCase),
+      templates: [],
+      auditLog: []
+    };
+  }
+  if (imported?.version === "legacy-matters-v1" && Array.isArray(imported.matters)) {
+    return {
+      workspace: { firmName: imported.firmName || "匯入的舊版案件草稿" },
+      cases: imported.matters.map(convertLegacyCase),
+      templates: [],
+      auditLog: []
+    };
+  }
+  return imported;
+}
+
+function validateWorkspaceImport(imported) {
+  if (!isPlainObject(imported)) throw new Error("備份需為 JSON 物件。");
+  if (!Array.isArray(imported.cases) || !imported.cases.length) throw new Error("備份缺少案件資料。");
+  if (imported.cases.length > MAX_IMPORT_CASES) throw new Error(`備份案件數超過 ${MAX_IMPORT_CASES} 筆上限。`);
+  if (imported.workspace !== undefined && !isPlainObject(imported.workspace)) throw new Error("工作區設定格式不正確。");
+  if (imported.templates !== undefined && !Array.isArray(imported.templates)) throw new Error("模板格式不正確。");
+  if (imported.auditLog !== undefined && !Array.isArray(imported.auditLog)) throw new Error("操作紀錄格式不正確。");
+  if (isPlainObject(imported.workspace)) {
+    assertImportPositiveNumber(imported.workspace.seats, "團隊席次");
+    assertImportPositiveNumber(imported.workspace.defaultRate, "預設時薪");
+  }
+  imported.cases.forEach(assertImportCase);
+}
+
+async function validateBackupIntegrity(imported) {
+  if (imported.backupManifest === undefined) return { checked: false };
+  if (!isPlainObject(imported.backupManifest)) throw new Error("備份完整性資訊格式不正確。");
+  const expectedHash = imported.backupManifest.integritySha256;
+  if (!expectedHash) return { checked: false };
+  const actualHash = await sha256Hex(stableStringify(backupPayloadForHash(imported)));
+  if (actualHash !== expectedHash) throw new Error("備份完整性驗證失敗，檔案可能不是原始匯出版本。");
+  return { checked: true, manifest: imported.backupManifest };
+}
+
 function convertLegacyCase(draft) {
   return makeCase({
     id: draft.id || nextCaseCode(),
@@ -435,6 +606,18 @@ let selectedCaseId = state.cases[0]?.id || "";
 let currentFilter = "all";
 let activeAction = null;
 let activeDocumentRef = null;
+const cloudState = {
+  ready: false,
+  enabled: false,
+  loading: false,
+  config: null,
+  client: null,
+  session: null,
+  user: null,
+  workspaces: [],
+  workspacesLoaded: false,
+  error: ""
+};
 
 function saveState(action = "更新工作區") {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -523,6 +706,37 @@ function allCalendarItems() {
     });
     return rows;
   }).sort((a, b) => String(a.date).localeCompare(String(b.date)));
+}
+
+function daysSinceISO(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  const today = new Date(`${TODAY}T23:59:59+08:00`);
+  return Math.max(0, Math.floor((today - date) / 86400000));
+}
+
+function backupHealth() {
+  const days = daysSinceISO(state.workspace.lastBackupAt);
+  const cases = state.cases.length;
+  const documents = allDocuments().length;
+  const billings = allBillings().length;
+  if (days === null) {
+    return {
+      status: "尚未匯出備份",
+      detail: `${cases} 件案件、${documents} 份文件、${billings} 筆時數目前只保存在此瀏覽器；正式使用前應先匯出備份並建立律所保存流程。`
+    };
+  }
+  if (days > 7) {
+    return {
+      status: `已 ${days} 天未備份`,
+      detail: `${cases} 件案件、${documents} 份文件、${billings} 筆時數；建議今天重新匯出備份並由承辦團隊確認保存位置。`
+    };
+  }
+  return {
+    status: days === 0 ? "今天已備份" : `${days} 天前已備份`,
+    detail: `${cases} 件案件、${documents} 份文件、${billings} 筆時數；仍屬本機保存，跨裝置與多人同步需啟用雲端服務。`
+  };
 }
 
 function syncFilterButtons() {
@@ -651,10 +865,13 @@ function renderMetrics() {
   $("[data-review-count]").textContent = reviewCount;
   $("[data-risk-count]").textContent = activeCases.filter((item) => item.risk === "高").length;
   $("[data-conflict-summary]").textContent = `${activeCases.filter((item) => !String(item.conflictStatus).includes("未見")).length} 件待檢查`;
-  $("[data-settings-plan]").textContent = state.workspace.plan;
-  $("[data-settings-capacity]").textContent = `${state.workspace.seats} 席次、${state.workspace.capacity}`;
+  $("[data-settings-plan]").textContent = `${state.workspace.plan}模式`;
+  $("[data-settings-capacity]").textContent = `本機席次設定 ${state.workspace.seats}；${state.workspace.capacity}`;
+  const backup = backupHealth();
+  $("[data-backup-status]").textContent = backup.status;
+  $("[data-backup-detail]").textContent = backup.detail;
   $("[data-firm-name]").textContent = state.workspace.firmName;
-  $("[data-firm-meta]").textContent = `${state.workspace.plan} 工作區 · ${state.workspace.seats} 席次`;
+  $("[data-firm-meta]").textContent = `${state.workspace.plan}模式 · 本機席次設定 ${state.workspace.seats}`;
   $("[data-today-date]").textContent = TODAY.replaceAll("-", ".");
 }
 
@@ -726,6 +943,7 @@ function render() {
   renderMatter();
   renderMetrics();
   renderSectionViews();
+  renderCloudStatus();
 }
 
 function showToast(message) {
@@ -733,6 +951,265 @@ function showToast(message) {
   toast.textContent = message;
   toast.classList.add("is-visible");
   window.setTimeout(() => toast.classList.remove("is-visible"), 1900);
+}
+
+function cloudApiBase() {
+  return (cloudState.config?.apiBaseUrl || "").replace(/\/$/, "");
+}
+
+function cloudApiUrl(path) {
+  return `${cloudApiBase()}${path}`;
+}
+
+function setCloudError(message = "") {
+  cloudState.error = message;
+  renderCloudStatus();
+}
+
+function renderCloudStatus() {
+  const status = $("[data-cloud-status]");
+  const detail = $("[data-cloud-detail]");
+  const user = $("[data-cloud-user]");
+  const signIn = $("[data-cloud-sign-in]");
+  const signOut = $("[data-cloud-sign-out]");
+  const save = $("[data-cloud-save]");
+  const load = $("[data-cloud-load]");
+  const fields = $("[data-cloud-auth-fields]");
+  const openCloud = $("[data-open-cloud]");
+  const workspacePicker = $("[data-cloud-workspaces]");
+  const workspaceSelect = $("[data-cloud-workspace-select]");
+  const workspaceDetail = $("[data-cloud-workspace-detail]");
+
+  if (!status || !detail) return;
+
+  if (cloudState.loading) {
+    status.textContent = "連線檢查中";
+    detail.textContent = "正在確認 ChouCounsel 雲端設定。";
+  } else if (!cloudState.ready) {
+    status.textContent = "尚未檢查";
+    detail.textContent = "開啟雲端視窗後會檢查正式設定。";
+  } else if (!cloudState.enabled) {
+    status.textContent = "本機模式";
+    detail.textContent = cloudState.error || "雲端服務尚未啟用；目前請使用 JSON 備份與交接清單保存資料。";
+  } else if (cloudState.user) {
+    status.textContent = "雲端可用";
+    detail.textContent = state.workspace.cloudWorkspaceId
+      ? "可保存或載入此工作台的最新雲端快照。"
+      : "登入完成；首次保存會建立雲端工作區。";
+  } else {
+    status.textContent = "等待登入";
+    detail.textContent = "雲端服務設定已啟用，請登入後保存或載入工作台快照。";
+  }
+
+  if (user) user.textContent = cloudState.user?.email || "未登入";
+  if (openCloud) openCloud.textContent = cloudState.enabled && cloudState.user ? "雲端已連線" : "雲端";
+  if (fields) fields.hidden = !cloudState.enabled || Boolean(cloudState.user);
+  if (signIn) signIn.hidden = !cloudState.enabled || Boolean(cloudState.user);
+  if (signOut) signOut.hidden = !cloudState.enabled || !cloudState.user;
+  if (save) save.disabled = !cloudState.enabled || !cloudState.user;
+  if (load) load.disabled = !cloudState.enabled || !cloudState.user || !state.workspace.cloudWorkspaceId;
+  if (workspacePicker) workspacePicker.hidden = !cloudState.enabled || !cloudState.user;
+  if (workspaceSelect && cloudState.user) {
+    workspaceSelect.innerHTML = [
+      `<option value="">選擇雲端工作區</option>`,
+      ...cloudState.workspaces.map((workspace) => {
+        const label = `${workspace.name || "未命名工作區"}${workspace.firmName ? `｜${workspace.firmName}` : ""}`;
+        return `<option value="${escapeHTML(workspace.id)}"${workspace.id === state.workspace.cloudWorkspaceId ? " selected" : ""}>${escapeHTML(label)}</option>`;
+      })
+    ].join("");
+  }
+  if (workspaceDetail) {
+    if (!cloudState.user) workspaceDetail.textContent = "登入後可選擇雲端工作區。";
+    else if (!cloudState.workspacesLoaded) workspaceDetail.textContent = "登入後會載入可存取的雲端工作區。";
+    else if (!cloudState.workspaces.length) workspaceDetail.textContent = "尚無雲端工作區；首次保存會建立目前工作台。";
+    else if (state.workspace.cloudWorkspaceId) workspaceDetail.textContent = "已選擇雲端工作區，可載入最新快照或保存目前工作台。";
+    else workspaceDetail.textContent = "請選擇要載入的雲端工作區，或保存目前工作台建立新快照。";
+  }
+}
+
+async function loadCloudConfig() {
+  cloudState.loading = true;
+  renderCloudStatus();
+  try {
+    const response = await fetch(CLOUD_CONFIG_ENDPOINT, { cache: "no-store" });
+    if (!response.ok) throw new Error("雲端設定讀取失敗");
+    const config = await response.json();
+    cloudState.config = config;
+    cloudState.enabled = Boolean(config.enabled && config.supabaseUrl && config.supabaseAnonKey);
+    cloudState.ready = true;
+  if (!cloudState.enabled) setCloudError("雲端服務尚未啟用；目前請使用本機備份。");
+    else setCloudError("");
+  } catch (error) {
+    cloudState.config = null;
+    cloudState.enabled = false;
+    cloudState.ready = true;
+    setCloudError(error.message || "雲端設定讀取失敗；目前請使用本機備份。");
+  } finally {
+    cloudState.loading = false;
+    renderCloudStatus();
+  }
+}
+
+async function loadSupabaseSdk() {
+  if (window.supabase?.createClient) return window.supabase;
+  const sdkUrl = cloudState.config?.supabaseSdkUrl;
+  if (!sdkUrl) throw new Error("雲端 SDK 設定不存在。");
+  const existing = document.querySelector("script[data-supabase-sdk]");
+  if (existing) {
+    await new Promise((resolve, reject) => {
+      existing.addEventListener("load", resolve, { once: true });
+      existing.addEventListener("error", reject, { once: true });
+    });
+    return window.supabase;
+  }
+  await new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = sdkUrl;
+    script.defer = true;
+    script.dataset.supabaseSdk = "true";
+    script.addEventListener("load", resolve, { once: true });
+    script.addEventListener("error", () => reject(new Error("雲端 SDK 載入失敗。")), { once: true });
+    document.head.appendChild(script);
+  });
+  return window.supabase;
+}
+
+async function ensureCloudClient() {
+  if (!cloudState.ready) await loadCloudConfig();
+  if (!cloudState.enabled) throw new Error("雲端服務尚未啟用。");
+  if (!cloudState.client) {
+    const sdk = await loadSupabaseSdk();
+    if (!sdk?.createClient) throw new Error("雲端 SDK 無法使用。");
+    cloudState.client = sdk.createClient(cloudState.config.supabaseUrl, cloudState.config.supabaseAnonKey);
+    const { data } = await cloudState.client.auth.getSession();
+    cloudState.session = data?.session || null;
+    cloudState.user = cloudState.session?.user || null;
+    cloudState.client.auth.onAuthStateChange((_event, session) => {
+      cloudState.session = session || null;
+      cloudState.user = session?.user || null;
+      renderCloudStatus();
+    });
+  }
+  return cloudState.client;
+}
+
+async function signInCloud(email, password) {
+  const client = await ensureCloudClient();
+  const { data, error } = await client.auth.signInWithPassword({ email, password });
+  if (error) throw new Error(error.message || "雲端登入失敗。");
+  cloudState.session = data.session || null;
+  cloudState.user = data.user || data.session?.user || null;
+  await loadCloudWorkspaces().catch((error) => {
+    cloudState.error = error.message || "雲端工作區清單讀取失敗。";
+  });
+  renderCloudStatus();
+}
+
+async function signOutCloud() {
+  const client = await ensureCloudClient();
+  await client.auth.signOut();
+  cloudState.session = null;
+  cloudState.user = null;
+  renderCloudStatus();
+}
+
+async function ensureCloudWorkspace() {
+  const client = await ensureCloudClient();
+  if (state.workspace.cloudWorkspaceId) return state.workspace.cloudWorkspaceId;
+  const { data, error } = await client.rpc("choucounsel_create_workspace", {
+    p_name: state.workspace.firmName || "ChouCounsel 工作台",
+    p_firm_name: state.workspace.firmName || ""
+  });
+  if (error) throw new Error(error.message || "建立雲端工作區失敗。");
+  state.workspace.cloudWorkspaceId = data;
+  saveState("建立雲端工作區");
+  renderCloudStatus();
+  return data;
+}
+
+async function callCloudWorkspaces() {
+  if (!cloudState.session?.access_token) throw new Error("請先登入雲端帳號。");
+  const response = await fetch(cloudApiUrl(CLOUD_WORKSPACES_ENDPOINT), {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${cloudState.session.access_token}`,
+      "content-type": "application/json"
+    }
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || "雲端工作區清單讀取失敗。");
+  return Array.isArray(data.workspaces) ? data.workspaces : [];
+}
+
+async function loadCloudWorkspaces() {
+  cloudState.workspaces = await callCloudWorkspaces();
+  cloudState.workspacesLoaded = true;
+  const selectedStillAvailable = cloudState.workspaces.some((workspace) => workspace.id === state.workspace.cloudWorkspaceId);
+  if (state.workspace.cloudWorkspaceId && !selectedStillAvailable) {
+    state.workspace.cloudWorkspaceId = "";
+    saveState("清除不可用雲端工作區");
+  }
+  if (!state.workspace.cloudWorkspaceId && cloudState.workspaces.length === 1) {
+    state.workspace.cloudWorkspaceId = cloudState.workspaces[0].id;
+    saveState("選擇雲端工作區");
+  }
+  renderCloudStatus();
+  return cloudState.workspaces;
+}
+
+async function callCloudSnapshot(method, bodyOrWorkspaceId) {
+  if (!cloudState.session?.access_token) throw new Error("請先登入雲端帳號。");
+  const options = {
+    method,
+    headers: {
+      authorization: `Bearer ${cloudState.session.access_token}`,
+      "content-type": "application/json"
+    }
+  };
+  const url = method === "GET"
+    ? cloudApiUrl(`${CLOUD_SNAPSHOT_ENDPOINT}?workspaceId=${encodeURIComponent(bodyOrWorkspaceId)}`)
+    : cloudApiUrl(CLOUD_SNAPSHOT_ENDPOINT);
+  if (method !== "GET") options.body = JSON.stringify(bodyOrWorkspaceId);
+  const response = await fetch(url, options);
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || "雲端快照操作失敗。");
+  return data;
+}
+
+async function saveCloudSnapshot() {
+  const workspaceId = await ensureCloudWorkspace();
+  const backup = await buildWorkspaceBackup();
+  const snapshot = backupPayloadForHash(backup);
+  const integritySha256 = await sha256Hex(stableStringify(snapshot));
+  await callCloudSnapshot("POST", {
+    workspaceId,
+    snapshot,
+    manifest: backup.backupManifest,
+    integritySha256
+  });
+  await loadCloudWorkspaces().catch(() => {});
+  saveState("保存雲端快照");
+  showToast("已保存雲端快照");
+  render();
+}
+
+async function loadLatestCloudSnapshot() {
+  const workspaceId = state.workspace.cloudWorkspaceId;
+  if (!workspaceId) throw new Error("尚未建立雲端工作區。");
+  const data = await callCloudSnapshot("GET", workspaceId);
+  if (!data.snapshot?.snapshot) throw new Error("雲端尚無快照。");
+  const imported = normalizeState(data.snapshot.snapshot);
+  state = imported;
+  selectedCaseId = state.cases[0]?.id || "";
+  saveState("載入雲端快照");
+  render();
+  showToast("已載入雲端快照");
+}
+
+async function openCloudDialog() {
+  $("[data-cloud-dialog]").showModal();
+  if (!cloudState.ready) await loadCloudConfig();
+  else renderCloudStatus();
 }
 
 function showSection(section) {
@@ -781,7 +1258,12 @@ function renderField(field) {
   if (field.type === "select") {
     return `<label>${escapeHTML(field.label)}<select name="${escapeHTML(field.name)}" ${required}>${field.options.map((option) => `<option ${option === field.value ? "selected" : ""}>${escapeHTML(option)}</option>`).join("")}</select></label>`;
   }
-  return `<label>${escapeHTML(field.label)}<input name="${escapeHTML(field.name)}" type="${escapeHTML(field.type || "text")}" value="${value}" ${required}></label>`;
+  const attrs = [
+    field.min !== undefined ? `min="${escapeHTML(field.min)}"` : "",
+    field.max !== undefined ? `max="${escapeHTML(field.max)}"` : "",
+    field.step !== undefined ? `step="${escapeHTML(field.step)}"` : ""
+  ].filter(Boolean).join(" ");
+  return `<label>${escapeHTML(field.label)}<input name="${escapeHTML(field.name)}" type="${escapeHTML(field.type || "text")}" value="${value}" ${attrs} ${required}></label>`;
 }
 
 function valuesFromForm(form) {
@@ -796,6 +1278,7 @@ function addAudit(action) {
 function createMatterDraft(form) {
   const data = valuesFromForm(form);
   const risk = data.risk || "中";
+  const deadlineDate = assertISODate(data.deadlineDate || TODAY, "主要期限");
   const item = makeCase({
     id: nextCaseCode(),
     title: data.title || "新委任案件初步評估",
@@ -803,7 +1286,7 @@ function createMatterDraft(form) {
     type: data.type || "民事訴訟",
     risk,
     urgency: risk === "高" ? "urgent" : "normal",
-    deadlineDate: data.deadlineDate || TODAY,
+    deadlineDate,
     deadlineLabel: data.deadlineLabel || "委任資料確認",
     status: "新案草稿",
     summary: data.summary || "尚待補充案件事實、當事人資料、期限與已收到文件。",
@@ -823,7 +1306,7 @@ function createMatterDraft(form) {
 function openDeadlineForm() {
   const item = selectedCase();
   openAction({
-    kicker: "Calendar",
+    kicker: "期限",
     title: "新增期限或庭期",
     fields: [
       { name: "title", label: "事項", value: "準備庭期資料", required: true },
@@ -832,8 +1315,9 @@ function openDeadlineForm() {
       { name: "priority", label: "優先等級", type: "select", options: ["中", "高", "低"], value: "中" }
     ],
     onSubmit(values) {
-      item.timeline.push({ id: makeId("evt"), date: values.date, title: values.title, owner: values.owner });
-      item.tasks.push({ id: makeId("tsk"), title: values.title, due: values.date, status: "未完成", priority: values.priority });
+      const date = assertISODate(values.date, "日期");
+      item.timeline.push({ id: makeId("evt"), date, title: values.title, owner: values.owner });
+      item.tasks.push({ id: makeId("tsk"), title: values.title, due: date, status: "未完成", priority: values.priority });
       item.next = [values.title, ...(item.next || []).filter((entry) => entry !== values.title)].slice(0, 5);
       saveState(`新增期限 ${item.id}`);
       render();
@@ -858,6 +1342,7 @@ function openCaseEditForm() {
       { name: "summary", label: "案件摘要", type: "textarea", value: item.summary, rows: 4 }
     ],
     onSubmit(values) {
+      const deadlineDate = values.deadlineDate ? assertISODate(values.deadlineDate, "主要期限") : "";
       item.title = values.title;
       item.client = values.client;
       item.type = values.type;
@@ -865,9 +1350,9 @@ function openCaseEditForm() {
       item.status = values.status;
       item.risk = values.risk;
       item.urgency = values.risk === "高" ? "urgent" : "normal";
-      item.deadlineDate = values.deadlineDate;
+      item.deadlineDate = deadlineDate;
       item.deadlineLabel = values.deadlineLabel;
-      item.deadline = dateText(values.deadlineDate, values.deadlineLabel);
+      item.deadline = dateText(deadlineDate, values.deadlineLabel);
       item.summary = values.summary;
       item.docTitle = item.docTitle || `${item.title}初步評估草稿`;
       saveState(`編輯案件 ${item.id}`);
@@ -906,7 +1391,7 @@ function openDocumentForm() {
 function openPartyForm() {
   const item = selectedCase();
   openAction({
-    kicker: "Parties",
+    kicker: "關係人",
     title: "新增客戶或關係人",
     fields: [
       { name: "name", label: "名稱", value: "新關係人", required: true },
@@ -927,23 +1412,24 @@ function openPartyForm() {
 function openTimeEntryForm() {
   const item = selectedCase();
   openAction({
-    kicker: "Billing",
+    kicker: "帳務",
     title: "新增時數",
     fields: [
       { name: "date", label: "日期", type: "date", value: TODAY, required: true },
       { name: "person", label: "執行人", value: "承辦律師", required: true },
       { name: "description", label: "工作內容", value: "案件資料整理與策略討論", required: true },
-      { name: "hours", label: "時數", type: "number", value: "1.0", required: true },
-      { name: "rate", label: "時薪", type: "number", value: String(state.workspace.defaultRate), required: true }
+      { name: "hours", label: "時數", type: "number", value: "1.0", min: "0.1", step: "0.1", required: true },
+      { name: "rate", label: "時薪", type: "number", value: String(state.workspace.defaultRate), min: "1", step: "1", required: true }
     ],
     onSubmit(values) {
+      const date = assertISODate(values.date, "日期");
       item.billing.push({
         id: makeId("bil"),
-        date: values.date,
+        date,
         person: values.person,
         description: values.description,
-        hours: parseNumber(values.hours, 0),
-        rate: parseNumber(values.rate, state.workspace.defaultRate),
+        hours: parsePositiveNumber(values.hours, "時數"),
+        rate: parsePositiveNumber(values.rate, "時薪", state.workspace.defaultRate),
         billable: true
       });
       saveState(`新增時數 ${item.id}`);
@@ -955,7 +1441,7 @@ function openTimeEntryForm() {
 
 function openTemplateForm() {
   openAction({
-    kicker: "Template",
+    kicker: "模板",
     title: "建立書狀模板",
     fields: [
       { name: "name", label: "模板名稱", value: "新文件模板", required: true },
@@ -975,17 +1461,22 @@ function openTemplateForm() {
 function openSettingsForm() {
   openAction({
     kicker: "Settings",
-    title: "工作區設定",
+    title: "基本設定",
     fields: [
       { name: "firmName", label: "律所名稱", value: state.workspace.firmName, required: true },
-      { name: "plan", label: "方案", type: "select", options: ["Solo", "Team", "Firm", "Enterprise"], value: state.workspace.plan },
-      { name: "seats", label: "席次", type: "number", value: String(state.workspace.seats), required: true },
-      { name: "defaultRate", label: "預設時薪", type: "number", value: String(state.workspace.defaultRate), required: true },
-      { name: "capacity", label: "容量說明", value: state.workspace.capacity }
+      { name: "plan", label: "使用模式", type: "select", options: ["個人", "團隊", "律所", "企業"], value: state.workspace.plan },
+      { name: "seats", label: "本機席次設定", type: "number", value: String(state.workspace.seats), min: "1", step: "1", required: true },
+      { name: "defaultRate", label: "預設時薪", type: "number", value: String(state.workspace.defaultRate), min: "1", step: "1", required: true },
+      { name: "capacity", label: "容量備註", value: state.workspace.capacity }
     ],
     onSubmit(values) {
-      state.workspace = { ...state.workspace, ...values, seats: parseNumber(values.seats, 1), defaultRate: parseNumber(values.defaultRate, 7200) };
-      saveState("更新工作區設定");
+      state.workspace = {
+        ...state.workspace,
+        ...values,
+        seats: parsePositiveNumber(values.seats, "本機席次設定", 1),
+        defaultRate: parsePositiveNumber(values.defaultRate, "預設時薪", 7200)
+      };
+      saveState("更新基本設定");
       render();
       showToast("已儲存設定");
     }
@@ -1309,8 +1800,8 @@ function exportCasePacket() {
     billings,
     `合計：${formatMoney(total)}`,
     "",
-    "交接限制",
-    "本交接包由 ChouCounsel 本機工作台依目前資料產生，只作內部工作整理。正式對外文件、法律意見、請款與法源引用仍需承辦律師依卷證、官方來源與委任契約確認。"
+    "使用界線",
+    "本案件包由 ChouCounsel 依目前資料產生，協助團隊整理案件進度與下一步。正式對外文件、法律意見、請款與法源引用仍需承辦律師依卷證、官方來源與委任契約確認。"
   ].join("\n");
   saveState(`輸出案件交接包 ${item.id}`);
   render();
@@ -1455,9 +1946,9 @@ function exportPrepBrief() {
     "六、會前交辦",
     openTasks.length ? openTasks.map((task, index) => `${index + 1}. ${task.title}｜${shortDate(task.due)}｜${task.status}｜${task.priority || "中"}優先`).join("\n") : "目前沒有未完成任務。",
     "",
-    "七、誠實限制",
+    "七、使用界線",
     `引用狀態：${item.citationStatus}`,
-    "本準備稿只作為內部開庭或會議準備底稿；正式主張、談判底線、法源引用與對外說法，仍需承辦律師依完整卷證與官方來源確認。"
+    "本準備稿協助團隊整理開庭或會議重點；正式主張、談判底線、法源引用與對外說法，仍需承辦律師依完整卷證與官方來源確認。"
   ].join("\n");
   saveState(`產生準備稿 ${item.id}`);
   render();
@@ -1517,7 +2008,7 @@ function exportBillingDraft() {
     "",
     `合計：${formatMoney(total)}`,
     "",
-    "注意：此為本機工作台草稿，正式請款前仍需律所依委任契約與內部規則確認。"
+    "注意：此為本機工作台草稿，正式請款前仍需律所依委任契約與請款規則確認。"
   ].join("\n");
   openDocumentDialog("帳務草稿", content);
 }
@@ -1711,20 +2202,26 @@ function exportCalendar() {
   openDocumentDialog("行事曆匯出摘要", summary);
 }
 
-function exportWorkspace() {
+async function exportWorkspace() {
+  state.workspace.lastBackupAt = new Date().toISOString();
   saveState("匯出工作區備份");
+  const backup = await buildWorkspaceBackup();
+  const shortHash = backup.backupManifest.integritySha256.slice(0, 12);
   const backupSummary = [
     "ChouCounsel 工作區備份摘要",
     "",
     `產生時間：${timestampText()}`,
-    `案件數：${state.cases.length}`,
-    `文件數：${allDocuments().length}`,
-    `模板數：${state.templates.length}`,
-    `操作紀錄：${state.auditLog.length} 筆`,
+    `案件數：${backup.backupManifest.caseCount}`,
+    `文件數：${backup.backupManifest.documentCount}`,
+    `時數紀錄：${backup.backupManifest.billingCount} 筆`,
+    `模板數：${backup.backupManifest.templateCount}`,
+    `操作紀錄：${backup.backupManifest.auditLogCount} 筆`,
+    `最近備份：${timestampText()}`,
+    `完整性碼：sha256-${shortHash}`,
     "",
-    "備份檔已由瀏覽器下載為 JSON。這只是本機資料備份，不代表已同步到雲端或完成法律內容核驗。"
+    "備份檔已由瀏覽器下載為 JSON；匯入時會驗證完整性碼，協助確認檔案未被改動。這只是本機資料備份，不代表已同步到雲端或完成法律內容核驗。"
   ].join("\n");
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
@@ -1733,6 +2230,7 @@ function exportWorkspace() {
   URL.revokeObjectURL(url);
   showToast("已匯出工作區備份");
   openDocumentDialog("備份摘要", backupSummary);
+  render();
 }
 
 function showAuditLog() {
@@ -1742,20 +2240,72 @@ function showAuditLog() {
   openDocumentDialog("操作紀錄", content);
 }
 
+function handoffChecklistContent() {
+  const activeCases = state.cases.filter((item) => !item.archived);
+  const upcoming = allCalendarItems().filter((row) => row.date && daysUntil(row.date) <= 14).slice(0, 20);
+  const reviewDocs = allDocuments().filter((doc) => /待|草稿|缺|核對|覆核|未/.test(`${doc.status || ""} ${doc.note || ""}`)).slice(0, 20);
+  const conflictCases = activeCases.filter((item) => !String(item.conflictStatus || "").includes("未見")).slice(0, 20);
+  const unbilledTotal = allBillings().reduce((sum, row) => sum + (row.billable === false ? 0 : parseNumber(row.hours) * parseNumber(row.rate)), 0);
+  const backup = backupHealth();
+
+  return [
+    "ChouCounsel 案件交接清單",
+    "",
+    `律所 / 團隊：${state.workspace.firmName}`,
+    `產生時間：${timestampText()}`,
+    `案件數：${state.cases.length}（進行中 ${activeCases.length}）`,
+    `文件與證據：${allDocuments().length} 筆`,
+    `時數紀錄：${allBillings().length} 筆，帳務暫估 ${formatMoney(unbilledTotal)}`,
+    `備份狀態：${backup.status}`,
+    "",
+    "一、14 日內期限",
+    upcoming.length ? upcoming.map((row, index) => `${index + 1}. ${row.item.id}｜${shortDate(row.date)}｜${row.title}｜${row.item.title}`).join("\n") : "目前沒有 14 日內期限。",
+    "",
+    "二、待覆核文件 / 卷證",
+    reviewDocs.length ? reviewDocs.map((doc, index) => `${index + 1}. ${doc.caseId}｜${doc.title}｜${doc.status || "未標示"}｜${doc.note || "無備註"}`).join("\n") : "目前沒有標示待覆核的文件或卷證。",
+    "",
+    "三、利益衝突待確認",
+    conflictCases.length ? conflictCases.map((item, index) => `${index + 1}. ${item.id}｜${item.client}｜${item.conflictStatus}｜${item.conflictNote || "請承辦確認"}`).join("\n") : "目前沒有標示待確認的利益衝突。",
+    "",
+    "四、交接前確認",
+    "- 已匯出最新工作區備份，並確認保存位置。",
+    "- 期限已由承辦律師對照法院、主管機關、契約或委任文件。",
+    "- AI 摘要、文件草稿與客戶更新稿已由承辦律師覆核。",
+    "- 帳務金額已由律所內部請款流程確認。",
+    "",
+    "限制：此清單依目前本機工作台資料產生，不代表已完成雲端同步、多人權限控管或正式法律內容核驗。"
+  ].join("\n");
+}
+
+function exportHandoffChecklist() {
+  state.workspace.lastHandoffAt = new Date().toISOString();
+  saveState("匯出案件交接清單");
+  const content = handoffChecklistContent();
+  downloadTextFile(`choucounsel-handoff-${TODAY}.txt`, content, "text/plain;charset=utf-8");
+  showToast("已匯出交接清單");
+  openDocumentDialog("案件交接清單", content);
+  render();
+}
+
 function importWorkspace(file) {
   if (!file) return;
+  if (file.size > MAX_IMPORT_BYTES) {
+    showToast("備份檔超過 2MB，未匯入");
+    return;
+  }
   const reader = new FileReader();
-  reader.addEventListener("load", () => {
+  reader.addEventListener("load", async () => {
     try {
-      const imported = JSON.parse(String(reader.result || ""));
-      if (!Array.isArray(imported.cases)) throw new Error("missing cases");
+      const imported = normalizeWorkspaceImport(JSON.parse(String(reader.result || "")));
+      const integrity = await validateBackupIntegrity(imported);
+      validateWorkspaceImport(imported);
       state = normalizeState(imported);
       selectedCaseId = state.cases[0]?.id || "";
       saveState("匯入工作區備份");
       render();
-      showToast("已匯入備份");
-    } catch {
-      showToast("備份格式不正確，未匯入");
+      showToast(integrity.checked ? "已匯入備份，完整性已驗證" : "已匯入備份");
+    } catch (error) {
+      showToast(`未匯入：${error.message || "備份格式不正確"}`);
     }
   });
   reader.readAsText(file);
@@ -1767,9 +2317,9 @@ function resetWorkspace() {
   window.localStorage.removeItem(STORAGE_KEY);
   state = defaultWorkspace();
   selectedCaseId = state.cases[0].id;
-  saveState("重置示範資料");
+  saveState("重置範例資料");
   render();
-  showToast("已重置示範資料");
+  showToast("已重置範例資料");
 }
 
 function showNotifications() {
@@ -1845,7 +2395,35 @@ function bindEvents() {
   $("[data-next-case]").addEventListener("click", () => moveSelection(1));
   $("[data-sync]").addEventListener("click", () => {
     saveState("手動保存");
-    showToast("已保存到本機瀏覽器");
+    showToast("已保存到此瀏覽器");
+  });
+  $("[data-open-cloud]").addEventListener("click", () => {
+    openCloudDialog().catch((error) => showToast(error.message || "雲端設定讀取失敗"));
+  });
+  $("[data-cloud-form]").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const email = form.email.value.trim();
+    const password = form.password.value;
+    signInCloud(email, password)
+      .then(() => showToast("已登入雲端帳號"))
+      .catch((error) => showToast(error.message || "雲端登入失敗"));
+  });
+  $("[data-cloud-sign-out]").addEventListener("click", () => {
+    signOutCloud()
+      .then(() => showToast("已登出雲端帳號"))
+      .catch((error) => showToast(error.message || "雲端登出失敗"));
+  });
+  $("[data-cloud-save]").addEventListener("click", () => {
+    saveCloudSnapshot().catch((error) => showToast(error.message || "雲端保存失敗"));
+  });
+  $("[data-cloud-load]").addEventListener("click", () => {
+    loadLatestCloudSnapshot().catch((error) => showToast(error.message || "雲端載入失敗"));
+  });
+  $("[data-cloud-workspace-select]").addEventListener("change", (event) => {
+    state.workspace.cloudWorkspaceId = event.target.value || "";
+    saveState("選擇雲端工作區");
+    renderCloudStatus();
   });
   $("[data-show-notifications]").addEventListener("click", showNotifications);
   $("[data-edit-case]").addEventListener("click", openCaseEditForm);
@@ -1884,17 +2462,25 @@ function bindEvents() {
   $("[data-create-matter]").addEventListener("click", () => {
     const form = $("[data-intake-form]");
     if (!form.reportValidity()) return;
-    createMatterDraft(form);
-    $("[data-intake-dialog]").close("created");
-    showToast("已建立案件草稿");
+    try {
+      createMatterDraft(form);
+      $("[data-intake-dialog]").close("created");
+      showToast("已建立案件草稿");
+    } catch (error) {
+      showToast(error.message || "資料格式不正確，未建立案件");
+    }
   });
 
   $("[data-action-form]").addEventListener("submit", (event) => {
     event.preventDefault();
     const values = valuesFromForm(event.currentTarget);
-    if (activeAction) activeAction(values);
-    $("[data-action-dialog]").close("saved");
-    activeAction = null;
+    try {
+      if (activeAction) activeAction(values);
+      $("[data-action-dialog]").close("saved");
+      activeAction = null;
+    } catch (error) {
+      showToast(error.message || "資料格式不正確，未儲存");
+    }
   });
 
   $("[data-create-deadline]").addEventListener("click", openDeadlineForm);
@@ -1909,7 +2495,10 @@ function bindEvents() {
   $("[data-create-template]").addEventListener("click", openTemplateForm);
   $("[data-save-settings]").addEventListener("click", openSettingsForm);
   $("[data-show-audit-log]").addEventListener("click", showAuditLog);
-  $("[data-export-workspace]").addEventListener("click", exportWorkspace);
+  $("[data-export-workspace]").addEventListener("click", () => {
+    exportWorkspace().catch((error) => showToast(error.message || "備份匯出失敗"));
+  });
+  $("[data-export-handoff]").addEventListener("click", exportHandoffChecklist);
   $("[data-import-workspace]").addEventListener("click", () => $("[data-import-file]").click());
   $("[data-import-file]").addEventListener("change", (event) => importWorkspace(event.target.files[0]));
   $("[data-reset-workspace]").addEventListener("click", resetWorkspace);

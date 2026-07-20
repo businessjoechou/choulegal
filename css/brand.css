@@ -54,26 +54,26 @@ svg {
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
+  display: none;
   opacity: 0.5;
   will-change: transform;
 }
 .blob-a {
   top: -22vh; left: -10vw;
   width: 70vw; height: 70vw;
-  background: radial-gradient(circle, rgba(217, 119, 6, 0.55), rgba(217, 119, 6, 0) 60%);
+  background: none;
   animation: drift-a 28s ease-in-out infinite;
 }
 .blob-b {
   top: 25vh; right: -15vw;
   width: 65vw; height: 65vw;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.45), rgba(124, 58, 237, 0) 60%);
+  background: none;
   animation: drift-b 32s ease-in-out infinite;
 }
 .blob-c {
   bottom: -18vh; left: 28vw;
   width: 50vw; height: 50vw;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.4), rgba(14, 165, 233, 0) 60%);
+  background: none;
   animation: drift-c 36s ease-in-out infinite;
 }
 @keyframes drift-a { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(80px,-40px) scale(1.1); } }
@@ -81,13 +81,9 @@ svg {
 @keyframes drift-c { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-50px) scale(0.95); } }
 
 .bg-grid {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: none;
   background-size: 80px 80px;
   opacity: 0.4;
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85), transparent 80%);
-          mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85), transparent 80%);
 }
 .bg-grain {
   opacity: 0.05;
@@ -161,8 +157,6 @@ svg {
   padding: 7px 14px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.04);
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
   border-radius: 999px;
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 10.5px;
@@ -184,24 +178,21 @@ svg {
 .h-display {
   font-family: "Noto Serif TC", serif;
   font-weight: 400;
-  font-size: clamp(40px, 6.4vw, 72px);
+  font-size: 64px;
   line-height: 1.08;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.97);
 }
 .h-display em {
   font-style: italic;
   font-weight: 300;
-  background: linear-gradient(110deg, #fde68a, #fb923c, #f9a8d4);
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
+  color: #fde68a;
   display: block;
   margin-top: 6px;
 }
 
 .lead {
-  font-size: clamp(15px, 1.4vw, 17px);
+  font-size: 17px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.85;
   max-width: 560px;
@@ -224,10 +215,10 @@ svg {
 .sec-title {
   font-family: "Noto Serif TC", serif;
   font-weight: 400;
-  font-size: clamp(30px, 3.8vw, 48px);
+  font-size: 48px;
   line-height: 1.12;
   color: rgba(255, 255, 255, 0.97);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   margin-bottom: 14px;
 }
 .sec-title em {
@@ -252,8 +243,8 @@ svg {
 .prose h2 {
   font-family: "Noto Serif TC", serif;
   font-weight: 500;
-  font-size: clamp(22px, 2.4vw, 28px);
-  letter-spacing: -0.005em;
+  font-size: 28px;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.97);
   line-height: 1.35;
   margin: 56px 0 18px;
@@ -283,7 +274,7 @@ svg {
   padding: 18px 24px;
   border-left: 2px solid rgba(253, 230, 138, 0.5);
   background: rgba(255, 255, 255, 0.025);
-  border-radius: 0 12px 12px 0;
+  border-radius: 0 8px 8px 0;
   font-family: "Noto Serif TC", serif;
   font-style: italic;
   font-weight: 300;
@@ -315,9 +306,7 @@ svg {
   padding: 28px 30px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.025);
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
-  border-radius: 18px;
+  border-radius: 8px;
   transition: border-color 0.3s, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
 }
 .card:hover {
@@ -417,5 +406,9 @@ html:not(.js) .reveal { opacity: 1; transform: none; transition: none; }
   .site-nav { padding: 22px 0; }
   .site-nav-links { gap: 16px; font-size: 10.5px; }
   .hero { padding: 60px 0 50px; }
+  .h-display { font-size: 36px; }
+  .lead { font-size: 15px; }
+  .sec-title { font-size: 30px; }
+  .prose h2 { font-size: 22px; }
   .sec { padding: 64px 0; }
 }

@@ -12,10 +12,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(ellipse 80% 52% at 50% -12%, rgba(253, 230, 138, 0.11), transparent 62%),
-    radial-gradient(ellipse 80% 60% at 88% 34%, rgba(125, 211, 252, 0.06), transparent 58%),
-    #0a0c12;
+  background: #0a0c12;
   color: rgba(255, 255, 255, 0.92);
   font-family: "Noto Sans TC", system-ui, -apple-system, sans-serif;
   font-size: 17px;
@@ -56,12 +53,8 @@ svg {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-image: none;
   background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(ellipse 72% 58% at 50% 26%, black 28%, transparent 74%);
-          mask-image: radial-gradient(ellipse 72% 58% at 50% 26%, black 28%, transparent 74%);
 }
 
 .ambient::after {
@@ -77,8 +70,6 @@ svg {
   position: sticky;
   top: 0;
   z-index: 50;
-  -webkit-backdrop-filter: saturate(180%) blur(24px);
-          backdrop-filter: saturate(180%) blur(24px);
   background: rgba(10, 12, 18, 0.72);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
@@ -163,9 +154,9 @@ svg {
 .title {
   font-family: "Noto Serif TC", serif;
   font-weight: 500;
-  font-size: clamp(42px, 6vw, 78px);
+  font-size: 64px;
   line-height: 1.07;
-  letter-spacing: -0.018em;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.98);
   max-width: 12ch;
   margin-bottom: 24px;
@@ -179,7 +170,7 @@ svg {
 }
 
 .lead {
-  font-size: clamp(16px, 1.5vw, 19px);
+  font-size: 19px;
   color: rgba(255, 255, 255, 0.64);
   line-height: 1.75;
   max-width: 58ch;
@@ -231,7 +222,7 @@ svg {
   position: relative;
   padding: 28px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 22px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.025);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 60px rgba(0, 0, 0, 0.28);
   overflow: hidden;
@@ -241,7 +232,7 @@ svg {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(110% 80% at 50% 0%, rgba(253, 230, 138, 0.11), transparent 58%);
+  background: rgba(253, 230, 138, 0.045);
   pointer-events: none;
 }
 
@@ -256,7 +247,7 @@ svg {
 
 .metric {
   padding: 18px;
-  border-radius: 14px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(10, 12, 18, 0.58);
 }
@@ -289,10 +280,10 @@ svg {
 
 .section-title {
   font-family: "Noto Serif TC", serif;
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: 52px;
   font-weight: 500;
   line-height: 1.12;
-  letter-spacing: -0.012em;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.98);
   margin-bottom: 16px;
 }
@@ -320,7 +311,7 @@ svg {
   padding: 26px;
   min-height: 250px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.025);
 }
 
@@ -369,7 +360,7 @@ svg {
 
 .lane {
   padding: 30px;
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.025);
 }
@@ -408,7 +399,7 @@ svg {
 .flow-step {
   min-height: 118px;
   padding: 16px 14px;
-  border-radius: 14px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.022);
 }
@@ -437,7 +428,7 @@ svg {
 
 .timeline-card {
   padding: 28px;
-  border-radius: 18px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.025);
 }
@@ -445,7 +436,7 @@ svg {
 .workbench-shell,
 .library-shell {
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.024);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 20px 70px rgba(0, 0, 0, 0.24);
   overflow: hidden;
@@ -470,7 +461,7 @@ svg {
   padding: 18px;
   text-align: left;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.026);
   color: rgba(255, 255, 255, 0.86);
   font: inherit;
@@ -507,7 +498,7 @@ svg {
 .note-panel {
   padding: 28px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 22px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.025);
 }
 
@@ -528,7 +519,7 @@ svg {
   gap: 12px;
   align-items: center;
   padding: 12px;
-  border-radius: 14px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(10, 12, 18, 0.52);
 }
@@ -564,7 +555,7 @@ svg {
 .quiz-option {
   width: 100%;
   padding: 14px 16px;
-  border-radius: 14px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.11);
   background: rgba(10, 12, 18, 0.52);
   color: rgba(255, 255, 255, 0.82);
@@ -591,7 +582,7 @@ svg {
 .quiz-feedback {
   margin-top: 14px;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.026);
   color: rgba(255, 255, 255, 0.66);
@@ -603,7 +594,7 @@ svg {
   width: 100%;
   margin-bottom: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
+  border-radius: 8px;
   background: rgba(10, 12, 18, 0.64);
   color: rgba(255, 255, 255, 0.86);
   font: inherit;
@@ -689,7 +680,7 @@ svg {
 .library-search {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
+  border-radius: 8px;
   background: rgba(10, 12, 18, 0.64);
   color: rgba(255, 255, 255, 0.9);
   font: inherit;
@@ -716,7 +707,7 @@ svg {
   margin: 6px 0 22px;
   padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  border-radius: 8px;
   display: grid;
   gap: 10px;
 }
@@ -739,7 +730,7 @@ svg {
   margin: 4px 0 12px;
   padding: 16px;
   border: 1px dashed rgba(253, 230, 138, 0.26);
-  border-radius: 16px;
+  border-radius: 8px;
   background: rgba(253, 230, 138, 0.035);
   cursor: pointer;
 }
@@ -780,7 +771,7 @@ svg {
 .file-list li {
   padding: 8px 10px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  border-radius: 8px;
   background: rgba(10, 12, 18, 0.42);
   color: rgba(255, 255, 255, 0.62);
   font-size: 13px;
@@ -841,7 +832,7 @@ svg {
 
 .result-card {
   padding: 20px;
-  border-radius: 16px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(10, 12, 18, 0.58);
 }
@@ -896,7 +887,7 @@ svg {
 .matrix-row,
 .judgment-item {
   padding: 12px;
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.025);
 }
@@ -981,7 +972,7 @@ svg {
   gap: 12px;
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border-radius: 8px;
   background: rgba(10, 12, 18, 0.52);
 }
 
@@ -1039,7 +1030,7 @@ svg {
 
 .side-box {
   padding: 18px;
-  border-radius: 16px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.026);
   margin-bottom: 14px;
@@ -1072,7 +1063,7 @@ svg {
   width: 0;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #fde68a, #86efac);
+  background: #fde68a;
   transition: width 0.25s ease;
 }
 
@@ -1093,7 +1084,7 @@ svg {
   grid-column: 1 / -1;
   padding: 38px;
   text-align: center;
-  border-radius: 18px;
+  border-radius: 8px;
   border: 1px dashed rgba(255, 255, 255, 0.16);
   color: rgba(255, 255, 255, 0.58);
 }
@@ -1215,6 +1206,18 @@ svg {
 
   .hero {
     padding: 78px 0 54px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 30px;
   }
 
   .section {

@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AVS 驗證工具 — AI 推理軌跡四階段確定性驗算</title>
 <meta name="description" content="貼入 AI 系統的推理軌跡 JSON，AVS 自動執行四階段確定性驗算：結構查核、法源 SHA-256 比對、公式逐步重算、Oracle 人工案例比對。驗證器不使用 AI，並產出認證報告。by ChouLegal">
@@ -43,10 +43,10 @@ a{color:inherit;text-decoration:none;}
   --mono:'JetBrains Mono',monospace;--serif:'Noto Serif TC',serif;
 }
 .wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
-@media(max-width:640px){.wrap{padding:0 16px;}}
+@media(max-width:640px){.wrap{padding:0 16px;}.vhero h1{font-size:30px;}}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);background:rgba(10,12,18,0.8);border-bottom:1px solid var(--line);}
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,12,18,0.8);border-bottom:1px solid var(--line);}
 .nav-inner{max-width:1160px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;justify-content:space-between;}
 .nav-brand{display:flex;align-items:center;gap:12px;}
 .nav-logo{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.14em;color:var(--green);}
@@ -61,7 +61,7 @@ a{color:inherit;text-decoration:none;}
 .vhero-tag{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:100px;border:1px solid var(--green-line);background:var(--green-dim);font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:rgba(134,239,172,.85);text-transform:uppercase;margin-bottom:16px;}
 .vhero-tag .dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 5px var(--green);animation:blink 2s ease-in-out infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
-.vhero h1{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3.5vw,38px);line-height:1.15;letter-spacing:-.018em;color:rgba(255,255,255,.97);}
+.vhero h1{font-family:var(--serif);font-weight:500;font-size:38px;line-height:1.15;letter-spacing:0;color:rgba(255,255,255,.97);}
 .vhero h1 em{font-style:normal;font-weight:300;color:var(--green);}
 .vhero-sub{font-size:13.5px;color:rgba(255,255,255,.48);margin-top:10px;max-width:52ch;line-height:1.7;}
 .vhero-stat{display:flex;gap:24px;flex-wrap:wrap;}
@@ -168,7 +168,7 @@ a{color:inherit;text-decoration:none;}
 /* cert badge */
 .cert-section{padding:28px 24px;border-top:1px solid var(--line);}
 .cert-card{
-  border-radius:12px;padding:28px 28px 24px;
+  border-radius:8px;padding:28px 28px 24px;
   border:1px solid var(--line);background:rgba(255,255,255,.02);
   display:flex;flex-direction:column;gap:16px;
   position:relative;overflow:hidden;
@@ -179,7 +179,7 @@ a{color:inherit;text-decoration:none;}
 .cert-card.silver{border-color:rgba(148,163,184,.3);background:rgba(148,163,184,.03);}
 .cert-card.bronze{border-color:rgba(180,130,80,.3);background:rgba(180,130,80,.03);}
 .cert-card.none{border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.03);}
-.cert-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:200px;height:120px;border-radius:50%;opacity:.15;filter:blur(32px);pointer-events:none;}
+.cert-glow{display:none;}
 .cert-glow.platinum{background:#fde68a;}
 .cert-glow.gold{background:#eab308;}
 .cert-glow.silver{background:#94a3b8;}
@@ -247,6 +247,8 @@ a{color:inherit;text-decoration:none;}
   </div>
 </header>
 
+<main>
+
 <!-- Hero -->
 <div class="vhero">
   <div class="wrap">
@@ -267,7 +269,7 @@ a{color:inherit;text-decoration:none;}
 </div>
 
 <!-- Notice -->
-<div class="notice">Phase 2 法源快取版本：2026-06-13（來源：law.moj.gov.tw）· 每月更新一次 · 哈希值與官方版本比對一致</div>
+<div class="notice">Phase 2 法源快取新鮮度檢查：2026-07-19（來源：law.moj.gov.tw）· 本頁 33 條內嵌示範快取已與官方法源快取比對；正式案件使用前仍需重跑法源檢查與人工法律複核。</div>
 
 <!-- Workspace -->
 <div class="workspace">
@@ -300,8 +302,8 @@ a{color:inherit;text-decoration:none;}
   ],
   "output": 100000,
   "confidence": "deterministic",
-  "law_snapshot_date": "2026-06-13",
-  "generated_at": "2026-06-14T00:00:00Z"
+  "law_snapshot_date": "2026-07-19",
+  "generated_at": "2026-07-19T00:00:00Z"
 }'></textarea>
     </div>
     <div class="verify-bar">
@@ -337,6 +339,8 @@ a{color:inherit;text-decoration:none;}
 
 </div>
 
+</main>
+
 <footer class="foot">
   <div class="wrap">
     <div class="foot-inner">
@@ -354,7 +358,7 @@ a{color:inherit;text-decoration:none;}
 'use strict';
 
 // ═══════════════════════════════════════════════════════════════════════
-// DATA — Law Cache (33 articles, from law.moj.gov.tw, 2026-06-13)
+// DATA — Law Cache (33 articles, from law.moj.gov.tw, freshness gate 2026-07-19)
 // ═══════════════════════════════════════════════════════════════════════
 const LAW_CACHE = {"民法§1138":{"hash":"18ffea9a5b70d1394e8f869fe9fa33d56887aff6b83aaa5ed9a6faced9eb4d75","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1138"},"民法§1144":{"hash":"863e3cbe7c0ebb19a03362bb61ca9b8dce9dc1036133102fee4d1cfec6756cb9","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1144"},"民法§1223":{"hash":"2d13f32572404982c33071a97f64984ed550a692e2aeaa247f6ca9996b8176e7","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1223"},"民法§425":{"hash":"bee6d2767f9ea5f230753e7a3759be0df14f55165a65b45a3edad838905d030c","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=425"},"民法§429":{"hash":"a723956ec049620612130296edd9e6ef97cf77b8adc882e854a45a865f9b304f","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=429"},"民法§430":{"hash":"841205bed873809c275bffda8347c424e5f8441437ea035d173986a7cfed0601","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=430"},"民法§431":{"hash":"3133e235b49f28aa97b6b31c7ff077d0bc738a30eee40b701012aaa6867a2a32","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=431"},"民法§432":{"hash":"d88c2ef6d0293dd52c7b4651aa7a5cb3d49f1cd62da501c3ad1ddac34abc43fa","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=432"},"土地法§100":{"hash":"d557ba31da7621584a5037b0ca5aef283cf2316e5682b18c2cdd79484a7c8c0d","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=100"},"土地法§97":{"hash":"486d0b07ff973b8d297468c7069c8bee67b487c79a4c1c6be72175391e0e118c","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=97"},"土地法§99":{"hash":"590af16a3a33b1a6fc2a114f8b83320cc47bd71132b4fdc30db017bfd07a4551","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=99"},"租賃專法§10":{"hash":"3be67a6821c622c962df1902869205a2946cdd27abad5e3e4fb964d5d89b8b0a","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060125&flno=10"},"租賃專法§11":{"hash":"043f21a93e28267dfc795c8b848c0ffa05d2ebaab23276a99d9e4239b8909982","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060125&flno=11"},"租賃專法§7":{"hash":"0c7b135f5e05ec70ed2655945ee9567d0735565d143beb028e5eb25d6a7b247f","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060125&flno=7"},"消保法§19":{"hash":"1a06661a0602e6ce668425c5cfe5749942280f5b10261163336a1900b03173a9","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=19"},"消保法§51":{"hash":"88456f2f2c8672c089a87d5440e12978f82b3d679affa5ce60c1622f28cc9076","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=51"},"消保法§56-1":{"hash":"92fb8a24e2abb7c823f2ef33157b928decde543d850b5d6436f318c2b0dab9dd","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=56-1"},"勞基法§11":{"hash":"b5088997030c33c335856236d46044ba0103b98b2e8cfa2cc59498c5c9b34fd2","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=11"},"勞基法§14":{"hash":"f6e82046858a6c82ea656c605feacfbaa239d0e143ef294a4e9726144077e12e","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=14"},"勞基法§16":{"hash":"e71326547d6e26d6e4405e52cd48ee829844d81a847c61667ae02d134ae36804","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=16"},"勞基法§17":{"hash":"f21617a3c42e57d5c55d4889388759be74149681bca937f8b4a73cd8d544dc7e","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=17"},"勞基法§19":{"hash":"605bc1878dca13054737837fe374c8dd78856714196fc26129496ac9b8e3a3df","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=19"},"勞基法§20":{"hash":"10797c6564990d628104e31c0ed216fe0b92dd9967e6bd6f24131af95afeb22e","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=20"},"勞基法§24":{"hash":"485d0d6bd74d707843297374673383776107fbbf67c204bce40a22e0c22653c4","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=24"},"勞基法§32":{"hash":"58a6a13a27e9859b1b50e2a7b1a671db6a9574bfd106c35dde6084a58164d4ef","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=32"},"勞基法§36":{"hash":"f3ad5099be8b3ef9b5720d43c0ff5add82b41b661f08fc822fda7e8d4511cbb9","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=36"},"勞基法§38":{"hash":"8d01124f6fc4da63819a529e2fac58c5a95e3b984fa8aecebeb3586a3bc112d6","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=38"},"勞基法§59":{"hash":"ebc80102c874e44076a428e16a1c6031652334274b5911069ce3e2c68fe975c8","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=59"},"勞基法§79":{"hash":"5ad2e21384cced9683e66edcb57e3c881e4444fd15710e990f7ce5746ec2b1f8","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=79"},"性平法§15":{"hash":"12e37ac66c33ca02e8c1e92d5a2a6a26b4e5160fa6934e1024a9d9c7992fdacd","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030014&flno=15"},"性平法§16":{"hash":"e4beefdd986b6f54e60853827c2e977342b63a91de9210457e8cce23305fc9c4","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030014&flno=16"},"勞退條例§12":{"hash":"c41feabe56976ce3bc78be60ea60f289b9d2139601fe70c6e0b213bccd4fbef3","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030020&flno=12"},"勞退條例§14":{"hash":"f71418f471028495bf8ee3a1ef84b65e074d546358e89704541b2a658a2783c6","url":"https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030020&flno=14"}};
 
@@ -377,7 +381,7 @@ const EXAMPLE_PASS = {
     {"label":"資遣費金額","formula":"multiplier * monthly_wage","value":100000,"inputs":{"multiplier":2.5,"monthly_wage":40000}}
   ],
   "output":100000,"confidence":"deterministic",
-  "law_snapshot_date":"2026-06-13","generated_at":"2026-06-14T00:00:00Z"
+  "law_snapshot_date":"2026-07-19","generated_at":"2026-07-19T00:00:00Z"
 };
 
 const EXAMPLE_FAIL = {
@@ -391,7 +395,7 @@ const EXAMPLE_FAIL = {
     {"label":"資遣費金額（使用錯誤基數）","formula":"multiplier * monthly_wage","value":200000,"inputs":{"multiplier":5,"monthly_wage":40000}}
   ],
   "output":200000,"confidence":"deterministic",
-  "law_snapshot_date":"2026-06-13","generated_at":"2026-06-14T00:00:00Z"
+  "law_snapshot_date":"2026-07-19","generated_at":"2026-07-19T00:00:00Z"
 };
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -850,7 +854,7 @@ function copyReport(level,ts,p1,p2,p3,p4) {
 AVS 版本：v1.0
 
 Phase 1 結構驗證：${p1}
-Phase 2 法源查核：${p2}（快取版本 2026-06-13）
+Phase 2 法源查核：${p2}（比對本頁 2026-07-19 法源快取；正式案件使用前仍需人工法律複核）
 Phase 3 計算重現：${p3}
 Phase 4 Oracle比對：${p4}
 

@@ -32,11 +32,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    linear-gradient(180deg, rgba(255, 254, 250, 0.82), rgba(243, 245, 241, 0.92)),
-    repeating-linear-gradient(0deg, rgba(23, 29, 27, 0.025) 0 1px, transparent 1px 36px),
-    repeating-linear-gradient(90deg, rgba(29, 109, 99, 0.026) 0 1px, transparent 1px 36px),
-    var(--canvas);
+  background: var(--canvas);
   color: var(--ink);
   font-family: "Noto Sans TC", system-ui, sans-serif;
   font-size: 15px;
@@ -97,8 +93,7 @@ p {
   min-height: 72px;
   padding: 12px clamp(18px, 3vw, 36px);
   border-bottom: 1px solid var(--line);
-  background: rgba(243, 245, 241, 0.94);
-  backdrop-filter: blur(16px);
+  background: rgba(243, 245, 241, 0.98);
 }
 
 .brand,
@@ -114,13 +109,18 @@ p {
   gap: 12px;
 }
 
-.brand img {
+.brand-mark {
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 44px;
   border: 1px solid rgba(181, 139, 53, 0.32);
   border-radius: var(--radius);
   background: #141418;
-  object-fit: cover;
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .brand strong,
@@ -201,6 +201,10 @@ p {
   min-height: 42px;
   padding: 0 16px;
   font-weight: 800;
+}
+
+.compact-action {
+  min-width: 64px;
 }
 
 .btn.primary {
@@ -421,9 +425,7 @@ h2 {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 14px;
-  background:
-    linear-gradient(135deg, rgba(29, 109, 99, 0.08), transparent 54%),
-    var(--surface);
+  background: var(--surface);
 }
 
 .platform-strip span {
@@ -579,9 +581,7 @@ h2 {
 }
 
 .billing-summary {
-  background:
-    linear-gradient(135deg, rgba(181, 139, 53, 0.14), transparent 55%),
-    var(--surface);
+  background: var(--surface);
 }
 
 .billing-summary strong {
@@ -671,7 +671,7 @@ h2 {
 
 .case-item.is-active {
   border-color: rgba(29, 109, 99, 0.58);
-  background: linear-gradient(180deg, #fffefa, #edf7f3);
+  background: #edf7f3;
 }
 
 .case-item-top,
@@ -758,9 +758,7 @@ h2 {
 
 .summary-band {
   border: 1px solid rgba(29, 109, 99, 0.22);
-  background:
-    linear-gradient(135deg, rgba(29, 109, 99, 0.12), transparent 48%),
-    var(--surface-2);
+  background: var(--surface-2);
 }
 
 .summary-band strong {
@@ -911,9 +909,7 @@ h2 {
   border: 1px solid var(--line-strong);
   border-radius: 4px;
   padding: 18px;
-  background:
-    linear-gradient(90deg, transparent 0 23px, rgba(181, 139, 53, 0.14) 23px 24px, transparent 24px),
-    #fffefb;
+  background: #fffefb;
   box-shadow: var(--shadow);
 }
 
@@ -1055,6 +1051,62 @@ h2 {
   gap: 12px;
 }
 
+.cloud-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cloud-panel article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  background: var(--surface-2);
+}
+
+.cloud-panel article span,
+.form-note {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.cloud-panel article strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+}
+
+.cloud-panel article p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.cloud-workspace-picker {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  background: #fffefb;
+}
+
+.cloud-workspace-picker[hidden] {
+  display: none;
+}
+
+.cloud-workspace-picker p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.form-note {
+  margin: 0;
+}
+
 .dynamic-form label:has(textarea),
 .document-output {
   grid-column: 1 / -1;
@@ -1132,6 +1184,53 @@ h2 {
   transform: translateY(0);
 }
 
+.legal-page {
+  width: min(920px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 72px;
+}
+
+.legal-hero {
+  display: grid;
+  gap: 14px;
+  padding: 40px 0 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal-hero h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.08;
+}
+
+.legal-hero p,
+.legal-section p {
+  max-width: 78ch;
+  margin: 0;
+  color: var(--ink-2);
+  line-height: 1.9;
+}
+
+.legal-section {
+  display: grid;
+  gap: 12px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal-section h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.legal-section a {
+  color: var(--teal);
+  font-weight: 800;
+}
+
 @media (max-width: 1180px) {
   .command-layout {
     grid-template-columns: minmax(260px, 0.9fr) minmax(420px, 1.1fr);
@@ -1188,6 +1287,7 @@ h2 {
   .platform-strip,
   .module-grid,
   .settings-grid,
+  .cloud-panel,
   .command-layout,
   .matter-grid,
   .insight-panel,
@@ -1244,5 +1344,26 @@ h2 {
 
   .tabs {
     overflow-x: auto;
+  }
+}
+
+/* ===== ChouTech company UI baseline, ChouCounsel mobile nav, 2026-07 ===== */
+@media (max-width: 900px) {
+  .nav-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
+
+  .nav-list button {
+    grid-template-columns: 22px minmax(0, 1fr);
+    min-width: 0;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

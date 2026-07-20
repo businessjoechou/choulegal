@@ -59,7 +59,7 @@ var professionalPresets = {
     riskClass: "risk-high",
     summary: "本案同時涉及出勤紀錄、延長工時、休息日出勤與工資計算。紀錄不完整或制度公告不足，將提高後續舉證壓力。",
     docs: ["逐日出勤紀錄", "排班表與調班紀錄", "加班申請或主管核准紀錄", "薪資單與加班費公式"],
-    kit: ["勞方異議事件包", "補件清單", "內部訪談問題", "回覆員工草稿"]
+    kit: ["勞方異議事件包", "補件清單", "訪談問題清單", "回覆員工草稿"]
   },
   consumer: {
     title: "消保法合規自檢結果",
@@ -89,7 +89,7 @@ var professionalPresets = {
 
 var professionalExtras = {
   legal: {
-    checks: [["WATCH", "排班制度變更需檢核公告程序與員工同意紀錄。"], ["WATCH", "加班費計算需回到實際出勤紀錄與薪資項目。"], ["PASS", "文件完整時，可產出內部補強清單。"]],
+    checks: [["WATCH", "排班制度變更需檢核公告程序與員工同意紀錄。"], ["WATCH", "加班費計算需回到實際出勤紀錄與薪資項目。"], ["PASS", "文件完整時，可產出制度補強清單。"]],
     judgments: [["最高法院勞動事件示例", "依爭點列出相關判決與裁判要旨。"], ["地方勞動事件判決示例", "用來比對出勤紀錄與薪資清冊的舉證方向。"]]
   },
   lawyer: {
@@ -279,7 +279,7 @@ function initProfessionalWorkbench() {
       var url = URL.createObjectURL(blob);
       var a = document.createElement("a");
       a.href = url;
-      a.download = "choulegal-event-kit-demo.json";
+      a.download = "choulegal-event-kit-sample.json";
       document.body.appendChild(a);
       a.click();
       a.remove();

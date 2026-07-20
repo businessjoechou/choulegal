@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LAVS — Legal AI Verification Standard · 法律 AI 自檢系統 by ChouLegal</title>
 <meta name="description" content="LAVS 是針對法律 AI 演算輸出的四階段自動化驗證協定。整合法源安全存證、標準案例比對與確定性驗證器，建立可重複運算、可稽核的法律數據驗證架構。發明專利申請中。">
@@ -52,32 +52,32 @@ img, svg { display: block; max-width: 100%; }
   --serif:      'Noto Serif TC', serif;
 }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
-@media (max-width: 640px) { .wrap { padding: 0 20px; } }
+@media (max-width: 640px) {
+  .wrap { padding: 0 20px; }
+  .hero-h1 { font-size: 36px; line-height: 1.14; }
+  .hero-en { font-size: 13px; }
+  .hero-sub { font-size: 15px; }
+  .stat-num { font-size: 30px; }
+  .sec-h2 { font-size: 30px; }
+  .sec-sub { font-size: 14px; }
+  .cta-h2 { font-size: 28px; }
+}
 
 /* ── ambient ── */
 body {
-  background:
-    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(74,222,128,0.07), transparent 55%),
-    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(56,189,248,0.04), transparent 60%),
-    #0a0c12;
+  background: #0a0c12;
   background-attachment: fixed;
 }
 .ambient { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 .ambient-grid {
   position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-image: none;
   background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 70% 55% at 50% 25%, black 25%, transparent 72%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 25%, black 25%, transparent 72%);
 }
 
 /* ── nav ── */
 .nav {
   position: sticky; top: 0; z-index: 50;
-  backdrop-filter: saturate(180%) blur(24px);
-  -webkit-backdrop-filter: saturate(180%) blur(24px);
   background: rgba(10,12,18,0.75);
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
@@ -122,25 +122,24 @@ body {
 .hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); animation: blink 2s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.4;} }
 .hero-en {
-  font-family: var(--mono); font-size: clamp(13px, 1.2vw, 16px);
+  font-family: var(--mono); font-size: 15px;
   color: rgba(255,255,255,0.35); letter-spacing: 0.24em;
   text-transform: uppercase; margin-bottom: 20px;
 }
 .hero-h1 {
   font-family: var(--serif); font-weight: 500;
-  font-size: clamp(38px, 6vw, 72px);
-  line-height: 1.08; letter-spacing: -0.022em;
+  font-size: 58px;
+  line-height: 1.08; letter-spacing: 0;
   color: rgba(255,255,255,0.97);
   max-width: 18ch; margin: 0 auto 22px;
   text-wrap: balance;
 }
 .hero-h1 em {
   font-style: normal; font-weight: 300;
-  background: linear-gradient(110deg, #86efac 0%, #4ade80 55%, #22c55e 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--green);
 }
 .hero-sub {
-  font-size: clamp(15px, 1.3vw, 18px); color: rgba(255,255,255,0.55);
+  font-size: 17px; color: rgba(255,255,255,0.55);
   max-width: 52ch; margin: 0 auto 40px; line-height: 1.7;
 }
 .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -178,21 +177,21 @@ body {
   .stat { padding: 16px 28px; border-right: none; border-bottom: 1px solid var(--line); flex: 0 0 50%; }
   .stat:nth-child(even) { border-right: none; }
 }
-.stat-num { font-family: var(--mono); font-size: clamp(28px, 3.5vw, 44px); font-weight: 500; color: var(--green); line-height: 1; margin-bottom: 6px; }
+.stat-num { font-family: var(--mono); font-size: 44px; font-weight: 500; color: var(--green); line-height: 1; margin-bottom: 6px; }
 .stat-label { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; }
 
 /* ── section ── */
 .sec { padding: 96px 0; }
 .sec-eye { font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; color: rgba(134,239,172,0.7); text-transform: uppercase; margin-bottom: 16px; }
-.sec-h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 3.5vw, 44px); line-height: 1.12; letter-spacing: -0.018em; color: rgba(255,255,255,0.97); margin-bottom: 16px; text-wrap: balance; }
+.sec-h2 { font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1.12; letter-spacing: 0; color: rgba(255,255,255,0.97); margin-bottom: 16px; text-wrap: balance; }
 .sec-h2 em { font-style: normal; font-weight: 300; color: var(--green); }
-.sec-sub { font-size: clamp(14px, 1.2vw, 17px); color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 54ch; }
+.sec-sub { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 54ch; }
 
 /* ── problem ── */
 .problems {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
   margin-top: 56px;
-  border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
 }
 @media (max-width: 720px) { .problems { grid-template-columns: 1fr; } }
 .problem {
@@ -213,7 +212,7 @@ body {
   padding: 32px 36px;
   background: rgba(255,255,255,0.02);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 8px;
   transition: border-color 0.2s, background 0.2s;
 }
 .phase:hover { border-color: var(--green-line); background: var(--green-dim); }
@@ -235,7 +234,7 @@ body {
 .certs { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 56px; }
 @media (max-width: 720px) { .certs { grid-template-columns: repeat(2,1fr); } }
 .cert {
-  padding: 28px 24px; border-radius: 10px;
+  padding: 28px 24px; border-radius: 8px;
   border: 1px solid var(--line);
   background: rgba(255,255,255,0.02);
   text-align: center; transition: transform 0.25s, border-color 0.25s;
@@ -251,7 +250,7 @@ body {
 .trace-window {
   background: rgba(8,10,16,0.96);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px; overflow: hidden;
+  border-radius: 8px; overflow: hidden;
   font-family: var(--mono); font-size: 13px;
   box-shadow: 0 0 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
 }
@@ -278,7 +277,7 @@ body {
 .audiences { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 52px; }
 @media (max-width: 720px) { .audiences { grid-template-columns: 1fr; } }
 .audience {
-  padding: 30px 28px; border-radius: 10px;
+  padding: 30px 28px; border-radius: 8px;
   border: 1px solid var(--line);
   background: rgba(255,255,255,0.015);
 }
@@ -306,13 +305,13 @@ body {
 }
 .cta-box {
   display: inline-block; max-width: 640px; width: 100%;
-  padding: 56px 48px; border-radius: 16px;
+  padding: 56px 48px; border-radius: 8px;
   border: 1px solid var(--green-line);
-  background: linear-gradient(135deg, rgba(74,222,128,0.06) 0%, rgba(74,222,128,0.02) 100%);
+  background: rgba(74,222,128,0.035);
 }
 @media (max-width: 640px) { .cta-box { padding: 40px 28px; } }
 .cta-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em; color: rgba(134,239,172,0.6); text-transform: uppercase; margin-bottom: 20px; }
-.cta-h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 3.2vw, 36px); color: rgba(255,255,255,0.97); margin-bottom: 14px; line-height: 1.18; text-wrap: balance; }
+.cta-h2 { font-family: var(--serif); font-weight: 500; font-size: 36px; color: rgba(255,255,255,0.97); margin-bottom: 14px; line-height: 1.18; text-wrap: balance; }
 .cta-sub { font-size: 14.5px; color: rgba(255,255,255,0.5); margin-bottom: 36px; line-height: 1.7; }
 .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .cta-note { margin-top: 22px; font-size: 12px; color: rgba(255,255,255,0.28); }
@@ -525,7 +524,7 @@ body {
       </div>
     </div>
 
-    <!-- Live trace demo -->
+    <!-- Live trace sample -->
     <div class="trace-wrap reveal">
       <div class="trace-window">
         <div class="trace-bar">
@@ -551,7 +550,7 @@ body {
 &nbsp;
 <span class="t-dim">// LAVS 驗證器輸出（確定性，不使用 AI）</span>
 <span class="t-pass">✓  Phase 1  結構驗證    PASS  · 必要欄位 10/10 齊全</span>
-<span class="t-pass">✓  Phase 2  法源查核    PASS  · 勞退條例§12 ← law.moj.gov.tw SHA-256 一致</span>
+<span class="t-pass">✓  Phase 2  法源查核    PASS  · 勞退條例§12 與指定快取 SHA-256 一致</span>
 <span class="t-pass">✓  Phase 3  計算重現    PASS  · 3 步驟重算全符（60/12=5, 5×0.5=2.5, 2.5×40000=100000）</span>
 <span class="t-pass">✓  Phase 4  Oracle比對  PASS  · TW-LABOR-SEVERANCE-NEW-001 預期 100,000 TWD ✓</span>
 &nbsp;
@@ -666,10 +665,10 @@ body {
       <p class="cta-sub">政府機關、LegalTech 新創與企業法務團隊，可洽詢平台授權、API 接入與客製化 Oracle 場景服務。</p>
       <div class="cta-actions">
         <a class="btn-primary" href="mailto:businessjoechou@gmail.com?subject=LAVS%20平台%2FAPI%20授權洽詢&body=你好，我有興趣了解 LAVS 自檢系統的授權合作方式。">聯繫洽詢</a>
-        <a class="btn-ghost" href="https://github.com/businessjoechou/lavs" target="_blank" rel="noopener">GitHub （Private Preview）</a>
+        <a class="btn-ghost" href="https://github.com/businessjoechou/lavs" target="_blank" rel="noopener">GitHub（授權洽詢）</a>
       </div>
       <p class="cta-note">
-        目前提供 Private Preview，歡迎政府機關與 LegalTech 洽詢試用
+        歡迎政府機關與 LegalTech 團隊洽詢試用與授權
       </p>
     </div>
   </div>
