@@ -83,7 +83,8 @@ a.nav-logo::before,
 .nav-by,
 .nav-tool {
   color: var(--exec-faint);
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  letter-spacing: 0;
 }
 
 .nav-links,
@@ -110,6 +111,12 @@ a.nav-logo::before,
   align-items: center;
   padding: 8px 10px;
   color: var(--exec-muted);
+  font-size: 12px;
+}
+
+.foot-links a,
+.footer-links a {
+  font-size: 12px;
 }
 
 .nav-links a:hover,
@@ -130,7 +137,7 @@ a.nav-logo::before,
 .title,
 .hero-h1,
 h1 {
-  font-size: 4.5rem;
+  font-size: clamp(2.75rem, 5vw, 3.5rem) !important;
   line-height: 1.08;
   letter-spacing: 0;
 }
@@ -138,7 +145,7 @@ h1 {
 .section-title,
 .sec-title,
 h2 {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 2.6rem) !important;
   line-height: 1.16;
   letter-spacing: 0;
 }
@@ -162,7 +169,59 @@ h2 {
 .art-num,
 .toc-label {
   color: var(--exec-gold);
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.metric-k,
+.timeline-num,
+.hero-tag,
+.hero-en,
+.art-num,
+.toc-label,
+.law-refs-label,
+.mini-card-tag,
+.plan-badge,
+.tier-badge,
+.vhero-tag,
+.vstat-l,
+.panel-title,
+.hbtn,
+.json-status,
+.pp-num,
+.stage-badge,
+.ph-num,
+.ph-status,
+.pi-icon,
+.pi-text code,
+.cert-level,
+.cert-chip,
+.cert-btn,
+.foot-inner,
+.notice,
+.sec-eye,
+.phase-num,
+.phase-en,
+.cert-phases,
+.trace-title,
+.vr-table th,
+.vr-table td,
+.vr-domain,
+.vr-chip,
+.ip-label,
+.cta-tag,
+small,
+[style*="font-size:10px"],
+[style*="font-size: 10px"] {
+  font-size: 12px !important;
+  letter-spacing: 0 !important;
+}
+
+.stat-num,
+.sec-h2,
+.sec-h2 em {
+  font-size: 40px !important;
+  line-height: 1.16 !important;
 }
 
 .btn,
@@ -397,7 +456,7 @@ article {
 .title,
 .hero-h1,
 h1 {
-  font-size: 64px;
+  font-size: 60px;
   line-height: 1.1;
   letter-spacing: 0;
 }
