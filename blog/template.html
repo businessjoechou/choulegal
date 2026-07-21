@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{title}}｜ChouLegal 周全法律權益</title>
+<meta name="description" content="{{description}}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{canonical}}">
+<meta property="og:title" content="{{title}}｜ChouLegal 周全法律權益">
+<meta property="og:description" content="{{description}}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{og_url}}">
+<meta property="og:site_name" content="ChouLegal 周全法律權益">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="{{og_image}}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}｜ChouLegal 周全法律權益">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="{{og_image}}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/blog.css">
+<style>
+/* Inline styling overrides to match ChouLegal primary theme variables */
+:root {
+  --paper: #f7f5f0;
+  --ink: #081220;
+  --muted: #52616f;
+  --line: #c2cfe0;
+  --soft: #eef2ee;
+  --panel: #ffffff;
+  --green: #2f6b56;
+  --blue: #315d79;
+  --red: #8b4a3b;
+  --shadow: 0 1px 2px rgba(8, 18, 32, 0.06), 0 18px 42px -28px rgba(8, 18, 32, 0.36);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans TC", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px clamp(16px, 4vw, 42px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(247, 245, 240, 0.98);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: max-content;
+}
+
+.brand img {
+  width: 38px;
+  height: 38px;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.brand small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+.nav-links .parent-link {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px clamp(18px, 4vw, 54px);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+  background: var(--paper);
+}
+
+@media (max-width: 680px) {
+  .site-header,
+  .site-footer {
+    position: static;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .nav-links a,
+  .nav-links .parent-link {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+    padding: 7px 10px;
+    text-align: center;
+  }
+}
+</style>
+{{schema_json}}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RT23BD12BD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-RT23BD12BD', {
+      anonymize_ip: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="ChouLegal 首頁">
+    <img src="/logo-icon.svg" alt="">
+    <span>
+      <strong>ChouLegal</strong>
+      <small>周全法律權益</small>
+    </span>
+  </a>
+  <nav class="nav-links" aria-label="主要導覽">
+    <a href="/#tools">權益試算</a>
+    <a href="/#lawyers">律師媒合</a>
+    <a href="/#counsel">律師工作台</a>
+    <a href="/#trust">法源驗證</a>
+    <a href="/blog/">部落格</a>
+    <a class="parent-link" href="https://choutechnology.com">ChouTech</a>
+  </nav>
+</header>
+
+<main class="article-container">
+  <article>
+    <header class="article-header">
+      <span class="eyebrow">{{eyebrow}}</span>
+      <h1>{{post_title}}</h1>
+      <div class="article-meta">
+        <time datetime="{{date}}">發布日期：{{date}}</time>
+        <span>作者：{{author}}</span>
+      </div>
+    </header>
+    <div class="article-body">
+      {{content}}
+    </div>
+    <div class="back-to-blog">
+      <a href="/blog/">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        返回部落格首頁
+      </a>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 ChouLegal 周全法律權益</span>
+  <span>ChouTech 周全科技旗下產品</span>
+</footer>
+</body>
+</html>

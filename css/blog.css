@@ -1,0 +1,248 @@
+/* ===== ChouLegal Blog stylesheet, 2026-07 ===== */
+
+/* Blog index layout */
+.blog-hero {
+  padding: clamp(48px, 6vw, 84px) 0 32px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+
+.blog-hero h1 {
+  font-family: "Noto Serif TC", serif;
+  font-size: clamp(36px, 5vw, 48px);
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.blog-hero p {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 84px;
+}
+
+.blog-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.blog-card .meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.blog-card h3 {
+  font-family: "Noto Serif TC", serif;
+  font-size: 22px;
+  margin: 0 0 12px 0;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.blog-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+
+.blog-card .read-more {
+  color: var(--green);
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Article layout */
+.article-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 64px) 16px 84px;
+}
+
+.article-header {
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 24px;
+}
+
+.article-header .eyebrow {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.article-header h1 {
+  font-family: "Noto Serif TC", serif;
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Article body rich text */
+.article-body {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+.article-body p {
+  margin: 0 0 24px 0;
+}
+
+.article-body h2 {
+  font-family: "Noto Serif TC", serif;
+  font-size: 28px;
+  margin: 48px 0 20px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.article-body h3 {
+  font-family: "Noto Serif TC", serif;
+  font-size: 22px;
+  margin: 36px 0 16px 0;
+  color: var(--ink);
+}
+
+/* AEO definition block */
+.aeo-definition {
+  background: var(--soft);
+  border-left: 4px solid var(--green);
+  padding: 20px 24px;
+  border-radius: 4px;
+  margin: 24px 0 32px 0;
+  font-size: 16px;
+}
+
+.aeo-definition p {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+/* Citation style */
+.legal-citation {
+  color: var(--muted);
+  font-size: 13px;
+  margin-left: 6px;
+  font-family: var(--mono, "Courier New", monospace);
+}
+
+.legal-source-link {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-source-link:hover {
+  color: var(--blue);
+}
+
+/* Lists styling */
+.article-body ul,
+.article-body ol {
+  margin: 0 0 24px 0;
+  padding-left: 24px;
+}
+
+.article-body li {
+  margin-bottom: 8px;
+}
+
+/* Blockquotes */
+.article-body blockquote {
+  margin: 32px 0;
+  padding: 8px 24px;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.article-body blockquote p {
+  margin: 0;
+}
+
+/* Tables styling */
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+}
+
+.article-body th,
+.article-body td {
+  border: 1px solid var(--line);
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.article-body th {
+  background: var(--soft);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.article-body tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Back link */
+.back-to-blog {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+}
+
+.back-to-blog a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 15px;
+  transition: color 120ms ease-out;
+}
+
+.back-to-blog a:hover {
+  color: var(--green);
+}

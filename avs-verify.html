@@ -813,18 +813,18 @@ function renderCert(level, phases, trace) {
   <div class="cert-top">
     <div class="cert-emoji">${info.emoji}</div>
     <div class="cert-main">
-      <div class="cert-level">AVS CERTIFICATION LEVEL</div>
+      <div class="cert-level">AVS 驗證等級</div>
       <div class="cert-name ${level.toLowerCase()}">${info.cn}</div>
     </div>
   </div>
   <p class="cert-desc">${info.desc}</p>
   ${oracleDetail}
   <div class="cert-meta">
-    <span class="cert-chip">P1 ${p1}</span>
-    <span class="cert-chip">P2 ${p2}</span>
-    <span class="cert-chip">P3 ${p3}</span>
-    <span class="cert-chip">P4 ${p4}</span>
-    <span class="cert-chip">${ts} UTC+8</span>
+    <span class="cert-chip">第 1 階段：${p1}</span>
+    <span class="cert-chip">第 2 階段：${p2}</span>
+    <span class="cert-chip">第 3 階段：${p3}</span>
+    <span class="cert-chip">第 4 階段：${p4}</span>
+    <span class="cert-chip">${ts} 台北時間</span>
     <span class="cert-chip">AVS v1.0</span>
   </div>
   <div class="cert-actions">
