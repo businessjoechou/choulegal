@@ -571,7 +571,7 @@ function phase3_computation(trace) {
 function phase4_oracle(trace) {
   if(!trace.scenario_id){
     return {status:'PASS',oracle_tested:false,items:[
-      {type:'info',text:'trace 未宣告 <code>scenario_id</code>，略過 Oracle 比對。加入 scenario_id 可啟動人工確認案例驗證，解鎖 Platinum 認證。'}
+      {type:'info',text:'trace 未宣告 <code>scenario_id</code>，略過 Oracle 比對。加入 scenario_id 可啟動人工確認案例驗證，以取得 Platinum 認證。'}
     ]};
   }
   const scenario=ORACLE_DB[trace.scenario_id];
