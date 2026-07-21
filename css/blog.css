@@ -246,3 +246,67 @@
 .back-to-blog a:hover {
   color: var(--green);
 }
+
+/* Button styling */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 24px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: transform 160ms ease-out, background-color 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn.primary:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--paper);
+}
+
+.btn.secondary {
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.btn.secondary:hover {
+  background: var(--soft);
+}
+
+/* CTA Box component for lead generation */
+.cta-box {
+  margin: 40px 0;
+  padding: 32px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.cta-box h4 {
+  font-family: "Noto Serif TC", serif;
+  font-size: 20px;
+  margin: 0 0 12px 0;
+  color: var(--ink);
+}
+
+.cta-box p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 20px 0;
+}
+

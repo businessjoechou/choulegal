@@ -409,8 +409,8 @@ body {
 <section class="hero">
   <div class="wrap">
     <div class="reveal">
-      <div class="hero-tag"><span class="dot"></span>Automated Verification System · v1.0</div>
-      <p class="hero-en">Auditable legal computation.</p>
+      <div class="hero-tag"><span class="dot"></span>自動化驗證系統 · v1.0</div>
+      <p class="hero-en">可稽核的法律運算。</p>
       <h1 class="hero-h1">AVS 自檢，<em>由邏輯驅動的法律驗證。</em></h1>
       <p class="hero-sub">法律條文不容模糊，數據演算更需有據可查。AVS 透過四階段驗證，將法律邏輯轉化為可重複運算、可獨立稽核的驗證結果。驗證器採確定性邏輯演算，排除生成式 AI 的不確定性，確保運算過程透明、穩定且一致。</p>
       <div class="hero-actions">
@@ -418,7 +418,7 @@ body {
         <a class="btn-ghost" href="#how">查看驗證流程</a>
       </div>
       <p class="hero-note">
-        <span>Patent Pending</span> · © 2026 ChouLegal 周全法律權益 ·
+        <span>發明專利申請中</span> · © 2026 ChouLegal 周全法律權益 ·
         <span>50/50 壓力測試通過</span>
       </p>
     </div>
@@ -457,7 +457,7 @@ body {
 <section class="sec">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-eye">Problem</div>
+      <div class="sec-eye">關鍵問題</div>
       <h2 class="sec-h2">數字與引用，<em>必須留下驗證依據。</em></h2>
       <p class="sec-sub">大型語言模型雖具備強大的文字整理與推論能力，但在處理精密計算或法規引用時，仍面臨三大核心風險：</p>
     </div>
@@ -485,7 +485,7 @@ body {
 <section class="sec" id="how" style="padding-top:0;">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-eye">How it works</div>
+      <div class="sec-eye">運作機制</div>
       <h2 class="sec-h2">四階段，<em>建立可稽核邏輯鏈。</em></h2>
       <p class="sec-sub">AVS 驗證器排除生成式 AI 的不確定性，採確定性邏輯進行演算。相同的演算軌跡由第三方獨立執行，均能獲得一致的結論。</p>
     </div>
@@ -495,7 +495,7 @@ body {
         <div class="phase-left">
           <div class="phase-num">PHASE 01</div>
           <div class="phase-name">結構驗證</div>
-          <div class="phase-en">Schema Validation</div>
+            <div class="phase-en">結構驗證</div>
         </div>
         <div class="phase-right">
           <p class="phase-desc">檢核演算軌跡（Trace JSON）是否包含版本號、來源引用、計算步驟、輸出值與信心等級宣告等必要欄位。格式不符即行終止。</p>
@@ -511,7 +511,7 @@ body {
         <div class="phase-left">
           <div class="phase-num">PHASE 02</div>
           <div class="phase-name">來源查核</div>
-          <div class="phase-en">Source Verification</div>
+            <div class="phase-en">來源核驗</div>
         </div>
         <div class="phase-right">
           <p class="phase-desc">針對演算軌跡所引用的法源，與官方資料庫之現行條文核對，比對 SHA-256 哈希值。若哈希值不符，代表來源法規已更新，系統將發出異動警告。</p>
@@ -528,7 +528,7 @@ body {
         <div class="phase-left">
           <div class="phase-num">PHASE 03</div>
           <div class="phase-name">計算重現</div>
-          <div class="phase-en">Step Re-computation</div>
+            <div class="phase-en">步驟重現</div>
         </div>
         <div class="phase-right">
           <p class="phase-desc">針對包含公式的計算步驟，使用沙盒求值引擎重新運算，並與演算軌跡中預存的數值進行比對。僅允許 1 單位的浮點數容差，超出範圍即判定未通過。</p>
@@ -544,7 +544,7 @@ body {
         <div class="phase-left">
           <div class="phase-num">PHASE 04</div>
           <div class="phase-name">Oracle 比對</div>
-          <div class="phase-en">Oracle Matching</div>
+            <div class="phase-en">Oracle 比對</div>
         </div>
         <div class="phase-right">
           <p class="phase-desc">演算軌跡宣告對應場景（scenario_id）後，驗證器將檢索標準參考案例，比對計算結果、必備法源、計算步驟與信心等級，確認完全符合。</p>
@@ -599,7 +599,7 @@ body {
 <section class="sec" id="cert" style="padding-top:0;">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-eye">Certification Levels</div>
+      <div class="sec-eye">認證等級</div>
       <h2 class="sec-h2">四個等級，<em>標示驗證深度。</em></h2>
       <p class="sec-sub">依通過的驗證階段輸出認證等級，可嵌入產品頁面或 API 回應，供使用者與稽核人員判讀。</p>
     </div>
@@ -607,25 +607,25 @@ body {
       <div class="cert">
         <div class="cert-icon">🥉</div>
         <div class="cert-name">BRONZE</div>
-        <div class="cert-phases">Phase 1</div>
+        <div class="cert-phases">階段 1</div>
         <div class="cert-desc">推理軌跡格式符合 AVS v1.0 標準，欄位完整</div>
       </div>
       <div class="cert">
         <div class="cert-icon">🥈</div>
         <div class="cert-name">SILVER</div>
-        <div class="cert-phases">Phase 1–2</div>
+        <div class="cert-phases">階段 1–2</div>
         <div class="cert-desc">引用來源均已於官方資料庫核驗存在</div>
       </div>
       <div class="cert">
         <div class="cert-icon">🥇</div>
         <div class="cert-name">GOLD</div>
-        <div class="cert-phases">Phase 1–3</div>
+        <div class="cert-phases">階段 1–3</div>
         <div class="cert-desc">計算步驟可被獨立重現，公式與數值全符</div>
       </div>
       <div class="cert" style="border-color:rgba(253,230,138,0.25);background:rgba(253,230,138,0.03);">
         <div class="cert-icon">💎</div>
         <div class="cert-name">PLATINUM</div>
-        <div class="cert-phases">Phase 1–4 · 來源哈希全符</div>
+        <div class="cert-phases">階段 1–4 · 來源哈希全符</div>
         <div class="cert-desc">人工確認標準案例比對通過，來源版本完整釘定</div>
       </div>
     </div>
@@ -697,7 +697,7 @@ body {
 <section class="sec" id="who" style="padding-top:0;">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-eye">Who it's for</div>
+      <div class="sec-eye">適用對象</div>
       <h2 class="sec-h2">三類使用者，<em>都需要稽核依據。</em></h2>
       <p class="sec-sub">政府、企業與各領域 AI 廠商，都需要回答同一個問題：數字與引用如何接受第三方檢查。</p>
     </div>
@@ -728,7 +728,7 @@ body {
 <div class="ip-strip" id="ip">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-eye" style="margin-bottom:28px;">Intellectual Property</div>
+      <div class="sec-eye" style="margin-bottom:28px;">智財權保護</div>
       <div class="ip-grid">
         <div class="ip-item">
           <div class="ip-label">專利</div>
@@ -774,7 +774,7 @@ body {
 <footer class="foot">
   <div class="wrap">
     <div class="foot-inner">
-      <span>AVS — AI Verification Standard · © 2026 ChouLegal 周全法律權益 · Patent Pending</span>
+        <span>AVS — 法規驗證標準 · © 2026 ChouLegal 周全法律權益 · 發明專利申請中</span>
       <div class="foot-links">
         <a href="https://choulegal.com">ChouLegal 主站</a>
         <a href="https://choulegal.com/avs">AVS</a>

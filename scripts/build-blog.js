@@ -60,6 +60,8 @@ function markdownToHtml(markdown) {
     const blockText = currentBlock.join('\n');
     if (blockType === 'h') {
       blocks.push(blockText);
+    } else if (blockType === 'html') {
+      blocks.push(blockText);
     } else if (blockType === 'aeo-definition') {
       const content = blockText.replace(/^>\s*\*\*定義\*\*：?\s*/, '');
       blocks.push(`<div class="aeo-definition"><p><strong>定義</strong>：${parseInline(content)}</p></div>`);
@@ -102,6 +104,12 @@ function markdownToHtml(markdown) {
     // Empty lines trigger flushing current block
     if (trimmedLine === '') {
       flushBlock();
+      continue;
+    }
+
+    // If we are currently in an HTML block, keep accumulating
+    if (blockType === 'html') {
+      currentBlock.push(line);
       continue;
     }
 
@@ -180,6 +188,14 @@ function markdownToHtml(markdown) {
         blockType = 'table';
       }
       currentBlock.push(trimmedLine);
+      continue;
+    }
+
+    // HTML block: starts with <
+    if (trimmedLine.startsWith('<')) {
+      flushBlock();
+      blockType = 'html';
+      currentBlock.push(line);
       continue;
     }
 

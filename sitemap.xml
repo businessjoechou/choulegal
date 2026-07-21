@@ -30,13 +30,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.62</priority>
   </url>
-  <url>
+<url>
     <loc>https://choulegal.com/blog/</loc>
     <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
-  <url>
+<url>
     <loc>https://choulegal.com/blog/example-post.html</loc>
     <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
