@@ -47,6 +47,8 @@
   --green: #2f6b56;
   --blue: #315d79;
   --red: #8b4a3b;
+  --gold: #9a6a28;
+  --criminal: #6f3d4e;
   --shadow: 0 18px 44px rgba(23, 32, 27, 0.1);
 }
 
@@ -314,7 +316,7 @@ h1 {
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -327,6 +329,10 @@ h1 {
   background: var(--panel);
   padding: 20px;
   box-shadow: 0 14px 32px rgba(23, 32, 27, 0.06);
+}
+
+.tool-card:nth-child(1) {
+  border-top: 6px solid var(--gold);
 }
 
 .tool-card:nth-child(2) {
@@ -343,6 +349,10 @@ h1 {
 
 .tool-card:nth-child(5) {
   border-top: 6px solid var(--ink);
+}
+
+.tool-card:nth-child(6) {
+  border-top: 6px solid var(--criminal);
 }
 
 .tool-domain {
@@ -730,7 +740,7 @@ h2,
       <div class="case-list">
         <div class="case-row">
           <span class="case-tag">步驟一</span>
-          <div><strong>選擇事件類型</strong><p>勞動、消費、租屋、繼承財產與公務員權益。</p></div>
+          <div><strong>選擇事件類型</strong><p>民事財產、勞動、消費、租屋、公職教師與刑事權益。</p></div>
         </div>
         <div class="case-row">
           <span class="case-tag">步驟二</span>
@@ -785,6 +795,13 @@ h2,
         <p>復審申訴、職場安全、因公涉訟、教師與校園現場權益整理。</p>
         <a href="https://people.choulegal.com/public-servant.html">進入查詢</a>
       </article>
+
+      <article class="tool-card">
+        <span class="tool-domain">criminal.choulegal.com</span>
+        <h3>刑事權益</h3>
+        <p>報案、警詢、搜索扣押、告訴與不起訴救濟的程序整理與求助入口。</p>
+        <a href="https://criminal.choulegal.com">進入查詢</a>
+      </article>
     </div>
   </section>
 
@@ -799,7 +816,7 @@ h2,
       </div>
     </div>
     <div class="match-board" aria-label="律師媒合資訊欄位">
-      <div class="match-board-row"><strong>事件類型</strong><span>勞動 / 消費 / 租屋 / 財產 / 公務員</span></div>
+      <div class="match-board-row"><strong>事件類型</strong><span>民事財產 / 勞動 / 消費 / 租屋 / 公職教師 / 刑事</span></div>
       <div class="match-board-row"><strong>地區</strong><span>以使用者選擇為準</span></div>
       <div class="match-board-row"><strong>需求</strong><span>諮詢 / 審閱 / 訴訟 / 談判</span></div>
       <div class="match-board-row"><strong>資料</strong><span>由使用者自行提供給律師</span></div>
@@ -871,7 +888,7 @@ h2,
     <div class="trust-list">
       <div class="trust-item">
         <strong style="color: var(--green);">SDG 16 和平正義與有力制度</strong>
-        <p>免費開放民法、勞基法、租屋與消保試算工具，幫助大眾跨越專業門檻。以誠實、透明、客觀的法源引導整理事件路徑，降低大眾法律權益受侵害的風險，提升司法近便性。</p>
+        <p>免費開放民事財產、勞動、消費、租屋、公職教師與刑事權益工具，幫助大眾跨越專業門檻。以誠實、透明、客觀的法源引導整理事件路徑，降低大眾法律權益受侵害的風險，提升司法近便性。</p>
       </div>
       <div class="trust-item">
         <strong style="color: var(--blue);">SDG 10 減少不平等</strong>
