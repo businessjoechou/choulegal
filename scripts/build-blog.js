@@ -85,10 +85,11 @@ function markdownToHtml(markdown) {
       const headers = rows[0];
       const bodyRows = rows.slice(2); // Skip header and separator row
 
-      const thead = `  <thead>\n    <tr>\n${headers.map(h => `      <th>${parseInline(h)}</th>`).join('\n')}\n    </tr>\n  </thead>`;
+      const caption = parseInline(headers.join('、'));
+      const thead = `  <thead>\n    <tr>\n${headers.map(h => `      <th scope="col">${parseInline(h)}</th>`).join('\n')}\n    </tr>\n  </thead>`;
       const tbody = `  <tbody>\n${bodyRows.map(row => `    <tr>\n${row.map(cell => `      <td>${parseInline(cell)}</td>`).join('\n')}\n    </tr>`).join('\n')}\n  </tbody>`;
       
-      blocks.push(`<table>\n${thead}\n${tbody}\n</table>`);
+      blocks.push(`<table>\n  <caption>${caption}</caption>\n${thead}\n${tbody}\n</table>`);
     } else {
       blocks.push(`<p>${parseInline(blockText)}</p>`);
     }
@@ -110,6 +111,9 @@ function markdownToHtml(markdown) {
     // If we are currently in an HTML block, keep accumulating
     if (blockType === 'html') {
       currentBlock.push(line);
+      if (/^<\/[a-z][^>]*>$/i.test(trimmedLine)) {
+        flushBlock();
+      }
       continue;
     }
 
@@ -224,12 +228,15 @@ function formatChineseDate(dateStr) {
 // Generate BlogPosting JSON-LD
 function generateJsonLd(metadata, slug) {
   const url = `https://choulegal.com/blog/${slug}.html`;
-  const schema = {
+  const article = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": metadata.title,
     "description": metadata.description,
     "datePublished": metadata.date,
+    "dateModified": metadata.updated || metadata.date,
+    "articleSection": metadata.eyebrow || "法律問題解答",
+    "inLanguage": "zh-TW",
     "author": {
       "@type": "Organization",
       "name": "ChouLegal 周全法律權益"
@@ -246,6 +253,10 @@ function generateJsonLd(metadata, slug) {
       "@type": "WebPage",
       "@id": url
     }
+  };
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [article]
   };
   return `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n</script>`;
 }
@@ -297,8 +308,13 @@ function buildBlog() {
       .replace(/{{eyebrow}}/g, data.eyebrow || '精選文章')
       .replace(/{{post_title}}/g, data.title)
       .replace(/{{date}}/g, formatChineseDate(data.date))
+      .replace(/{{updated}}/g, formatChineseDate(data.updated || data.date))
       .replace(/{{author}}/g, data.author || '周全法律科技團隊')
-      .replace(/{{content}}/g, htmlContent);
+      .replace(/{{content}}/g, htmlContent)
+      .replace(/<meta name="robots" content="noindex, nofollow">/, '<meta name="robots" content="index, follow">')
+      .replace('<body>', '<body>\n<a class="skip-link" href="#main-content">跳到主要內容</a>')
+      .replace('<main class="article-container">', '<main class="article-container" id="main-content">')
+      .replace('<img src="/logo-icon.svg" alt="">', '<img src="/logo-icon.svg" alt="" width="38" height="38">');
 
     // Save article HTML file
     const destPath = path.join(BLOG_OUT_DIR, `${slug}.html`);
@@ -321,7 +337,7 @@ function buildBlog() {
   // Generate Blog Index Page
   console.log('Generating blog index.html...');
   const blogCardsHtml = postsList.map(post => `
-    <article class="blog-card" onclick="window.location.href='/blog/${post.slug}.html'">
+    <a class="blog-card" href="/blog/${post.slug}.html">
       <div class="meta">
         <span class="eyebrow">${post.eyebrow}</span>
         <time>${post.chineseDate}</time>
@@ -335,14 +351,14 @@ function buildBlog() {
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
       </div>
-    </article>
+    </a>
   `).join('\n');
 
   const indexContentHtml = `
     <header class="blog-hero">
       <div class="shell">
-        <h1>周全法律科技部落格</h1>
-        <p>提供深入淺出的勞動權益、財產繼承與生活合規指南。以嚴謹法源為基石，協助一般民眾釐清自身法律權益。</p>
+        <h1>台灣法律問題答案庫</h1>
+        <p>直接回答常見法律問題，整理適用條件、處理步驟與官方來源，並連結 ChouLegal 免費權益工具。</p>
       </div>
     </header>
     <div class="shell">
@@ -356,21 +372,24 @@ function buildBlog() {
   const indexLd = `<script type="application/ld+json">\n${JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "周全法律科技部落格",
+    "name": "ChouLegal 台灣法律問題答案庫",
     "url": "https://choulegal.com/blog/",
-    "description": "提供深入淺出的勞動權益、財產繼承與生活合規指南。以嚴謹法源為基石，協助一般民眾釐清自身法律權益。"
+    "description": "直接回答常見台灣法律問題，整理適用條件、處理步驟、官方來源與 ChouLegal 免費權益工具。"
   }, null, 2)}\n</script>`;
 
   let indexHtml = template
     .replace(/{{title}}/g, '部落格首頁')
-    .replace(/{{description}}/g, '提供深入淺出的勞動權益、財產繼承與生活合規指南。以嚴謹法源為基石，協助一般民眾釐清自身法律權益。')
+    .replace(/{{description}}/g, '直接回答常見台灣法律問題，整理適用條件、處理步驟、官方來源與 ChouLegal 免費權益工具。')
     .replace(/{{canonical}}/g, 'https://choulegal.com/blog/')
     .replace(/{{og_url}}/g, 'https://choulegal.com/blog/')
     .replace(/{{og_image}}/g, 'https://choulegal.com/og-image-20260716-choutech.png')
-    .replace(/{{schema_json}}/g, indexLd);
+    .replace(/{{schema_json}}/g, indexLd)
+    .replace(/<meta name="robots" content="noindex, nofollow">/, '<meta name="robots" content="index, follow">')
+    .replace('<body>', '<body>\n<a class="skip-link" href="#main-content">跳到主要內容</a>')
+    .replace('<img src="/logo-icon.svg" alt="">', '<img src="/logo-icon.svg" alt="" width="38" height="38">');
 
   // Replace article body markup in template with index body layout
-  indexHtml = indexHtml.replace(/<main class="article-container">[\s\S]*?<\/main>/, `<main>${indexContentHtml}</main>`);
+  indexHtml = indexHtml.replace(/<main class="article-container">[\s\S]*?<\/main>/, `<main id="main-content">${indexContentHtml}</main>`);
 
   const indexDestPath = path.join(BLOG_OUT_DIR, 'index.html');
   fs.writeFileSync(indexDestPath, indexHtml, 'utf-8');
