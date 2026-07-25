@@ -42,8 +42,7 @@ image: /og-image-20260716.png
 
 - [行政院消費者保護會：通訊交易或訪問交易如何解除契約](https://cpc.ey.gov.tw/page/4432d6d5fa6677b9/2cd52250-9cc5-4c34-99ee-a350985d0b37)
 - [行政院消費者保護會：拆封或使用是否仍可解除契約](https://cpc.ey.gov.tw/Page/BC16ACF0BBB9CCC2/2055825e-e262-47da-9f56-398a71c92c5b)
-- [全國法規資料庫：消費者保護法第 19 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=19)
-- [行政院消費者保護會：七日解除權合理例外](https://cpc.ey.gov.tw/Page/53D79214534B3D4C)
+- [全國法規資料庫：消費者保護法第 19 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0170001&flno=19)（pcode：J0170001；法規修正日期：2015 年 6 月 17 日）
+- [行政院消費者保護會：七日解除權合理例外](https://cpc.ey.gov.tw/Page/53D79214534B3D4C)（官方發布：2015 年 12 月 31 日）
 
 本文於 2026 年 7 月 26 日核對上述官方頁面。內容僅整理通訊交易的一般規則；實體店面交易、企業間交易或特定服務契約不一定適用相同規定。
-

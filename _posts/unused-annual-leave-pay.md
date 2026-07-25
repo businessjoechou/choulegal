@@ -42,9 +42,8 @@ image: /og-image-20260716.png
 
 ## 官方來源
 
-- [勞動部：特休未休工資如何計算](https://www.mol.gov.tw/1607/28690/2282/2284/2290/7171/post)
-- [全國法規資料庫：勞動基準法第 38 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=38)
-- [全國法規資料庫：勞動基準法施行細則第 24-1 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030002&flno=24-1)
+- [勞動部：特休未休工資如何計算](https://www.mol.gov.tw/1607/28690/2282/2284/2290/7171/post)（官方頁面更新：2026 年 4 月 21 日）
+- [全國法規資料庫：勞動基準法第 38 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&flno=38)（pcode：N0030001；法規修正日期：2024 年 7 月 31 日）
+- [全國法規資料庫：勞動基準法施行細則第 24-1 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030002&flno=24-1)（pcode：N0030002；法規修正日期：2024 年 3 月 27 日）
 
 本文於 2026 年 7 月 26 日核對上述官方頁面。內容僅整理一般規則；實際日數、工資基礎及遞延約定仍應依個別勞動關係資料確認。
-

@@ -46,9 +46,8 @@ image: /og-image-20260716.png
 
 ## 官方來源
 
-- [全國法規資料庫：民法第 1138 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1138)
-- [全國法規資料庫：民法第 1144 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1144)
-- [財政部稅務入口網：繼承案件申辦流程與期限](https://www.etax.nat.gov.tw/etwmain/tax-info/house-land-transfer-taxtation-calculation-area/inheritance/file-process)
+- [全國法規資料庫：民法第 1138 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1138)（pcode：B0000001；法規修正日期：2021 年 1 月 20 日）
+- [全國法規資料庫：民法第 1144 條](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=1144)（pcode：B0000001；法規修正日期：2021 年 1 月 20 日）
+- [財政部稅務入口網：繼承案件申辦流程與期限](https://www.etax.nat.gov.tw/etwmain/tax-info/house-land-transfer-taxtation-calculation-area/inheritance/file-process)（官方頁面更新：2026 年 6 月 25 日）
 
 本文於 2026 年 7 月 26 日核對上述官方頁面。內容採最常見的配偶與子女共同繼承情況說明；涉及遺囑、債務、代位繼承或夫妻財產制時，應再依完整資料確認。
-
