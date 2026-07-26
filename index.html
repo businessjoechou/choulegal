@@ -1,924 +1,295 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>免費法律權益試算與查詢｜ChouLegal 周全法律權益</title>
-<meta name="description" content="遇到勞資、租屋、消費、繼承等法律問題？ChouLegal 提供免費權益試算與查詢工具，協助你整理可能金額、處理步驟與相關法源。">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://choulegal.com/">
-<meta property="og:title" content="免費法律權益試算與查詢｜ChouLegal">
-<meta property="og:description" content="遇到勞資、租屋、消費、繼承等法律問題？免費查看可能金額、處理步驟與相關法源。">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://choulegal.com/">
-<meta property="og:site_name" content="ChouLegal 周全法律權益">
-<meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://choulegal.com/og-image-20260716-choutech.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ChouTech 周全科技與 ChouLegal 周全法律權益預覽圖">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="免費法律權益試算與查詢｜ChouLegal">
-<meta name="twitter:description" content="遇到勞資、租屋、消費、繼承等法律問題？免費查看可能金額、處理步驟與相關法源。">
-<meta name="twitter:image" content="https://choulegal.com/og-image-20260716-choutech.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "ChouLegal 周全法律權益",
-  "url": "https://choulegal.com/",
-  "description": "ChouLegal 周全法律權益提供一般民眾使用的免費權益試算與查詢工具；專業案件管理、企業合規、排班與管理端服務另由獨立產品入口承接。"
-}
-</script>
-<style>
-:root {
-  --paper: #fbfbf8;
-  --ink: #17201b;
-  --muted: #626c66;
-  --line: #d7ddd6;
-  --soft: #eef3ed;
-  --panel: #ffffff;
-  --green: #2f6b56;
-  --blue: #315d79;
-  --red: #8b4a3b;
-  --gold: #9a6a28;
-  --criminal: #6f3d4e;
-  --shadow: 0 18px 44px rgba(23, 32, 27, 0.1);
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: "Noto Sans TC", system-ui, sans-serif;
-  font-size: 17px;
-  line-height: 1.7;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-:focus-visible {
-  outline: 3px solid rgba(47, 107, 86, 0.5);
-  outline-offset: 3px;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 16px clamp(18px, 4vw, 54px);
-  border-bottom: 1px solid var(--line);
-  background: rgba(251, 251, 248, 0.96);
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-width: max-content;
-}
-
-.brand img {
-  width: 38px;
-  height: 38px;
-}
-
-.brand strong,
-.brand small {
-  display: block;
-}
-
-.brand strong {
-  font-size: 18px;
-  line-height: 1.2;
-}
-
-.brand small {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.3;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.nav-links a:hover {
-  color: var(--ink);
-}
-
-.nav-links .parent-link {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 7px 12px;
-  background: var(--panel);
-  color: var(--ink);
-}
-
-.shell {
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 470px);
-  gap: clamp(32px, 6vw, 76px);
-  align-items: center;
-  padding: clamp(58px, 8vw, 112px) 0 48px;
-}
-
-.eyebrow {
-  margin: 0 0 14px;
-  color: var(--green);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
-h1 {
-  max-width: 12ch;
-  margin-bottom: 22px;
-  font-family: "Noto Serif TC", serif;
-  font-size: 56px;
-  line-height: 1.08;
-  text-wrap: balance;
-}
-
-.lead {
-  max-width: 660px;
-  margin-bottom: 30px;
-  color: var(--muted);
-  font-size: 19px;
-  line-height: 1.85;
-  text-wrap: pretty;
-}
-
-.hero-actions,
-.cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero-note {
-  margin: 16px 0 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 20px;
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  font-weight: 700;
-  transition: transform 160ms ease-out, background-color 160ms ease-out, color 160ms ease-out;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn.primary {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.btn.secondary {
-  background: var(--panel);
-}
-
-.case-panel {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.case-panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 20px;
-  border-bottom: 1px solid var(--line);
-  background: var(--soft);
-}
-
-.case-panel-header strong {
-  font-size: 19px;
-}
-
-.status-pill {
-  border: 1px solid rgba(47, 107, 86, 0.28);
-  border-radius: 999px;
-  padding: 5px 10px;
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.case-list {
-  display: grid;
-}
-
-.case-row {
-  display: grid;
-  grid-template-columns: 98px 1fr;
-  gap: 18px;
-  padding: 20px;
-  border-bottom: 1px solid var(--line);
-}
-
-.case-row:last-child {
-  border-bottom: 0;
-}
-
-.case-tag {
-  color: var(--green);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.case-row strong {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.case-row p {
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.section {
-  padding: 82px 0;
-}
-
-.section-head {
-  display: grid;
-  grid-template-columns: 230px 1fr;
-  gap: 32px;
-  align-items: end;
-  margin-bottom: 30px;
-  border-top: 1px solid var(--line);
-  padding-top: 26px;
-}
-
-.section-head h2,
-.match-copy h2,
-.trust-copy h2,
-.final-cta h2 {
-  margin-bottom: 0;
-  font-family: "Noto Serif TC", serif;
-  font-size: 42px;
-  line-height: 1.08;
-  text-wrap: balance;
-}
-
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.tool-card {
-  display: flex;
-  min-height: 330px;
-  flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
-  padding: 20px;
-  box-shadow: 0 14px 32px rgba(23, 32, 27, 0.06);
-}
-
-.tool-card:nth-child(1) {
-  border-top: 6px solid var(--gold);
-}
-
-.tool-card:nth-child(2) {
-  border-top: 6px solid var(--blue);
-}
-
-.tool-card:nth-child(3) {
-  border-top: 6px solid var(--red);
-}
-
-.tool-card:nth-child(4) {
-  border-top: 6px solid var(--green);
-}
-
-.tool-card:nth-child(5) {
-  border-top: 6px solid var(--ink);
-}
-
-.tool-card:nth-child(6) {
-  border-top: 6px solid var(--criminal);
-}
-
-.tool-domain {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.tool-card h3 {
-  margin: 36px 0 12px;
-  font-size: 25px;
-  line-height: 1.2;
-}
-
-.tool-card p {
-  color: var(--muted);
-  text-wrap: pretty;
-}
-
-.tool-card a {
-  margin-top: auto;
-  border-top: 1px solid var(--line);
-  padding-top: 16px;
-  font-weight: 700;
-}
-
-.match-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1fr);
-  gap: 34px;
-  align-items: stretch;
-}
-
-.counsel-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1fr);
-  gap: 34px;
-  align-items: stretch;
-}
-
-.match-copy,
-.counsel-copy,
-.trust-copy,
-.match-board,
-.counsel-board,
-.final-cta {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
-  padding: clamp(24px, 4vw, 42px);
-}
-
-.match-copy p,
-.counsel-copy p,
-.trust-copy p,
-.final-cta p {
-  color: var(--muted);
-  line-height: 1.85;
-  text-wrap: pretty;
-}
-
-.match-board {
-  display: grid;
-  align-content: center;
-  gap: 14px;
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.counsel-board {
-  display: grid;
-  gap: 14px;
-}
-
-.match-board-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.18);
-  padding: 14px 0;
-}
-
-.match-board-row span {
-  color: rgba(251,251,248,0.68);
-}
-
-.counsel-board-row {
-  display: grid;
-  gap: 6px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 16px;
-  background: var(--soft);
-}
-
-.counsel-board-row span {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.trust-section {
-  display: grid;
-  grid-template-columns: minmax(340px, 0.8fr) minmax(0, 1fr);
-  gap: 34px;
-  align-items: stretch;
-}
-
-.trust-list {
-  display: grid;
-  gap: 14px;
-}
-
-.trust-item {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
-  padding: 20px;
-}
-
-.trust-item strong {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 19px;
-}
-
-.trust-item p {
-  margin-bottom: 0;
-  color: var(--muted);
-}
-
-.final-cta {
-  margin-bottom: 64px;
-}
-
-.final-cta p {
-  max-width: 760px;
-  margin-bottom: 24px;
-}
-
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 24px clamp(18px, 4vw, 54px);
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 14px;
-}
-
-@media (max-width: 980px) {
-  .hero,
-  .tools-grid,
-  .match-section,
-  .counsel-section,
-  .trust-section,
-  .section-head {
-    grid-template-columns: 1fr;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>免費法律權益試算與查詢｜ChouLegal</title>
+  <meta name="description" content="ChouLegal 提供免費法律試算與程序查詢：勞資、租屋、消費、繼承、公職與刑事程序。輸入日期與金額，查看初步試算結果、應注意的期限與相關法規來源。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://choulegal.com/">
+  <meta property="og:title" content="免費法律權益試算與查詢｜ChouLegal">
+  <meta property="og:description" content="輸入事件日期與金額，免費查看初步試算結果、應注意的期限與相關法規來源。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://choulegal.com/">
+  <meta property="og:site_name" content="ChouLegal 周全法律權益">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://choulegal.com/og-image-20260716-choutech.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ChouLegal 周全法律權益",
+    "url": "https://choulegal.com/",
+    "description": "提供一般民眾免費使用的法律權益試算、處理步驟與法源查詢工具。"
   }
-
-  .hero {
-    padding-top: 54px;
-  }
-
-  .tools-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 680px) {
-  .site-header,
-  .site-footer {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .nav-links {
-    width: 100%;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: 13px;
-  }
-
-  .shell {
-    width: min(100% - 28px, 1180px);
-  }
-
-  h1 {
-    max-width: 9ch;
-    font-size: 44px;
-  }
-
-  .tools-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .case-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== ChouTech company UI baseline, 2026-07 ===== */
-:root {
-  --paper: #f7f5f0;
-  --ink: #081220;
-  --muted: #52616f;
-  --line: #c2cfe0;
-  --soft: #eef2ee;
-  --panel: #ffffff;
-  --green: #2f6b56;
-  --blue: #315d79;
-  --red: #8b4a3b;
-  --shadow: 0 1px 2px rgba(8, 18, 32, 0.06), 0 18px 42px -28px rgba(8, 18, 32, 0.36);
-}
-
-body {
-  overflow-x: hidden;
-  background: var(--paper);
-  font-size: 16px;
-  line-height: 1.72;
-}
-
-.site-header {
-  gap: 18px;
-  padding: 14px clamp(16px, 4vw, 42px);
-  background: rgba(247, 245, 240, 0.98);
-}
-
-.nav-links {
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  font-size: 14px;
-}
-
-h1 {
-  font-size: 56px;
-  line-height: 1.08;
-}
-
-h2,
-.section-head h2,
-.match-copy h2,
-.counsel-copy h2,
-.trust-copy h2,
-.final-cta h2 {
-  font-size: 42px;
-  line-height: 1.18;
-}
-
-.lead {
-  font-size: 19px;
-  line-height: 1.82;
-}
-
-.eyebrow,
-.tool-domain,
-.case-tag,
-.status-pill {
-  letter-spacing: 0;
-}
-
-.btn,
-.case-panel,
-.tool-card,
-.match-board,
-.counsel-board,
-.trust-item,
-.case-row,
-.match-board-row,
-.counsel-board-row {
-  border-radius: 8px;
-}
-
-.btn {
-  transition: transform 160ms ease-out, background-color 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out;
-}
-
-@media (max-width: 680px) {
-  .site-header,
-  .site-footer {
-    position: static;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .nav-links {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .nav-links a,
-  .nav-links .parent-link {
-    min-height: 38px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--panel);
-    padding: 7px 10px;
-    text-align: center;
-  }
-
-  h1 {
-    max-width: 12ch;
-    font-size: 36px;
-    line-height: 1.14;
-  }
-
-  h2,
-  .section-head h2,
-  .match-copy h2,
-  .counsel-copy h2,
-  .trust-copy h2,
-  .final-cta h2 {
-    font-size: 28px;
-  }
-
-  .lead {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .btn {
-    transition: none;
-  }
-}
-</style>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RT23BD12BD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-RT23BD12BD', {
-      anonymize_ip: true,
-      cookie_flags: 'SameSite=None;Secure'
-    });
   </script>
+  <style>
+    :root {
+      --paper: #f7f4ed;
+      --paper-deep: #eee8dc;
+      --ink: #18231d;
+      --muted: #59655f;
+      --green: #1f674c;
+      --green-dark: #124331;
+      --green-soft: #dfece5;
+      --white: #fffefa;
+      --line: rgba(24, 35, 29, .15);
+      --shadow: 0 24px 70px rgba(31, 55, 42, .12);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 5%, rgba(31, 103, 76, .1), transparent 28rem),
+        var(--paper);
+      font-family: "PingFang TC", "Noto Sans TC", sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid #d29b45; outline-offset: 4px; }
+    .skip-link {
+      position: fixed; top: 12px; left: 12px; z-index: 100;
+      padding: 9px 14px; color: white; background: var(--ink);
+      transform: translateY(-180%);
+    }
+    .skip-link:focus { transform: none; }
+    .shell { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 13px max(20px, calc((100vw - 1120px) / 2));
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 244, 237, .94);
+      backdrop-filter: blur(16px);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: 0; }
+    .brand img { width: 38px; height: 38px; flex: 0 0 auto; }
+    .brand span, .brand strong, .brand small { display: block; min-width: 0; }
+    .brand strong { line-height: 1.15; letter-spacing: -.02em; }
+    .brand small { color: var(--muted); font-size: 12px; }
+    .nav { display: flex; align-items: center; gap: 8px; }
+    .nav a { padding: 8px 12px; color: var(--muted); font-size: 14px; font-weight: 650; }
+    .nav .learn-link { border: 1px solid var(--line); border-radius: 999px; color: var(--ink); background: var(--white); }
+    .hero {
+      display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: clamp(38px, 7vw, 88px); align-items: center;
+      min-height: 670px; padding-block: clamp(72px, 9vw, 126px);
+    }
+    .eyebrow {
+      margin: 0 0 14px; color: var(--green); font-size: 13px;
+      font-weight: 800; letter-spacing: .08em;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 {
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-weight: 700; letter-spacing: -.04em;
+    }
+    h1 { max-width: 15ch; margin-bottom: 24px; font-size: clamp(40px, 5.6vw, 66px); line-height: 1.18; }
+    h2 { margin-bottom: 18px; font-size: clamp(32px, 4.5vw, 52px); line-height: 1.14; }
+    h3 { margin-bottom: 8px; font-size: 21px; line-height: 1.35; }
+    .lead { max-width: 620px; margin-bottom: 30px; color: var(--muted); font-size: 19px; line-height: 1.85; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 21px; border: 1px solid var(--green-dark);
+      border-radius: 999px; font-weight: 750;
+    }
+    .button.primary { color: white; background: var(--green-dark); }
+    .button.secondary { background: transparent; }
+    .small-note { margin: 15px 0 0; color: var(--muted); font-size: 13px; }
+    .hero-card {
+      position: relative; padding: 30px; border: 1px solid var(--line);
+      border-radius: 28px 28px 28px 7px; background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .hero-card::before {
+      content: ""; position: absolute; inset: 14px -14px -14px 14px; z-index: -1;
+      border: 1px solid rgba(31, 103, 76, .2); border-radius: inherit;
+    }
+    .hero-card h2 { margin-bottom: 24px; font-size: 27px; }
+    .help-list { display: grid; gap: 0; }
+    .help-item {
+      display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 15px;
+      padding: 18px 0; border-top: 1px solid var(--line);
+    }
+    .help-item:first-child { border-top: 0; }
+    .help-number {
+      display: grid; place-items: center; width: 38px; height: 38px;
+      border-radius: 50%; color: var(--green-dark); background: var(--green-soft);
+      font-size: 13px; font-weight: 800;
+    }
+    .help-item p { margin-bottom: 0; color: var(--muted); font-size: 15px; overflow-wrap: anywhere; }
+    .section { padding-block: clamp(72px, 9vw, 118px); }
+    .section-head { max-width: 720px; margin-bottom: 38px; }
+    .section-head p:last-child { color: var(--muted); }
+    .problem-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .problem-card {
+      display: flex; flex-direction: column; min-width: 0; min-height: 245px;
+      padding: 25px; border: 1px solid var(--line); border-radius: 18px;
+      background: rgba(255, 254, 250, .72);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .problem-card:hover { transform: translateY(-3px); border-color: rgba(31, 103, 76, .45); background: var(--white); }
+    .problem-icon { margin-bottom: 24px; color: var(--green); font-size: 13px; font-weight: 800; }
+    .problem-card p { color: var(--muted); font-size: 15px; overflow-wrap: anywhere; }
+    .problem-card span:last-child { margin-top: auto; color: var(--green-dark); font-weight: 800; }
+    .learn {
+      display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
+      padding: clamp(32px, 6vw, 66px); border-radius: 30px;
+      color: #f6fbf8; background: var(--green-dark);
+    }
+    .learn .eyebrow { color: #a9d9c3; }
+    .learn h2 { max-width: 14ch; }
+    .learn p { max-width: 680px; margin-bottom: 0; color: #d7e7df; }
+    .learn .button { color: var(--green-dark); background: #f6fbf8; border-color: #f6fbf8; white-space: nowrap; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px; }
+    .trust-item { min-width: 0; padding-top: 20px; border-top: 2px solid var(--ink); }
+    .trust-item p { color: var(--muted); overflow-wrap: anywhere; }
+    .final {
+      padding: 50px 0 80px; text-align: center;
+    }
+    .final h2 { max-width: 16ch; margin-inline: auto; }
+    .final p { max-width: 630px; margin: 0 auto 24px; color: var(--muted); }
+    .footer {
+      display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+      padding-block: 28px; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: 13px;
+    }
+    .footer a { text-decoration: underline; text-underline-offset: 3px; }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; min-height: 0; }
+      .hero-card { max-width: 620px; }
+      .problem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .learn { grid-template-columns: 1fr; align-items: start; }
+      .learn .button { justify-self: start; }
+    }
+    @media (max-width: 620px) {
+      body { font-size: 16px; }
+      .shell { width: min(100% - 28px, 1120px); }
+      .site-header { padding: 10px 14px; }
+      .brand small { display: none; }
+      .nav a:first-child { display: none; }
+      .nav a { padding: 8px 10px; font-size: 13px; }
+      .hero { gap: 42px; padding-block: 56px 76px; }
+      h1 { font-size: clamp(31px, 9vw, 46px); }
+      .lead { font-size: 17px; }
+      .hero-card { padding: 22px; border-radius: 22px 22px 22px 6px; }
+      .hero-card::before { display: none; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .problem-card { min-height: 0; }
+      .trust-grid { grid-template-columns: 1fr; gap: 22px; }
+      .learn { gap: 26px; padding: 28px 24px; border-radius: 22px; }
+      .learn .button, .actions .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .problem-card { transition: none; }
+    }
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="/" aria-label="ChouLegal 首頁">
-    <img src="logo-icon.svg" alt="">
-    <span>
-      <strong>ChouLegal</strong>
-      <small>周全法律權益</small>
-    </span>
-  </a>
-  <nav class="nav-links" aria-label="主要導覽">
-    <a href="#tools">六大法律領域</a>
-    <a href="#lawyers">律師媒合</a>
-    <a href="#trust">法源驗證</a>
-    <a href="https://learn.choulegal.com">ChouLegal Learn</a>
-    <a class="parent-link" href="#professional">專業服務</a>
-  </nav>
-</header>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="回到 ChouLegal 首頁">
+      <img src="logo-icon.svg" alt="">
+      <span><strong>ChouLegal</strong><small>周全法律權益</small></span>
+    </a>
+    <nav class="nav" aria-label="主要導覽">
+      <a href="#problems">找法律工具</a>
+      <a class="learn-link" href="https://learn.choulegal.com">法律文章</a>
+    </nav>
+  </header>
 
-<main>
-  <section class="hero shell">
-    <div>
-      <p class="eyebrow">給一般民眾的免費法律工具</p>
-      <h1>遇到法律問題，先弄清楚你的權益與下一步</h1>
-      <p class="lead">勞資、租屋、消費、繼承等問題，不必先讀懂法條。選擇你遇到的情況，就能試算可能金額、查看處理步驟與相關法源。</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#tools">選擇我遇到的問題</a>
-      </div>
-      <p class="hero-note">免註冊・免費使用・結果僅供初步整理，不取代律師意見</p>
-    </div>
-
-    <aside class="case-panel" aria-label="免費法律工具使用方式">
-      <div class="case-panel-header">
-        <strong>我們可以先幫你做什麼？</strong>
-        <span class="status-pill">免費使用</span>
-      </div>
-      <div class="case-list">
-        <div class="case-row">
-          <span class="case-tag">試算</span>
-          <div><strong>算出可能金額</strong><p>例如加班費、資遣費、遺產分配與損害賠償。</p></div>
+  <main id="main">
+    <section class="hero shell">
+      <div>
+        <p class="eyebrow">CHOULEGAL 免費法律權益工具</p>
+        <h1>遇到法律問題，<br>先確認金額、<br>期限與程序。</h1>
+        <p class="lead">ChouLegal 提供免費的法律試算與程序查詢。輸入事件日期、金額和基本情況，就能看到初步試算結果、該注意的期限，以及相關的法規來源。</p>
+        <div class="actions">
+          <a class="button primary" href="#problems">選擇法律問題</a>
+          <a class="button secondary" href="https://learn.choulegal.com">瀏覽法律文章</a>
         </div>
-        <div class="case-row">
-          <span class="case-tag">整理</span>
-          <div><strong>看懂處理步驟</strong><p>整理期限、所需資料、申訴管道與可能的處理方式。</p></div>
+        <p class="small-note">免費使用，無須註冊。結果依你輸入的資料產生，僅供初步參考，不代替律師針對個案提供的法律意見。</p>
+      </div>
+      <aside class="hero-card" aria-label="ChouLegal 工具的三項功能">
+        <p class="eyebrow">功能一覽</p>
+        <h2>工具可以協助你</h2>
+        <div class="help-list">
+          <div class="help-item"><span class="help-number">01</span><div><h3>試算金額</h3><p>計算加班費、資遣費、繼承比例、遺產稅及其他常見金額。</p></div></div>
+          <div class="help-item"><span class="help-number">02</span><div><h3>檢查期限</h3><p>確認申訴、請求、拋棄繼承或提起救濟的期限還剩多久。</p></div></div>
+          <div class="help-item"><span class="help-number">03</span><div><h3>查找依據</h3><p>查看相關法條、主管機關說明，以及可以求助的單位。</p></div></div>
         </div>
-        <div class="case-row">
-          <span class="case-tag">法源</span>
-          <div><strong>找到相關依據</strong><p>提供法條與官方來源，方便你繼續確認或尋求協助。</p></div>
+      </aside>
+    </section>
+
+    <section class="section shell" id="problems">
+      <div class="section-head">
+        <p class="eyebrow">你遇到哪一種問題？</p>
+        <h2>選擇最接近的情況。</h2>
+        <p>不必先判斷適用哪一條法律。每個分類底下都有對應的試算工具與程序說明。</p>
+      </div>
+      <div class="problem-grid">
+        <a class="problem-card" href="https://inheritance.choulegal.com">
+          <span class="problem-icon">繼承與財產</span><h3>家人過世後，誰可以繼承？</h3><p>查詢法定繼承順序、應繼分與特留分，試算遺產稅，並確認拋棄繼承的辦理期限。</p><span>試算繼承比例 →</span>
+        </a>
+        <a class="problem-card" href="https://labor.choulegal.com">
+          <span class="problem-icon">工作與薪資</span><h3>加班費或資遣費，公司有沒有少給？</h3><p>依薪資、工時與年資試算差額，並查看請假、職災與離職相關的規定。</p><span>試算加班費與資遣費 →</span>
+        </a>
+        <a class="problem-card" href="https://consumer.choulegal.com">
+          <span class="problem-icon">消費糾紛</span><h3>商品有瑕疵，可以退貨或退款嗎？</h3><p>依購買方式與爭議類型，查看退貨、解除契約與申訴的規則和期限。</p><span>判斷消費爭議 →</span>
+        </a>
+        <a class="problem-card" href="https://rental.choulegal.com">
+          <span class="problem-icon">租屋問題</span><h3>房東不退押金，或房子壞了不修？</h3><p>查看押金返還上限、修繕責任、提前解約違約金與租約終止的規定。</p><span>查看租屋處理方式 →</span>
+        </a>
+        <a class="problem-card" href="https://people.choulegal.com/public-servant.html">
+          <span class="problem-icon">公職與教師</span><h3>收到懲處或不利考績，還能怎麼救濟？</h3><p>依身分與處分種類，查看復審、申訴的管道與各自的救濟期限。</p><span>查詢救濟程序 →</span>
+        </a>
+        <a class="problem-card" href="https://criminal.choulegal.com">
+          <span class="problem-icon">刑事程序</span><h3>收到警局通知，或遇到搜索扣押？</h3><p>先確認自己是告訴人、證人還是犯罪嫌疑人，再查看到場前該準備什麼。</p><span>查看刑事程序 →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="learn">
+        <div>
+          <p class="eyebrow">CHOULEGAL LEARN</p>
+          <h2>還不確定該用哪個工具？</h2>
+          <p>文章從實際情境出發，說明常見規則、處理期限，以及需要保存哪些證據。</p>
         </div>
+        <a class="button" href="https://learn.choulegal.com">瀏覽法律文章</a>
       </div>
-    </aside>
-  </section>
+    </section>
 
-  <section class="section shell" id="tools">
-    <div class="section-head">
-      <p class="eyebrow">六大法律領域</p>
-      <h2>選擇最接近你遇到的情況。</h2>
-    </div>
-
-    <div class="tools-grid">
-      <article class="tool-card">
-        <span class="tool-domain">inheritance.choulegal.com</span>
-        <h3>民法財產權</h3>
-        <p>繼承、親屬財產、物權、遺產稅與贈與稅相關事件的初步查詢。</p>
-        <a href="https://inheritance.choulegal.com">進入查詢</a>
-      </article>
-
-      <article class="tool-card">
-        <span class="tool-domain">labor.choulegal.com</span>
-        <h3>勞基法權益</h3>
-        <p>薪資、加班、資遣、職災、請假與職場權益試算。</p>
-        <a href="https://labor.choulegal.com">進入查詢</a>
-      </article>
-
-      <article class="tool-card">
-        <span class="tool-domain">consumer.choulegal.com</span>
-        <h3>消費爭議</h3>
-        <p>退費、瑕疵、廣告不實、定型化契約與客訴路徑整理。</p>
-        <a href="https://consumer.choulegal.com">進入查詢</a>
-      </article>
-
-      <article class="tool-card">
-        <span class="tool-domain">rental.choulegal.com</span>
-        <h3>租屋權益</h3>
-        <p>押金、修繕、提前解約、租賃爭議與租約條款檢查。</p>
-        <a href="https://rental.choulegal.com">進入查詢</a>
-      </article>
-
-      <article class="tool-card">
-        <span class="tool-domain">people.choulegal.com</span>
-        <h3>公務員權益</h3>
-        <p>復審申訴、職場安全、因公涉訟、教師與校園現場權益整理。</p>
-        <a href="https://people.choulegal.com/public-servant.html">進入查詢</a>
-      </article>
-
-      <article class="tool-card">
-        <span class="tool-domain">criminal.choulegal.com</span>
-        <h3>刑事權益</h3>
-        <p>報案、警詢、搜索扣押、告訴與不起訴救濟的程序整理與求助入口。</p>
-        <a href="https://criminal.choulegal.com">進入查詢</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section shell match-section" id="lawyers">
-    <div class="match-copy">
-      <p class="eyebrow">律師媒合</p>
-      <h2>律師媒合，不混同法律諮詢。</h2>
-      <p>ChouLegal 先協助一般人把事件類型、金額範圍、時程與可能路徑整理好。若需要個案法律意見、談判、訴訟或文件審閱，再轉向合作律師。</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://people.choulegal.com/lawyers.html">進入律師媒合</a>
-        <a class="btn secondary" href="mailto:businessjoechou@gmail.com?subject=ChouLegal%20律師合作與廣告版位">律師合作洽詢</a>
+    <section class="section shell">
+      <div class="section-head">
+        <p class="eyebrow">你看到的答案從哪裡來？</p>
+        <h2>結果會標出可以查證的依據。</h2>
       </div>
-    </div>
-    <div class="match-board" aria-label="律師媒合資訊欄位">
-      <div class="match-board-row"><strong>事件類型</strong><span>民事財產 / 勞動 / 消費 / 租屋 / 公職教師 / 刑事</span></div>
-      <div class="match-board-row"><strong>地區</strong><span>以使用者選擇為準</span></div>
-      <div class="match-board-row"><strong>需求</strong><span>諮詢 / 審閱 / 訴訟 / 談判</span></div>
-      <div class="match-board-row"><strong>資料</strong><span>由使用者自行提供給律師</span></div>
-      <div class="match-board-row"><strong>版位</strong><span>事件包 / 地區 / 專長 / 內容贊助</span></div>
-    </div>
-  </section>
-
-  <section class="section shell counsel-section" id="counsel" style="opacity:0.45;pointer-events:none;position:relative;">
-    <div style="position:absolute;top:1.2rem;right:1.5rem;background:#888;color:#fff;font-size:0.85rem;font-weight:700;padding:0.3em 0.9em;border-radius:6px;z-index:2;letter-spacing:0.05em;">開發中</div>
-    <div class="counsel-copy">
-      <p class="eyebrow">ChouCounsel</p>
-      <h2>法律服務案件管理。</h2>
-      <p>ChouCounsel 是 ChouLegal 的專業案件管理入口。它把案件、期限、文件、卷證、利益衝突提示、關係人、時數、帳務與可匯出的工作底稿集中在同一個案件管理空間。</p>
-      <p>目前版本可在本機瀏覽器使用；資料保存在使用者裝置中。雲端登入、團隊權限、伺服器端資料庫與資安稽核，需以正式服務頁面公告為準。</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://choulegal.com/choucounsel-site/">開啟 ChouCounsel</a>
-        <a class="btn secondary" href="mailto:businessjoechou@gmail.com?subject=ChouCounsel%20法律服務案件管理合作洽詢">合作洽詢</a>
+      <div class="trust-grid">
+        <div class="trust-item"><h3>法規與官方資料</h3><p>試算規則依現行法規撰寫，重要結論會標出法條，並連回主管機關的公開資料。</p></div>
+        <div class="trust-item"><h3>試算與說明分開</h3><p>金額依明確公式計算；文字用來解釋規則與限制，不和數字混在一起。</p></div>
+        <div class="trust-item"><h3>標示適用範圍</h3><p>工具只能依你輸入的資訊給初步結果，無法判斷證據是否充分，也不取代個案法律意見。</p></div>
       </div>
-    </div>
-    <div class="counsel-board" aria-label="ChouCounsel 工作台能力">
-      <div class="counsel-board-row"><strong>案件管理空間</strong><span>案件、任務、期限、庭期與活動紀錄集中管理。</span></div>
-      <div class="counsel-board-row"><strong>文件與卷證</strong><span>文件草稿、版本紀錄、證據清單與模板輸出。</span></div>
-      <div class="counsel-board-row"><strong>律所營運</strong><span>時數帳務、CSV 明細、關係人名冊與行事曆匯出。</span></div>
-      <div class="counsel-board-row"><strong>誠實邊界</strong><span>利益衝突與 AI 摘要只作提示，正式結論仍需律師人工確認。</span></div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section shell counsel-section" id="professional">
-    <div class="counsel-copy">
-      <p class="eyebrow">專業服務</p>
-      <h2>專業付費功能不混進免費權益工具。</h2>
-      <p>ChouReg、ChouRoster 與 Console 類服務面向企業、店家、律師與管理者，處理合規、排班薪資、組織權限與營運管理，目前仍在開發中，尚未對外開放。現階段僅開放 ChouLegal 周全法律權益；其他專業服務的開放時間與使用方式，將另行公告。</p>
-      <div class="cta-row">
-        <span class="btn primary" aria-disabled="true" style="opacity:0.55;cursor:not-allowed;">ChouReg（開發中）</span>
-        <span class="btn secondary" aria-disabled="true" style="opacity:0.55;cursor:not-allowed;">ChouRoster（開發中）</span>
-      </div>
-    </div>
-    <div class="counsel-board" aria-label="專業產品線邊界">
-      <div class="counsel-board-row"><strong>ChouReg</strong><span>企業合規、文件、權限、報告與改善任務。</span></div>
-      <div class="counsel-board-row"><strong>ChouRoster</strong><span>排班、薪資月結輔助、投保與扣繳試算。</span></div>
-      <div class="counsel-board-row"><strong>Console</strong><span>組織管理、帳務、產品營運與後台控制。</span></div>
-      <div class="counsel-board-row"><strong>ChouTax</strong><span>傳承與資產整理服務，建立討論底稿，協助家庭與顧問決策。</span></div>
-      <div class="counsel-board-row"><strong>ChouInsure</strong><span>保單條款、保障與風險點檢核整理，先把問題定義清楚。</span></div>
-      <div class="counsel-board-row"><strong>免費 App 邊界</strong><span>民眾權益試算維持免費、無內購、無訂閱。</span></div>
-    </div>
-  </section>
+    <section class="final shell">
+      <h2>先選一個最接近的問題。</h2>
+      <p>不必註冊，也不需要備齊所有文件。填入已知的日期與金額，就能取得初步試算結果。</p>
+      <a class="button primary" href="#problems">查看免費法律工具</a>
+    </section>
+  </main>
 
-  <section class="section shell trust-section" id="trust">
-    <div class="trust-copy">
-      <p class="eyebrow">法源驗證</p>
-      <h2>法源、公式與 AI 輸出要分開處理。</h2>
-      <p>可計算的數字交由規則引擎，法律資料以官方來源為準，AI 只負責整理與導覽。ChouLegal 會先把法條、判決與主管機關來源拆成核驗清單；尚未核對官方原文前，不把候選資料包裝成已驗證法律答案。</p>
-    </div>
-    <div class="trust-list">
-      <div class="trust-item"><strong>官方法源</strong><p>法條、常數與版本變動應回到官方來源確認。</p></div>
-      <div class="trust-item"><strong>來源核驗工作台</strong><p>使用者可先整理候選法條、判決字號與主管機關見解；正式引用前仍需逐筆核對官方或明確可信來源。</p></div>
-      <div class="trust-item"><strong>AVS 法律結論驗證</strong><p>周全正在把法源、判決、公式、事實涵攝與實務區間拆成可稽核的驗證階段。通過檢查只代表該項 trace 通過指定 gate，不等於保證個案法律結論。</p></div>
-      <div class="trust-item"><strong>純函式計算</strong><p>試算結果應可重跑、可測試、可檢查。</p></div>
-      <div class="trust-item"><strong>法律邊界</strong><p>本站內容不構成法律意見；個案請洽執業律師。</p></div>
-    </div>
-  </section>
-
-  <section class="section shell trust-section" id="legal-sdgs" style="border-top: 1px solid var(--line); margin-top: 20px;">
-    <div class="trust-copy">
-      <p class="eyebrow">永續社會與法律平權</p>
-      <h2>讓法律科技成為人人可及的正義後盾。</h2>
-      <p>ChouLegal 致力於實踐聯合國永續發展目標（SDGs），透過數位科技消除法治資訊不對等，實現法律資訊平權，建立公平公正的永續法治社會環境。</p>
-    </div>
-    <div class="trust-list">
-      <div class="trust-item">
-        <strong style="color: var(--green);">SDG 16 和平正義與有力制度</strong>
-        <p>免費開放民事財產、勞動、消費、租屋、公職教師與刑事權益工具，幫助大眾跨越專業門檻。以誠實、透明、客觀的法源引導整理事件路徑，降低大眾法律權益受侵害的風險，提升司法近便性。</p>
-      </div>
-      <div class="trust-item">
-        <strong style="color: var(--blue);">SDG 10 減少不平等</strong>
-        <p>不論背景與身分，任何人皆能自由、平等地查詢自身權益。我們透過友善易懂的介面實現法治資訊平權，使弱勢族群也能在面臨爭議時獲得客觀自保指引。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="final-cta shell">
-    <p class="eyebrow">ChouTech 生態</p>
-    <h2>免費權益工具與專業產品分線提供。</h2>
-    <p>現階段僅開放 ChouLegal 周全法律權益，提供一般民眾免費的權益試算、查詢與律師媒合。ChouReg、ChouRoster 等其他產品仍在開發中，開放時間將另行公告。</p>
-    <div class="cta-row">
-      <a class="btn secondary" href="https://choulegal.com/choucounsel-site/" style="opacity:0.45;pointer-events:none;">ChouCounsel（開發中）</a>
-      <a class="btn secondary" href="https://learn.choulegal.com">ChouLegal Learn</a>
-      <span class="btn secondary" aria-disabled="true" style="opacity:0.55;cursor:not-allowed;">ChouReg（開發中）</span>
-      <span class="btn secondary" aria-disabled="true" style="opacity:0.55;cursor:not-allowed;">ChouRoster（開發中）</span>
-      <a class="btn secondary" href="https://choutechnology.com/tax/">ChouTax</a>
-      <a class="btn secondary" href="https://choutechnology.com/insure/">ChouInsure</a>
-      <a class="btn secondary" href="https://choutechnology.com">ChouTech</a>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <span>© 2026 ChouLegal 周全法律權益</span>
-  <span>ChouTech 周全科技旗下產品</span>
-</footer>
+  <footer class="footer shell">
+    <span>© 2026 ChouLegal 周全法律權益</span>
+    <span><a href="/verification.html">資料來源說明</a> · <a href="/privacy.html">隱私政策</a> · <a href="/terms.html">使用條款</a></span>
+  </footer>
 </body>
 </html>
