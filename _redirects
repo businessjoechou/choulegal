@@ -1,3 +1,5 @@
+/blog https://learn.choulegal.com/blog/ 301
+/blog/* https://learn.choulegal.com/blog/:splat 301
 /education.html https://learn.choulegal.com/ 301
 /education-library.html https://learn.choulegal.com/#library 301
 /professional.html https://choureg.com/ 301

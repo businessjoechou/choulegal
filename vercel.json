@@ -2,6 +2,16 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/blog",
+      "destination": "https://learn.choulegal.com/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "https://learn.choulegal.com/blog/:path*",
+      "permanent": true
+    },
+    {
       "source": "/education.html",
       "destination": "https://learn.choulegal.com/",
       "permanent": true
