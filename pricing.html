@@ -25,9 +25,6 @@
 <meta name="twitter:title" content="產品線與方案 — 周全 ChouLegal">
 <meta name="twitter:description" content="周全 ChouLegal 產品線。免費權益試算與查詢維持免費；ChouReg、ChouRoster、Console、ChouTax、ChouInsure 等專業服務採獨立企業或 ChouTech 入口與方案洽詢。">
 <meta name="twitter:image" content="https://choulegal.com/og-image-20260716-choutech.png">
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"__CF_TOKEN_CHOULEGAL__"}'></script>
 <style>
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -376,6 +373,13 @@
   .btn:hover { background: #fef3c7; transform: translateY(-1px); }
   .btn::after { content: '›'; font-size: 18px; line-height: 1; transition: transform 0.3s; }
   .btn:hover::after { transform: translateX(4px); }
+  @media (hover: none), (pointer: coarse) {
+    .plan:hover,
+    .free-card:hover,
+    .free-card-link:hover::after,
+    .btn:hover,
+    .btn:hover::after { transform: none; }
+  }
   .end-note {
     display: block;
     margin-top: 18px;
@@ -393,7 +397,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.72);
   }
   .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
   .foot-links a:hover { color: rgba(255,255,255,0.85); }
@@ -426,8 +430,79 @@
       cookie_flags: 'SameSite=None;Secure'
     });
   </script>
+<link rel="stylesheet" href="css/accessibility.css">
+<style id="pricing-visual-polish">
+  .hero {
+    padding: 88px 0 44px;
+  }
+
+  h1.title {
+    font-size: clamp(42px, 5vw, 58px);
+    max-width: 18ch;
+    margin-bottom: 20px;
+  }
+
+  .lead,
+  .section-sub {
+    color: rgba(255, 255, 255, 0.74);
+    font-weight: 400;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section + .section {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .section-title {
+    font-size: clamp(34px, 4vw, 46px);
+  }
+
+  .section-sub {
+    margin-bottom: 32px;
+  }
+
+  .free-grid {
+    grid-template-columns: minmax(0, 760px);
+  }
+
+  .plan-target,
+  .plan-unit,
+  .free-card-eyebrow,
+  .free-card-desc {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .end {
+    padding-top: 64px;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 64px 0 36px;
+      text-align: left;
+    }
+
+    h1.title,
+    .lead {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    h1.title {
+      font-size: 38px;
+    }
+
+    .section {
+      padding: 48px 0;
+    }
+  }
+</style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到主要內容</a>
 
 <header class="nav">
   <div class="nav-inner">
@@ -443,25 +518,25 @@
 
 <div class="wrap">
 
-<main>
+<main id="main">
 
   <section class="hero">
     <div class="eyebrow">Product Lines</div>
     <h1 class="title">免費權益工具，<em>專業產品分線。</em></h1>
-    <p class="lead">權益試算與查詢工具維持免費。ChouReg、ChouRoster 與 Console 類服務是企業專業入口，ChouTax 與 ChouInsure 則是 ChouTech 專業服務，兩者都不屬於免費 App 的升級路徑；且皆有獨立入口與開通流程。</p>
+    <p class="lead">權益試算與查詢工具維持免費，現階段僅開放 ChouLegal。ChouReg、ChouRoster 與其他專業服務仍在開發中，尚未對外開放。</p>
   </section>
 
   <!-- 權益試算與查詢 -->
   <section class="section reveal" id="people">
     <div class="section-eyebrow">For Everyone</div>
     <h2 class="section-title">常見爭議與試算，<em>維持免費。</em></h2>
-    <p class="section-sub">全站無須註冊或登入，亦不投放廣告。運算皆於瀏覽器本地端完成，保障個人隱私。</p>
+    <p class="section-sub">現行公開權益試算工具目前無須註冊或登入。標示為本地端試算的功能在瀏覽器內完成主要運算；資料處理邊界以各工具頁面說明為準。</p>
 
     <div class="free-grid">
       <a class="free-card" href="https://people.choulegal.com">
         <div class="free-card-eyebrow">ChouLegal｜權益試算</div>
         <div class="free-card-name">法律問題的即時指引</div>
-        <div class="free-card-price">NT$ 0 · 永久免費</div>
+        <div class="free-card-price">NT$ 0 · 現行公開工具免費</div>
         <p class="free-card-desc">涵蓋勞工權益、民法財產、消費爭議、租屋權益與公務員權益等範疇，包含加班費、特休天數、資遣費、法定繼承、遺贈稅額、定型化契約、消費申訴、租屋押金與公務員救濟路徑等常見項目。演算結果均附帶明確條號、修法日期與全國法規資料庫連結。</p>
         <span class="free-card-link">進入權益試算與查詢</span>
       </a>
@@ -471,8 +546,8 @@
   <!-- 專業產品線 -->
   <section class="section reveal" id="etp">
     <div class="section-eyebrow">For Professionals</div>
-    <h2 class="section-title">企業與專業功能，<em>獨立入口。</em></h2>
-    <p class="section-sub">以下功能不屬於免費法律權益 App 的付費升級或內購。正式開通、團隊權限、資料庫保存、付款與 SLA 以各專業產品公告或合約為準。</p>
+    <h2 class="section-title">企業與專業功能，<em>開發中。</em></h2>
+    <p class="section-sub">以下產品尚未對外開放，頁面資訊僅供了解規劃方向；正式功能、開放時間與使用方式將另行公告。</p>
 
     <div class="pro-grid">
       <div class="plan">
@@ -487,7 +562,7 @@
           <li>API / Webhook 依正式方案開通</li>
           <li>法律與主管機關要求仍需人工覆核</li>
         </ul>
-        <a class="plan-cta" href="https://choureg.com/">前往 ChouReg</a>
+        <span class="plan-cta" aria-disabled="true" style="opacity:0.55;cursor:not-allowed;">ChouReg（開發中）</span>
       </div>
 
       <div class="plan featured">
@@ -503,7 +578,7 @@
           <li>正式 payroll 與申報仍需人工覆核</li>
           <li>可作 ChouReg 模組或獨立入口</li>
         </ul>
-        <a class="plan-cta" href="https://roster.choureg.com/">前往 ChouRoster</a>
+        <span class="plan-cta" aria-disabled="true" style="opacity:0.55;cursor:not-allowed;">ChouRoster（開發中）</span>
       </div>
 
       <div class="plan">
@@ -523,7 +598,7 @@
     </div>
 
     <p style="margin-top:32px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.8;max-width:60ch;">
-      專業產品線目前以產品頁、開通申請與合作洽詢為準；不得將這些功能描述成 ChouLegal 周全法律權益免費 App 的內購、訂閱或升級包。
+      ChouReg、ChouRoster 與 Console 類服務目前以產品頁、開通申請與合作洽詢為準；不屬於免費法律權益 App 的付費升級或內購。
     </p>
   </section>
 
@@ -543,7 +618,7 @@
       <details class="faq">
         <summary>跟權益試算與查詢差在哪？</summary>
         <div class="faq-body">
-          <p style="margin-bottom:10px;"><strong>權益試算與查詢</strong>：面向一般民眾，提供永久免費、不收個資的純本地端計算工具，幫你快速定位自身權益。</p>
+          <p style="margin-bottom:10px;"><strong>權益試算與查詢</strong>：面向一般民眾，現行公開工具維持免費；標示為本地端試算的功能在瀏覽器內完成主要運算，幫你初步定位自身權益。</p>
           <p><strong>ChouReg / ChouRoster / Console</strong>：面向企業、店家、律師、法務與管理者，處理合規、排班薪資與組織管理。它們可能拆成不同 App，也可能整合為企業入口。</p>
           <p><strong>ChouTax / ChouInsure</strong>：面向傳承與保險場景的資料整理與討論準備，不是免費權益工具的延伸付費版本。</p>
         </div>
@@ -561,12 +636,12 @@
 
       <details class="faq">
         <summary>資料歸誰？</summary>
-        <div class="faq-body">你的資料完全屬於你。我們僅作為資料處理者提供技術服務。Enterprise 方案可簽訂 DPA 明確雙方角色。隨時可匯出全部資料。</div>
+        <div class="faq-body">資料權利、處理目的、保存方式與可匯出範圍，依實際開通的產品功能、隱私說明及雙方契約為準；企業方案可另以 DPA 明確雙方角色。</div>
       </details>
 
       <details class="faq">
         <summary>法條更新的頻率？</summary>
-        <div class="faq-body">立法院三讀公告或主管機關公告變動後，於人工驗證後更新計算邏輯與 corpus，並於每筆回答 / 計算頁面標註法源版本與生效日。所有資料源全部來自公部門（全國法規資料庫、司法院判決公開資料、各機關函示）。</div>
+        <div class="faq-body">發現法規或主管機關資料異動後，依影響範圍安排人工對照與更新。已查證項目會標示資料日期或來源；尚未完成更新前，仍應以主管機關現行公告為準。</div>
       </details>
 
       <details class="faq">
@@ -576,7 +651,7 @@
 
       <details class="faq">
         <summary>免費的計算工具會不會哪天突然收費？</summary>
-        <div class="faq-body">不會。權益試算與查詢計算工具<strong>永久免費</strong>，不設內購、訂閱或付費升級。專業產品線另行開通與收費，不會和免費 App 混同。</div>
+        <div class="faq-body">現行公開的權益試算與查詢計算工具維持免費，不設內購或付費功能；未來若有服務範圍調整，會另行公告。專業產品線仍採獨立入口與方案。</div>
       </details>
 
     </div>
@@ -629,10 +704,10 @@
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "ChouReg 周全合規平台是什麼？", "acceptedAnswer": { "@type": "Answer", "text": "ChouReg 周全合規平台是企業與專業使用的合規工作入口，處理文件、成員權限、改善任務、合規報告與可追溯依據。" } },
-    { "@type": "Question", "name": "權益試算與查詢跟專業產品差在哪？", "acceptedAnswer": { "@type": "Answer", "text": "權益試算與查詢面向一般民眾，永久免費。ChouReg、ChouRoster、Console、ChouTax、ChouInsure 都是獨立專業產品線，屬於不同入口，不會與免費 App 混用。ChouTax、ChouInsure 偏向傳承與保險資料整理。" } },
+    { "@type": "Question", "name": "權益試算與查詢跟專業產品差在哪？", "acceptedAnswer": { "@type": "Answer", "text": "權益試算與查詢面向一般民眾，現行公開工具維持免費。ChouReg、ChouRoster、Console、ChouTax、ChouInsure 是不同入口的專業產品線；ChouTax、ChouInsure 偏向傳承與保險資料整理。" } },
     { "@type": "Question", "name": "專業產品怎麼收費？", "acceptedAnswer": { "@type": "Answer", "text": "專業產品依團隊規模、資料保存、權限、串接、覆核流程與 SLA 需求個別評估；正式定價與開通範圍以產品頁或合約為準。" } },
     { "@type": "Question", "name": "免費的計算工具會收費嗎？", "acceptedAnswer": { "@type": "Answer", "text": "不會。ChouLegal｜權益試算的計算工具維持免費，不設內購、訂閱或付費升級。專業產品線另行開通與收費，不會和免費 App 混同。" } },
-    { "@type": "Question", "name": "資料歸誰？", "acceptedAnswer": { "@type": "Answer", "text": "你上傳與建立的資料，所有權完全是你的。我們僅作為資料處理者提供技術服務；企業客戶可簽訂 DPA 明確雙方角色。" } }
+    { "@type": "Question", "name": "資料如何處理？", "acceptedAnswer": { "@type": "Answer", "text": "資料權利、處理目的、保存方式與可匯出範圍，依實際開通的產品功能、隱私說明及雙方契約為準；企業方案可另以 DPA 明確雙方角色。" } }
   ]
 }
 </script>

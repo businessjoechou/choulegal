@@ -137,7 +137,15 @@ img {
 }
 
 @media (max-width: 680px) {
-  .site-header,
+  .site-header {
+    position: sticky;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
   .site-footer {
     position: static;
     align-items: flex-start;
@@ -146,14 +154,23 @@ img {
 
   .nav-links {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: nowrap;
     gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-links a,
   .nav-links .parent-link {
-    min-height: 38px;
+    flex: 0 0 auto;
+    min-width: max-content;
+    min-height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -200,7 +217,7 @@ img {
 <main class="article-container">
   <article>
     <header class="article-header">
-      <span class="eyebrow">{{eyebrow}}</span>
+      <a class="eyebrow" href="/blog/?topic={{category}}">{{eyebrow}}</a>
       <h1>{{post_title}}</h1>
       <div class="article-meta">
         <time datetime="{{date}}">發布日期：{{date}}</time>
@@ -212,12 +229,12 @@ img {
       {{content}}
     </div>
     <div class="back-to-blog">
-      <a href="/blog/">
+      <a href="/blog/?topic={{category}}">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="19" y1="12" x2="5" y2="12"></line>
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
-        返回部落格首頁
+        返回「{{eyebrow}}」文章
       </a>
     </div>
   </article>

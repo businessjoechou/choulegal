@@ -4,6 +4,7 @@ date: 2026-07-26
 updated: 2026-07-26
 description: 被繼承人留下配偶與子女時，配偶原則上與所有子女平均分配法定應繼分。本文用例子說明比例、遺囑與剩餘財產差額的影響，並提供免費試算入口。
 eyebrow: 繼承權益
+category: inheritance
 author: ChouLegal 周全法律權益
 image: /og-image-20260716.png
 ---
@@ -23,7 +24,7 @@ image: /og-image-20260716.png
 例如可分配遺產為 900 萬元，繼承人是配偶與兩名子女，在未考慮其他法律因素時，每人的法定應繼分是三分之一，也就是 300 萬元。
 
 <div class="cta-box">
-  <h4>依家庭成員試算繼承比例</h4>
+  <h3>依家庭成員試算繼承比例</h3>
   <p>選擇配偶、子女及其他可能繼承人，先整理法定繼承順序與應繼分。</p>
   <a href="https://inheritance.choulegal.com" class="btn primary">開啟 ChouLegal 遺產試算</a>
 </div>

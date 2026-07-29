@@ -4,6 +4,7 @@ date: 2026-07-26
 updated: 2026-07-26
 description: 台灣新制資遣費原則上按每滿一年給付二分之一個月平均工資，未滿一年按比例計算，最高六個月。本文整理公式、給付期限、適用條件與免費試算入口。
 eyebrow: 勞動權益
+category: labor
 author: ChouLegal 周全法律權益
 image: /og-image-20260716.png
 ---
@@ -23,7 +24,7 @@ image: /og-image-20260716.png
 實際計算仍要先確認平均工資範圍、年資起算日，以及是否同時具有勞退舊制年資。勞動部說明，平均工資原則上是計算事由發生日前六個月內的工資總額，除以該期間總日數所得金額。
 
 <div class="cta-box">
-  <h4>直接試算你的資遣費</h4>
+  <h3>直接試算你的資遣費</h3>
   <p>輸入平均工資、到職日與終止日，先整理新制、舊制或兩制併計的可能金額。</p>
   <a href="https://labor.choulegal.com/severance.html" class="btn primary">開啟 ChouLegal 資遣費試算</a>
 </div>

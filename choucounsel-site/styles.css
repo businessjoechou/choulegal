@@ -56,6 +56,23 @@ a {
   text-decoration: none;
 }
 
+.skip-link {
+  position: fixed;
+  top: -5rem;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  color: #141418;
+  border: 2px solid #141418;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
 h1,
 h2,
 h3,
@@ -243,6 +260,16 @@ p {
 .nav-list button:hover,
 .text-button:hover {
   transform: translateY(-1px);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .btn:hover,
+  .icon-button:hover,
+  .segmented button:hover,
+  .nav-list button:hover,
+  .text-button:hover {
+    transform: none;
+  }
 }
 
 .app-shell {
@@ -1157,6 +1184,25 @@ h2 {
   color: var(--ink);
 }
 
+.intake-dialog [aria-invalid="true"] {
+  border-color: var(--red);
+  background: #fff7f5;
+  box-shadow: 0 0 0 2px rgba(157, 75, 67, 0.12);
+}
+
+.field-error {
+  display: block;
+  margin-top: 2px;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.field-error[hidden] {
+  display: none;
+}
+
 .dialog-actions {
   justify-content: flex-end;
   gap: 10px;
@@ -1366,4 +1412,22 @@ h2 {
   .nav-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+@media (pointer: coarse), (max-width: 720px) {
+  header a,
+  nav a,
+  footer a,
+  .btn,
+  .brand {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+body {
+  font-size: 16px;
 }

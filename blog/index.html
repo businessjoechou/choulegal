@@ -137,7 +137,15 @@ img {
 }
 
 @media (max-width: 680px) {
-  .site-header,
+  .site-header {
+    position: sticky;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
   .site-footer {
     position: static;
     align-items: flex-start;
@@ -146,14 +154,23 @@ img {
 
   .nav-links {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: nowrap;
     gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-links a,
   .nav-links .parent-link {
-    min-height: 38px;
+    flex: 0 0 auto;
+    min-width: max-content;
+    min-height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -284,7 +301,7 @@ img {
     </a>
   
 
-    <a class="blog-card" href="/blog/example-post.html">
+    <a class="blog-card" href="/blog/overtime-pay-calculation.html">
       <div class="meta">
         <span class="eyebrow">勞動權益</span>
         <time>2026 年 7 月 21 日</time>

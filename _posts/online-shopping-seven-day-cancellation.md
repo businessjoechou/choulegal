@@ -4,6 +4,7 @@ date: 2026-07-26
 updated: 2026-07-26
 description: 通訊交易消費者原則上可在收受商品或接受服務後七日內解除契約，但客製化、易腐敗商品、部分已拆封商品等可能屬例外。本文整理適用條件與免費檢核入口。
 eyebrow: 消費權益
+category: consumer
 author: ChouLegal 周全法律權益
 image: /og-image-20260716.png
 ---
@@ -15,7 +16,7 @@ image: /og-image-20260716.png
 不是。七日解除權的目的，是讓消費者在通訊交易中有合理檢查商品的機會，不代表可以無限制使用商品。因檢查必要而拆開包裝，不會當然失去解除權；但是否超過必要檢查程度，仍要依商品性質及實際使用情況判斷。若商品因使用而減損價值，也可能衍生價值償還問題。
 
 <div class="cta-box">
-  <h4>先檢查是否還在七日期間內</h4>
+  <h3>先檢查是否還在七日期間內</h3>
   <p>輸入交易類型與收受日期，整理解除權期間、可能例外及通知方式。</p>
   <a href="https://consumer.choulegal.com/cooling-off.html" class="btn primary">開啟 ChouLegal 七日解除權檢核</a>
 </div>

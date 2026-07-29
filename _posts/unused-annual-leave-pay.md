@@ -4,6 +4,7 @@ date: 2026-07-26
 updated: 2026-07-26
 description: 特別休假因年度終結或勞動契約終止而未休完，雇主原則上應發給工資。本文說明月薪制計算方式、遞延條件、離職結算與 ChouLegal 工具入口。
 eyebrow: 勞動權益
+category: labor
 author: ChouLegal 周全法律權益
 image: /og-image-20260716.png
 ---
@@ -23,7 +24,7 @@ image: /og-image-20260716.png
 這裡使用的是「正常工作時間所得工資」。如果薪資包含獎金、津貼、抽成或其他給付，是否納入仍須依給付性質與實際資料判斷。
 
 <div class="cta-box">
-  <h4>先查看你的特休日數與相關權益</h4>
+  <h3>先查看你的特休日數與相關權益</h3>
   <p>ChouLegal 勞動權益工具可協助整理年資、假別與未休工資的基本資料。</p>
   <a href="https://labor.choulegal.com/leave-calc.html" class="btn primary">開啟 ChouLegal 假別權益計算</a>
 </div>
