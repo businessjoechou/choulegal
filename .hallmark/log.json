@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2026-07-31",
+    "scope": "page",
+    "macrostructure": "Guided Conversation",
+    "theme": "Studio",
+    "enrichment": "none",
+    "brief": "依真實使用者回饋重做 ChouLegal 首頁分流與資訊層級"
+  },
+  {
+    "date": "2026-07-30",
+    "scope": "app",
+    "macrostructure": "Index-First",
+    "theme": "Studio",
+    "enrichment": "none",
+    "brief": "ChouLegal 民眾法律權益工具入口"
+  }
+]

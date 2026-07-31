@@ -2,21 +2,26 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>免費法律權益試算與查詢｜ChouLegal</title>
-  <meta name="description" content="ChouLegal 提供免費法律試算與程序查詢：勞資、租屋、消費、繼承、公職與刑事程序。輸入日期與金額，查看初步試算結果、應注意的期限與相關法規來源。">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>遇到法律問題，先從這裡開始｜ChouLegal</title>
+  <meta name="description" content="用生活情境找到免費法律工具，先看白話重點、試算與期限，再查法規和官方來源。">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://choulegal.com/">
-  <meta property="og:title" content="免費法律權益試算與查詢｜ChouLegal">
-  <meta property="og:description" content="輸入事件日期與金額，免費查看初步試算結果、應注意的期限與相關法規來源。">
+  <meta property="og:title" content="遇到法律問題，先從這裡開始｜ChouLegal">
+  <meta property="og:description" content="不必先懂法律。選擇最接近的情況，查看試算、期限、處理步驟與法源。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://choulegal.com/">
   <meta property="og:site_name" content="ChouLegal 周全法律權益">
   <meta property="og:locale" content="zh_TW">
-  <meta property="og:image" content="https://choulegal.com/og-image-20260716-choutech.png">
+  <meta property="og:image" content="https://choulegal.com/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+TC:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="home.css">
+  <script src="home.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -25,9 +30,7 @@
         "@type": "Organization",
         "@id": "https://choulegal.com/#organization",
         "name": "ChouLegal 周全法律科技",
-        "alternateName": "周全法律科技",
         "url": "https://choulegal.com/",
-        "description": "提供一般民眾免費使用的法律權益試算、處理步驟與法源查詢工具。",
         "parentOrganization": {
           "@type": "Organization",
           "name": "ChouTech 周全科技",
@@ -40,290 +43,150 @@
         "name": "ChouLegal 周全法律權益",
         "url": "https://choulegal.com/",
         "inLanguage": "zh-TW",
-        "description": "提供一般民眾免費使用的法律權益試算、處理步驟與法源查詢工具。",
+        "description": "免費法律權益試算、期限與程序查詢工具。",
         "publisher": { "@id": "https://choulegal.com/#organization" }
       }
     ]
   }
   </script>
-  <style>
-    :root {
-      --paper: #f7f4ed;
-      --paper-deep: #eee8dc;
-      --ink: #18231d;
-      --muted: #59655f;
-      --green: #1f674c;
-      --green-dark: #124331;
-      --green-soft: #dfece5;
-      --white: #fffefa;
-      --line: rgba(24, 35, 29, .15);
-      --shadow: 0 24px 70px rgba(31, 55, 42, .12);
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 5%, rgba(31, 103, 76, .1), transparent 28rem),
-        var(--paper);
-      font-family: "PingFang TC", "Noto Sans TC", sans-serif;
-      font-size: 17px;
-      line-height: 1.7;
-    }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 3px solid #d29b45; outline-offset: 4px; }
-    .skip-link {
-      position: fixed; top: 12px; left: 12px; z-index: 100;
-      padding: 9px 14px; color: white; background: var(--ink);
-      transform: translateY(-180%);
-    }
-    .skip-link:focus { transform: none; }
-    .shell { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
-    .site-header {
-      position: sticky; top: 0; z-index: 20;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 20px; padding: 13px max(20px, calc((100vw - 1120px) / 2));
-      border-bottom: 1px solid var(--line);
-      background: rgba(247, 244, 237, .94);
-      backdrop-filter: blur(16px);
-    }
-    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: 0; }
-    .brand img { width: 38px; height: 38px; flex: 0 0 auto; }
-    .brand span, .brand strong, .brand small { display: block; min-width: 0; }
-    .brand strong { line-height: 1.15; letter-spacing: -.02em; }
-    .brand small { color: var(--muted); font-size: 12px; }
-    .nav { display: flex; align-items: center; gap: 8px; }
-    .nav a { padding: 8px 12px; color: var(--muted); font-size: 14px; font-weight: 650; }
-    .nav .learn-link { border: 1px solid var(--line); border-radius: 999px; color: var(--ink); background: var(--white); }
-    .hero {
-      display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
-      gap: clamp(38px, 7vw, 88px); align-items: center;
-      min-height: 670px; padding-block: clamp(72px, 9vw, 126px);
-    }
-    .eyebrow {
-      margin: 0 0 14px; color: var(--green); font-size: 13px;
-      font-weight: 800; letter-spacing: .08em;
-    }
-    h1, h2, h3, p { margin-top: 0; }
-    h1, h2 {
-      font-family: "Songti TC", "Noto Serif TC", serif;
-      font-weight: 700; letter-spacing: -.04em;
-    }
-    h1 { max-width: 15ch; margin-bottom: 24px; font-size: clamp(40px, 5.6vw, 66px); line-height: 1.18; }
-    h2 { margin-bottom: 18px; font-size: clamp(32px, 4.5vw, 52px); line-height: 1.14; }
-    h3 { margin-bottom: 8px; font-size: 21px; line-height: 1.35; }
-    .lead { max-width: 620px; margin-bottom: 30px; color: var(--muted); font-size: 19px; line-height: 1.85; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .button {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-height: 48px; padding: 0 21px; border: 1px solid var(--green-dark);
-      border-radius: 999px; font-weight: 750;
-    }
-    .button.primary { color: white; background: var(--green-dark); }
-    .button.secondary { background: transparent; }
-    .small-note { margin: 15px 0 0; color: var(--muted); font-size: 13px; }
-    .hero-card {
-      position: relative; padding: 30px; border: 1px solid var(--line);
-      border-radius: 28px 28px 28px 7px; background: var(--white);
-      box-shadow: var(--shadow);
-    }
-    .hero-card::before {
-      content: ""; position: absolute; inset: 14px -14px -14px 14px; z-index: -1;
-      border: 1px solid rgba(31, 103, 76, .2); border-radius: inherit;
-    }
-    .hero-card h2 { margin-bottom: 24px; font-size: 27px; }
-    .help-list { display: grid; gap: 0; }
-    .help-item {
-      display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 15px;
-      padding: 18px 0; border-top: 1px solid var(--line);
-    }
-    .help-item:first-child { border-top: 0; }
-    .help-number {
-      display: grid; place-items: center; width: 38px; height: 38px;
-      border-radius: 50%; color: var(--green-dark); background: var(--green-soft);
-      font-size: 13px; font-weight: 800;
-    }
-    .help-item p { margin-bottom: 0; color: var(--muted); font-size: 15px; overflow-wrap: anywhere; }
-    .section { padding-block: clamp(72px, 9vw, 118px); }
-    .section-head { max-width: 720px; margin-bottom: 38px; }
-    .section-head p:last-child { color: var(--muted); }
-    .problem-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .problem-card {
-      display: flex; flex-direction: column; min-width: 0; min-height: 245px;
-      padding: 25px; border: 1px solid var(--line); border-radius: 18px;
-      background: rgba(255, 254, 250, .72);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-    .problem-card:hover { transform: translateY(-3px); border-color: rgba(31, 103, 76, .45); background: var(--white); }
-    .problem-icon { margin-bottom: 24px; color: var(--green); font-size: 13px; font-weight: 800; }
-    .problem-card p { color: var(--muted); font-size: 15px; overflow-wrap: anywhere; }
-    .problem-card span:last-child { margin-top: auto; color: var(--green-dark); font-weight: 800; }
-    .learn {
-      display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
-      padding: clamp(32px, 6vw, 66px); border-radius: 30px;
-      color: #f6fbf8; background: var(--green-dark);
-    }
-    .learn .eyebrow { color: #a9d9c3; }
-    .learn h2 { max-width: 14ch; }
-    .learn p { max-width: 680px; margin-bottom: 0; color: #d7e7df; }
-    .learn .button { color: var(--green-dark); background: #f6fbf8; border-color: #f6fbf8; white-space: nowrap; }
-    .trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px; }
-    .trust-item { min-width: 0; padding-top: 20px; border-top: 2px solid var(--ink); }
-    .trust-item p { color: var(--muted); overflow-wrap: anywhere; }
-    .final {
-      padding: 50px 0 80px; text-align: center;
-    }
-    .final h2 { max-width: 16ch; margin-inline: auto; }
-    .final p { max-width: 630px; margin: 0 auto 24px; color: var(--muted); }
-    .footer {
-      display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
-      padding-block: 28px; border-top: 1px solid var(--line);
-      color: var(--muted); font-size: 13px;
-    }
-    .footer a { text-decoration: underline; text-underline-offset: 3px; }
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; min-height: 0; }
-      .hero-card { max-width: 620px; }
-      .problem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .learn { grid-template-columns: 1fr; align-items: start; }
-      .learn .button { justify-self: start; }
-    }
-    @media (max-width: 620px) {
-      body { font-size: 16px; }
-      .shell { width: min(100% - 28px, 1120px); }
-      .site-header { padding: 10px 14px; }
-      .brand small { display: none; }
-      .nav a:first-child { display: none; }
-      .nav a { padding: 8px 10px; font-size: 13px; }
-      .hero { gap: 42px; padding-block: 56px 76px; }
-      h1 { font-size: clamp(31px, 9vw, 46px); }
-      .lead { font-size: 17px; }
-      .hero-card { padding: 22px; border-radius: 22px 22px 22px 6px; }
-      .hero-card::before { display: none; }
-      .problem-grid { grid-template-columns: 1fr; }
-      .problem-card { min-height: 0; }
-      .trust-grid { grid-template-columns: 1fr; gap: 22px; }
-      .learn { gap: 26px; padding: 28px 24px; border-radius: 22px; }
-      .learn .button, .actions .button { width: 100%; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .problem-card { transition: none; }
-    }
-    @media (pointer: coarse), (max-width: 720px) {
-      header a,
-      nav a,
-      footer a,
-      .brand,
-      .learn-link,
-      .button {
-        display: inline-flex;
-        min-width: 44px;
-        min-height: 44px;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
   <header class="site-header">
-    <a class="brand" href="/" aria-label="回到 ChouLegal 首頁">
-      <img src="logo-icon.svg" alt="">
+    <a class="wordmark" href="/" aria-label="ChouLegal 首頁">
+      <img src="logo-icon.svg" width="40" height="40" alt="">
       <span><strong>ChouLegal</strong><small>周全法律權益</small></span>
     </a>
-    <nav class="nav" aria-label="主要導覽">
-      <a href="#problems">找法律工具</a>
-      <a class="learn-link" href="https://learn.choulegal.com">法律文章</a>
+    <nav class="header-actions" aria-label="主要導覽">
+      <a href="#start">找法律工具</a>
+      <a href="https://learn.choulegal.com">法律知識</a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero shell">
-      <div>
-        <p class="eyebrow">CHOULEGAL 免費法律權益工具</p>
-        <h1>遇到法律問題，<br>先確認金額、<br>期限與程序。</h1>
-        <p class="lead">ChouLegal 提供免費的法律試算與程序查詢。輸入事件日期、金額和基本情況，就能看到初步試算結果、該注意的期限，以及相關的法規來源。</p>
-        <div class="actions">
-          <a class="button primary" href="#problems">選擇法律問題</a>
-          <a class="button secondary" href="https://learn.choulegal.com">瀏覽法律文章</a>
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="hero-kicker">免費法律權益工具</p>
+      <h1 id="hero-title">遇到法律問題<span>不用先懂法律</span></h1>
+      <p class="hero-lead">選一個最接近的生活情況。我們會帶你先看白話重點，再查看試算、期限、處理步驟與法規來源。</p>
+      <a class="primary-action" href="#start">開始找答案 <span aria-hidden="true">↓</span></a>
+      <ul class="assurance" aria-label="服務特色">
+        <li>免費使用</li>
+        <li>不用註冊</li>
+        <li>重要結論附來源</li>
+      </ul>
+    </section>
+
+    <section class="finder" id="start" aria-labelledby="finder-title">
+      <header class="finder-heading">
+        <p>先選一件事</p>
+        <h2 id="finder-title">現在最接近你的情況是？</h2>
+        <span>不用判斷法律類別，選最像的就好。</span>
+      </header>
+
+      <div class="finder-layout">
+        <div class="situation-list" role="tablist" aria-label="選擇法律問題">
+          <button class="situation is-active" type="button" role="tab" id="tab-labor" aria-selected="true" aria-controls="panel-labor" data-panel="labor">
+            <span class="situation-number">01</span><span>薪資、資遣或離職</span>
+          </button>
+          <button class="situation" type="button" role="tab" id="tab-inheritance" aria-selected="false" aria-controls="panel-inheritance" data-panel="inheritance" tabindex="-1">
+            <span class="situation-number">02</span><span>家人過世與繼承</span>
+          </button>
+          <button class="situation" type="button" role="tab" id="tab-consumer" aria-selected="false" aria-controls="panel-consumer" data-panel="consumer" tabindex="-1">
+            <span class="situation-number">03</span><span>退貨、退款或消費糾紛</span>
+          </button>
+          <button class="situation" type="button" role="tab" id="tab-rental" aria-selected="false" aria-controls="panel-rental" data-panel="rental" tabindex="-1">
+            <span class="situation-number">04</span><span>押金、修繕或租約</span>
+          </button>
+          <button class="situation" type="button" role="tab" id="tab-public" aria-selected="false" aria-controls="panel-public" data-panel="public" tabindex="-1">
+            <span class="situation-number">05</span><span>懲處、考績或不利處分</span>
+          </button>
+          <button class="situation" type="button" role="tab" id="tab-criminal" aria-selected="false" aria-controls="panel-criminal" data-panel="criminal" tabindex="-1">
+            <span class="situation-number">06</span><span>警局通知、搜索或扣押</span>
+          </button>
         </div>
-        <p class="small-note">免費使用，無須註冊。結果依你輸入的資料產生，僅供初步參考，不代替律師針對個案提供的法律意見。</p>
-      </div>
-      <aside class="hero-card" aria-label="ChouLegal 工具的三項功能">
-        <p class="eyebrow">功能一覽</p>
-        <h2>工具可以協助你</h2>
-        <div class="help-list">
-          <div class="help-item"><span class="help-number">01</span><div><h3>試算金額</h3><p>計算加班費、資遣費、繼承比例、遺產稅及其他常見金額。</p></div></div>
-          <div class="help-item"><span class="help-number">02</span><div><h3>檢查期限</h3><p>確認申訴、請求、拋棄繼承或提起救濟的期限還剩多久。</p></div></div>
-          <div class="help-item"><span class="help-number">03</span><div><h3>查找依據</h3><p>查看相關法條、主管機關說明，以及可以求助的單位。</p></div></div>
+
+        <div class="answer-stage" aria-live="polite">
+          <article class="answer-panel is-active" id="panel-labor" role="tabpanel" aria-labelledby="tab-labor" data-panel="labor">
+            <p class="answer-topic">工作與薪資</p>
+            <h3>先把金額與重要日期弄清楚</h3>
+            <p>你可以試算加班費、資遣費，並查看工時、請假、職災與離職時常見的規則。</p>
+            <ul><li>試算可能少領的金額</li><li>確認申訴或請求期限</li><li>知道要先保留哪些資料</li></ul>
+            <a class="tool-action" href="https://labor.choulegal.com">使用勞動權益工具 <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="answer-panel" id="panel-inheritance" role="tabpanel" aria-labelledby="tab-inheritance" data-panel="inheritance" hidden>
+            <p class="answer-topic">繼承與財產</p>
+            <h3>先確認誰能繼承，以及不能錯過的期限</h3>
+            <p>依家人關係整理繼承順序、應繼分與特留分，也能查看遺產稅和拋棄繼承期限。</p>
+            <ul><li>確認繼承人與分配比例</li><li>查看拋棄繼承期限</li><li>整理後續辦理順序</li></ul>
+            <a class="tool-action" href="https://inheritance.choulegal.com">使用繼承財產工具 <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="answer-panel" id="panel-consumer" role="tabpanel" aria-labelledby="tab-consumer" data-panel="consumer" hidden>
+            <p class="answer-topic">消費糾紛</p>
+            <h3>先看你能不能退，以及該找誰處理</h3>
+            <p>依購買方式與商品狀況，查看網購七日規則、瑕疵責任、解除契約與申訴方法。</p>
+            <ul><li>判斷是否適用七日規則</li><li>查看可主張的處理方式</li><li>找到申訴管道</li></ul>
+            <a class="tool-action" href="https://consumer.choulegal.com">使用消費權益工具 <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="answer-panel" id="panel-rental" role="tabpanel" aria-labelledby="tab-rental" data-panel="rental" hidden>
+            <p class="answer-topic">租屋問題</p>
+            <h3>先分清房東與房客各自要負責什麼</h3>
+            <p>查看押金返還、修繕責任、違約金與終止租約時常見的法律問題。</p>
+            <ul><li>確認修繕由誰負責</li><li>查看押金與違約金規則</li><li>整理終止租約步驟</li></ul>
+            <a class="tool-action" href="https://rental.choulegal.com">使用租屋權益工具 <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="answer-panel" id="panel-public" role="tabpanel" aria-labelledby="tab-public" data-panel="public" hidden>
+            <p class="answer-topic">公職與教師</p>
+            <h3>先確認處分類型與救濟期限</h3>
+            <p>依你的身分與收到的文件，查看申訴、復審或其他救濟程序可能怎麼走。</p>
+            <ul><li>辨認收到的是哪種處分</li><li>確認可以採取的程序</li><li>避免錯過救濟期限</li></ul>
+            <a class="tool-action" href="https://people.choulegal.com/public-servant.html">查看公職教師程序 <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="answer-panel" id="panel-criminal" role="tabpanel" aria-labelledby="tab-criminal" data-panel="criminal" hidden>
+            <p class="answer-topic">刑事程序</p>
+            <h3>先確認你是以什麼身分被通知</h3>
+            <p>面對警局通知、搜索或扣押時，先理解程序身分，再查看到場前可以準備什麼。</p>
+            <ul><li>辨認通知書上的程序身分</li><li>查看到場前注意事項</li><li>知道何時應尋求專業協助</li></ul>
+            <a class="tool-action" href="https://criminal.choulegal.com">查看刑事程序工具 <span aria-hidden="true">→</span></a>
+          </article>
         </div>
-      </aside>
+      </div>
+
+      <p class="finder-fallback">都不像？可以先到 <a href="https://learn.choulegal.com/qa/">法律問答庫搜尋你的問題</a>。</p>
     </section>
 
-    <section class="section shell" id="problems">
-      <div class="section-head">
-        <p class="eyebrow">你遇到哪一種問題？</p>
-        <h2>選擇最接近的情況。</h2>
-        <p>不必先判斷適用哪一條法律。每個分類底下都有對應的試算工具與程序說明。</p>
+    <section class="plain-language" aria-labelledby="plain-title">
+      <div class="plain-intro">
+        <p>我們怎麼說明法律</p>
+        <h2 id="plain-title">先講人話，<span>再給你查證</span></h2>
       </div>
-      <div class="problem-grid">
-        <a class="problem-card" href="https://inheritance.choulegal.com">
-          <span class="problem-icon">繼承與財產</span><h3>家人過世後，誰可以繼承？</h3><p>查詢法定繼承順序、應繼分與特留分，試算遺產稅，並確認拋棄繼承的辦理期限。</p><span>試算繼承比例 →</span>
-        </a>
-        <a class="problem-card" href="https://labor.choulegal.com">
-          <span class="problem-icon">工作與薪資</span><h3>加班費或資遣費，公司有沒有少給？</h3><p>依薪資、工時與年資試算差額，並查看請假、職災與離職相關的規定。</p><span>試算加班費與資遣費 →</span>
-        </a>
-        <a class="problem-card" href="https://consumer.choulegal.com">
-          <span class="problem-icon">消費糾紛</span><h3>商品有瑕疵，可以退貨或退款嗎？</h3><p>依購買方式與爭議類型，查看退貨、解除契約與申訴的規則和期限。</p><span>判斷消費爭議 →</span>
-        </a>
-        <a class="problem-card" href="https://rental.choulegal.com">
-          <span class="problem-icon">租屋問題</span><h3>房東不退押金，或房子壞了不修？</h3><p>查看押金返還上限、修繕責任、提前解約違約金與租約終止的規定。</p><span>查看租屋處理方式 →</span>
-        </a>
-        <a class="problem-card" href="https://people.choulegal.com/public-servant.html">
-          <span class="problem-icon">公職與教師</span><h3>收到懲處或不利考績，還能怎麼救濟？</h3><p>依身分與處分種類，查看復審、申訴的管道與各自的救濟期限。</p><span>查詢救濟程序 →</span>
-        </a>
-        <a class="problem-card" href="https://criminal.choulegal.com">
-          <span class="problem-icon">刑事程序</span><h3>收到警局通知，或遇到搜索扣押？</h3><p>先確認自己是告訴人、證人還是犯罪嫌疑人，再查看到場前該準備什麼。</p><span>查看刑事程序 →</span>
-        </a>
-      </div>
+      <ol class="explanation-levels">
+        <li><strong>先看白話重點</strong><span>用日常情境說明你可能遇到什麼，以及現在能先做什麼。</span></li>
+        <li><strong>再看怎麼判斷</strong><span>把計算方式、適用條件與例外分開，不把所有資訊一次塞給你。</span></li>
+        <li><strong>需要時查法源</strong><span>重要結論連回法規或主管機關資料，讓你知道答案從哪裡來。</span></li>
+      </ol>
+      <a class="source-link" href="/verification.html">查看資料來源與查核方式 <span aria-hidden="true">→</span></a>
     </section>
 
-    <section class="section shell">
-      <div class="learn">
-        <div>
-          <p class="eyebrow">CHOULEGAL LEARN</p>
-          <h2>還不確定該用哪個工具？</h2>
-          <p>文章從實際情境出發，說明常見規則、處理期限，以及需要保存哪些證據。</p>
-        </div>
-        <a class="button" href="https://learn.choulegal.com">瀏覽法律文章</a>
+    <section class="boundaries" aria-labelledby="boundaries-title">
+      <h2 id="boundaries-title">工具先幫你整理，不替你決定個案。</h2>
+      <p>試算與說明會依你提供的條件產生初步結果。若事情涉及證據真假、雙方說法不同，或需要替你做個案判斷，頁面會提醒你尋求專業協助。</p>
+      <div class="learn-actions">
+        <a class="secondary-action" href="https://learn.choulegal.com/blog/">閱讀白話法律文章</a>
+        <a class="text-action" href="https://learn.choulegal.com/qa/">搜尋法律問答</a>
       </div>
-    </section>
-
-    <section class="section shell">
-      <div class="section-head">
-        <p class="eyebrow">你看到的答案從哪裡來？</p>
-        <h2>結果會標出可以查證的依據。</h2>
-      </div>
-      <div class="trust-grid">
-        <div class="trust-item"><h3>法規與官方資料</h3><p>試算規則依現行法規撰寫，重要結論會標出法條，並連回主管機關的公開資料。</p></div>
-        <div class="trust-item"><h3>試算與說明分開</h3><p>金額依明確公式計算；文字用來解釋規則與限制，不和數字混在一起。</p></div>
-        <div class="trust-item"><h3>標示適用範圍</h3><p>工具只能依你輸入的資訊給初步結果，無法判斷證據是否充分，也不取代個案法律意見。</p></div>
-      </div>
-    </section>
-
-    <section class="final shell">
-      <h2>先選一個最接近的問題。</h2>
-      <p>不必註冊，也不需要備齊所有文件。填入已知的日期與金額，就能取得初步試算結果。</p>
-      <a class="button primary" href="#problems">查看免費法律工具</a>
     </section>
   </main>
 
-  <footer class="footer shell">
-    <span>© 2026 ChouLegal 周全法律權益</span>
-    <span><a href="/verification.html">資料來源說明</a> · <a href="/sponsor.html">支持免費服務</a> · <a href="/privacy.html">隱私政策</a> · <a href="/terms.html">使用條款</a></span>
+  <footer class="site-footer">
+    <div class="footer-brand"><strong>ChouLegal</strong><p>讓法律權益更容易理解。</p></div>
+    <nav aria-label="頁尾導覽">
+      <a href="https://learn.choulegal.com">法律知識</a>
+      <a href="/verification.html">資料來源</a>
+      <a href="/sponsor.html">支持服務</a>
+      <a href="/privacy.html">隱私政策</a>
+      <a href="/terms.html">使用條款</a>
+    </nav>
+    <small>© 2026 ChouLegal・ChouTech 周全科技</small>
   </footer>
 </body>
 </html>
