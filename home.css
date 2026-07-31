@@ -1,7 +1,5 @@
 /* Hallmark · genre: editorial · macrostructure: Guided Conversation · design-system: design.md · tone: reassuring-public-service · anchor hue: pine · contrast: pass (40–41) · nav: N9 · footer: Ft1 · slop: pass (42–45) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · mobile: pass (34, 49, 50–57) */
 /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
-@import url("tokens.css");
-
 *, *::before, *::after { box-sizing: border-box; }
 html, body { overflow-x: clip; }
 html { scroll-behavior: smooth; }
