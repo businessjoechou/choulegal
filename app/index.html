@@ -17,31 +17,34 @@
   <meta name="twitter:description" content="148 項免費法律工具。目前仍在商店上架與實機驗收階段。">
   <meta name="twitter:image" content="https://choulegal.com/og-image.png">
   <link rel="icon" href="../favicon.ico">
-  <link rel="stylesheet" href="../css/brand.css">
-  <link rel="stylesheet" href="../css/executive-polish.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+TC:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css?v=20260805-1">
   <style>
+    *,*::before,*::after{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.5}a{color:inherit}:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.skip-link{position:fixed;z-index:100;inset:1rem auto auto 1rem;padding:.75rem 1rem;background:var(--ink);color:var(--white);transform:translateY(-180%)}.skip-link:focus{transform:none}
     .app-main{width:min(1120px,calc(100% - 32px));margin:auto;padding:clamp(54px,8vw,110px) 0 88px}
     .app-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:clamp(28px,6vw,80px);align-items:center}
-    .app-kicker{margin:0 0 14px;color:#fde68a;font:600 12px/1.4 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase}
-    .app-main h1{max-width:14ch;margin:0;color:#fff;font:500 clamp(42px,6vw,68px)/1.08 "Noto Serif TC",serif;letter-spacing:-.035em}
-    .app-lead{max-width:680px;margin:24px 0 0;color:rgba(255,255,255,.76);font-size:clamp(17px,2vw,21px);line-height:1.8}
-    .status-box{padding:26px;border:1px solid rgba(253,230,138,.28);border-radius:18px;background:rgba(253,230,138,.06)}
-    .status-box strong{display:block;color:#fde68a;font-size:18px}
-    .status-box p{margin:10px 0 0;color:rgba(255,255,255,.74);line-height:1.75}
+    .app-kicker{margin:0 0 14px;color:var(--copper);font-size:.875rem;font-weight:700}
+    .app-main h1{max-width:14ch;margin:0;font-family:var(--font-display);font-size:clamp(3rem,6vw,4.5rem);font-weight:700;line-height:1;letter-spacing:-.035em}
+    .app-lead{max-width:680px;margin:24px 0 0;color:var(--ink-soft);font-size:clamp(17px,2vw,21px);line-height:1.8}
+    .status-box{padding:26px;border-radius:var(--radius-xl);background:var(--pine);color:var(--white)}
+    .status-box strong{display:block;font-size:18px}
+    .status-box p{margin:10px 0 0;color:var(--paper-deep);line-height:1.75}
     .app-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    .app-action{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:0 20px;border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#fff;font-weight:600}
-    .app-action-primary{border-color:#fde68a;background:#fde68a;color:#10141c}
+    .app-action{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:0 20px;border:1px solid var(--ink);border-radius:var(--radius-sm);font-weight:700;text-decoration:none}
+    .app-action-primary{background:var(--ink);color:var(--white)}
     .scope{margin-top:clamp(64px,9vw,110px)}
-    .scope h2,.boundary h2{margin:0 0 22px;color:#fff;font:500 clamp(30px,4vw,44px)/1.2 "Noto Serif TC",serif}
+    .scope h2,.boundary h2{margin:0 0 22px;font-family:var(--font-display);font-size:clamp(2.25rem,4vw,3.75rem);line-height:1;font-weight:700}
     .scope-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .scope-card{padding:22px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.035)}
-    .scope-card h3{margin:0 0 8px;color:#fff;font-size:18px}
-    .scope-card p{margin:0;color:rgba(255,255,255,.67);line-height:1.65}
-    .boundary{margin-top:70px;padding:30px;border:1px solid rgba(253,230,138,.45);background:rgba(255,255,255,.04)}
-    .boundary p{margin:0;color:rgba(255,255,255,.72);line-height:1.85}
-    .app-footer{width:min(1120px,calc(100% - 32px));margin:auto;padding:30px 0 44px;border-top:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+    .scope-card{padding:22px;border:1px solid var(--line);border-radius:var(--radius-xl);background:var(--paper-deep)}
+    .scope-card h3{margin:0 0 8px;font-size:18px}
+    .scope-card p{margin:0;color:var(--ink-soft);line-height:1.65}
+    .boundary{margin-top:70px;padding:30px;border-top:1px solid var(--ink);background:var(--paper-deep)}
+    .boundary p{margin:0;color:var(--ink-soft);line-height:1.85}
+    .app-footer{width:min(1120px,calc(100% - 32px));margin:auto;padding:30px 0 44px;border-top:1px solid var(--line);color:var(--ink-soft)}
     .app-footer nav{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:12px}
-    .app-footer a{color:#fde68a}
+    .app-footer a{color:var(--copper)}
     @media(max-width:760px){.app-hero{grid-template-columns:1fr}.scope-grid{grid-template-columns:1fr}.app-main h1{font-size:clamp(40px,12vw,56px)}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
@@ -57,12 +60,9 @@
     "offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"}
   }
   </script>
-<link rel="stylesheet" href="/css/family.css?v=20260805">
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
-  <div class="bg-mesh" aria-hidden="true"><div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div></div>
-  <div class="bg-grid" aria-hidden="true"></div>
   <main class="app-main" id="main">
     <section class="app-hero" aria-labelledby="app-title">
       <div>

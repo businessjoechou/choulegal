@@ -1,3 +1,8 @@
+/guide.html /verification/sources/ 301
+/pricing.html /about/support/ 301
+/avs.html https://choutechnology.com/avs.html 301
+/avs-verify.html https://choutechnology.com/avs-verify.html 301
+/lavs.html https://choutechnology.com/lavs.html 301
 /blog https://learn.choulegal.com/blog/ 301
 /blog/* https://learn.choulegal.com/blog/:splat 301
 /education.html https://learn.choulegal.com/ 301

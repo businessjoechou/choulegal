@@ -2,6 +2,31 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/guide.html",
+      "destination": "/verification/sources/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing.html",
+      "destination": "/about/support/",
+      "permanent": true
+    },
+    {
+      "source": "/avs.html",
+      "destination": "https://choutechnology.com/avs.html",
+      "permanent": true
+    },
+    {
+      "source": "/avs-verify.html",
+      "destination": "https://choutechnology.com/avs-verify.html",
+      "permanent": true
+    },
+    {
+      "source": "/lavs.html",
+      "destination": "https://choutechnology.com/lavs.html",
+      "permanent": true
+    },
+    {
       "source": "/blog/example-post.html",
       "destination": "https://learn.choulegal.com/blog/overtime-pay-calculation.html",
       "permanent": true

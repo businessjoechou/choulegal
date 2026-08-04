@@ -1,0 +1,30 @@
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:clip;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:1rem;line-height:1.7}
+a{color:inherit;text-underline-offset:.2em}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skip-link{position:fixed;z-index:100;inset:1rem auto auto 1rem;padding:.75rem 1rem;background:var(--ink);color:var(--white);transform:translateY(-180%)}
+.skip-link:focus{transform:none}
+.container-narrow{width:min(100% - 2rem,72rem);margin:auto}
+.site-nav{min-height:5rem;display:flex;align-items:center;gap:2rem;border-bottom:1px solid var(--line)}
+.site-logo{margin-inline-end:auto;font-family:var(--font-display);font-size:1.5rem;font-weight:700;text-decoration:none}
+.site-logo small{display:block;color:var(--ink-soft);font-family:var(--font);font-size:.75rem;font-weight:400}
+.site-nav-links{display:flex;flex-wrap:wrap;gap:1.5rem;font-size:.875rem;font-weight:700}
+.site-nav-links a{text-decoration:none}
+.site-nav-links a:hover{color:var(--copper)}
+.legal{max-width:48rem;margin:0 auto;padding:5rem 0 6rem}
+.eyebrow{margin:0 0 1rem;color:var(--copper);font-size:.875rem;font-weight:700}
+.legal h1,.legal h2{max-width:100%;font-family:var(--font-display);font-weight:700;letter-spacing:-.03em;overflow-wrap:anywhere;text-wrap:balance}
+.legal h1{margin:0;font-size:clamp(3rem,6vw,4.5rem);line-height:1}
+.legal .updated{margin:1.25rem 0 3rem;color:var(--ink-soft);font-size:.875rem}
+.legal section{padding-block:1.75rem;border-top:1px solid var(--line)}
+.legal h2{margin:0 0 1rem;font-size:1.5rem;line-height:2rem}
+.legal p{margin:.75rem 0;color:var(--ink-soft);overflow-wrap:anywhere}
+.legal strong{color:var(--ink)}
+.legal a{color:var(--copper);font-weight:700}
+.legal code{padding:.1rem .35rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--paper-deep);font-family:ui-monospace,SFMono-Regular,monospace;font-size:.875em}
+.site-foot{display:flex;justify-content:space-between;gap:2rem;padding-block:2rem;border-top:1px solid var(--line);color:var(--ink-soft)}
+.foot-mark small{display:block;margin-top:.25rem}
+.foot-links{display:flex;flex-wrap:wrap;gap:1rem}
+@media(max-width:48rem){.site-nav{min-height:4rem}.site-nav-links{display:none}.legal{padding-block:3.5rem 4rem}.site-foot{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

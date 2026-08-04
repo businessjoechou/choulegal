@@ -7,12 +7,6 @@
     <priority>1.0</priority>
   </url>
 <url>
-    <loc>https://choulegal.com/guide.html</loc>
-    <lastmod>2026-07-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
-  </url>
-<url>
     <loc>https://choulegal.com/app/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -73,12 +67,6 @@
     <priority>0.85</priority>
   </url>
 <url>
-    <loc>https://choulegal.com/pricing.html</loc>
-    <lastmod>2026-07-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-<url>
     <loc>https://choulegal.com/about/mission/</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -108,4 +96,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.72</priority>
   </url>
+<url><loc>https://choulegal.com/issues/work/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://choulegal.com/issues/rental/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://choulegal.com/issues/consumer/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://choulegal.com/issues/family/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://choulegal.com/issues/public-service/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://choulegal.com/issues/criminal/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://choulegal.com/learn/qa/</loc><lastmod>2026-08-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://choulegal.com/learn/articles/</loc><lastmod>2026-08-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://choulegal.com/learn/education/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
 </urlset>
