@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+TC:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../tokens.css?v=20260805-1">
+  <link rel="stylesheet" href="../css/hubs.css?v=20260805-2">
   <style>
     *,*::before,*::after{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.5}a{color:inherit}:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.skip-link{position:fixed;z-index:100;inset:1rem auto auto 1rem;padding:.75rem 1rem;background:var(--ink);color:var(--white);transform:translateY(-180%)}.skip-link:focus{transform:none}
     .app-main{width:min(1120px,calc(100% - 32px));margin:auto;padding:clamp(54px,8vw,110px) 0 88px}
@@ -60,17 +61,24 @@
     "offers":{"@type":"Offer","price":"0","priceCurrency":"TWD"}
   }
   </script>
+  <script src="../js/hubs.js?v=20260805-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="header">
+    <a class="wordmark" href="/"><img src="/logo-icon.svg" width="36" height="36" alt=""><span><strong>ChouLegal</strong><small>周全法律導航</small></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">選單</button>
+    <nav class="nav" id="primary-nav" aria-label="主要導覽"><a href="/issues/">解決法律問題</a><a href="/contracts/">契約工具</a><a href="/learn/">法律知識</a><a href="/verification/">如何查證</a><a href="/about/">關於</a></nav>
+    <a class="button" href="https://people.choulegal.com/tools.html">使用網頁工具</a>
+  </header>
   <main class="app-main" id="main">
     <section class="app-hero" aria-labelledby="app-title">
       <div>
         <p class="app-kicker">ChouLegal Mobile · iOS / Android</p>
-        <h1 id="app-title">148 項法律工具，整理在一個 App。</h1>
-        <p class="app-lead">涵蓋民法財產、勞動權益、消費爭議、租屋權益、事件處理與公職教師資訊。核心工具免費、無廣告，並可免登入使用。</p>
+        <h1 id="app-title">148 項法律工具，正在整理成一個 App。</h1>
+        <p class="app-lead">App 尚在上架與實機驗收；現在可以先使用網頁版工具。內容涵蓋民法財產、勞動、消費、租屋、事件處理與公職教師資訊，核心工具免費且可免登入。</p>
         <div class="app-actions">
-          <a class="app-action app-action-primary" href="https://people.choulegal.com/tools.html">先使用網頁工具</a>
+          <a class="app-action app-action-primary" href="https://people.choulegal.com/tools.html">使用目前可用的網頁工具</a>
           <a class="app-action" href="../index.html">返回 ChouLegal</a>
         </div>
       </div>

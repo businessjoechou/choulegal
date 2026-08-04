@@ -38,13 +38,10 @@
 <div class="container-narrow">
 
   <header class="site-nav">
-    <a href="../index.html" class="site-logo">周全<small>ChouLegal</small></a>
-    <nav class="site-nav-links" aria-label="主選單">
-      <a href="../index.html">首頁</a>
-      <a href="../guide.html">指南</a>
-      <a href="../manifesto.html">理念</a>
-      <a href="../about.html">關於</a>
-      <a href="../pricing.html">方案</a>
+    <a href="/" class="site-logo" aria-label="ChouLegal 首頁"><img src="/logo-icon.svg" width="36" height="36" alt=""><span><strong>ChouLegal</strong><small>周全法律導航</small></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">選單</button>
+    <nav class="site-nav-links" id="primary-nav" aria-label="主要導覽">
+      <a href="/issues/">解決法律問題</a><a href="/contracts/">契約工具</a><a href="/learn/">法律知識</a><a href="/verification/">如何查證</a><a href="/about/">關於</a>
     </nav>
   </header>
 
@@ -57,7 +54,7 @@
     <section>
       <h2>一句話總結</h2>
       <p><strong>本 App 不強制登入，法律工具可免帳號使用。</strong>未登入時，你所輸入的金額、日期、人數等試算資料只儲存在自己的裝置上，不會離開手機。若你選擇登入「周全帳號」，App 會自動將登入前已保存在本機、以及登入後新增的計算紀錄同步到你的周全帳號。</p>
-      <p style="font-size:13px;color:rgba(255,255,255,0.55);">注意：本頁僅適用於本公司 iOS / Android App 版本「ChouLegal 周全法律權益」。網頁版（choulegal.com）之隱私政策請見 <a href="../privacy.html">choulegal.com/privacy</a>，兩者規範不同。</p>
+      <p class="policy-note">注意：本頁僅適用於本公司 iOS / Android App 版本「ChouLegal 周全法律權益」。網頁版（choulegal.com）之隱私政策請見 <a href="../privacy.html">choulegal.com/privacy</a>，兩者規範不同。</p>
     </section>
 
     <section>
@@ -154,24 +151,15 @@
   </main>
 
   <footer class="site-foot">
-    <div class="foot-mark">ChouLegal 周全法律權益<small>© <span id="year">2026</span> · ChouLegal</small></div>
+    <div class="foot-mark"><strong>ChouLegal App</strong><small>© <span id="year">2026</span> · ChouTech 周全科技</small></div>
     <nav class="foot-links" aria-label="頁尾">
-      <a href="../index.html">首頁</a>
-      <a href="../guide.html">指南</a>
-      <a href="../manifesto.html">理念</a>
-      <a href="../about.html">關於</a>
-      <a href="../pricing.html">方案</a>
-      <a href="../privacy.html">網頁版隱私</a>
-      <a href="privacy.html">App 隱私</a>
-      <a href="terms.html">App 條款</a>
+      <a href="/">ChouLegal 首頁</a><a href="/app/">App 介紹</a><a href="/privacy.html">網站隱私</a><a href="/terms.html">網站條款</a><a href="/app/privacy.html" aria-current="page">App 隱私</a><a href="/app/terms.html">App 條款</a>
     </nav>
   </footer>
 
 </div>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<script src="/js/legal-page.js?v=20260805" defer></script>
 
 </body>
 </html>
