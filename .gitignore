@@ -1,2 +1,6 @@
 .vercel
 .claude/
+.DS_Store
+.playwright-cli/
+output/
+index 2.html
