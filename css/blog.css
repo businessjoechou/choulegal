@@ -151,7 +151,7 @@
 /* AEO definition block */
 .aeo-definition {
   background: var(--soft);
-  border-left: 4px solid var(--green);
+  border: 1px solid var(--line);
   padding: 20px 24px;
   border-radius: 4px;
   margin: 24px 0 32px 0;
@@ -197,7 +197,7 @@
 .article-body blockquote {
   margin: 32px 0;
   padding: 8px 24px;
-  border-left: 3px solid var(--line);
+  border: 1px solid var(--line);
   color: var(--muted);
   font-style: italic;
 }

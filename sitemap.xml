@@ -37,39 +37,15 @@
     <priority>0.82</priority>
   </url>
 <url>
-    <loc>https://choulegal.com/blog/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <loc>https://choulegal.com/app/</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.82</priority>
   </url>
 <url>
-    <loc>https://choulegal.com/blog/example-post.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <loc>https://choulegal.com/pricing.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-<url>
-    <loc>https://choulegal.com/blog/online-shopping-seven-day-cancellation.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-<url>
-    <loc>https://choulegal.com/blog/severance-pay-calculation.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-<url>
-    <loc>https://choulegal.com/blog/spouse-children-inheritance-share.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-<url>
-    <loc>https://choulegal.com/blog/unused-annual-leave-pay.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>

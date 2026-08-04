@@ -334,6 +334,23 @@ textarea {
   transform: translateY(-2px);
 }
 
+@media (hover: none), (pointer: coarse) {
+  .btn-primary:hover,
+  .button.primary:hover,
+  .nav-cta:hover,
+  .start-link:hover,
+  .next-link:hover,
+  .card:hover,
+  .product:hover,
+  .module-card:hover,
+  .lane:hover,
+  .timeline-card:hover,
+  .case-card:hover,
+  .knowledge-card:hover {
+    transform: none;
+  }
+}
+
 .tags span,
 .suite-tags span,
 .card-meta span,

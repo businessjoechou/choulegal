@@ -9,8 +9,13 @@
 <meta name="author" content="周全科技 ChouLegal">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>App 隱私權政策｜周全科技 ChouLegal</title>
+<meta name="description" content="說明 ChouLegal App 的帳號登入、本機試算資料、收藏紀錄、系統權限、第三方服務與個人資料權利。">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://choulegal.com/app/privacy.html">
+<meta property="og:title" content="App 隱私權政策｜周全科技 ChouLegal">
+<meta property="og:description" content="說明 ChouLegal App 的帳號登入、本機試算資料、收藏紀錄、系統權限、第三方服務與個人資料權利。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choulegal.com/app/privacy.html">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -81,6 +86,7 @@
       cookie_flags: 'SameSite=None;Secure'
     });
   </script>
+<link rel="stylesheet" href="/css/family.css?v=20260805">
 </head>
 <body>
 
@@ -109,11 +115,11 @@
   <article class="legal">
     <div class="eyebrow">App Privacy</div>
     <h1 style="margin-top:18px;">App 隱私權政策</h1>
-    <div class="updated">最後更新：2026-07-07 · 適用：ChouLegal 周全法律權益 App（iOS / Android）1.0.0 起</div>
+    <div class="updated">最後更新：2026-07-25 · 適用：ChouLegal 周全法律權益 App（iOS / Android）1.0.0 起</div>
 
     <section>
       <h2>一句話總結</h2>
-      <p><strong>本 App 不強制登入，法律工具可免帳號使用。</strong>未登入時，你所輸入的金額、日期、人數等試算資料皆只儲存在自己的裝置上，不會離開手機。若你選擇登入「周全帳號」，本 App 會處理登入所需的電子郵件與登入狀態。</p>
+      <p><strong>本 App 不強制登入，法律工具可免帳號使用。</strong>未登入時，你所輸入的金額、日期、人數等試算資料只儲存在自己的裝置上，不會離開手機。若你選擇登入「周全帳號」，App 會自動將登入前已保存在本機、以及登入後新增的計算紀錄同步到你的周全帳號。</p>
       <p style="font-size:13px;color:rgba(255,255,255,0.55);">注意：本頁僅適用於本公司 iOS / Android App 版本「ChouLegal 周全法律權益」。網頁版（choulegal.com）之隱私政策請見 <a href="../privacy.html">choulegal.com/privacy</a>，兩者規範不同。</p>
     </section>
 
@@ -134,11 +140,13 @@
 
     <section>
       <h2>三、選擇登入周全帳號時處理的資料</h2>
-      <p>若你在 App 內選擇登入或建立周全帳號，本 App 會透過 Supabase Auth 處理：</p>
+      <p>若你在 App 內選擇登入或建立周全帳號，本 App 會透過 Supabase Auth 與 Supabase Database 處理：</p>
       <p>• 你輸入的電子郵件地址。</p>
       <p>• 登入連結寄送、登入 token、session refresh token 等帳號驗證資料。</p>
       <p>• 帳號識別碼、電子郵件、顯示名稱等周全帳號基本資料。</p>
-      <p>上述資料僅用於登入、維持登入狀態與銜接周全旗下產品服務；不會用於廣告投放或出售給第三方。</p>
+      <p>• 自動同步到周全帳號的計算紀錄，包括工具名稱、結果標題與摘要、輸入及結果資料、備註、建立時間，以及工具與產品分類代號。</p>
+      <p>上述資料用於登入、維持登入狀態、帳號資料管理與保存計算紀錄；不會用於廣告投放或出售給第三方。</p>
+      <p><strong>個資告知事項：</strong>蒐集目的為帳號驗證、維持登入狀態、帳號資料管理與計算紀錄同步；資料類別如本節所列；由本公司及提供登入、資料庫服務的 Supabase，以系統自動處理方式，在上述目的所需範圍內利用。目前尚未完成可對外確認的具體保存期限與 Supabase 處理地區盤點，確認後會更新本政策；Supabase 服務可能涉及台灣境外處理。你可以不登入並繼續使用免登入的核心試算工具；若不提供電子郵件及必要驗證資料，將無法使用周全帳號、雲端同步與帳號刪除功能。</p>
     </section>
 
     <section>
@@ -146,7 +154,8 @@
       <p>為提供「我的最愛」、「最近使用」功能，本 App 會在你的手機本機（透過 React Native <code>AsyncStorage</code>）儲存以下資料：</p>
       <p>• 你加入收藏的計算機代號清單</p>
       <p>• 你最近開啟的計算機代號清單</p>
-      <p>上述資料<strong>僅儲存於你的裝置</strong>，本公司無法存取，亦不會傳輸至任何伺服器。當你解除安裝本 App 時，這些資料隨之刪除。</p>
+      <p>• 你完成試算後儲存的計算紀錄，App 本機最多保留最近 50 筆</p>
+      <p>未登入時，上述資料<strong>僅儲存於你的裝置</strong>，本公司無法存取，亦不會傳輸至任何伺服器。解除安裝通常會移除 App 可直接存取的本機資料；但裝置作業系統、雲端備份或還原機制可能另有保留與恢復行為，本公司無法控制。若你選擇登入周全帳號，App 會自動同步登入前尚未同步的既有計算紀錄，並持續同步登入後新增的計算紀錄。</p>
     </section>
 
     <section>
@@ -157,8 +166,11 @@
     <section>
       <h2>六、資料的使用、分享與傳輸</h2>
       <p>• <strong>未登入試算資料不傳輸</strong>：你在計算工具輸入的內容不會上傳至本公司伺服器。</p>
-      <p>• <strong>帳號資料用途限定</strong>：登入 Email 與 session 僅用於帳號驗證與維持登入狀態。</p>
-      <p>• <strong>服務提供者</strong>：本 App 使用 Supabase Auth 處理帳號登入，該服務可能涉及境外資料處理。</p>
+      <p>• <strong>登入後紀錄同步</strong>：你選擇登入後，App 會自動同步登入前保存在本機及登入後新增的計算紀錄。</p>
+      <p>• <strong>單筆紀錄刪除</strong>：單筆刪除會從 App 本機清單移除該紀錄；已同步的雲端紀錄會標記為已刪除，不再顯示於一般查詢結果。</p>
+      <p>• <strong>帳號刪除</strong>：只有雲端帳號刪除程序成功完成後，App 才會顯示帳號已刪除；若程序失敗，App 會顯示錯誤，不會宣稱刪除完成。</p>
+      <p>• <strong>帳號資料用途</strong>：登入 Email、session、帳號基本資料及同步紀錄用於帳號驗證、維持登入狀態、帳號資料管理與計算紀錄同步。</p>
+      <p>• <strong>服務提供者</strong>：本 App 使用 Supabase Auth 處理帳號登入，並使用 Supabase Database 保存與讀取同步的帳號資料及計算紀錄。該服務可能涉及境外資料處理。</p>
       <p>• <strong>無廣告分享</strong>：本公司不會將帳號資料提供給廣告商或資料仲介。</p>
     </section>
 
@@ -169,15 +181,15 @@
 
     <section>
       <h2>八、資料安全</h2>
-      <p>未登入使用時，你所輸入的試算內容不會經由網路傳送。登入功能由 Supabase Auth 處理，登入 token 會透過裝置本機儲存維持 session。本機儲存資料受裝置作業系統 sandbox 機制保護。</p>
+      <p>未登入使用時，你所輸入的試算內容不會經由網路傳送。登入功能由 Supabase Auth 處理，登入 token 會透過裝置本機儲存維持 session。登入後同步的帳號資料與計算紀錄會儲存在 Supabase Database，並以 Row Level Security 限制帳號資料的存取。本機儲存資料受裝置作業系統 sandbox 機制保護。</p>
     </section>
 
     <section>
       <h2>九、你的權利</h2>
       <p>你可隨時：</p>
       <p>• 將已收藏工具取消收藏。</p>
-      <p>• 解除安裝本 App，所有本機資料即刻刪除。</p>
-      <p>• 對周全帳號資料行使個資法第 3 條所定查詢、補充、更正、刪除等權利；請來信 businessjoechou@gmail.com。</p>
+      <p>• 解除安裝本 App，以移除 App 可直接存取的本機資料；裝置備份或還原機制仍以作業系統與你的設定為準。</p>
+      <p>• 對周全帳號資料行使個資法第 3 條所定權利，包括查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用，以及請求刪除。請來信 businessjoechou@gmail.com，並在主旨註明「個資權利申請」及說明申請項目；本公司會先核對帳號身分再處理。</p>
     </section>
 
     <section>
@@ -192,7 +204,7 @@
 
     <section>
       <h2>十二、適用法律與管轄</h2>
-      <p>本政策依中華民國法律解釋與適用，因本政策所生之爭議以台灣台北地方法院為第一審管轄法院。</p>
+      <p>本政策依中華民國法律解釋與適用。因本政策所生之爭議，以依法有管轄權的法院為準，不排除消費者保護法及其他法律所定的特別管轄。</p>
     </section>
 
     <section>

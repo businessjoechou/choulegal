@@ -27,6 +27,7 @@ body:hover .chrome,.chrome:focus-within,.chrome.visible{opacity:1;}
 .actions{display:flex;gap:8px;pointer-events:auto;}
 .control{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.24);border-radius:50%;background:rgba(11,16,32,.72);color:#fff;cursor:pointer;backdrop-filter:blur(10px);transition:background .2s,border-color .2s,transform .2s;}
 .control:hover{background:rgba(245,167,25,.9);border-color:#f5a719;transform:translateY(-1px);}
+@media (hover:none),(pointer:coarse){.control:hover{transform:none;}}
 .control:focus-visible{outline:3px solid #fff;outline-offset:3px;}
 .control[disabled]{opacity:.35;cursor:default;transform:none;}
 .hit{position:fixed;z-index:2;top:0;bottom:0;width:34%;border:0;background:transparent;cursor:pointer;}

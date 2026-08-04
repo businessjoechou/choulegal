@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+TC:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,700&display=swap");
+
+:root {
+  --family-paper: oklch(97% 0.012 158);
+  --family-paper-deep: oklch(93% 0.018 158);
+  --family-ink: #10281f;
+  --family-muted: #40544c;
+  --family-line: #c9cec7;
+  --family-copper: #b63c16;
+  --family-focus: #ea5a2a;
+  --family-display: "Newsreader", "Noto Serif TC", "Songti TC", serif;
+  --family-body: "IBM Plex Sans TC", "Noto Sans TC", "PingFang TC", sans-serif;
+}
+
+body { font-family: var(--family-body); }
+h1, h2, h3, .title, .section-title, .nav-logo, .brand strong { font-family: var(--family-display); font-weight: 700; letter-spacing: -0.03em; }
+:focus-visible { outline: 3px solid var(--family-focus); outline-offset: 3px; }
+.eyebrow, .section-eyebrow, .nav-logo small { font-family: var(--family-body); letter-spacing: normal; text-transform: none; }
+.notice, .boundary, .aeo-definition, blockquote { border-inline-start-width: 1px !important; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+}

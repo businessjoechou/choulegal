@@ -5,11 +5,11 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>查證資料｜周全 ChouLegal</title>
-<meta name="description" content="周全 ChouLegal 公開三大產品線逐頁法源、裁判字號、計算資料與查證狀態，建立可追溯的公開查證台帳。">
+<meta name="description" content="周全 ChouLegal 公開法律服務逐頁法源、裁判字號、計算資料與查證狀態，建立可追溯的公開查證台帳。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://choulegal.com/verification.html">
 <meta property="og:title" content="查證資料｜周全 ChouLegal">
-<meta property="og:description" content="周全 ChouLegal 公開三大產品線逐頁法源、裁判字號、計算資料與查證狀態，建立可追溯的公開查證台帳。">
+<meta property="og:description" content="周全 ChouLegal 公開法律服務逐頁法源、裁判字號、計算資料與查證狀態，建立可追溯的公開查證台帳。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choulegal.com/verification.html">
 <meta property="og:site_name" content="ChouLegal 周全法律權益">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="ChouTech 周全科技與 ChouLegal 周全法律權益預覽圖">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="查證資料｜周全 ChouLegal">
-<meta name="twitter:description" content="周全 ChouLegal 公開三大產品線逐頁法源、裁判字號、計算資料與查證狀態，建立可追溯的公開查證台帳。">
+<meta name="twitter:description" content="周全 ChouLegal 公開法律服務逐頁法源、裁判字號、計算資料與查證狀態，建立可追溯的公開查證台帳。">
 <meta name="twitter:image" content="https://choulegal.com/og-image-20260716-choutech.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
@@ -31,6 +31,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
   :root {
     --ink: #081220;
     --ink-2: #0d1a2d;
@@ -124,7 +128,7 @@
   .notice {
     margin-top: 30px;
     max-width: 780px;
-    border-left: 3px solid var(--gold);
+    border: 1px solid var(--gold);
     padding: 14px 18px;
     background: rgba(229, 196, 95, 0.07);
     color: rgba(251, 250, 246, 0.82);
@@ -181,6 +185,9 @@
     border-color: rgba(229, 196, 95, 0.42);
     background: rgba(229, 196, 95, 0.075);
     transform: translateY(-2px);
+  }
+  @media (hover: none), (pointer: coarse) {
+    .download:hover { transform: none; }
   }
   .download strong { display: block; margin-bottom: 6px; font-weight: 600; }
   .download span { display: block; color: var(--muted); font-size: 14px; }
@@ -288,8 +295,11 @@
       cookie_flags: 'SameSite=None;Secure'
     });
   </script>
+<link rel="stylesheet" href="css/accessibility.css">
+<link rel="stylesheet" href="/css/family.css?v=20260805">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到主要內容</a>
 <header class="nav">
   <div class="nav-inner">
     <a class="brand" href="/">周全<small>ChouLegal</small></a>
@@ -302,12 +312,12 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="hero">
     <div class="wrap">
       <div class="eyebrow">公開查證總表</div>
       <h1>查證資料公開台帳</h1>
-      <p class="lead">周全公開三大產品線中的網頁檔案、法條引用、司法院資料、計算常數與查證狀態。已查證者列明來源；待補者標示待確認或未查證。</p>
+      <p class="lead">本頁公開 2026-07-06 盤點批次涵蓋的法律服務網頁檔案、法條引用、司法院資料、計算常數與當時查證狀態。已查證者列明來源；待補者標示待確認或未查證。</p>
       <p class="notice">查核日期：2026-07-06。本頁為可追溯盤點台帳，不是「全部通過」聲明。</p>
 
       <div class="stats" aria-label="查證狀態總覽">
@@ -321,15 +331,15 @@
 
   <section class="section">
     <div class="wrap">
-      <h2>完整資料下載</h2>
+      <h2>本批盤點資料下載</h2>
       <p class="section-copy">每個檔案保留公開 URL 或本機路由、資料來源 URL、官方來源數、待補常數筆數、待修正引用筆數與查證狀態。</p>
       <div class="downloads">
         <a class="download" href="verification-data/2026-07-06/all-webpage-file-verification-ledger.csv">
-          <span><strong>完整逐頁台帳</strong><span>三大產品線全部 367 個網頁/路由檔案。</span></span>
+          <span><strong>本批逐頁台帳</strong><span>2026-07-06 盤點納入的 367 個網頁／路由檔案；不代表此後新增或異動頁面。</span></span>
           <code>CSV</code>
         </a>
         <a class="download" href="verification-data/2026-07-06/source-verification-report-2026-07-06.md">
-          <span><strong>完整查核報告</strong><span>含狀態定義、總覽、逐頁表格與官方來源附錄。</span></span>
+          <span><strong>本批查核報告</strong><span>含當次狀態定義、總覽、逐頁表格與官方來源附錄。</span></span>
           <code>MD</code>
         </a>
         <a class="download" href="verification-data/2026-07-06/all-webpage-verified.csv">
@@ -364,13 +374,14 @@
     <div class="wrap">
       <h2>產品線狀態</h2>
       <table class="matrix">
+        <caption class="sr-only">各產品線查證狀態</caption>
         <thead>
           <tr>
-            <th>產品線</th>
-            <th>子產品/平台</th>
-            <th>已查證</th>
-            <th>待確認</th>
-            <th>未查證</th>
+            <th scope="col">產品線</th>
+            <th scope="col">子產品/平台</th>
+            <th scope="col">已查證</th>
+            <th scope="col">待確認</th>
+            <th scope="col">未查證</th>
           </tr>
         </thead>
         <tbody>
@@ -379,7 +390,6 @@
           <tr><td>權益試算與查詢</td><td>勞動權益計算平台</td><td><span class="tag ok">23</span></td><td><span class="tag pending">11</span></td><td><span class="tag unknown">0</span></td></tr>
           <tr><td>權益試算與查詢</td><td>租賃權益計算平台</td><td><span class="tag ok">25</span></td><td><span class="tag pending">1</span></td><td><span class="tag unknown">0</span></td></tr>
           <tr><td>權益試算與查詢</td><td>周全主站／民眾入口</td><td><span class="tag ok">18</span></td><td><span class="tag pending">1</span></td><td><span class="tag unknown">4</span></td></tr>
-          <tr><td>ChouReg 周全合規平台</td><td>ChouReg 企業工作台</td><td><span class="tag ok">110</span></td><td><span class="tag pending">0</span></td><td><span class="tag unknown">77</span></td></tr>
           <tr><td>周全 AI</td><td>周全 AI 官網</td><td><span class="tag ok">1</span></td><td><span class="tag pending">0</span></td><td><span class="tag unknown">0</span></td></tr>
         </tbody>
       </table>

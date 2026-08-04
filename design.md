@@ -1,20 +1,41 @@
 # Design — ChouLegal
 
-ChouLegal 是面向一般民眾的普法權益網站。首頁不是法律分類目錄，而是一段有引導的對話：先用生活情境分流，只顯示當下需要的資訊，再逐層提供白話說明、判斷方式與法源。
+ChouLegal 是面向一般民眾的可信法律導航服務。首頁讓使用者先感到被理解，再看見資訊如何被驗證，最後取得可以採取的下一步。
 
-- Genre：editorial public service
-- Macrostructure：Guided Conversation；生活情境選擇在前，答案面板在後
-- Theme：沿用周全科技的暖紙色、深松綠與銅色重點
-- Typography：Newsreader 標題、IBM Plex Sans TC 內文
-- Enrichment：none；資訊層級與可操作性就是視覺主體
-- Motion：只保留按鈕回饋與內容切換，不做裝飾性進場
-- CTA voice：明確動詞，說清楚點擊後會去哪裡
+## Direction
 
-## 資訊原則
+- Register：public service brand
+- Layout：長篇敘事型首頁，以單一路徑建立理解、信任與行動
+- Personality：安心、可信、賦能
+- Primary action：看看這裡能怎麼幫我
+- Anti patterns：律師事務所式威嚇、通用 AI 聊天泡泡、制式 SaaS 功能卡片
 
-1. 首屏只回答「這裡能幫我什麼」。
-2. 使用者不需要先辨認法律領域，只選最接近的生活情境。
-3. 六個選項都是真正可操作的按鈕；一次只顯示一個答案。
-4. 答案依序呈現：白話重點 → 可做的事 → 實際工具。
-5. 信任資訊依序呈現：白話結論 → 判斷方式 → 法規與官方來源。
-6. 不宣稱 AI 或人工已審閱個案；清楚標示工具的能力邊界。
+## Visual system
+
+- Display／wordmark：Newsreader 700；Body／UI：IBM Plex Sans TC 400／700，與母品牌一致
+- Base：近白 `#f7f7f2`
+- Ink：深松綠 `#10281f`
+- Primary surface：松綠 `#0d2b21`
+- Action：銅紅 `#b63c16`
+- Maximum canvas：1440px，背景滿版，內容置中
+- Corners：4px 控制元件、8px 內部區塊、16px 主要容器
+- Motion：IntersectionObserver 觸發的沉穩淡入；支援 reduced motion；帶錨點頁面優先顯示內容
+
+## Content hierarchy
+
+1. Hero：說清楚服務與首要行動，並以真實產品介面呈現法律導航結果。
+2. Trust：免費、不需註冊、來源可查、不確定性明示。
+3. Paths：依生活情境進入既有六類法律工具。
+4. Process：釐清事實、驗證依據、採取行動。
+5. Verification：顯示司法管轄區、來源、狀態、日期與仍待確認事項。
+6. Mission：法律保護能力不應取決於資源。
+7. Boundaries：不假裝取代律師，該轉介時清楚轉介。
+8. FAQ and final action：處理疑慮並回到單一行動。
+
+## Accessibility
+
+- 所有互動元件必須有 hover、active 與 focus visible 狀態。
+- 保留跳到主要內容連結與語意化區段。
+- 文字可縮放，手機版不產生水平捲動。
+- 動態效果不能阻擋內容，並遵守 prefers reduced motion。
+- 不只靠顏色傳達驗證狀態。

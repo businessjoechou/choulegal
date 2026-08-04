@@ -482,7 +482,7 @@ function initEducationLibrary() {
   function renderSaved() {
     savedList.innerHTML = "";
     var percent = Math.round((saved.length / educationItems.length) * 100);
-    if (progressBar) progressBar.style.width = percent + "%";
+    if (progressBar) progressBar.style.transform = `scaleX(${percent / 100})`;
     if (progressText) progressText.textContent = saved.length + " / " + educationItems.length + " 已加入複習";
     try {
       localStorage.setItem("choulegalEducationSaved", JSON.stringify(saved));

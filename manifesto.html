@@ -6,13 +6,13 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>為什麼做這件事 — 周全 ChouLegal</title>
-<meta name="description" content="周全 ChouLegal 創辦人 Joe Chou 的一篇紀錄，說明免費工具、ChouReg與可追溯法律架構的營運邏輯。">
+<title>為什麼做這件事｜周全 ChouLegal</title>
+<meta name="description" content="周全 ChouLegal 創辦人 Joe Chou 的一篇紀錄，說明免費法律工具與可追溯法律架構的理念。">
 <meta name="robots" content="index, follow">
 <meta name="author" content="周全 ChouLegal">
 <link rel="canonical" href="https://choulegal.com/manifesto.html">
-<meta property="og:title" content="為什麼做這件事 — 周全 ChouLegal">
-<meta property="og:description" content="周全 ChouLegal 創辦人 Joe Chou 的一篇紀錄，說明免費工具、ChouReg與可追溯法律架構的營運邏輯。">
+<meta property="og:title" content="為什麼做這件事｜周全 ChouLegal">
+<meta property="og:description" content="周全 ChouLegal 創辦人 Joe Chou 的一篇紀錄，說明免費法律工具與可追溯法律架構的理念。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choulegal.com/manifesto.html">
 <meta property="og:site_name" content="ChouLegal 周全法律權益">
@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ChouTech 周全科技與 ChouLegal 周全法律權益預覽圖">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="為什麼做這件事 — 周全 ChouLegal">
-<meta name="twitter:description" content="周全 ChouLegal 創辦人 Joe Chou 的一篇紀錄，說明免費工具、ChouReg與可追溯法律架構的營運邏輯。">
+<meta name="twitter:title" content="為什麼做這件事｜周全 ChouLegal">
+<meta name="twitter:description" content="周全 ChouLegal 創辦人 Joe Chou 的一篇紀錄，說明免費法律工具與可追溯法律架構的理念。">
 <meta name="twitter:image" content="https://choulegal.com/og-image-20260716-choutech.png">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,6 +134,9 @@
   .btn:hover { background: #fef3c7; transform: translateY(-1px); }
   .btn::after { content: '›'; font-size: 18px; line-height: 1; transition: transform 0.3s; }
   .btn:hover::after { transform: translateX(4px); }
+  @media (hover: none), (pointer: coarse) {
+    .btn:hover, .btn:hover::after { transform: none; }
+  }
 
   .foot {
     padding: 40px 0;
@@ -143,7 +146,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.72);
   }
   .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
   .foot-links a:hover { color: rgba(255,255,255,0.85); }
@@ -167,8 +170,11 @@
       cookie_flags: 'SameSite=None;Secure'
     });
   </script>
+<link rel="stylesheet" href="css/accessibility.css">
+<link rel="stylesheet" href="/css/family.css?v=20260805">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到主要內容</a>
 
 <header class="nav">
   <div class="nav-inner">
@@ -184,7 +190,7 @@
 
 <div class="wrap-narrow">
 
-<main>
+<main id="main">
 
   <section class="hero">
     <div class="eyebrow">Manifesto</div>
@@ -203,29 +209,23 @@
 
     <p>這源於一個非常務實的考量。會在搜尋引擎查詢「我這樣算不算被資遣」的使用者，通常正面臨突發糾紛，且尚未準備尋求收費的專業諮詢。他們當下最迫切需要的是釐清自身處境、理解基本權益與下一步的行動指南。如果在定位問題的第一步就需要付費，許多人可能會因負擔或繁瑣而直接選擇放棄。</p>
 
-    <p>因此，「ChouLegal｜權益試算」的所有計算與檢核工具，均承諾<strong>永久免費</strong>。全站無須註冊、無須登入，亦不會將任何功能設為付費才能使用。</p>
-
-    <h2>永續營運的商業模式</h2>
-
-    <p>我們的營運資源來自「ChouReg 周全合規平台」。ChouReg主要面向企業、店家與法律專業人員，協助其處理人力資源合規、勞資爭議預防、消費糾紛因應、法律文件治理以及判決實務檢索。透過企業級產品的商業收入，支持並維護免費權益試算與查詢工具的持續營運。</p>
-
-    <p>這樣的營運架構並非首創：由具備付費能力的企業與專業用戶支持企業與合規產品，使需要基礎指引的大眾能免費取得服務。我們把這個永續循環的結構，帶進日常的法律爭議處境中。</p>
+    <p>因此，現行「ChouLegal｜權益試算」公開的計算與檢核工具<strong>維持免費</strong>，目前無須註冊或登入。</p>
 
     <h2>獨力開發與品質堅持</h2>
 
     <p>若沒有現代化開發工具的輔助，我力有未逮，難以獨自維持目前的研發規模。然而，不論是法理研究、產品規劃、法源核對還是計算公式的編寫，現階段皆由我一人親自把關並對其負責。</p>
 
-    <p>開發效率的提升，絕不代表品質可以打折。系統引用的每一條法規，皆定期與官方的全國法規資料庫進行核對；所有試算數據皆附帶明確條號、修法日期與官方連結。我們希望使用者獲得的是有據可查的嚴謹論證，而非只有一句含糊的「系統計算結果」。</p>
+    <p>開發效率的提升，不代表可以省略查核。已完成查證的法規與試算項目會標示條號、資料版本或官方連結；尚待確認的內容也應明確揭露狀態。我們希望使用者能回到來源覆核，而非只接受一句「系統計算結果」。</p>
 
     <h2>系統定位與法律專業的邊界</h2>
 
-    <p>律師的專業工作——包括代理出庭、商務談判、針對個案細節的綜合判斷以及承擔法律責任——都是自動化工具無法、亦不應取代的範疇。周全所處理的，是<strong>大眾最常面臨且法規定義相對明確的標準化問題</strong>：如資遣費、特休天數、法定繼承應繼分與贈與稅額。這些問題有明晰的法律準則，我們將這些準則轉化為直觀的演算解答。</p>
+    <p>律師的專業工作，包括代理出庭、商務談判、針對個案細節的綜合判斷以及承擔法律責任，都是自動化工具無法且不應取代的範疇。周全所處理的，是<strong>大眾最常面臨且法規定義相對明確的標準化問題</strong>：如資遣費、特休天數、法定繼承應繼分與贈與稅額。這些問題有明晰的法律準則，我們將這些準則轉化為直觀的演算解答。</p>
 
     <p>當基礎法律資訊與試算需求被有效分流和整理後，律師等專業人員便能將寶貴的時間，專注於真正需要個案深度裁量、談判攻防或訴訟防範的複雜案件上。</p>
 
     <h2>未來的承諾</h2>
 
-    <p>周全的永續模式非常清晰：藉由ChouReg的商業盈餘，維繫權益試算與查詢的運作，確保社會大眾能擁有一個免費、公開、可信賴且可追溯的法律試算入口。只要這個互利結構持續運轉，權益試算與查詢工具便會堅守免費的承諾。</p>
+    <p>現行公開權益工具維持免費；實際可用項目、資料版本與查證狀態，仍以各工具頁面標示為準。</p>
 
   </article>
 
