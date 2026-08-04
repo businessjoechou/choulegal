@@ -37,8 +37,18 @@
       "permanent": true
     },
     {
+      "source": "/choucounsel-site",
+      "destination": "/app/",
+      "permanent": true
+    },
+    {
+      "source": "/choucounsel-site/",
+      "destination": "/app/",
+      "permanent": true
+    },
+    {
       "source": "/choucounsel-site/:path*",
-      "destination": "/",
+      "destination": "/app/",
       "permanent": true
     }
   ],
