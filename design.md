@@ -5,7 +5,7 @@ ChouLegal 是面向一般民眾的可信法律導航服務。首頁讓使用者�
 ## Direction
 
 - Register：public service brand
-- Layout：長篇敘事型首頁，以單一路徑建立理解、信任與行動
+- Layout：精簡的 Index-First 首頁；主要任務導向獨立入口，首頁只保留理解、選擇、信任與行動
 - Personality：安心、可信、賦能
 - Primary action：看看這裡能怎麼幫我
 - Anti patterns：律師事務所式威嚇、通用 AI 聊天泡泡、制式 SaaS 功能卡片
@@ -26,11 +26,9 @@ ChouLegal 是面向一般民眾的可信法律導航服務。首頁讓使用者�
 1. Hero：說清楚服務與首要行動，並以真實產品介面呈現法律導航結果。
 2. Trust：免費、不需註冊、來源可查、不確定性明示。
 3. Paths：依生活情境進入既有六類法律工具。
-4. Process：釐清事實、驗證依據、採取行動。
-5. Verification：顯示司法管轄區、來源、狀態、日期與仍待確認事項。
-6. Mission：法律保護能力不應取決於資源。
-7. Boundaries：不假裝取代律師，該轉介時清楚轉介。
-8. FAQ and final action：處理疑慮並回到單一行動。
+4. Verification：顯示司法管轄區、來源、狀態、日期與仍待確認事項。
+5. Boundaries：不假裝取代律師，該轉介時清楚轉介。
+6. Final action：回到單一行動；流程、法律知識、理念與常見疑慮由各自的入口承接。
 
 ## Accessibility
 

@@ -4,6 +4,10 @@
 /education-library.html https://learn.choulegal.com/#library 301
 /professional.html / 301
 /workspace.html / 301
+/about.html /about/ 301
+/manifesto.html /about/mission/ 301
+/sponsor.html /about/support/ 301
+/verification.html /verification/sources/ 301
 /choucounsel-site /app/ 301
 /choucounsel-site/ /app/ 301
 /choucounsel-site/* /app/ 301

@@ -37,6 +37,26 @@
       "permanent": true
     },
     {
+      "source": "/about.html",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/manifesto.html",
+      "destination": "/about/mission/",
+      "permanent": true
+    },
+    {
+      "source": "/sponsor.html",
+      "destination": "/about/support/",
+      "permanent": true
+    },
+    {
+      "source": "/verification.html",
+      "destination": "/verification/sources/",
+      "permanent": true
+    },
+    {
       "source": "/choucounsel-site",
       "destination": "/app/",
       "permanent": true
